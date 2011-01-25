@@ -42,7 +42,6 @@ static gboolean gtk_cpp_lexer_real_has_prop (GtkIEditorLexer* base, const char* 
 static gboolean gtk_cpp_lexer_real_get_prop_as_int (GtkIEditorLexer* base, const char* propname, gint* propvalue);
 static gboolean gtk_cpp_lexer_real_get_prop_as_bool (GtkIEditorLexer* base, const char* propname, gboolean* propvalue);
 static gboolean gtk_cpp_lexer_real_get_prop_as_string (GtkIEditorLexer* base, const char* propname, char** propvalue);
-static int gtk_cpp_lexer_real_get_prop_type (GtkIEditorLexer* base, const char* propname);
 static char* gtk_cpp_lexer_real_get_prop (GtkIEditorLexer* base, const char* propname);
 static gboolean gtk_cpp_lexer_real_set_prop (GtkIEditorLexer* base, const char* propname, const char* propvalue);
 static void gtk_cpp_lexer_finalize (GObject* obj);
@@ -1051,18 +1050,6 @@ static gboolean gtk_cpp_lexer_real_get_prop_as_string (GtkIEditorLexer* base, co
 }
 
 
-static int gtk_cpp_lexer_real_get_prop_type (GtkIEditorLexer* base, const char* propname) {
-	GtkCppLexer * self;
-	int result = 0;
-	int prop_type = 0;
-	self = (GtkCppLexer*) base;
-	g_return_val_if_fail (propname != NULL, 0);
-	prop_type = (int) scintilla_send_message (self->sci, (unsigned int) SCI_PROPERTYTYPE, (uptr_t) ((gulong) propname), (sptr_t) ((glong) 0));
-	result = prop_type;
-	return result;
-}
-
-
 static char* gtk_cpp_lexer_real_get_prop (GtkIEditorLexer* base, const char* propname) {
 	GtkCppLexer * self;
 	char* result = NULL;
@@ -1453,7 +1440,6 @@ static void gtk_cpp_lexer_gtk_ieditor_lexer_interface_init (GtkIEditorLexerIface
 	iface->get_prop_as_int = gtk_cpp_lexer_real_get_prop_as_int;
 	iface->get_prop_as_bool = gtk_cpp_lexer_real_get_prop_as_bool;
 	iface->get_prop_as_string = gtk_cpp_lexer_real_get_prop_as_string;
-	iface->get_prop_type = gtk_cpp_lexer_real_get_prop_type;
 	iface->get_prop = gtk_cpp_lexer_real_get_prop;
 	iface->set_prop = gtk_cpp_lexer_real_set_prop;
 }

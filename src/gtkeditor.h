@@ -110,7 +110,6 @@ struct _GtkEditorClass {
 	void (*indicator_release) (GtkEditor* self, gint modifiers, gint position);
 	void (*auto_c_cancelled) (GtkEditor* self);
 	void (*auto_c_char_deleted) (GtkEditor* self);
-	void (*hot_spot_release_click) (GtkEditor* self, gint modifiers, gint position);
 };
 
 typedef enum  {
@@ -175,7 +174,6 @@ struct _GtkIEditorLexerIface {
 	gboolean (*get_prop_as_int) (GtkIEditorLexer* self, const char* propname, gint* propvalue);
 	gboolean (*get_prop_as_bool) (GtkIEditorLexer* self, const char* propname, gboolean* propvalue);
 	gboolean (*get_prop_as_string) (GtkIEditorLexer* self, const char* propname, char** propvalue);
-	int (*get_prop_type) (GtkIEditorLexer* self, const char* propname);
 	char* (*get_prop) (GtkIEditorLexer* self, const char* propname);
 	gboolean (*set_prop) (GtkIEditorLexer* self, const char* propname, const char* propvalue);
 };
@@ -315,7 +313,6 @@ void gtk_editor_indicator_click (GtkEditor* self, gint modifiers, gint position)
 void gtk_editor_indicator_release (GtkEditor* self, gint modifiers, gint position);
 void gtk_editor_auto_c_cancelled (GtkEditor* self);
 void gtk_editor_auto_c_char_deleted (GtkEditor* self);
-void gtk_editor_hot_spot_release_click (GtkEditor* self, gint modifiers, gint position);
 gint gtk_editor_style_hex_to_dec (const char* hex);
 gboolean gtk_ieditor_lexer_read_config (GtkIEditorLexer* self, const char* filename);
 gboolean gtk_ieditor_lexer_write_config (GtkIEditorLexer* self, const char* filename);
@@ -324,7 +321,6 @@ gboolean gtk_ieditor_lexer_has_prop (GtkIEditorLexer* self, const char* propname
 gboolean gtk_ieditor_lexer_get_prop_as_int (GtkIEditorLexer* self, const char* propname, gint* propvalue);
 gboolean gtk_ieditor_lexer_get_prop_as_bool (GtkIEditorLexer* self, const char* propname, gboolean* propvalue);
 gboolean gtk_ieditor_lexer_get_prop_as_string (GtkIEditorLexer* self, const char* propname, char** propvalue);
-int gtk_ieditor_lexer_get_prop_type (GtkIEditorLexer* self, const char* propname);
 char* gtk_ieditor_lexer_get_prop (GtkIEditorLexer* self, const char* propname);
 gboolean gtk_ieditor_lexer_set_prop (GtkIEditorLexer* self, const char* propname, const char* propvalue);
 GType gtk_cpp_lexer_get_type (void) G_GNUC_CONST;

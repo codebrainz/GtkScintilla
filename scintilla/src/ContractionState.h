@@ -51,7 +51,6 @@ public:
 
 	bool GetExpanded(int lineDoc) const;
 	bool SetExpanded(int lineDoc, bool expanded);
-	int ContractedNext(int lineDocStart) const;
 
 	int GetHeight(int lineDoc) const;
 	bool SetHeight(int lineDoc, int height);

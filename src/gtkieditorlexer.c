@@ -7,9 +7,6 @@
 #include "gtkeditor.h"
 #include <stdlib.h>
 #include <string.h>
-#include <Scintilla.h>
-#include <SciLexer.h>
-#include <ScintillaWidget.h>
 
 
 
@@ -49,11 +46,6 @@ gboolean gtk_ieditor_lexer_get_prop_as_bool (GtkIEditorLexer* self, const char* 
 
 gboolean gtk_ieditor_lexer_get_prop_as_string (GtkIEditorLexer* self, const char* propname, char** propvalue) {
 	return GTK_IEDITOR_LEXER_GET_INTERFACE (self)->get_prop_as_string (self, propname, propvalue);
-}
-
-
-int gtk_ieditor_lexer_get_prop_type (GtkIEditorLexer* self, const char* propname) {
-	return GTK_IEDITOR_LEXER_GET_INTERFACE (self)->get_prop_type (self, propname);
 }
 
 

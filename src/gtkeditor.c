@@ -94,7 +94,6 @@ static void gtk_editor_real_indicator_click (GtkEditor* self, gint modifiers, gi
 static void gtk_editor_real_indicator_release (GtkEditor* self, gint modifiers, gint position);
 static void gtk_editor_real_auto_c_cancelled (GtkEditor* self);
 static void gtk_editor_real_auto_c_char_deleted (GtkEditor* self);
-static void gtk_editor_real_hot_spot_release_click (GtkEditor* self, gint modifiers, gint position);
 static void gtk_editor_finalize (GObject* obj);
 static void gtk_editor_get_property (GObject * object, guint property_id, GValue * value, GParamSpec * pspec);
 static void gtk_editor_set_property (GObject * object, guint property_id, const GValue * value, GParamSpec * pspec);
@@ -451,11 +450,6 @@ static void gtk_editor_on_sci_notify (GtkEditor* self, gint param, struct SCNoti
 		case SCN_AUTOCCHARDELETED:
 		{
 			g_signal_emit_by_name (self, "auto-c-char-deleted");
-			break;
-		}
-		case SCN_HOTSPOTRELEASECLICK:
-		{
-			g_signal_emit_by_name (self, "hot-spot-release-click", (*n).modifiers, (*n).position);
 			break;
 		}
 		default:
@@ -1023,11 +1017,6 @@ static void gtk_editor_real_auto_c_char_deleted (GtkEditor* self) {
 }
 
 
-static void gtk_editor_real_hot_spot_release_click (GtkEditor* self, gint modifiers, gint position) {
-	g_return_if_fail (self != NULL);
-}
-
-
 static void gtk_editor_class_init (GtkEditorClass * klass) {
 	gtk_editor_parent_class = g_type_class_peek_parent (klass);
 	g_type_class_add_private (klass, sizeof (GtkEditorPrivate));
@@ -1057,7 +1046,6 @@ static void gtk_editor_class_init (GtkEditorClass * klass) {
 	GTK_EDITOR_CLASS (klass)->indicator_release = gtk_editor_real_indicator_release;
 	GTK_EDITOR_CLASS (klass)->auto_c_cancelled = gtk_editor_real_auto_c_cancelled;
 	GTK_EDITOR_CLASS (klass)->auto_c_char_deleted = gtk_editor_real_auto_c_char_deleted;
-	GTK_EDITOR_CLASS (klass)->hot_spot_release_click = gtk_editor_real_hot_spot_release_click;
 	G_OBJECT_CLASS (klass)->get_property = gtk_editor_get_property;
 	G_OBJECT_CLASS (klass)->set_property = gtk_editor_set_property;
 	G_OBJECT_CLASS (klass)->finalize = gtk_editor_finalize;
@@ -1161,7 +1149,6 @@ static void gtk_editor_class_init (GtkEditorClass * klass) {
 	g_signal_new ("indicator_release", GTK_TYPE_EDITOR, G_SIGNAL_RUN_LAST, G_STRUCT_OFFSET (GtkEditorClass, indicator_release), NULL, NULL, g_cclosure_user_marshal_VOID__INT_INT, G_TYPE_NONE, 2, G_TYPE_INT, G_TYPE_INT);
 	g_signal_new ("auto_c_cancelled", GTK_TYPE_EDITOR, G_SIGNAL_RUN_LAST, G_STRUCT_OFFSET (GtkEditorClass, auto_c_cancelled), NULL, NULL, g_cclosure_marshal_VOID__VOID, G_TYPE_NONE, 0);
 	g_signal_new ("auto_c_char_deleted", GTK_TYPE_EDITOR, G_SIGNAL_RUN_LAST, G_STRUCT_OFFSET (GtkEditorClass, auto_c_char_deleted), NULL, NULL, g_cclosure_marshal_VOID__VOID, G_TYPE_NONE, 0);
-	g_signal_new ("hot_spot_release_click", GTK_TYPE_EDITOR, G_SIGNAL_RUN_LAST, G_STRUCT_OFFSET (GtkEditorClass, hot_spot_release_click), NULL, NULL, g_cclosure_user_marshal_VOID__INT_INT, G_TYPE_NONE, 2, G_TYPE_INT, G_TYPE_INT);
 }
 
 

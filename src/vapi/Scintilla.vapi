@@ -227,7 +227,8 @@ namespace Scintilla
 		INDICATORRELEASE,
 		AUTOCCANCELLED,
 		AUTOCCHARDELETED,
-		HOTSPOTRELEASECLICK,
+		/* removed from CVS scintilla - Jan 24, 2011 */
+		//HOTSPOTRELEASECLICK,
 	}
 	
 	[CCode(cprefix="STYLE_",cname="int",has_type_id=false)]

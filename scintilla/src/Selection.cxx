@@ -291,11 +291,6 @@ void Selection::AddSelection(SelectionRange range) {
 	mainRange = ranges.size() - 1;
 }
 
-void Selection::AddSelectionWithoutTrim(SelectionRange range) {
-	ranges.push_back(range);
-	mainRange = ranges.size() - 1;
-}
-
 void Selection::TentativeSelection(SelectionRange range) {
 	if (!tentativeMain) {
 		rangesSaved = ranges;

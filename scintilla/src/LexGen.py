@@ -164,8 +164,6 @@ def FindModules(lexFile):
             modules.append(l.split()[1])
     return modules
 
-# Properties that start with lexer. or fold. are automatically found but there are some
-# older properties that don't follow this pattern so must be explicitly listed.
 knownIrregularProperties = [
     "fold",
     "styling.within.preprocessor",
@@ -183,7 +181,7 @@ def FindProperties(lexFile):
     properties = {}
     f = open(lexFile)
     for l in f.readlines():
-        if ("GetProperty" in l or "DefineProperty" in l) and "\"" in l:
+        if "GetProperty" in l and '"' in l:
             l = l.strip()
             if not l.startswith("//"):	# Drop comments
                 propertyName = l.split("\"")[1]
@@ -207,35 +205,13 @@ def FindPropertyDocumentation(lexFile):
                 # Only allow lower case property names
                 name = propertyName
                 documents[name] = ""
-        elif "DefineProperty" in l and "\"" in l:
-            propertyName = l.split("\"")[1]
-            if propertyName.lower() == propertyName:
-                # Only allow lower case property names
-                name = propertyName
-                documents[name] = ""
         elif name:
             if l.startswith("//"):
                 if documents[name]:
                     documents[name] += " "
                 documents[name] += l[2:].strip()
-            elif l.startswith("\""):
-                if documents[name]:
-                    documents[name] += " "
-                l = l[1:].strip()
-                if l.endswith(";"):
-                    l = l[:-1].strip()
-                if l.endswith(")"):
-                    l = l[:-1].strip()
-                if l.endswith("\""):
-                    l = l[:-1]
-                # Fix escaped double quotes
-                l = l.replace("\\\"", "\"")
-                documents[name] += l
             else:
                 name = ""
-    for name in list(documents.keys()):
-        if documents[name] == "":
-            del documents[name]
     return documents
 
 def ciCompare(a,b):
@@ -254,7 +230,7 @@ def RegenerateAll():
     root="../../"
 
     # Find all the lexer source code files
-    lexFilePaths = glob.glob(root + "scintilla/lexers/Lex*.cxx")
+    lexFilePaths = glob.glob(root + "scintilla/src/Lex*.cxx")
     sortListInsensitive(lexFilePaths)
     lexFiles = [os.path.basename(f)[:-4] for f in lexFilePaths]
     print(lexFiles)
@@ -291,12 +267,12 @@ def RegenerateAll():
         sortListInsensitive(propFiles)
         print(propFiles)
 
-    Regenerate(root + "scintilla/src/Catalogue.cxx", "//", NATIVE, lexerModules)
+    Regenerate(root + "scintilla/src/KeyWords.cxx", "//", NATIVE, lexerModules)
     Regenerate(root + "scintilla/win32/scintilla.mak", "#", NATIVE, lexFiles)
     Regenerate(root + "scintilla/win32/scintilla_vc6.mak", "#", NATIVE, lexFiles)
     if os.path.exists(root + "scite"):
-        Regenerate(root + "scite/win32/makefile", "#", NATIVE, propFiles)
-        Regenerate(root + "scite/win32/scite.mak", "#", NATIVE, propFiles)
+        Regenerate(root + "scite/win32/makefile", "#", NATIVE, lexFiles, propFiles)
+        Regenerate(root + "scite/win32/scite.mak", "#", NATIVE, lexFiles, propFiles)
         Regenerate(root + "scite/src/SciTEProps.cxx", "//", NATIVE, lexerProperties)
         Regenerate(root + "scite/doc/SciTEDoc.html", "<!--", NATIVE, propertiesHTML)
         Generate(root + "scite/boundscheck/vcproj.gen",

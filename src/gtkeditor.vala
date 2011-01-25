@@ -688,11 +688,11 @@ print "other web encoding.\n";
 			/* event id: 2026, params:  */
 			/* default handler code here */
 		}
-
-		public virtual signal void hot_spot_release_click(int modifiers, int position) {
+		/* removed from CVS scintilla - Jan 24, 2011 */
+		//public virtual signal void hot_spot_release_click(int modifiers, int position) {
 			/* event id: 2027, params: (ulong)modifiers, (long)position */
 			/* default handler code here */
-		}
+		//}
 		
 //----------------------------------------------------------------------
 		
@@ -784,9 +784,11 @@ print "other web encoding.\n";
 				case Scintilla.Notifications.AUTOCCHARDELETED:
 					this.auto_c_char_deleted();
 					break;
+				/* removed from CVS scintilla - Jan 24, 2011
 				case Scintilla.Notifications.HOTSPOTRELEASECLICK:
 					this.hot_spot_release_click(n->modifiers, n->position);
 					break;
+				*/
 				default:
 					stdout.printf("** Unhandled signal code %d\n", (int)n->nmhdr.code);
 					break;

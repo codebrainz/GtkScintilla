@@ -19,6 +19,5 @@
 
 - (void) awakeFromNib;
 - (void) setupEditor;
-- (IBAction) searchText: (id) sender;
 
 @end

@@ -219,11 +219,6 @@ ScintillaCocoa::~ScintillaCocoa()
  */
 void ScintillaCocoa::Initialise() 
 {
-  static bool initedLexers = false;
-  if (!initedLexers) {
-    initedLexers = true;
-    Scintilla_LinkLexers();
-  }
   notifyObj = NULL;
   notifyProc = NULL;
   
@@ -250,31 +245,6 @@ void ScintillaCocoa::Finalise()
 {
   SetTicking(false);
   ScintillaBase::Finalise();
-}
-
-//--------------------------------------------------------------------------------------------------
-
-/**
- * Case-fold the given string depending on the specified case mapping type.
- * Note: ScintillaCocoa exclusively works with Unicode. We don't even think about adding support for
- *       obsolete code page stuff.    
- */
-std::string ScintillaCocoa::CaseMapString(const std::string &s, int caseMapping)
-{
-  NSString* textToConvert = [NSString stringWithUTF8String: s.c_str()];
-  std::string result;
-  switch (caseMapping)
-  {
-    case cmUpper:
-      result = [[textToConvert uppercaseString] UTF8String];
-      break;
-    case cmLower:
-      result = [[textToConvert lowercaseString] UTF8String];
-      break;
-    default:
-      result = s;
-  }
-  return result;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -526,15 +496,14 @@ void ScintillaCocoa::Paste(bool forceRectangular)
   
   pdoc->BeginUndoAction();
   ClearSelection();
-  int length = selectedText.len - 1; // One less to avoid inserting the terminating 0 character.
   if (selectedText.rectangular)
   {
     SelectionPosition selStart = sel.RangeMain().Start();
-    PasteRectangular(selStart, selectedText.s, length);
+    PasteRectangular(selStart, selectedText.s, selectedText.len);
   }
   else 
-    if (pdoc->InsertString(sel.RangeMain().caret.Position(), selectedText.s, length))
-      SetEmptySelection(sel.RangeMain().caret.Position() + length);
+    if (pdoc->InsertString(sel.RangeMain().caret.Position(), selectedText.s, selectedText.len))
+      SetEmptySelection(sel.RangeMain().caret.Position() + selectedText.len);
   
   pdoc->EndUndoAction();
   
@@ -1399,32 +1368,34 @@ void ScintillaCocoa::MouseUp(NSEvent* event)
 void ScintillaCocoa::MouseWheel(NSEvent* event)
 {
   bool command = ([event modifierFlags] & NSCommandKeyMask) != 0;
-  int dX = 0;
-  int dY = 0;
-
-  dX = 10 * [event deltaX]; // Arbitrary scale factor.
-
+  bool shift = ([event modifierFlags] & NSShiftKeyMask) != 0;
+  int delta;
+  if (shift)
+    delta = 10 * [event deltaX]; // Arbitrary scale factor.
+  else
+  {
     // In order to make scrolling with larger offset smoother we scroll less lines the larger the 
     // delta value is.
     if ([event deltaY] < 0)
-    dY = -(int) sqrt(-10.0 * [event deltaY]);
+      delta = -(int) sqrt(-10.0 * [event deltaY]);
     else
-    dY = (int) sqrt(10.0 * [event deltaY]);
+      delta = (int) sqrt(10.0 * [event deltaY]);
+  }
   
   if (command)
   {
     // Zoom! We play with the font sizes in the styles.
     // Number of steps/line is ignored, we just care if sizing up or down.
-    if (dY > 0.5)
+    if (delta > 0)
       KeyCommand(SCI_ZOOMIN);
-    else if (dY < -0.5)
+    else
       KeyCommand(SCI_ZOOMOUT);
   }
   else
-  {
-    HorizontalScrollTo(xOffset - dX);
-    ScrollTo(topLine - dY, true);
-  }
+    if (shift)
+      HorizontalScrollTo(xOffset - delta);
+    else
+      ScrollTo(topLine - delta, true);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1453,7 +1424,7 @@ void ScintillaCocoa::Undo()
 
 void ScintillaCocoa::Redo()
 {
-  Editor::Redo();
+  Editor::Undo();
 }
 
 //--------------------------------------------------------------------------------------------------

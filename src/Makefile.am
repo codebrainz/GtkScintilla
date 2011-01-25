@@ -1,4 +1,11 @@
 
+bin_PROGRAMS = valasci
+valasci_SOURCES = demo.c
+valasci_LDFLAGS =  -DGTK
+valasci_CPPFLAGS = @GTK_CFLAGS@ -I../scintilla/include -DGTK -DSCI_LEXER
+valasci_LDADD = libgtkeditor.la @GTK_LIBS@
+
+#-----------------------------------------------------------------------
 # check something from configure.ac to make sure these are ok?
 VALAFLAGS=--pkg gtk+-2.0 --pkg gio-2.0 --pkg Scintilla --vapidir vapi \
 			-H gtkeditor.h --use-header

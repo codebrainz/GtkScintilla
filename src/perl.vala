@@ -356,6 +356,8 @@ namespace Gtk {
 			return false;
 		}
 		
+		/* removed from CVS scintilla - Jan 24, 2011 */
+		/*
 		public Scintilla.PropertyTypes get_prop_type(string propname) {
 			
 			Scintilla.PropertyTypes prop_type;
@@ -363,6 +365,7 @@ namespace Gtk {
 								Messages.PROPERTYTYPE, (ulong)propname, 0);
 			return prop_type;
 		}
+		*/
 		
 		public string? get_prop(string propname) {
 			

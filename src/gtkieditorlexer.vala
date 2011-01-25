@@ -32,7 +32,8 @@ namespace Gtk {
 		public abstract bool get_prop_as_int(string propname, out int propvalue);
 		public abstract bool get_prop_as_bool(string propname, out bool propvalue);
 		public abstract bool get_prop_as_string(string propname, out string propvalue);
-		public abstract Scintilla.PropertyTypes get_prop_type(string propname);
+		/* removed from CVS scintilla - Jan 24, 2011 */
+		//public abstract Scintilla.PropertyTypes get_prop_type(string propname);
 		public abstract string? get_prop(string propname);
 		public abstract bool set_prop(string propname, string propvalue);
 		

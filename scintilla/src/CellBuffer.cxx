@@ -351,24 +351,14 @@ void CellBuffer::GetCharRange(char *buffer, int position, int lengthRetrieve) co
 		                      lengthRetrieve, substance.Length());
 		return;
 	}
-	substance.GetRange(buffer, position, lengthRetrieve);
+
+	for (int i=0; i<lengthRetrieve; i++) {
+		*buffer++ = substance.ValueAt(position + i);
+	}
 }
 
 char CellBuffer::StyleAt(int position) const {
 	return style.ValueAt(position);
-}
-
-void CellBuffer::GetStyleRange(unsigned char *buffer, int position, int lengthRetrieve) const {
-	if (lengthRetrieve < 0)
-		return;
-	if (position < 0)
-		return;
-	if ((position + lengthRetrieve) > style.Length()) {
-		Platform::DebugPrintf("Bad GetStyleRange %d for %d of %d\n", position,
-		                      lengthRetrieve, style.Length());
-		return;
-	}
-	style.GetRange(reinterpret_cast<char *>(buffer), position, lengthRetrieve);
 }
 
 const char *CellBuffer::BufferPointer() {

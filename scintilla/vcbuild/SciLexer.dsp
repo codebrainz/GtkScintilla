@@ -7,19 +7,19 @@
 CFG=SciLexer - Win32 Debug
 !MESSAGE This is not a valid makefile. To build this project using NMAKE,
 !MESSAGE use the Export Makefile command and run
-!MESSAGE
+!MESSAGE 
 !MESSAGE NMAKE /f "SciLexer.mak".
-!MESSAGE
+!MESSAGE 
 !MESSAGE You can specify a configuration when running NMAKE
 !MESSAGE by defining the macro CFG on the command line. For example:
-!MESSAGE
+!MESSAGE 
 !MESSAGE NMAKE /f "SciLexer.mak" CFG="SciLexer - Win32 Debug"
-!MESSAGE
+!MESSAGE 
 !MESSAGE Possible choices for configuration are:
-!MESSAGE
+!MESSAGE 
 !MESSAGE "SciLexer - Win32 Release" (based on "Win32 (x86) Dynamic-Link Library")
 !MESSAGE "SciLexer - Win32 Debug" (based on "Win32 (x86) Dynamic-Link Library")
-!MESSAGE
+!MESSAGE 
 
 # Begin Project
 # PROP AllowPerConfigDependencies 0
@@ -43,7 +43,7 @@ RSC=rc.exe
 # PROP Ignore_Export_Lib 0
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /MT /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /D "_USRDLL" /D "SciLexer_EXPORTS" /Yu"stdafx.h" /FD /c
-# ADD CPP /nologo /G6 /MT /W3 /GX /O1 /I "..\include" /I "..\src" /I "..\lexlib" /D "NDEBUG" /D "WIN32" /D "_WINDOWS" /D "_MBCS" /D "_USRDLL" /D "SCI_LEXER" /D "_CRT_SECURE_NO_WARNINGS" /FD /c
+# ADD CPP /nologo /G6 /MT /W3 /GX /O1 /I "..\include" /I "..\src" /D "NDEBUG" /D "WIN32" /D "_WINDOWS" /D "_MBCS" /D "_USRDLL" /D "SCI_LEXER" /D "_CRT_SECURE_NO_WARNINGS" /FD /c
 # SUBTRACT CPP /Fr /YX /Yc /Yu
 # ADD BASE MTL /nologo /D "NDEBUG" /mktyplib203 /win32
 # ADD MTL /nologo /D "NDEBUG" /mktyplib203 /win32
@@ -70,7 +70,7 @@ LINK32=link.exe
 # PROP Ignore_Export_Lib 0
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /MTd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /D "_USRDLL" /D "SciLexer_EXPORTS" /Yu"stdafx.h" /FD /GZ /c
-# ADD CPP /nologo /G6 /MTd /W3 /Gm /GX /ZI /Od /I "..\include" /I "..\src" /I "..\lexlib" /D "_DEBUG" /D "WIN32" /D "_WINDOWS" /D "_MBCS" /D "_USRDLL" /D "SCI_LEXER" /D "_CRT_SECURE_NO_WARNINGS" /FR /FD /GZ /c
+# ADD CPP /nologo /G6 /MTd /W3 /Gm /GX /ZI /Od /I "..\include" /I "..\src" /D "_DEBUG" /D "WIN32" /D "_WINDOWS" /D "_MBCS" /D "_USRDLL" /D "SCI_LEXER" /D "_CRT_SECURE_NO_WARNINGS" /FR /FD /GZ /c
 # SUBTRACT CPP /YX /Yc /Yu
 # ADD BASE MTL /nologo /D "_DEBUG" /mktyplib203 /win32
 # ADD MTL /nologo /D "_DEBUG" /mktyplib203 /win32
@@ -83,7 +83,7 @@ LINK32=link.exe
 # ADD BASE LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /dll /debug /machine:I386 /pdbtype:sept
 # ADD LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib imm32.lib comctl32.lib /nologo /dll /debug /machine:I386
 
-!ENDIF
+!ENDIF 
 
 # Begin Target
 
@@ -94,22 +94,6 @@ LINK32=link.exe
 # PROP Default_Filter "cpp;c;cxx;rc;def;r;odl;idl;hpj;bat"
 # Begin Source File
 
-SOURCE=..\lexlib\Accessor.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=..\lexlib\LexerBase.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=..\lexlib\LexerSimple.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=..\lexlib\LexerModule.cxx
-# End Source File
-# Begin Source File
-
 SOURCE=..\src\AutoComplete.cxx
 # End Source File
 # Begin Source File
@@ -118,15 +102,7 @@ SOURCE=..\src\CallTip.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=..\src\Catalogue.cxx
-# End Source File
-# Begin Source File
-
 SOURCE=..\src\CellBuffer.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=..\lexlib\CharacterSet.cxx
 # End Source File
 # Begin Source File
 
@@ -146,6 +122,10 @@ SOURCE=..\src\Document.cxx
 # End Source File
 # Begin Source File
 
+SOURCE=..\src\DocumentAccessor.cxx
+# End Source File
+# Begin Source File
+
 SOURCE=..\src\Editor.cxx
 # End Source File
 # Begin Source File
@@ -162,319 +142,319 @@ SOURCE=..\src\KeyMap.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=..\lexers\LexAbaqus.cxx
+SOURCE=..\src\KeyWords.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=..\lexers\LexAda.cxx
+SOURCE=..\src\LexAbaqus.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=..\lexers\LexAPDL.cxx
+SOURCE=..\src\LexAda.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=..\lexers\LexAsm.cxx
+SOURCE=..\src\LexAPDL.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=..\lexers\LexAsn1.cxx
+SOURCE=..\src\LexAsm.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=..\lexers\LexASY.cxx
+SOURCE=..\src\LexAsn1.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=..\lexers\LexAU3.cxx
+SOURCE=..\src\LexASY.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=..\lexers\LexAVE.cxx
+SOURCE=..\src\LexAU3.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=..\lexers\LexBaan.cxx
+SOURCE=..\src\LexAVE.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=..\lexers\LexBash.cxx
+SOURCE=..\src\LexBaan.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=..\lexers\LexBasic.cxx
+SOURCE=..\src\LexBash.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=..\lexers\LexBullant.cxx
+SOURCE=..\src\LexBasic.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=..\lexers\LexCaml.cxx
+SOURCE=..\src\LexBullant.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=..\lexers\LexCLW.cxx
+SOURCE=..\src\LexCaml.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=..\lexers\LexCmake.cxx
+SOURCE=..\src\LexCLW.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=..\lexers\LexCOBOL.cxx
+SOURCE=..\src\LexCmake.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=..\lexers\LexConf.cxx
+SOURCE=..\src\LexCOBOL.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=..\lexers\LexCPP.cxx
+SOURCE=..\src\LexConf.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=..\lexers\LexCrontab.cxx
+SOURCE=..\src\LexCPP.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=..\lexers\LexCsound.cxx
+SOURCE=..\src\LexCrontab.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=..\lexers\LexCSS.cxx
+SOURCE=..\src\LexCsound.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=..\lexers\LexD.cxx
+SOURCE=..\src\LexCSS.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=..\lexers\LexEiffel.cxx
+SOURCE=..\src\LexD.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=..\lexers\LexErlang.cxx
+SOURCE=..\src\LexEiffel.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=..\lexers\LexEScript.cxx
+SOURCE=..\src\LexErlang.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=..\lexers\LexFlagship.cxx
+SOURCE=..\src\LexEScript.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=..\lexers\LexForth.cxx
+SOURCE=..\src\LexFlagship.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=..\lexers\LexFortran.cxx
+SOURCE=..\src\LexForth.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=..\lexers\LexGAP.cxx
+SOURCE=..\src\LexFortran.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=..\lexers\LexGui4Cli.cxx
+SOURCE=..\src\LexGAP.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=..\lexers\LexHaskell.cxx
+SOURCE=..\src\LexGui4Cli.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=..\lexers\LexHTML.cxx
+SOURCE=..\src\LexHaskell.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=..\lexers\LexInno.cxx
+SOURCE=..\src\LexHTML.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=..\lexers\LexKix.cxx
+SOURCE=..\src\LexInno.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=..\lexers\LexLisp.cxx
+SOURCE=..\src\LexKix.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=..\lexers\LexLout.cxx
+SOURCE=..\src\LexLisp.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=..\lexers\LexLua.cxx
+SOURCE=..\src\LexLout.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=..\lexers\LexMagik.cxx
+SOURCE=..\src\LexLua.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=..\lexers\LexMarkdown.cxx
+SOURCE=..\src\LexMagik.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=..\lexers\LexMatlab.cxx
+SOURCE=..\src\LexMarkdown.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=..\lexers\LexMetapost.cxx
+SOURCE=..\src\LexMatlab.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=..\lexers\LexMMIXAL.cxx
+SOURCE=..\src\LexMetapost.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=..\lexers\LexMPT.cxx
+SOURCE=..\src\LexMMIXAL.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=..\lexers\LexMSSQL.cxx
+SOURCE=..\src\LexMPT.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=..\lexers\LexMySQL.cxx
+SOURCE=..\src\LexMSSQL.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=..\lexers\LexNimrod.cxx
+SOURCE=..\src\LexMySQL.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=..\lexers\LexNsis.cxx
+SOURCE=..\src\LexNimrod.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=..\lexers\LexOpal.cxx
+SOURCE=..\src\LexNsis.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=..\lexers\LexOthers.cxx
+SOURCE=..\src\LexOpal.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=..\lexers\LexPascal.cxx
+SOURCE=..\src\LexOthers.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=..\lexers\LexPB.cxx
+SOURCE=..\src\LexPascal.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=..\lexers\LexPerl.cxx
+SOURCE=..\src\LexPB.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=..\lexers\LexPLM.cxx
+SOURCE=..\src\LexPerl.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=..\lexers\LexPOV.cxx
+SOURCE=..\src\LexPLM.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=..\lexers\LexPowerPro.cxx
+SOURCE=..\src\LexPOV.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=..\lexers\LexPowerShell.cxx
+SOURCE=..\src\LexPowerPro.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=..\lexers\LexProgress.cxx
+SOURCE=..\src\LexPowerShell.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=..\lexers\LexPS.cxx
+SOURCE=..\src\LexProgress.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=..\lexers\LexPython.cxx
+SOURCE=..\src\LexPS.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=..\lexers\LexR.cxx
+SOURCE=..\src\LexPython.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=..\lexers\LexRebol.cxx
+SOURCE=..\src\LexR.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=..\lexers\LexRuby.cxx
+SOURCE=..\src\LexRebol.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=..\lexers\LexScriptol.cxx
+SOURCE=..\src\LexRuby.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=..\lexers\LexSmalltalk.cxx
+SOURCE=..\src\LexScriptol.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=..\lexers\LexSML.cxx
+SOURCE=..\src\LexSmalltalk.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=..\lexers\LexSorcus.cxx
+SOURCE=..\src\LexSML.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=..\lexers\LexSpecman.cxx
+SOURCE=..\src\LexSorcus.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=..\lexers\LexSpice.cxx
+SOURCE=..\src\LexSpecman.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=..\lexers\LexSQL.cxx
+SOURCE=..\src\LexSpice.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=..\lexers\LexTACL.cxx
+SOURCE=..\src\LexSQL.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=..\lexers\LexTADS3.cxx
+SOURCE=..\src\LexTACL.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=..\lexers\LexTAL.cxx
+SOURCE=..\src\LexTADS3.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=..\lexers\LexTCL.cxx
+SOURCE=..\src\LexTAL.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=..\lexers\LexTeX.cxx
+SOURCE=..\src\LexTCL.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=..\lexers\LexTxt2tags.cxx
+SOURCE=..\src\LexTeX.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=..\lexers\LexVB.cxx
+SOURCE=..\src\LexVB.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=..\lexers\LexVerilog.cxx
+SOURCE=..\src\LexVerilog.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=..\lexers\LexVHDL.cxx
+SOURCE=..\src\LexVHDL.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=..\lexers\LexYAML.cxx
+SOURCE=..\src\LexYAML.cxx
 # End Source File
 # Begin Source File
 
@@ -494,7 +474,7 @@ SOURCE=..\src\PositionCache.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=..\lexlib\PropSetSimple.cxx
+SOURCE=..\src\PropSet.cxx
 # End Source File
 # Begin Source File
 
@@ -526,7 +506,7 @@ SOURCE=..\src\Style.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=..\lexlib\StyleContext.cxx
+SOURCE=..\src\StyleContext.cxx
 # End Source File
 # Begin Source File
 
@@ -538,7 +518,7 @@ SOURCE=..\src\ViewStyle.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=..\lexlib\WordList.cxx
+SOURCE=..\src\WindowAccessor.cxx
 # End Source File
 # Begin Source File
 

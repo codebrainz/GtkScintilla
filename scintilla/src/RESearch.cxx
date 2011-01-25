@@ -17,7 +17,6 @@
  * Put all global/static variables into an object so this code can be
  * used from multiple threads, etc.
  * Some extensions by Philippe Lhoste PhiLho(a)GMX.net
- * '?' extensions by Michael Mullin masmullin@gmail.com
  *
  * These routines are the PUBLIC DOMAIN equivalents of regex
  * routines as found in 4.nBSD UN*X, with minor extensions.
@@ -54,7 +53,7 @@
  * Regular Expressions:
  *
  *      [1]     char    matches itself, unless it is a special
- *                      character (metachar): . \ [ ] * + ? ^ $
+ *                      character (metachar): . \ [ ] * + ^ $
  *                      and ( ) if posix option.
  *
  *      [2]     .       matches any character.
@@ -66,12 +65,12 @@
  *                      regex searches are made line per line
  *                      (stripped of end-of-line chars).
  *                      - if not in posix mode, when followed by a
- *                      left or right round bracket (see [8]);
- *                      - when followed by a digit 1 to 9 (see [9]);
+ *                      left or right round bracket (see [7]);
+ *                      - when followed by a digit 1 to 9 (see [8]);
  *                      - when followed by a left or right angle bracket
- *                      (see [10]);
- *                      - when followed by d, D, s, S, w or W (see [11]);
- *                      - when followed by x and two hexa digits (see [12].
+ *                      (see [9]);
+ *                      - when followed by d, D, s, S, w or W (see [10]);
+ *                      - when followed by x and two hexa digits (see [11].
  *                      Backslash is used as an escape character for all
  *                      other meta-characters, and itself.
  *
@@ -102,28 +101,23 @@
  *                              [a-zA-Z] any alpha
  *
  *      [5]     *       any regular expression form [1] to [4]
- *                      (except [8], [9] and [10] forms of [3]),
+ *                      (except [7], [8] and [9] forms of [3]),
  *                      followed by closure char (*)
  *                      matches zero or more matches of that form.
  *
  *      [6]     +       same as [5], except it matches one or more.
+ *                      Both [5] and [6] are greedy (they match as much as possible).
  *
- *      [5-6]           Both [5] and [6] are greedy (they match as much as possible).
- *                      Unless they are followed by the 'lazy' quantifier (?)
- *                      In which case both [5] and [6] try to match as little as possible
- *
- *      [7]     ?       same as [5] except it matches zero or one.
- *
- *      [8]             a regular expression in the form [1] to [13], enclosed
+ *      [7]             a regular expression in the form [1] to [12], enclosed
  *                      as \(form\) (or (form) with posix flag) matches what
  *                      form matches. The enclosure creates a set of tags,
- *                      used for [9] and for pattern substitution.
+ *                      used for [8] and for pattern substitution.
  *                      The tagged forms are numbered starting from 1.
  *
- *      [9]             a \ followed by a digit 1 to 9 matches whatever a
- *                      previously tagged regular expression ([8]) matched.
+ *      [8]             a \ followed by a digit 1 to 9 matches whatever a
+ *                      previously tagged regular expression ([7]) matched.
  *
- *      [10]    \<      a regular expression starting with a \< construct
+ *      [9]     \<      a regular expression starting with a \< construct
  *              \>      and/or ending with a \> construct, restricts the
  *                      pattern matching to the beginning of a word, and/or
  *                      the end of a word. A word is defined to be a character
@@ -132,7 +126,7 @@
  *                      by user setting. The word must also be preceded and/or
  *                      followed by any character outside those mentioned.
  *
- *      [11]    \l      a backslash followed by d, D, s, S, w or W,
+ *      [10]    \l      a backslash followed by d, D, s, S, w or W,
  *                      becomes a character class (both inside and
  *                      outside sets []).
  *                        d: decimal digits
@@ -142,16 +136,16 @@
  *                        w: alphanumeric & underscore (changed by user setting)
  *                        W: any char except alphanumeric & underscore (see above)
  *
- *      [12]    \xHH    a backslash followed by x and two hexa digits,
+ *      [11]    \xHH    a backslash followed by x and two hexa digits,
  *                      becomes the character whose Ascii code is equal
  *                      to these digits. If not followed by two digits,
  *                      it is 'x' char itself.
  *
- *      [13]            a composite regular expression xy where x and y
- *                      are in the form [1] to [12] matches the longest
+ *      [12]            a composite regular expression xy where x and y
+ *                      are in the form [1] to [11] matches the longest
  *                      match of x followed by a match for y.
  *
- *      [14]    ^       a regular expression starting with a ^ character
+ *      [13]    ^       a regular expression starting with a ^ character
  *              $       and/or ending with a $ character, restricts the
  *                      pattern matching to the beginning of the line,
  *                      or the end of line. [anchors] Elsewhere in the
@@ -232,8 +226,6 @@ using namespace Scintilla;
 #define EOW     9
 #define REF     10
 #define CLO     11
-#define CLQ     12 /* 0 to 1 closure */
-#define LCLO    13 /* lazy closure */
 
 #define END     0
 
@@ -364,8 +356,8 @@ static int GetHexaChar(unsigned char hd1, unsigned char hd2) {
  * or -1 for a char class. In this case, bittab is changed.
  */
 int RESearch::GetBackslashExpression(
-    const char *pattern,
-    int &incr) {
+		const char *pattern,
+		int &incr) {
 	// Since error reporting is primitive and messages are not used anyway,
 	// I choose to interpret unexpected syntax in a logical way instead
 	// of reporting errors. Otherwise, we can stick on, eg., PCRE behavior.
@@ -601,11 +593,10 @@ const char *RESearch::Compile(const char *pattern, int length, bool caseSensitiv
 
 		case '*':               /* match 0 or more... */
 		case '+':               /* match 1 or more... */
-		case '?':
 			if (p == pattern)
 				return badpat("Empty closure");
 			lp = sp;		/* previous opcode */
-			if (*lp == CLO || *lp == LCLO)		/* equivalence... */
+			if (*lp == CLO)		/* equivalence... */
 				break;
 			switch (*lp) {
 
@@ -627,13 +618,9 @@ const char *RESearch::Compile(const char *pattern, int length, bool caseSensitiv
 			*mp++ = END;
 			*mp++ = END;
 			sp = mp;
-
 			while (--mp > lp)
 				*mp = mp[-1];
-			if (*p == '?')          *mp = CLQ;
-			else if (*(p+1) == '?') *mp = LCLO;
-			else                    *mp = CLO;
-
+			*mp = CLO;
 			mp = sp;
 			break;
 
@@ -858,7 +845,6 @@ int RESearch::PMatch(CharacterIndexer &ci, int lp, int endp, char *ap) {
 	int bp;		/* beginning of subpat... */
 	int ep;		/* ending of subpat...    */
 	int are;	/* to save the line ptr.  */
-	int llp;	/* lazy lp for LCLO       */
 
 	while ((op = *ap++) != END)
 		switch (op) {
@@ -893,7 +879,7 @@ int RESearch::PMatch(CharacterIndexer &ci, int lp, int endp, char *ap) {
 		case EOT:
 			eopat[*ap++] = lp;
 			break;
-		case BOW:
+ 		case BOW:
 			if ((lp!=bol && iswordc(ci.CharAt(lp-1))) || !iswordc(ci.CharAt(lp)))
 				return NOTFOUND;
 			break;
@@ -909,27 +895,18 @@ int RESearch::PMatch(CharacterIndexer &ci, int lp, int endp, char *ap) {
 				if (ci.CharAt(bp++) != ci.CharAt(lp++))
 					return NOTFOUND;
 			break;
-		case LCLO:
-		case CLQ:
 		case CLO:
 			are = lp;
 			switch (*ap) {
 
 			case ANY:
-				if (op == CLO || op == LCLO)
-					while (lp < endp)
-						lp++;
-				else if (lp < endp)
+				while (lp < endp)
 					lp++;
-
 				n = ANYSKIP;
 				break;
 			case CHR:
 				c = *(ap+1);
-				if (op == CLO || op == LCLO)
-					while ((lp < endp) && (c == ci.CharAt(lp)))
-						lp++;
-				else if ((lp < endp) && (c == ci.CharAt(lp)))
+				while ((lp < endp) && (c == ci.CharAt(lp)))
 					lp++;
 				n = CHRSKIP;
 				break;
@@ -943,23 +920,15 @@ int RESearch::PMatch(CharacterIndexer &ci, int lp, int endp, char *ap) {
 				//re_fail("closure: bad nfa.", *ap);
 				return NOTFOUND;
 			}
+
 			ap += n;
 
-			llp = lp;
-			e = NOTFOUND;
-			while (llp >= are) {
-				int q;
-				if ((q = PMatch(ci, llp, endp, ap)) != NOTFOUND) {
-					e = q;
-					lp = llp;
-					if (op != LCLO) return e;
-				}
-				if (*ap == END) return e;
-				--llp;
+			while (lp >= are) {
+				if ((e = PMatch(ci, lp, endp, ap)) != NOTFOUND)
+					return e;
+				--lp;
 			}
-			if (*ap == EOT)
-				PMatch(ci, lp, endp, ap);
-			return e;
+			return NOTFOUND;
 		default:
 			//re_fail("RESearch::Execute: bad nfa.", static_cast<char>(op));
 			return NOTFOUND;
