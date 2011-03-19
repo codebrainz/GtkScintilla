@@ -1,0 +1,9 @@
+output-functions:
+-----------------
+
+	Usage: output-functions [options] FILE
+
+	Options:
+	  -h, --help  show this help message and exit
+	  -p          print function prototypes
+	  -d          print function definitions

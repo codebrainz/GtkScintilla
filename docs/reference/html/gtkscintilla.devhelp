@@ -1,0 +1,786 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE book PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "">
+<book xmlns="http://www.devhelp.net/book" title="gtkscintilla Reference Manual" link="index.html" author="" name="gtkscintilla">
+  <chapters>
+    <sub name="[Insert title here]" link="ch01.html">
+      <sub name="GtkScintilla" link="GtkScintilla.html"/>
+      <sub name="gtkscintillafunctions" link="gtkscintilla-gtkscintillafunctions.html"/>
+      <sub name="gtkscintillaconstants" link="gtkscintilla-gtkscintillaconstants.html"/>
+    </sub>
+    <sub name="Object Hierarchy" link="object-tree.html"/>
+    <sub name="API Index" link="api-index-full.html"/>
+  </chapters>
+  <functions>
+    <function name="PLAT_GTK" link="GtkScintilla.html#PLAT-GTK:CAPS"/>
+    <function name="GTK" link="GtkScintilla.html#GTK:CAPS"/>
+    <function name="SSM()" link="GtkScintilla.html#SSM:CAPS"/>
+    <function name="GtkScintilla" link="GtkScintilla.html#GtkScintilla-struct"/>
+    <function name="GtkScintillaClass" link="GtkScintilla.html#GtkScintillaClass"/>
+    <function name="GtkScintillaPrivate" link="GtkScintilla.html#GtkScintillaPrivate"/>
+    <function name="gtk_scintilla_new ()" link="GtkScintilla.html#gtk-scintilla-new"/>
+    <function name="gtk_scintilla_get_property ()" link="GtkScintilla.html#gtk-scintilla-get-property"/>
+    <function name="gtk_scintilla_set_property ()" link="GtkScintilla.html#gtk-scintilla-set-property"/>
+    <function name="gtk_scintilla_set_id ()" link="GtkScintilla.html#gtk-scintilla-set-id"/>
+    <function name="gtk_scintilla_send_message ()" link="GtkScintilla.html#gtk-scintilla-send-message"/>
+    <function name="gtk_scintilla_release_resources ()" link="GtkScintilla.html#gtk-scintilla-release-resources"/>
+    <function name="gtk_scintilla_update_line_numbers ()" link="GtkScintilla.html#gtk-scintilla-update-line-numbers"/>
+    <function name="gtk_scintilla_get_line_numbers_visible ()" link="GtkScintilla.html#gtk-scintilla-get-line-numbers-visible"/>
+    <function name="gtk_scintilla_set_line_numbers_visible ()" link="GtkScintilla.html#gtk-scintilla-set-line-numbers-visible"/>
+    <function name="gtk_scintilla_set_font ()" link="GtkScintilla.html#gtk-scintilla-set-font"/>
+    <function name="gtk_scintilla_get_font ()" link="GtkScintilla.html#gtk-scintilla-get-font"/>
+    <function name="gtk_scintilla_get_background_color ()" link="GtkScintilla.html#gtk-scintilla-get-background-color"/>
+    <function name="gtk_scintilla_set_background_color ()" link="GtkScintilla.html#gtk-scintilla-set-background-color"/>
+    <function name="gtk_scintilla_get_foreground_color ()" link="GtkScintilla.html#gtk-scintilla-get-foreground-color"/>
+    <function name="gtk_scintilla_set_foreground_color ()" link="GtkScintilla.html#gtk-scintilla-set-foreground-color"/>
+    <function name="The &quot;additional-caret-fore&quot; property" link="GtkScintilla.html#GtkScintilla--additional-caret-fore"/>
+    <function name="The &quot;additional-carets-blink&quot; property" link="GtkScintilla.html#GtkScintilla--additional-carets-blink"/>
+    <function name="The &quot;additional-carets-visible&quot; property" link="GtkScintilla.html#GtkScintilla--additional-carets-visible"/>
+    <function name="The &quot;additional-sel-alpha&quot; property" link="GtkScintilla.html#GtkScintilla--additional-sel-alpha"/>
+    <function name="The &quot;additional-sel-back&quot; property" link="GtkScintilla.html#GtkScintilla--additional-sel-back"/>
+    <function name="The &quot;additional-sel-fore&quot; property" link="GtkScintilla.html#GtkScintilla--additional-sel-fore"/>
+    <function name="The &quot;additional-selection-typing&quot; property" link="GtkScintilla.html#GtkScintilla--additional-selection-typing"/>
+    <function name="The &quot;anchor&quot; property" link="GtkScintilla.html#GtkScintilla--anchor"/>
+    <function name="The &quot;backspace-unindents&quot; property" link="GtkScintilla.html#GtkScintilla--backspace-unindents"/>
+    <function name="The &quot;buffered-draw&quot; property" link="GtkScintilla.html#GtkScintilla--buffered-draw"/>
+    <function name="The &quot;caret-fore&quot; property" link="GtkScintilla.html#GtkScintilla--caret-fore"/>
+    <function name="The &quot;caret-line-back&quot; property" link="GtkScintilla.html#GtkScintilla--caret-line-back"/>
+    <function name="The &quot;caret-line-back-alpha&quot; property" link="GtkScintilla.html#GtkScintilla--caret-line-back-alpha"/>
+    <function name="The &quot;caret-line-visible&quot; property" link="GtkScintilla.html#GtkScintilla--caret-line-visible"/>
+    <function name="The &quot;caret-period&quot; property" link="GtkScintilla.html#GtkScintilla--caret-period"/>
+    <function name="The &quot;caret-sticky&quot; property" link="GtkScintilla.html#GtkScintilla--caret-sticky"/>
+    <function name="The &quot;caret-style&quot; property" link="GtkScintilla.html#GtkScintilla--caret-style"/>
+    <function name="The &quot;caret-width&quot; property" link="GtkScintilla.html#GtkScintilla--caret-width"/>
+    <function name="The &quot;character-pointer&quot; property" link="GtkScintilla.html#GtkScintilla--character-pointer"/>
+    <function name="The &quot;code-page&quot; property" link="GtkScintilla.html#GtkScintilla--code-page"/>
+    <function name="The &quot;control-char-symbol&quot; property" link="GtkScintilla.html#GtkScintilla--control-char-symbol"/>
+    <function name="The &quot;current-pos&quot; property" link="GtkScintilla.html#GtkScintilla--current-pos"/>
+    <function name="The &quot;cursor&quot; property" link="GtkScintilla.html#GtkScintilla--cursor"/>
+    <function name="The &quot;direct-function&quot; property" link="GtkScintilla.html#GtkScintilla--direct-function"/>
+    <function name="The &quot;direct-pointer&quot; property" link="GtkScintilla.html#GtkScintilla--direct-pointer"/>
+    <function name="The &quot;doc-pointer&quot; property" link="GtkScintilla.html#GtkScintilla--doc-pointer"/>
+    <function name="The &quot;edge-colour&quot; property" link="GtkScintilla.html#GtkScintilla--edge-colour"/>
+    <function name="The &quot;edge-column&quot; property" link="GtkScintilla.html#GtkScintilla--edge-column"/>
+    <function name="The &quot;edge-mode&quot; property" link="GtkScintilla.html#GtkScintilla--edge-mode"/>
+    <function name="The &quot;end-at-last-line&quot; property" link="GtkScintilla.html#GtkScintilla--end-at-last-line"/>
+    <function name="The &quot;end-styled&quot; property" link="GtkScintilla.html#GtkScintilla--end-styled"/>
+    <function name="The &quot;eol-mode&quot; property" link="GtkScintilla.html#GtkScintilla--eol-mode"/>
+    <function name="The &quot;extra-ascent&quot; property" link="GtkScintilla.html#GtkScintilla--extra-ascent"/>
+    <function name="The &quot;extra-descent&quot; property" link="GtkScintilla.html#GtkScintilla--extra-descent"/>
+    <function name="The &quot;first-visible-line&quot; property" link="GtkScintilla.html#GtkScintilla--first-visible-line"/>
+    <function name="The &quot;focus&quot; property" link="GtkScintilla.html#GtkScintilla--focus"/>
+    <function name="The &quot;fold-flags&quot; property" link="GtkScintilla.html#GtkScintilla--fold-flags"/>
+    <function name="The &quot;font-quality&quot; property" link="GtkScintilla.html#GtkScintilla--font-quality"/>
+    <function name="The &quot;h-scroll-bar&quot; property" link="GtkScintilla.html#GtkScintilla--h-scroll-bar"/>
+    <function name="The &quot;highlight-guide&quot; property" link="GtkScintilla.html#GtkScintilla--highlight-guide"/>
+    <function name="The &quot;hotspot-active-back&quot; property" link="GtkScintilla.html#GtkScintilla--hotspot-active-back"/>
+    <function name="The &quot;hotspot-active-fore&quot; property" link="GtkScintilla.html#GtkScintilla--hotspot-active-fore"/>
+    <function name="The &quot;hotspot-active-underline&quot; property" link="GtkScintilla.html#GtkScintilla--hotspot-active-underline"/>
+    <function name="The &quot;hotspot-single-line&quot; property" link="GtkScintilla.html#GtkScintilla--hotspot-single-line"/>
+    <function name="The &quot;indent&quot; property" link="GtkScintilla.html#GtkScintilla--indent"/>
+    <function name="The &quot;indentation-guides&quot; property" link="GtkScintilla.html#GtkScintilla--indentation-guides"/>
+    <function name="The &quot;indicator-current&quot; property" link="GtkScintilla.html#GtkScintilla--indicator-current"/>
+    <function name="The &quot;indicator-value&quot; property" link="GtkScintilla.html#GtkScintilla--indicator-value"/>
+    <function name="The &quot;keys-unicode&quot; property" link="GtkScintilla.html#GtkScintilla--keys-unicode"/>
+    <function name="The &quot;layout-cache&quot; property" link="GtkScintilla.html#GtkScintilla--layout-cache"/>
+    <function name="The &quot;length&quot; property" link="GtkScintilla.html#GtkScintilla--length"/>
+    <function name="The &quot;lexer&quot; property" link="GtkScintilla.html#GtkScintilla--lexer"/>
+    <function name="The &quot;lexer-language&quot; property" link="GtkScintilla.html#GtkScintilla--lexer-language"/>
+    <function name="The &quot;line-count&quot; property" link="GtkScintilla.html#GtkScintilla--line-count"/>
+    <function name="The &quot;line-numbers-visible&quot; property" link="GtkScintilla.html#GtkScintilla--line-numbers-visible"/>
+    <function name="The &quot;main-selection&quot; property" link="GtkScintilla.html#GtkScintilla--main-selection"/>
+    <function name="The &quot;margin-left&quot; property" link="GtkScintilla.html#GtkScintilla--margin-left"/>
+    <function name="The &quot;margin-right&quot; property" link="GtkScintilla.html#GtkScintilla--margin-right"/>
+    <function name="The &quot;max-line-state&quot; property" link="GtkScintilla.html#GtkScintilla--max-line-state"/>
+    <function name="The &quot;mod-event-mask&quot; property" link="GtkScintilla.html#GtkScintilla--mod-event-mask"/>
+    <function name="The &quot;modify&quot; property" link="GtkScintilla.html#GtkScintilla--modify"/>
+    <function name="The &quot;mouse-down-captures&quot; property" link="GtkScintilla.html#GtkScintilla--mouse-down-captures"/>
+    <function name="The &quot;mouse-dwell-time&quot; property" link="GtkScintilla.html#GtkScintilla--mouse-dwell-time"/>
+    <function name="The &quot;multi-paste&quot; property" link="GtkScintilla.html#GtkScintilla--multi-paste"/>
+    <function name="The &quot;multiple-selection&quot; property" link="GtkScintilla.html#GtkScintilla--multiple-selection"/>
+    <function name="The &quot;overtype&quot; property" link="GtkScintilla.html#GtkScintilla--overtype"/>
+    <function name="The &quot;paste-convert-endings&quot; property" link="GtkScintilla.html#GtkScintilla--paste-convert-endings"/>
+    <function name="The &quot;position-cache&quot; property" link="GtkScintilla.html#GtkScintilla--position-cache"/>
+    <function name="The &quot;print-colour-mode&quot; property" link="GtkScintilla.html#GtkScintilla--print-colour-mode"/>
+    <function name="The &quot;print-magnification&quot; property" link="GtkScintilla.html#GtkScintilla--print-magnification"/>
+    <function name="The &quot;print-wrap-mode&quot; property" link="GtkScintilla.html#GtkScintilla--print-wrap-mode"/>
+    <function name="The &quot;read-only&quot; property" link="GtkScintilla.html#GtkScintilla--read-only"/>
+    <function name="The &quot;rectangular-selection-anchor&quot; property" link="GtkScintilla.html#GtkScintilla--rectangular-selection-anchor"/>
+    <function name="The &quot;rectangular-selection-anchor-virtual-space&quot; property" link="GtkScintilla.html#GtkScintilla--rectangular-selection-anchor-virtual-space"/>
+    <function name="The &quot;rectangular-selection-caret&quot; property" link="GtkScintilla.html#GtkScintilla--rectangular-selection-caret"/>
+    <function name="The &quot;rectangular-selection-caret-virtual-space&quot; property" link="GtkScintilla.html#GtkScintilla--rectangular-selection-caret-virtual-space"/>
+    <function name="The &quot;rectangular-selection-modifier&quot; property" link="GtkScintilla.html#GtkScintilla--rectangular-selection-modifier"/>
+    <function name="The &quot;scroll-width&quot; property" link="GtkScintilla.html#GtkScintilla--scroll-width"/>
+    <function name="The &quot;scroll-width-tracking&quot; property" link="GtkScintilla.html#GtkScintilla--scroll-width-tracking"/>
+    <function name="The &quot;search-flags&quot; property" link="GtkScintilla.html#GtkScintilla--search-flags"/>
+    <function name="The &quot;sel-alpha&quot; property" link="GtkScintilla.html#GtkScintilla--sel-alpha"/>
+    <function name="The &quot;sel-eol-filled&quot; property" link="GtkScintilla.html#GtkScintilla--sel-eol-filled"/>
+    <function name="The &quot;selection-end&quot; property" link="GtkScintilla.html#GtkScintilla--selection-end"/>
+    <function name="The &quot;selection-mode&quot; property" link="GtkScintilla.html#GtkScintilla--selection-mode"/>
+    <function name="The &quot;selection-start&quot; property" link="GtkScintilla.html#GtkScintilla--selection-start"/>
+    <function name="The &quot;selections&quot; property" link="GtkScintilla.html#GtkScintilla--selections"/>
+    <function name="The &quot;status&quot; property" link="GtkScintilla.html#GtkScintilla--status"/>
+    <function name="The &quot;style-bits&quot; property" link="GtkScintilla.html#GtkScintilla--style-bits"/>
+    <function name="The &quot;style-bits-needed&quot; property" link="GtkScintilla.html#GtkScintilla--style-bits-needed"/>
+    <function name="The &quot;tab-indents&quot; property" link="GtkScintilla.html#GtkScintilla--tab-indents"/>
+    <function name="The &quot;tab-width&quot; property" link="GtkScintilla.html#GtkScintilla--tab-width"/>
+    <function name="The &quot;target-end&quot; property" link="GtkScintilla.html#GtkScintilla--target-end"/>
+    <function name="The &quot;target-start&quot; property" link="GtkScintilla.html#GtkScintilla--target-start"/>
+    <function name="The &quot;text&quot; property" link="GtkScintilla.html#GtkScintilla--text"/>
+    <function name="The &quot;text-length&quot; property" link="GtkScintilla.html#GtkScintilla--text-length"/>
+    <function name="The &quot;two-phase-draw&quot; property" link="GtkScintilla.html#GtkScintilla--two-phase-draw"/>
+    <function name="The &quot;undo-collection&quot; property" link="GtkScintilla.html#GtkScintilla--undo-collection"/>
+    <function name="The &quot;use-palette&quot; property" link="GtkScintilla.html#GtkScintilla--use-palette"/>
+    <function name="The &quot;use-tabs&quot; property" link="GtkScintilla.html#GtkScintilla--use-tabs"/>
+    <function name="The &quot;view-eol&quot; property" link="GtkScintilla.html#GtkScintilla--view-eol"/>
+    <function name="The &quot;view-white-space&quot; property" link="GtkScintilla.html#GtkScintilla--view-white-space"/>
+    <function name="The &quot;virtual-space-options&quot; property" link="GtkScintilla.html#GtkScintilla--virtual-space-options"/>
+    <function name="The &quot;vscrollbar&quot; property" link="GtkScintilla.html#GtkScintilla--vscrollbar"/>
+    <function name="The &quot;whitespace-chars&quot; property" link="GtkScintilla.html#GtkScintilla--whitespace-chars"/>
+    <function name="The &quot;whitespace-size&quot; property" link="GtkScintilla.html#GtkScintilla--whitespace-size"/>
+    <function name="The &quot;word-chars&quot; property" link="GtkScintilla.html#GtkScintilla--word-chars"/>
+    <function name="The &quot;wrap-indent-mode&quot; property" link="GtkScintilla.html#GtkScintilla--wrap-indent-mode"/>
+    <function name="The &quot;wrap-mode&quot; property" link="GtkScintilla.html#GtkScintilla--wrap-mode"/>
+    <function name="The &quot;wrap-start-indent&quot; property" link="GtkScintilla.html#GtkScintilla--wrap-start-indent"/>
+    <function name="The &quot;wrap-visual-flags&quot; property" link="GtkScintilla.html#GtkScintilla--wrap-visual-flags"/>
+    <function name="The &quot;wrap-visual-flags-location&quot; property" link="GtkScintilla.html#GtkScintilla--wrap-visual-flags-location"/>
+    <function name="The &quot;x-offset&quot; property" link="GtkScintilla.html#GtkScintilla--x-offset"/>
+    <function name="The &quot;zoom&quot; property" link="GtkScintilla.html#GtkScintilla--zoom"/>
+    <function name="The &quot;auto-completion-cancelled&quot; signal" link="GtkScintilla.html#GtkScintilla-auto-completion-cancelled"/>
+    <function name="The &quot;auto-completion-char-deleted&quot; signal" link="GtkScintilla.html#GtkScintilla-auto-completion-char-deleted"/>
+    <function name="The &quot;auto-completion-selection&quot; signal" link="GtkScintilla.html#GtkScintilla-auto-completion-selection"/>
+    <function name="The &quot;call-tip-click&quot; signal" link="GtkScintilla.html#GtkScintilla-call-tip-click"/>
+    <function name="The &quot;char-added&quot; signal" link="GtkScintilla.html#GtkScintilla-char-added"/>
+    <function name="The &quot;double-click&quot; signal" link="GtkScintilla.html#GtkScintilla-double-click"/>
+    <function name="The &quot;dwell-end&quot; signal" link="GtkScintilla.html#GtkScintilla-dwell-end"/>
+    <function name="The &quot;dwell-start&quot; signal" link="GtkScintilla.html#GtkScintilla-dwell-start"/>
+    <function name="The &quot;hot-spot-click&quot; signal" link="GtkScintilla.html#GtkScintilla-hot-spot-click"/>
+    <function name="The &quot;hot-spot-double-click&quot; signal" link="GtkScintilla.html#GtkScintilla-hot-spot-double-click"/>
+    <function name="The &quot;indicator-click&quot; signal" link="GtkScintilla.html#GtkScintilla-indicator-click"/>
+    <function name="The &quot;indicator-release&quot; signal" link="GtkScintilla.html#GtkScintilla-indicator-release"/>
+    <function name="The &quot;key&quot; signal" link="GtkScintilla.html#GtkScintilla-key"/>
+    <function name="The &quot;macro-record&quot; signal" link="GtkScintilla.html#GtkScintilla-macro-record"/>
+    <function name="The &quot;margin-click&quot; signal" link="GtkScintilla.html#GtkScintilla-margin-click"/>
+    <function name="The &quot;modified&quot; signal" link="GtkScintilla.html#GtkScintilla-modified"/>
+    <function name="The &quot;modify-attempt-ro&quot; signal" link="GtkScintilla.html#GtkScintilla-modify-attempt-ro"/>
+    <function name="The &quot;need-shown&quot; signal" link="GtkScintilla.html#GtkScintilla-need-shown"/>
+    <function name="The &quot;painted&quot; signal" link="GtkScintilla.html#GtkScintilla-painted"/>
+    <function name="The &quot;save-point-left&quot; signal" link="GtkScintilla.html#GtkScintilla-save-point-left"/>
+    <function name="The &quot;save-point-reached&quot; signal" link="GtkScintilla.html#GtkScintilla-save-point-reached"/>
+    <function name="The &quot;style-needed&quot; signal" link="GtkScintilla.html#GtkScintilla-style-needed"/>
+    <function name="The &quot;update-ui&quot; signal" link="GtkScintilla.html#GtkScintilla-update-ui"/>
+    <function name="The &quot;uri-dropped&quot; signal" link="GtkScintilla.html#GtkScintilla-uri-dropped"/>
+    <function name="The &quot;user-list-selection&quot; signal" link="GtkScintilla.html#GtkScintilla-user-list-selection"/>
+    <function name="The &quot;zoom&quot; signal" link="GtkScintilla.html#GtkScintilla-zoom"/>
+    <function name="gtk_scintilla_add_text ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-add-text"/>
+    <function name="gtk_scintilla_add_styled_text ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-add-styled-text"/>
+    <function name="gtk_scintilla_insert_text ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-insert-text"/>
+    <function name="gtk_scintilla_clear_all ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-clear-all"/>
+    <function name="gtk_scintilla_clear_document_style ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-clear-document-style"/>
+    <function name="gtk_scintilla_get_length ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-length"/>
+    <function name="gtk_scintilla_get_char_at ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-char-at"/>
+    <function name="gtk_scintilla_get_current_pos ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-current-pos"/>
+    <function name="gtk_scintilla_get_anchor ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-anchor"/>
+    <function name="gtk_scintilla_get_style_at ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-style-at"/>
+    <function name="gtk_scintilla_redo ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-redo"/>
+    <function name="gtk_scintilla_set_undo_collection ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-undo-collection"/>
+    <function name="gtk_scintilla_select_all ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-select-all"/>
+    <function name="gtk_scintilla_set_save_point ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-save-point"/>
+    <function name="gtk_scintilla_get_styled_text_range ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-styled-text-range"/>
+    <function name="gtk_scintilla_can_redo ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-can-redo"/>
+    <function name="gtk_scintilla_marker_line_from_handle ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-marker-line-from-handle"/>
+    <function name="gtk_scintilla_marker_delete_handle ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-marker-delete-handle"/>
+    <function name="gtk_scintilla_get_undo_collection ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-undo-collection"/>
+    <function name="gtk_scintilla_get_view_white_space ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-view-white-space"/>
+    <function name="gtk_scintilla_set_view_white_space ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-view-white-space"/>
+    <function name="gtk_scintilla_position_from_point ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-position-from-point"/>
+    <function name="gtk_scintilla_position_from_point_close ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-position-from-point-close"/>
+    <function name="gtk_scintilla_goto_line ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-goto-line"/>
+    <function name="gtk_scintilla_goto_pos ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-goto-pos"/>
+    <function name="gtk_scintilla_set_anchor ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-anchor"/>
+    <function name="gtk_scintilla_get_cur_line ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-cur-line"/>
+    <function name="gtk_scintilla_get_end_styled ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-end-styled"/>
+    <function name="gtk_scintilla_convert_eols ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-convert-eols"/>
+    <function name="gtk_scintilla_get_eol_mode ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-eol-mode"/>
+    <function name="gtk_scintilla_set_eol_mode ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-eol-mode"/>
+    <function name="gtk_scintilla_start_styling ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-start-styling"/>
+    <function name="gtk_scintilla_set_styling ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-styling"/>
+    <function name="gtk_scintilla_get_buffered_draw ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-buffered-draw"/>
+    <function name="gtk_scintilla_set_buffered_draw ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-buffered-draw"/>
+    <function name="gtk_scintilla_set_tab_width ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-tab-width"/>
+    <function name="gtk_scintilla_get_tab_width ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-tab-width"/>
+    <function name="gtk_scintilla_set_code_page ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-code-page"/>
+    <function name="gtk_scintilla_set_use_palette ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-use-palette"/>
+    <function name="gtk_scintilla_marker_define ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-marker-define"/>
+    <function name="gtk_scintilla_marker_set_fore ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-marker-set-fore"/>
+    <function name="gtk_scintilla_marker_set_back ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-marker-set-back"/>
+    <function name="gtk_scintilla_marker_add ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-marker-add"/>
+    <function name="gtk_scintilla_marker_delete ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-marker-delete"/>
+    <function name="gtk_scintilla_marker_delete_all ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-marker-delete-all"/>
+    <function name="gtk_scintilla_marker_get ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-marker-get"/>
+    <function name="gtk_scintilla_marker_next ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-marker-next"/>
+    <function name="gtk_scintilla_marker_previous ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-marker-previous"/>
+    <function name="gtk_scintilla_marker_define_pixmap ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-marker-define-pixmap"/>
+    <function name="gtk_scintilla_marker_add_set ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-marker-add-set"/>
+    <function name="gtk_scintilla_marker_set_alpha ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-marker-set-alpha"/>
+    <function name="gtk_scintilla_set_margin_type_n ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-margin-type-n"/>
+    <function name="gtk_scintilla_get_margin_type_n ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-margin-type-n"/>
+    <function name="gtk_scintilla_set_margin_width_n ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-margin-width-n"/>
+    <function name="gtk_scintilla_get_margin_width_n ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-margin-width-n"/>
+    <function name="gtk_scintilla_set_margin_mask_n ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-margin-mask-n"/>
+    <function name="gtk_scintilla_get_margin_mask_n ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-margin-mask-n"/>
+    <function name="gtk_scintilla_set_margin_sensitive_n ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-margin-sensitive-n"/>
+    <function name="gtk_scintilla_get_margin_sensitive_n ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-margin-sensitive-n"/>
+    <function name="gtk_scintilla_style_clear_all ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-style-clear-all"/>
+    <function name="gtk_scintilla_style_set_bold ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-style-set-bold"/>
+    <function name="gtk_scintilla_style_set_italic ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-style-set-italic"/>
+    <function name="gtk_scintilla_style_set_size ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-style-set-size"/>
+    <function name="gtk_scintilla_style_set_eol_filled ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-style-set-eol-filled"/>
+    <function name="gtk_scintilla_style_reset_default ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-style-reset-default"/>
+    <function name="gtk_scintilla_style_set_underline ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-style-set-underline"/>
+    <function name="gtk_scintilla_style_get_bold ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-style-get-bold"/>
+    <function name="gtk_scintilla_style_get_italic ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-style-get-italic"/>
+    <function name="gtk_scintilla_style_get_size ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-style-get-size"/>
+    <function name="gtk_scintilla_style_get_eol_filled ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-style-get-eol-filled"/>
+    <function name="gtk_scintilla_style_get_underline ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-style-get-underline"/>
+    <function name="gtk_scintilla_style_get_character_set ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-style-get-character-set"/>
+    <function name="gtk_scintilla_style_get_visible ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-style-get-visible"/>
+    <function name="gtk_scintilla_style_get_changeable ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-style-get-changeable"/>
+    <function name="gtk_scintilla_style_set_character_set ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-style-set-character-set"/>
+    <function name="gtk_scintilla_set_sel_fore ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-sel-fore"/>
+    <function name="gtk_scintilla_set_sel_back ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-sel-back"/>
+    <function name="gtk_scintilla_get_sel_alpha ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-sel-alpha"/>
+    <function name="gtk_scintilla_set_sel_alpha ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-sel-alpha"/>
+    <function name="gtk_scintilla_get_sel_eol_filled ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-sel-eol-filled"/>
+    <function name="gtk_scintilla_set_sel_eol_filled ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-sel-eol-filled"/>
+    <function name="gtk_scintilla_set_caret_fore ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-caret-fore"/>
+    <function name="gtk_scintilla_assign_cmd_key ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-assign-cmd-key"/>
+    <function name="gtk_scintilla_clear_cmd_key ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-clear-cmd-key"/>
+    <function name="gtk_scintilla_clear_all_cmd_keys ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-clear-all-cmd-keys"/>
+    <function name="gtk_scintilla_set_styling_ex ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-styling-ex"/>
+    <function name="gtk_scintilla_style_set_visible ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-style-set-visible"/>
+    <function name="gtk_scintilla_get_caret_period ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-caret-period"/>
+    <function name="gtk_scintilla_set_caret_period ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-caret-period"/>
+    <function name="gtk_scintilla_set_word_chars ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-word-chars"/>
+    <function name="gtk_scintilla_begin_undo_action ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-begin-undo-action"/>
+    <function name="gtk_scintilla_end_undo_action ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-end-undo-action"/>
+    <function name="gtk_scintilla_indic_set_style ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-indic-set-style"/>
+    <function name="gtk_scintilla_indic_get_style ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-indic-get-style"/>
+    <function name="gtk_scintilla_indic_set_fore ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-indic-set-fore"/>
+    <function name="gtk_scintilla_indic_get_fore ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-indic-get-fore"/>
+    <function name="gtk_scintilla_indic_set_under ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-indic-set-under"/>
+    <function name="gtk_scintilla_indic_get_under ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-indic-get-under"/>
+    <function name="gtk_scintilla_set_whitespace_fore ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-whitespace-fore"/>
+    <function name="gtk_scintilla_set_whitespace_back ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-whitespace-back"/>
+    <function name="gtk_scintilla_set_whitespace_size ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-whitespace-size"/>
+    <function name="gtk_scintilla_get_whitespace_size ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-whitespace-size"/>
+    <function name="gtk_scintilla_set_style_bits ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-style-bits"/>
+    <function name="gtk_scintilla_get_style_bits ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-style-bits"/>
+    <function name="gtk_scintilla_set_line_state ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-line-state"/>
+    <function name="gtk_scintilla_get_line_state ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-line-state"/>
+    <function name="gtk_scintilla_get_max_line_state ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-max-line-state"/>
+    <function name="gtk_scintilla_get_caret_line_visible ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-caret-line-visible"/>
+    <function name="gtk_scintilla_set_caret_line_visible ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-caret-line-visible"/>
+    <function name="gtk_scintilla_get_caret_line_back ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-caret-line-back"/>
+    <function name="gtk_scintilla_set_caret_line_back ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-caret-line-back"/>
+    <function name="gtk_scintilla_style_set_changeable ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-style-set-changeable"/>
+    <function name="gtk_scintilla_auto_completion_show ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-auto-completion-show"/>
+    <function name="gtk_scintilla_auto_completion_cancel ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-auto-completion-cancel"/>
+    <function name="gtk_scintilla_auto_completion_active ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-auto-completion-active"/>
+    <function name="gtk_scintilla_auto_completion_pos_start ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-auto-completion-pos-start"/>
+    <function name="gtk_scintilla_auto_completion_complete ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-auto-completion-complete"/>
+    <function name="gtk_scintilla_auto_completion_stops ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-auto-completion-stops"/>
+    <function name="gtk_scintilla_auto_completion_set_separator ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-auto-completion-set-separator"/>
+    <function name="gtk_scintilla_auto_completion_get_separator ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-auto-completion-get-separator"/>
+    <function name="gtk_scintilla_auto_completion_select ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-auto-completion-select"/>
+    <function name="gtk_scintilla_auto_completion_set_cancel_at_start ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-auto-completion-set-cancel-at-start"/>
+    <function name="gtk_scintilla_auto_completion_get_cancel_at_start ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-auto-completion-get-cancel-at-start"/>
+    <function name="gtk_scintilla_auto_completion_set_fill_ups ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-auto-completion-set-fill-ups"/>
+    <function name="gtk_scintilla_auto_completion_set_choose_single ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-auto-completion-set-choose-single"/>
+    <function name="gtk_scintilla_auto_completion_get_choose_single ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-auto-completion-get-choose-single"/>
+    <function name="gtk_scintilla_auto_completion_set_ignore_case ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-auto-completion-set-ignore-case"/>
+    <function name="gtk_scintilla_auto_completion_get_ignore_case ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-auto-completion-get-ignore-case"/>
+    <function name="gtk_scintilla_user_list_show ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-user-list-show"/>
+    <function name="gtk_scintilla_auto_completion_set_auto_hide ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-auto-completion-set-auto-hide"/>
+    <function name="gtk_scintilla_auto_completion_get_auto_hide ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-auto-completion-get-auto-hide"/>
+    <function name="gtk_scintilla_auto_completion_set_drop_rest_of_word ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-auto-completion-set-drop-rest-of-word"/>
+    <function name="gtk_scintilla_auto_completion_get_drop_rest_of_word ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-auto-completion-get-drop-rest-of-word"/>
+    <function name="gtk_scintilla_register_image ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-register-image"/>
+    <function name="gtk_scintilla_clear_registered_images ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-clear-registered-images"/>
+    <function name="gtk_scintilla_auto_completion_get_type_separator ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-auto-completion-get-type-separator"/>
+    <function name="gtk_scintilla_auto_completion_set_type_separator ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-auto-completion-set-type-separator"/>
+    <function name="gtk_scintilla_auto_completion_set_max_width ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-auto-completion-set-max-width"/>
+    <function name="gtk_scintilla_auto_completion_get_max_width ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-auto-completion-get-max-width"/>
+    <function name="gtk_scintilla_auto_completion_set_max_height ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-auto-completion-set-max-height"/>
+    <function name="gtk_scintilla_auto_completion_get_max_height ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-auto-completion-get-max-height"/>
+    <function name="gtk_scintilla_set_indent ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-indent"/>
+    <function name="gtk_scintilla_get_indent ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-indent"/>
+    <function name="gtk_scintilla_set_use_tabs ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-use-tabs"/>
+    <function name="gtk_scintilla_get_use_tabs ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-use-tabs"/>
+    <function name="gtk_scintilla_set_line_indentation ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-line-indentation"/>
+    <function name="gtk_scintilla_get_line_indentation ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-line-indentation"/>
+    <function name="gtk_scintilla_get_line_indent_position ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-line-indent-position"/>
+    <function name="gtk_scintilla_get_column ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-column"/>
+    <function name="gtk_scintilla_set_h_scroll_bar ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-h-scroll-bar"/>
+    <function name="gtk_scintilla_get_h_scroll_bar ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-h-scroll-bar"/>
+    <function name="gtk_scintilla_set_indentation_guides ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-indentation-guides"/>
+    <function name="gtk_scintilla_get_indentation_guides ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-indentation-guides"/>
+    <function name="gtk_scintilla_set_highlight_guide ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-highlight-guide"/>
+    <function name="gtk_scintilla_get_highlight_guide ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-highlight-guide"/>
+    <function name="gtk_scintilla_get_line_end_position ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-line-end-position"/>
+    <function name="gtk_scintilla_get_code_page ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-code-page"/>
+    <function name="gtk_scintilla_get_caret_fore ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-caret-fore"/>
+    <function name="gtk_scintilla_get_use_palette ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-use-palette"/>
+    <function name="gtk_scintilla_get_read_only ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-read-only"/>
+    <function name="gtk_scintilla_set_current_pos ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-current-pos"/>
+    <function name="gtk_scintilla_set_selection_start ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-selection-start"/>
+    <function name="gtk_scintilla_get_selection_start ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-selection-start"/>
+    <function name="gtk_scintilla_set_selection_end ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-selection-end"/>
+    <function name="gtk_scintilla_get_selection_end ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-selection-end"/>
+    <function name="gtk_scintilla_set_print_magnification ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-print-magnification"/>
+    <function name="gtk_scintilla_get_print_magnification ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-print-magnification"/>
+    <function name="gtk_scintilla_set_print_colour_mode ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-print-colour-mode"/>
+    <function name="gtk_scintilla_get_print_colour_mode ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-print-colour-mode"/>
+    <function name="gtk_scintilla_find_text ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-find-text"/>
+    <function name="gtk_scintilla_format_range ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-format-range"/>
+    <function name="gtk_scintilla_get_first_visible_line ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-first-visible-line"/>
+    <function name="gtk_scintilla_get_line ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-line"/>
+    <function name="gtk_scintilla_get_line_count ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-line-count"/>
+    <function name="gtk_scintilla_set_margin_left ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-margin-left"/>
+    <function name="gtk_scintilla_get_margin_left ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-margin-left"/>
+    <function name="gtk_scintilla_set_margin_right ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-margin-right"/>
+    <function name="gtk_scintilla_get_margin_right ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-margin-right"/>
+    <function name="gtk_scintilla_get_modify ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-modify"/>
+    <function name="gtk_scintilla_set_sel ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-sel"/>
+    <function name="gtk_scintilla_get_sel_text ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-sel-text"/>
+    <function name="gtk_scintilla_get_text_range ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-text-range"/>
+    <function name="gtk_scintilla_hide_selection ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-hide-selection"/>
+    <function name="gtk_scintilla_point_x_from_position ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-point-x-from-position"/>
+    <function name="gtk_scintilla_point_y_from_position ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-point-y-from-position"/>
+    <function name="gtk_scintilla_line_from_position ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-line-from-position"/>
+    <function name="gtk_scintilla_position_from_line ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-position-from-line"/>
+    <function name="gtk_scintilla_line_scroll ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-line-scroll"/>
+    <function name="gtk_scintilla_scroll_caret ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-scroll-caret"/>
+    <function name="gtk_scintilla_replace_selection ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-replace-selection"/>
+    <function name="gtk_scintilla_set_read_only ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-read-only"/>
+    <function name="gtk_scintilla_null ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-null"/>
+    <function name="gtk_scintilla_can_paste ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-can-paste"/>
+    <function name="gtk_scintilla_can_undo ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-can-undo"/>
+    <function name="gtk_scintilla_empty_undo_buffer ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-empty-undo-buffer"/>
+    <function name="gtk_scintilla_undo ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-undo"/>
+    <function name="gtk_scintilla_cut ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-cut"/>
+    <function name="gtk_scintilla_copy ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-copy"/>
+    <function name="gtk_scintilla_paste ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-paste"/>
+    <function name="gtk_scintilla_clear ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-clear"/>
+    <function name="gtk_scintilla_set_text ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-text"/>
+    <function name="gtk_scintilla_get_text ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-text"/>
+    <function name="gtk_scintilla_get_text_length ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-text-length"/>
+    <function name="gtk_scintilla_get_direct_function ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-direct-function"/>
+    <function name="gtk_scintilla_get_direct_pointer ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-direct-pointer"/>
+    <function name="gtk_scintilla_set_overtype ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-overtype"/>
+    <function name="gtk_scintilla_get_overtype ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-overtype"/>
+    <function name="gtk_scintilla_set_caret_width ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-caret-width"/>
+    <function name="gtk_scintilla_get_caret_width ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-caret-width"/>
+    <function name="gtk_scintilla_set_target_start ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-target-start"/>
+    <function name="gtk_scintilla_get_target_start ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-target-start"/>
+    <function name="gtk_scintilla_set_target_end ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-target-end"/>
+    <function name="gtk_scintilla_get_target_end ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-target-end"/>
+    <function name="gtk_scintilla_replace_target ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-replace-target"/>
+    <function name="gtk_scintilla_replace_target_regex ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-replace-target-regex"/>
+    <function name="gtk_scintilla_search_in_target ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-search-in-target"/>
+    <function name="gtk_scintilla_set_search_flags ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-search-flags"/>
+    <function name="gtk_scintilla_get_search_flags ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-search-flags"/>
+    <function name="gtk_scintilla_call_tip_show ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-call-tip-show"/>
+    <function name="gtk_scintilla_call_tip_cancel ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-call-tip-cancel"/>
+    <function name="gtk_scintilla_call_tip_active ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-call-tip-active"/>
+    <function name="gtk_scintilla_call_tip_pos_start ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-call-tip-pos-start"/>
+    <function name="gtk_scintilla_call_tip_set_hlt ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-call-tip-set-hlt"/>
+    <function name="gtk_scintilla_call_tip_set_back ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-call-tip-set-back"/>
+    <function name="gtk_scintilla_call_tip_set_fore ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-call-tip-set-fore"/>
+    <function name="gtk_scintilla_call_tip_set_fore_hlt ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-call-tip-set-fore-hlt"/>
+    <function name="gtk_scintilla_call_tip_use_style ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-call-tip-use-style"/>
+    <function name="gtk_scintilla_visible_from_doc_line ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-visible-from-doc-line"/>
+    <function name="gtk_scintilla_doc_line_from_visible ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-doc-line-from-visible"/>
+    <function name="gtk_scintilla_wrap_count ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-wrap-count"/>
+    <function name="gtk_scintilla_set_fold_level ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-fold-level"/>
+    <function name="gtk_scintilla_get_fold_level ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-fold-level"/>
+    <function name="gtk_scintilla_get_last_child ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-last-child"/>
+    <function name="gtk_scintilla_get_fold_parent ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-fold-parent"/>
+    <function name="gtk_scintilla_show_lines ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-show-lines"/>
+    <function name="gtk_scintilla_hide_lines ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-hide-lines"/>
+    <function name="gtk_scintilla_get_line_visible ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-line-visible"/>
+    <function name="gtk_scintilla_set_fold_expanded ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-fold-expanded"/>
+    <function name="gtk_scintilla_get_fold_expanded ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-fold-expanded"/>
+    <function name="gtk_scintilla_toggle_fold ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-toggle-fold"/>
+    <function name="gtk_scintilla_ensure_visible ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-ensure-visible"/>
+    <function name="gtk_scintilla_set_fold_flags ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-fold-flags"/>
+    <function name="gtk_scintilla_ensure_visible_enforce_policy ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-ensure-visible-enforce-policy"/>
+    <function name="gtk_scintilla_set_tab_indents ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-tab-indents"/>
+    <function name="gtk_scintilla_get_tab_indents ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-tab-indents"/>
+    <function name="gtk_scintilla_set_backspace_unindents ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-backspace-unindents"/>
+    <function name="gtk_scintilla_get_backspace_unindents ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-backspace-unindents"/>
+    <function name="gtk_scintilla_set_mouse_dwell_time ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-mouse-dwell-time"/>
+    <function name="gtk_scintilla_get_mouse_dwell_time ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-mouse-dwell-time"/>
+    <function name="gtk_scintilla_word_start_position ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-word-start-position"/>
+    <function name="gtk_scintilla_word_end_position ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-word-end-position"/>
+    <function name="gtk_scintilla_set_wrap_mode ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-wrap-mode"/>
+    <function name="gtk_scintilla_get_wrap_mode ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-wrap-mode"/>
+    <function name="gtk_scintilla_set_wrap_visual_flags ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-wrap-visual-flags"/>
+    <function name="gtk_scintilla_get_wrap_visual_flags ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-wrap-visual-flags"/>
+    <function name="gtk_scintilla_set_wrap_visual_flags_location ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-wrap-visual-flags-location"/>
+    <function name="gtk_scintilla_get_wrap_visual_flags_location ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-wrap-visual-flags-location"/>
+    <function name="gtk_scintilla_set_wrap_start_indent ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-wrap-start-indent"/>
+    <function name="gtk_scintilla_get_wrap_start_indent ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-wrap-start-indent"/>
+    <function name="gtk_scintilla_set_wrap_indent_mode ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-wrap-indent-mode"/>
+    <function name="gtk_scintilla_get_wrap_indent_mode ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-wrap-indent-mode"/>
+    <function name="gtk_scintilla_set_layout_cache ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-layout-cache"/>
+    <function name="gtk_scintilla_get_layout_cache ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-layout-cache"/>
+    <function name="gtk_scintilla_set_scroll_width ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-scroll-width"/>
+    <function name="gtk_scintilla_get_scroll_width ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-scroll-width"/>
+    <function name="gtk_scintilla_set_scroll_width_tracking ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-scroll-width-tracking"/>
+    <function name="gtk_scintilla_get_scroll_width_tracking ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-scroll-width-tracking"/>
+    <function name="gtk_scintilla_text_width ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-text-width"/>
+    <function name="gtk_scintilla_set_end_at_last_line ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-end-at-last-line"/>
+    <function name="gtk_scintilla_get_end_at_last_line ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-end-at-last-line"/>
+    <function name="gtk_scintilla_text_height ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-text-height"/>
+    <function name="gtk_scintilla_set_vscrollbar ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-vscrollbar"/>
+    <function name="gtk_scintilla_get_vscrollbar ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-vscrollbar"/>
+    <function name="gtk_scintilla_append_text ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-append-text"/>
+    <function name="gtk_scintilla_get_two_phase_draw ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-two-phase-draw"/>
+    <function name="gtk_scintilla_set_two_phase_draw ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-two-phase-draw"/>
+    <function name="gtk_scintilla_set_font_quality ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-font-quality"/>
+    <function name="gtk_scintilla_get_font_quality ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-font-quality"/>
+    <function name="gtk_scintilla_set_first_visible_line ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-first-visible-line"/>
+    <function name="gtk_scintilla_set_multi_paste ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-multi-paste"/>
+    <function name="gtk_scintilla_get_multi_paste ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-multi-paste"/>
+    <function name="gtk_scintilla_get_tag ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-tag"/>
+    <function name="gtk_scintilla_target_from_selection ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-target-from-selection"/>
+    <function name="gtk_scintilla_lines_join ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-lines-join"/>
+    <function name="gtk_scintilla_lines_split ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-lines-split"/>
+    <function name="gtk_scintilla_set_fold_margin_colour ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-fold-margin-colour"/>
+    <function name="gtk_scintilla_set_fold_margin_hi_colour ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-fold-margin-hi-colour"/>
+    <function name="gtk_scintilla_line_down ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-line-down"/>
+    <function name="gtk_scintilla_line_down_extend ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-line-down-extend"/>
+    <function name="gtk_scintilla_line_up ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-line-up"/>
+    <function name="gtk_scintilla_line_up_extend ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-line-up-extend"/>
+    <function name="gtk_scintilla_char_left ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-char-left"/>
+    <function name="gtk_scintilla_char_left_extend ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-char-left-extend"/>
+    <function name="gtk_scintilla_char_right ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-char-right"/>
+    <function name="gtk_scintilla_char_right_extend ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-char-right-extend"/>
+    <function name="gtk_scintilla_word_left ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-word-left"/>
+    <function name="gtk_scintilla_word_left_extend ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-word-left-extend"/>
+    <function name="gtk_scintilla_word_right ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-word-right"/>
+    <function name="gtk_scintilla_word_right_extend ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-word-right-extend"/>
+    <function name="gtk_scintilla_home ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-home"/>
+    <function name="gtk_scintilla_home_extend ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-home-extend"/>
+    <function name="gtk_scintilla_line_end ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-line-end"/>
+    <function name="gtk_scintilla_line_end_extend ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-line-end-extend"/>
+    <function name="gtk_scintilla_document_start ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-document-start"/>
+    <function name="gtk_scintilla_document_start_extend ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-document-start-extend"/>
+    <function name="gtk_scintilla_document_end ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-document-end"/>
+    <function name="gtk_scintilla_document_end_extend ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-document-end-extend"/>
+    <function name="gtk_scintilla_page_up ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-page-up"/>
+    <function name="gtk_scintilla_page_up_extend ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-page-up-extend"/>
+    <function name="gtk_scintilla_page_down ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-page-down"/>
+    <function name="gtk_scintilla_page_down_extend ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-page-down-extend"/>
+    <function name="gtk_scintilla_edit_toggle_overtype ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-edit-toggle-overtype"/>
+    <function name="gtk_scintilla_cancel ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-cancel"/>
+    <function name="gtk_scintilla_delete_back ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-delete-back"/>
+    <function name="gtk_scintilla_tab ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-tab"/>
+    <function name="gtk_scintilla_back_tab ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-back-tab"/>
+    <function name="gtk_scintilla_new_line ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-new-line"/>
+    <function name="gtk_scintilla_form_feed ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-form-feed"/>
+    <function name="gtk_scintilla_visible_char_home ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-visible-char-home"/>
+    <function name="gtk_scintilla_visible_char_home_extend ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-visible-char-home-extend"/>
+    <function name="gtk_scintilla_zoom_in ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-zoom-in"/>
+    <function name="gtk_scintilla_zoom_out ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-zoom-out"/>
+    <function name="gtk_scintilla_del_word_left ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-del-word-left"/>
+    <function name="gtk_scintilla_del_word_right ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-del-word-right"/>
+    <function name="gtk_scintilla_del_word_right_end ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-del-word-right-end"/>
+    <function name="gtk_scintilla_line_cut ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-line-cut"/>
+    <function name="gtk_scintilla_line_delete ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-line-delete"/>
+    <function name="gtk_scintilla_line_transpose ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-line-transpose"/>
+    <function name="gtk_scintilla_line_duplicate ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-line-duplicate"/>
+    <function name="gtk_scintilla_lower_case ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-lower-case"/>
+    <function name="gtk_scintilla_upper_case ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-upper-case"/>
+    <function name="gtk_scintilla_line_scroll_down ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-line-scroll-down"/>
+    <function name="gtk_scintilla_line_scroll_up ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-line-scroll-up"/>
+    <function name="gtk_scintilla_delete_back_not_line ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-delete-back-not-line"/>
+    <function name="gtk_scintilla_home_display ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-home-display"/>
+    <function name="gtk_scintilla_home_display_extend ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-home-display-extend"/>
+    <function name="gtk_scintilla_line_end_display ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-line-end-display"/>
+    <function name="gtk_scintilla_line_end_display_extend ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-line-end-display-extend"/>
+    <function name="gtk_scintilla_home_wrap ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-home-wrap"/>
+    <function name="gtk_scintilla_home_wrap_extend ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-home-wrap-extend"/>
+    <function name="gtk_scintilla_line_end_wrap ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-line-end-wrap"/>
+    <function name="gtk_scintilla_line_end_wrap_extend ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-line-end-wrap-extend"/>
+    <function name="gtk_scintilla_visible_char_home_wrap ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-visible-char-home-wrap"/>
+    <function name="gtk_scintilla_visible_char_home_wrap_extend ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-visible-char-home-wrap-extend"/>
+    <function name="gtk_scintilla_line_copy ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-line-copy"/>
+    <function name="gtk_scintilla_move_caret_inside_view ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-move-caret-inside-view"/>
+    <function name="gtk_scintilla_line_length ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-line-length"/>
+    <function name="gtk_scintilla_brace_highlight ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-brace-highlight"/>
+    <function name="gtk_scintilla_brace_bad_light ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-brace-bad-light"/>
+    <function name="gtk_scintilla_brace_match ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-brace-match"/>
+    <function name="gtk_scintilla_get_view_eol ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-view-eol"/>
+    <function name="gtk_scintilla_set_view_eol ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-view-eol"/>
+    <function name="gtk_scintilla_get_doc_pointer ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-doc-pointer"/>
+    <function name="gtk_scintilla_set_doc_pointer ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-doc-pointer"/>
+    <function name="gtk_scintilla_set_mod_event_mask ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-mod-event-mask"/>
+    <function name="gtk_scintilla_get_edge_column ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-edge-column"/>
+    <function name="gtk_scintilla_set_edge_column ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-edge-column"/>
+    <function name="gtk_scintilla_get_edge_mode ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-edge-mode"/>
+    <function name="gtk_scintilla_set_edge_mode ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-edge-mode"/>
+    <function name="gtk_scintilla_get_edge_colour ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-edge-colour"/>
+    <function name="gtk_scintilla_set_edge_colour ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-edge-colour"/>
+    <function name="gtk_scintilla_search_anchor ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-search-anchor"/>
+    <function name="gtk_scintilla_search_next ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-search-next"/>
+    <function name="gtk_scintilla_search_previous ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-search-previous"/>
+    <function name="gtk_scintilla_lines_on_screen ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-lines-on-screen"/>
+    <function name="gtk_scintilla_use_pop_up ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-use-pop-up"/>
+    <function name="gtk_scintilla_selection_is_rectangle ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-selection-is-rectangle"/>
+    <function name="gtk_scintilla_set_zoom ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-zoom"/>
+    <function name="gtk_scintilla_get_zoom ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-zoom"/>
+    <function name="gtk_scintilla_create_document ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-create-document"/>
+    <function name="gtk_scintilla_add_ref_document ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-add-ref-document"/>
+    <function name="gtk_scintilla_release_document ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-release-document"/>
+    <function name="gtk_scintilla_get_mod_event_mask ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-mod-event-mask"/>
+    <function name="gtk_scintilla_set_focus ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-focus"/>
+    <function name="gtk_scintilla_get_focus ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-focus"/>
+    <function name="gtk_scintilla_set_status ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-status"/>
+    <function name="gtk_scintilla_get_status ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-status"/>
+    <function name="gtk_scintilla_set_mouse_down_captures ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-mouse-down-captures"/>
+    <function name="gtk_scintilla_get_mouse_down_captures ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-mouse-down-captures"/>
+    <function name="gtk_scintilla_set_cursor ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-cursor"/>
+    <function name="gtk_scintilla_get_cursor ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-cursor"/>
+    <function name="gtk_scintilla_set_control_char_symbol ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-control-char-symbol"/>
+    <function name="gtk_scintilla_get_control_char_symbol ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-control-char-symbol"/>
+    <function name="gtk_scintilla_word_part_left ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-word-part-left"/>
+    <function name="gtk_scintilla_word_part_left_extend ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-word-part-left-extend"/>
+    <function name="gtk_scintilla_word_part_right ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-word-part-right"/>
+    <function name="gtk_scintilla_word_part_right_extend ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-word-part-right-extend"/>
+    <function name="gtk_scintilla_set_visible_policy ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-visible-policy"/>
+    <function name="gtk_scintilla_del_line_left ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-del-line-left"/>
+    <function name="gtk_scintilla_del_line_right ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-del-line-right"/>
+    <function name="gtk_scintilla_set_x_offset ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-x-offset"/>
+    <function name="gtk_scintilla_get_x_offset ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-x-offset"/>
+    <function name="gtk_scintilla_choose_caret_x ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-choose-caret-x"/>
+    <function name="gtk_scintilla_grab_focus ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-grab-focus"/>
+    <function name="gtk_scintilla_set_x_caret_policy ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-x-caret-policy"/>
+    <function name="gtk_scintilla_set_y_caret_policy ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-y-caret-policy"/>
+    <function name="gtk_scintilla_set_print_wrap_mode ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-print-wrap-mode"/>
+    <function name="gtk_scintilla_get_print_wrap_mode ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-print-wrap-mode"/>
+    <function name="gtk_scintilla_set_hotspot_active_fore ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-hotspot-active-fore"/>
+    <function name="gtk_scintilla_get_hotspot_active_fore ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-hotspot-active-fore"/>
+    <function name="gtk_scintilla_set_hotspot_active_back ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-hotspot-active-back"/>
+    <function name="gtk_scintilla_get_hotspot_active_back ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-hotspot-active-back"/>
+    <function name="gtk_scintilla_set_hotspot_active_underline ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-hotspot-active-underline"/>
+    <function name="gtk_scintilla_get_hotspot_active_underline ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-hotspot-active-underline"/>
+    <function name="gtk_scintilla_set_hotspot_single_line ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-hotspot-single-line"/>
+    <function name="gtk_scintilla_get_hotspot_single_line ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-hotspot-single-line"/>
+    <function name="gtk_scintilla_para_down ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-para-down"/>
+    <function name="gtk_scintilla_para_down_extend ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-para-down-extend"/>
+    <function name="gtk_scintilla_para_up ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-para-up"/>
+    <function name="gtk_scintilla_para_up_extend ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-para-up-extend"/>
+    <function name="gtk_scintilla_position_before ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-position-before"/>
+    <function name="gtk_scintilla_position_after ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-position-after"/>
+    <function name="gtk_scintilla_copy_range ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-copy-range"/>
+    <function name="gtk_scintilla_copy_text ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-copy-text"/>
+    <function name="gtk_scintilla_set_selection_mode ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-selection-mode"/>
+    <function name="gtk_scintilla_get_selection_mode ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-selection-mode"/>
+    <function name="gtk_scintilla_get_line_sel_start_position ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-line-sel-start-position"/>
+    <function name="gtk_scintilla_get_line_sel_end_position ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-line-sel-end-position"/>
+    <function name="gtk_scintilla_line_down_rect_extend ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-line-down-rect-extend"/>
+    <function name="gtk_scintilla_line_up_rect_extend ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-line-up-rect-extend"/>
+    <function name="gtk_scintilla_char_left_rect_extend ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-char-left-rect-extend"/>
+    <function name="gtk_scintilla_char_right_rect_extend ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-char-right-rect-extend"/>
+    <function name="gtk_scintilla_home_rect_extend ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-home-rect-extend"/>
+    <function name="gtk_scintilla_visible_char_home_rect_extend ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-visible-char-home-rect-extend"/>
+    <function name="gtk_scintilla_line_end_rect_extend ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-line-end-rect-extend"/>
+    <function name="gtk_scintilla_page_up_rect_extend ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-page-up-rect-extend"/>
+    <function name="gtk_scintilla_page_down_rect_extend ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-page-down-rect-extend"/>
+    <function name="gtk_scintilla_stuttered_page_up ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-stuttered-page-up"/>
+    <function name="gtk_scintilla_stuttered_page_up_extend ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-stuttered-page-up-extend"/>
+    <function name="gtk_scintilla_stuttered_page_down ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-stuttered-page-down"/>
+    <function name="gtk_scintilla_stuttered_page_down_extend ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-stuttered-page-down-extend"/>
+    <function name="gtk_scintilla_word_left_end ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-word-left-end"/>
+    <function name="gtk_scintilla_word_left_end_extend ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-word-left-end-extend"/>
+    <function name="gtk_scintilla_word_right_end ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-word-right-end"/>
+    <function name="gtk_scintilla_word_right_end_extend ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-word-right-end-extend"/>
+    <function name="gtk_scintilla_set_whitespace_chars ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-whitespace-chars"/>
+    <function name="gtk_scintilla_set_chars_default ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-chars-default"/>
+    <function name="gtk_scintilla_auto_completion_get_current ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-auto-completion-get-current"/>
+    <function name="gtk_scintilla_auto_completion_get_current_text ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-auto-completion-get-current-text"/>
+    <function name="gtk_scintilla_allocate ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-allocate"/>
+    <function name="gtk_scintilla_target_as_utf8 ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-target-as-utf8"/>
+    <function name="gtk_scintilla_encoded_from_utf8 ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-encoded-from-utf8"/>
+    <function name="gtk_scintilla_find_column ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-find-column"/>
+    <function name="gtk_scintilla_get_caret_sticky ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-caret-sticky"/>
+    <function name="gtk_scintilla_set_caret_sticky ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-caret-sticky"/>
+    <function name="gtk_scintilla_toggle_caret_sticky ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-toggle-caret-sticky"/>
+    <function name="gtk_scintilla_set_paste_convert_endings ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-paste-convert-endings"/>
+    <function name="gtk_scintilla_get_paste_convert_endings ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-paste-convert-endings"/>
+    <function name="gtk_scintilla_selection_duplicate ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-selection-duplicate"/>
+    <function name="gtk_scintilla_set_caret_line_back_alpha ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-caret-line-back-alpha"/>
+    <function name="gtk_scintilla_get_caret_line_back_alpha ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-caret-line-back-alpha"/>
+    <function name="gtk_scintilla_set_caret_style ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-caret-style"/>
+    <function name="gtk_scintilla_get_caret_style ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-caret-style"/>
+    <function name="gtk_scintilla_set_indicator_current ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-indicator-current"/>
+    <function name="gtk_scintilla_get_indicator_current ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-indicator-current"/>
+    <function name="gtk_scintilla_set_indicator_value ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-indicator-value"/>
+    <function name="gtk_scintilla_get_indicator_value ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-indicator-value"/>
+    <function name="gtk_scintilla_indicator_fill_range ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-indicator-fill-range"/>
+    <function name="gtk_scintilla_indicator_clear_range ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-indicator-clear-range"/>
+    <function name="gtk_scintilla_indicator_all_on_for ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-indicator-all-on-for"/>
+    <function name="gtk_scintilla_indicator_value_at ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-indicator-value-at"/>
+    <function name="gtk_scintilla_indicator_start ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-indicator-start"/>
+    <function name="gtk_scintilla_indicator_end ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-indicator-end"/>
+    <function name="gtk_scintilla_set_position_cache ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-position-cache"/>
+    <function name="gtk_scintilla_get_position_cache ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-position-cache"/>
+    <function name="gtk_scintilla_copy_allow_line ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-copy-allow-line"/>
+    <function name="gtk_scintilla_get_character_pointer ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-character-pointer"/>
+    <function name="gtk_scintilla_set_keys_unicode ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-keys-unicode"/>
+    <function name="gtk_scintilla_get_keys_unicode ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-keys-unicode"/>
+    <function name="gtk_scintilla_indic_set_alpha ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-indic-set-alpha"/>
+    <function name="gtk_scintilla_indic_get_alpha ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-indic-get-alpha"/>
+    <function name="gtk_scintilla_set_extra_ascent ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-extra-ascent"/>
+    <function name="gtk_scintilla_get_extra_ascent ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-extra-ascent"/>
+    <function name="gtk_scintilla_set_extra_descent ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-extra-descent"/>
+    <function name="gtk_scintilla_get_extra_descent ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-extra-descent"/>
+    <function name="gtk_scintilla_marker_symbol_defined ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-marker-symbol-defined"/>
+    <function name="gtk_scintilla_margin_set_text ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-margin-set-text"/>
+    <function name="gtk_scintilla_margin_get_text ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-margin-get-text"/>
+    <function name="gtk_scintilla_margin_set_style ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-margin-set-style"/>
+    <function name="gtk_scintilla_margin_get_style ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-margin-get-style"/>
+    <function name="gtk_scintilla_margin_set_styles ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-margin-set-styles"/>
+    <function name="gtk_scintilla_margin_get_styles ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-margin-get-styles"/>
+    <function name="gtk_scintilla_margin_text_clear_all ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-margin-text-clear-all"/>
+    <function name="gtk_scintilla_margin_set_style_offset ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-margin-set-style-offset"/>
+    <function name="gtk_scintilla_margin_get_style_offset ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-margin-get-style-offset"/>
+    <function name="gtk_scintilla_annotation_set_text ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-annotation-set-text"/>
+    <function name="gtk_scintilla_annotation_get_text ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-annotation-get-text"/>
+    <function name="gtk_scintilla_annotation_set_style ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-annotation-set-style"/>
+    <function name="gtk_scintilla_annotation_get_style ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-annotation-get-style"/>
+    <function name="gtk_scintilla_annotation_set_styles ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-annotation-set-styles"/>
+    <function name="gtk_scintilla_annotation_get_styles ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-annotation-get-styles"/>
+    <function name="gtk_scintilla_annotation_get_lines ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-annotation-get-lines"/>
+    <function name="gtk_scintilla_annotation_clear_all ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-annotation-clear-all"/>
+    <function name="gtk_scintilla_annotation_set_visible ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-annotation-set-visible"/>
+    <function name="gtk_scintilla_annotation_get_visible ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-annotation-get-visible"/>
+    <function name="gtk_scintilla_annotation_set_style_offset ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-annotation-set-style-offset"/>
+    <function name="gtk_scintilla_annotation_get_style_offset ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-annotation-get-style-offset"/>
+    <function name="gtk_scintilla_add_undo_action ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-add-undo-action"/>
+    <function name="gtk_scintilla_char_position_from_point ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-char-position-from-point"/>
+    <function name="gtk_scintilla_char_position_from_point_close ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-char-position-from-point-close"/>
+    <function name="gtk_scintilla_set_multiple_selection ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-multiple-selection"/>
+    <function name="gtk_scintilla_get_multiple_selection ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-multiple-selection"/>
+    <function name="gtk_scintilla_set_additional_selection_typing ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-additional-selection-typing"/>
+    <function name="gtk_scintilla_get_additional_selection_typing ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-additional-selection-typing"/>
+    <function name="gtk_scintilla_set_additional_carets_blink ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-additional-carets-blink"/>
+    <function name="gtk_scintilla_get_additional_carets_blink ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-additional-carets-blink"/>
+    <function name="gtk_scintilla_set_additional_carets_visible ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-additional-carets-visible"/>
+    <function name="gtk_scintilla_get_additional_carets_visible ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-additional-carets-visible"/>
+    <function name="gtk_scintilla_get_selections ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-selections"/>
+    <function name="gtk_scintilla_clear_selections ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-clear-selections"/>
+    <function name="gtk_scintilla_set_selection ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-selection"/>
+    <function name="gtk_scintilla_add_selection ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-add-selection"/>
+    <function name="gtk_scintilla_set_main_selection ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-main-selection"/>
+    <function name="gtk_scintilla_get_main_selection ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-main-selection"/>
+    <function name="gtk_scintilla_set_selection_n_caret ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-selection-n-caret"/>
+    <function name="gtk_scintilla_get_selection_n_caret ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-selection-n-caret"/>
+    <function name="gtk_scintilla_set_selection_n_anchor ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-selection-n-anchor"/>
+    <function name="gtk_scintilla_get_selection_n_anchor ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-selection-n-anchor"/>
+    <function name="gtk_scintilla_set_selection_n_caret_virtual_space ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-selection-n-caret-virtual-space"/>
+    <function name="gtk_scintilla_get_selection_n_caret_virtual_space ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-selection-n-caret-virtual-space"/>
+    <function name="gtk_scintilla_set_selection_n_anchor_virtual_space ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-selection-n-anchor-virtual-space"/>
+    <function name="gtk_scintilla_get_selection_n_anchor_virtual_space ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-selection-n-anchor-virtual-space"/>
+    <function name="gtk_scintilla_set_selection_n_start ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-selection-n-start"/>
+    <function name="gtk_scintilla_get_selection_n_start ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-selection-n-start"/>
+    <function name="gtk_scintilla_get_selection_n_end ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-selection-n-end"/>
+    <function name="gtk_scintilla_set_rectangular_selection_caret ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-rectangular-selection-caret"/>
+    <function name="gtk_scintilla_get_rectangular_selection_caret ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-rectangular-selection-caret"/>
+    <function name="gtk_scintilla_set_rectangular_selection_anchor ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-rectangular-selection-anchor"/>
+    <function name="gtk_scintilla_get_rectangular_selection_anchor ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-rectangular-selection-anchor"/>
+    <function name="gtk_scintilla_set_rectangular_selection_caret_virtual_space ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-rectangular-selection-caret-virtual-space"/>
+    <function name="gtk_scintilla_get_rectangular_selection_caret_virtual_space ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-rectangular-selection-caret-virtual-space"/>
+    <function name="gtk_scintilla_set_rectangular_selection_anchor_virtual_space ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-rectangular-selection-anchor-virtual-space"/>
+    <function name="gtk_scintilla_get_rectangular_selection_anchor_virtual_space ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-rectangular-selection-anchor-virtual-space"/>
+    <function name="gtk_scintilla_set_virtual_space_options ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-virtual-space-options"/>
+    <function name="gtk_scintilla_get_virtual_space_options ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-virtual-space-options"/>
+    <function name="gtk_scintilla_set_rectangular_selection_modifier ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-rectangular-selection-modifier"/>
+    <function name="gtk_scintilla_get_rectangular_selection_modifier ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-rectangular-selection-modifier"/>
+    <function name="gtk_scintilla_set_additional_sel_fore ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-additional-sel-fore"/>
+    <function name="gtk_scintilla_set_additional_sel_back ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-additional-sel-back"/>
+    <function name="gtk_scintilla_set_additional_sel_alpha ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-additional-sel-alpha"/>
+    <function name="gtk_scintilla_get_additional_sel_alpha ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-additional-sel-alpha"/>
+    <function name="gtk_scintilla_set_additional_caret_fore ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-additional-caret-fore"/>
+    <function name="gtk_scintilla_get_additional_caret_fore ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-additional-caret-fore"/>
+    <function name="gtk_scintilla_rotate_selection ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-rotate-selection"/>
+    <function name="gtk_scintilla_swap_main_anchor_caret ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-swap-main-anchor-caret"/>
+    <function name="gtk_scintilla_start_record ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-start-record"/>
+    <function name="gtk_scintilla_stop_record ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-stop-record"/>
+    <function name="gtk_scintilla_set_lexer ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-lexer"/>
+    <function name="gtk_scintilla_get_lexer ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-lexer"/>
+    <function name="gtk_scintilla_colourise ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-colourise"/>
+    <function name="gtk_scintilla_set_lexer_property ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-lexer-property"/>
+    <function name="gtk_scintilla_set_keywords ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-keywords"/>
+    <function name="gtk_scintilla_set_lexer_language ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-lexer-language"/>
+    <function name="gtk_scintilla_load_lexer_library ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-load-lexer-library"/>
+    <function name="gtk_scintilla_get_lexer_property ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-lexer-property"/>
+    <function name="gtk_scintilla_get_lexer_property_expanded ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-lexer-property-expanded"/>
+    <function name="gtk_scintilla_get_lexer_property_int ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-lexer-property-int"/>
+    <function name="gtk_scintilla_get_style_bits_needed ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-style-bits-needed"/>
+    <function name="gtk_scintilla_get_lexer_language ()" link="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-get-lexer-language"/>
+    <function name="GTK_SCINTILLA_INVALID_POSITION" link="gtkscintilla-gtkscintillaconstants.html#GTK-SCINTILLA-INVALID-POSITION:CAPS"/>
+    <function name="GTK_SCINTILLA_START" link="gtkscintilla-gtkscintillaconstants.html#GTK-SCINTILLA-START:CAPS"/>
+    <function name="GTK_SCINTILLA_OPTIONAL_START" link="gtkscintilla-gtkscintillaconstants.html#GTK-SCINTILLA-OPTIONAL-START:CAPS"/>
+    <function name="GTK_SCINTILLA_LEXER_START" link="gtkscintilla-gtkscintillaconstants.html#GTK-SCINTILLA-LEXER-START:CAPS"/>
+    <function name="GTK_SCINTILLA_CP_UTF8" link="gtkscintilla-gtkscintillaconstants.html#GTK-SCINTILLA-CP-UTF8:CAPS"/>
+    <function name="GTK_SCINTILLA_CP_DBCS" link="gtkscintilla-gtkscintillaconstants.html#GTK-SCINTILLA-CP-DBCS:CAPS"/>
+    <function name="GTK_SCINTILLA_MARKER_MAX" link="gtkscintilla-gtkscintillaconstants.html#GTK-SCINTILLA-MARKER-MAX:CAPS"/>
+    <function name="GTK_SCINTILLA_MASK_FOLDERS" link="gtkscintilla-gtkscintillaconstants.html#GTK-SCINTILLA-MASK-FOLDERS:CAPS"/>
+    <function name="GTK_SCINTILLA_TIME_FOREVER" link="gtkscintilla-gtkscintillaconstants.html#GTK-SCINTILLA-TIME-FOREVER:CAPS"/>
+    <function name="GTK_SCINTILLA_VISIBLE_SLOP" link="gtkscintilla-gtkscintillaconstants.html#GTK-SCINTILLA-VISIBLE-SLOP:CAPS"/>
+    <function name="GTK_SCINTILLA_VISIBLE_STRICT" link="gtkscintilla-gtkscintillaconstants.html#GTK-SCINTILLA-VISIBLE-STRICT:CAPS"/>
+    <function name="GTK_SCINTILLA_ALPHA_TRANSPARENT" link="gtkscintilla-gtkscintillaconstants.html#GTK-SCINTILLA-ALPHA-TRANSPARENT:CAPS"/>
+    <function name="GTK_SCINTILLA_ALPHA_OPAQUE" link="gtkscintilla-gtkscintillaconstants.html#GTK-SCINTILLA-ALPHA-OPAQUE:CAPS"/>
+    <function name="GTK_SCINTILLA_ALPHA_NOALPHA" link="gtkscintilla-gtkscintillaconstants.html#GTK-SCINTILLA-ALPHA-NOALPHA:CAPS"/>
+    <function name="GTK_SCINTILLA_UNDO_MAY_COALESCE" link="gtkscintilla-gtkscintillaconstants.html#GTK-SCINTILLA-UNDO-MAY-COALESCE:CAPS"/>
+    <function name="GTK_SCINTILLA_KEYWORDSET_MAX" link="gtkscintilla-gtkscintillaconstants.html#GTK-SCINTILLA-KEYWORDSET-MAX:CAPS"/>
+    <function name="GTK_SCINTILLA_MODEVENTMASKALL" link="gtkscintilla-gtkscintillaconstants.html#GTK-SCINTILLA-MODEVENTMASKALL:CAPS"/>
+    <function name="enum GtkScintillaUpdateFlag" link="gtkscintilla-gtkscintillaconstants.html#GtkScintillaUpdateFlag"/>
+    <function name="enum GtkScintillaSearchFlag" link="gtkscintilla-gtkscintillaconstants.html#GtkScintillaSearchFlag"/>
+    <function name="enum GtkScintillaWhiteSpace" link="gtkscintilla-gtkscintillaconstants.html#GtkScintillaWhiteSpace"/>
+    <function name="enum GtkScintillaEndOfLine" link="gtkscintilla-gtkscintillaconstants.html#GtkScintillaEndOfLine"/>
+    <function name="enum GtkScintillaMarkerSymbol" link="gtkscintilla-gtkscintillaconstants.html#GtkScintillaMarkerSymbol"/>
+    <function name="enum GtkScintillaMarkerOutline" link="gtkscintilla-gtkscintillaconstants.html#GtkScintillaMarkerOutline"/>
+    <function name="enum GtkScintillaMarginType" link="gtkscintilla-gtkscintillaconstants.html#GtkScintillaMarginType"/>
+    <function name="enum GtkScintillaStylesCommon" link="gtkscintilla-gtkscintillaconstants.html#GtkScintillaStylesCommon"/>
+    <function name="enum GtkScintillaCharacterSet" link="gtkscintilla-gtkscintillaconstants.html#GtkScintillaCharacterSet"/>
+    <function name="enum GtkScintillaIndicatorStyle" link="gtkscintilla-gtkscintillaconstants.html#GtkScintillaIndicatorStyle"/>
+    <function name="enum GtkScintillaIndentView" link="gtkscintilla-gtkscintillaconstants.html#GtkScintillaIndentView"/>
+    <function name="enum GtkScintillaPrintOption" link="gtkscintilla-gtkscintillaconstants.html#GtkScintillaPrintOption"/>
+    <function name="enum GtkScintillaFindOption" link="gtkscintilla-gtkscintillaconstants.html#GtkScintillaFindOption"/>
+    <function name="enum GtkScintillaFoldLevel" link="gtkscintilla-gtkscintillaconstants.html#GtkScintillaFoldLevel"/>
+    <function name="enum GtkScintillaFoldFlag" link="gtkscintilla-gtkscintillaconstants.html#GtkScintillaFoldFlag"/>
+    <function name="enum GtkScintillaWrap" link="gtkscintilla-gtkscintillaconstants.html#GtkScintillaWrap"/>
+    <function name="enum GtkScintillaWrapVisualFlag" link="gtkscintilla-gtkscintillaconstants.html#GtkScintillaWrapVisualFlag"/>
+    <function name="enum GtkScintillaWrapVisualLocation" link="gtkscintilla-gtkscintillaconstants.html#GtkScintillaWrapVisualLocation"/>
+    <function name="enum GtkScintillaWrapIndentMode" link="gtkscintilla-gtkscintillaconstants.html#GtkScintillaWrapIndentMode"/>
+    <function name="enum GtkScintillaLineCache" link="gtkscintilla-gtkscintillaconstants.html#GtkScintillaLineCache"/>
+    <function name="enum GtkScintillaFontQuality" link="gtkscintilla-gtkscintillaconstants.html#GtkScintillaFontQuality"/>
+    <function name="enum GtkScintillaMultiPaste" link="gtkscintilla-gtkscintillaconstants.html#GtkScintillaMultiPaste"/>
+    <function name="enum GtkScintillaEdgeVisualStyle" link="gtkscintilla-gtkscintillaconstants.html#GtkScintillaEdgeVisualStyle"/>
+    <function name="enum GtkScintillaStatus" link="gtkscintilla-gtkscintillaconstants.html#GtkScintillaStatus"/>
+    <function name="enum GtkScintillaCursorShape" link="gtkscintilla-gtkscintillaconstants.html#GtkScintillaCursorShape"/>
+    <function name="enum GtkScintillaCaretPolicy" link="gtkscintilla-gtkscintillaconstants.html#GtkScintillaCaretPolicy"/>
+    <function name="enum GtkScintillaSelectionMode" link="gtkscintilla-gtkscintillaconstants.html#GtkScintillaSelectionMode"/>
+    <function name="enum GtkScintillaCaretSticky" link="gtkscintilla-gtkscintillaconstants.html#GtkScintillaCaretSticky"/>
+    <function name="enum GtkScintillaCaretStyle" link="gtkscintilla-gtkscintillaconstants.html#GtkScintillaCaretStyle"/>
+    <function name="enum GtkScintillaAnnotationVisible" link="gtkscintilla-gtkscintillaconstants.html#GtkScintillaAnnotationVisible"/>
+    <function name="enum GtkScintillaVirtualSpace" link="gtkscintilla-gtkscintillaconstants.html#GtkScintillaVirtualSpace"/>
+    <function name="enum GtkScintillaModificationFlags" link="gtkscintilla-gtkscintillaconstants.html#GtkScintillaModificationFlags"/>
+    <function name="enum GtkScintillaKeys" link="gtkscintilla-gtkscintillaconstants.html#GtkScintillaKeys"/>
+    <function name="enum GtkScintillaKeyMod" link="gtkscintilla-gtkscintillaconstants.html#GtkScintillaKeyMod"/>
+    <function name="enum GtkScintillaLexers" link="gtkscintilla-gtkscintillaconstants.html#GtkScintillaLexers"/>
+  </functions>
+</book>

@@ -1,0 +1,92 @@
+#!/usr/bin/env python
+
+import os
+import sys
+import subprocess
+import time
+from optparse import OptionParser
+
+if __name__ == "__main__":
+	
+	parser = OptionParser()
+	
+	parser.add_option('-s', metavar='SRCDIR', dest='src_dir',
+		help='directory path to store source code')
+	
+	parser.add_option('-S', metavar='SCIDIR', dest='sci_dir',
+		help='directory path of Scintilla source files (src/)')
+	
+	parser.add_option('-i', metavar='IFACE', dest='iface_file',
+		help='file path to Scintilla.iface file')
+	
+	opts, args = parser.parse_args()
+	
+	if not opts.src_dir:
+		parser.error('missing source code dir (-s)')
+	if not opts.sci_dir:
+		parser.error('missing scintilla source code dir (-S)')
+	if not opts.iface_file:
+		parser.error('missing scintilla iface file (-i)')
+		
+	this_dir = os.path.dirname(__file__)
+	
+	#Usage: %prog -H CHDR /path/to/Scintilla.iface
+	#Usage: %prog -c CSRC -H CHDR /path/to/Scintilla.iface
+	#Usage: %prog -H CHEADER -o LEXDIR /path/to/Scintilla.iface
+	
+	const_script = os.path.abspath(os.path.join(this_dir, 'process-constants'))
+	#event_script = os.path.join(this_dir, 'process-events')
+	func_script = os.path.abspath(os.path.join(this_dir, 'process-functions'))
+	lex_script = os.path.abspath(os.path.join(this_dir, 'process-lexers'))
+	
+	const_header = os.path.abspath(os.path.join(opts.src_dir, "gtkscintillaconstants.h"))
+	func_source = os.path.abspath(os.path.join(opts.src_dir, "gtkscintillafunctions.c"))
+	func_header = os.path.abspath(os.path.join(opts.src_dir, "gtkscintillafunctions.h"))
+	lex_header = os.path.abspath(os.path.join(opts.src_dir, "gtkscintillalexers.h"))
+
+	print "** Generating Scintilla bindings..."
+	
+	tt = time.time()
+	
+	start_time = time.time()
+	subprocess.call(['python', const_script, '-H', const_header, opts.iface_file])
+	print "** Processed constants in %d seconds" % (time.time()-start_time)
+	
+	start_time = time.time()
+	subprocess.call(['python', func_script, '-c', func_source, '-H', func_header, opts.iface_file])
+	print "** Processed functions in %d seconds" % (time.time()-start_time)
+	
+	start_time = time.time()
+	subprocess.call(['python', lex_script, '-H', lex_header, '-d', opts.sci_dir, opts.iface_file])
+	end_time = time.time()
+	print "** Processed lexers in %d seconds" % (end_time-start_time)
+	
+	start_time = time.time()
+	
+	main_header = os.path.abspath(os.path.join(opts.src_dir, "gtkscintilla.h"))
+	main_header_template = open(main_header, "w").read()
+	print "Wrote main header in %d seconds" % (time.time()-start_time)
+	
+	print "** All files generated in %d seconds" % (time.time() - tt)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

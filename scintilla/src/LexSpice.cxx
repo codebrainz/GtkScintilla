@@ -36,9 +36,9 @@ static void ColouriseDocument(
     Accessor &styler);
 
 static const char * const spiceWordListDesc[] = {
-    "Keywords",        // SPICE command
-    "Keywords2",    // SPICE functions
-    "Keywords3",    // SPICE params
+    "Command",
+    "Functions",
+    "Params",
     0
 };
 

@@ -2118,12 +2118,12 @@ static const char * const htmlWordListDesc[] = {
 };
 
 static const char * const phpscriptWordListDesc[] = {
-	"", //Unused
-	"", //Unused
-	"", //Unused
-	"", //Unused
+	"Unused", 
+	"Unused", 
+	"Unused", 
+	"Unused", 
 	"PHP keywords",
-	"", //Unused
+	"Unused",
 	0,
 };
 

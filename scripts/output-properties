@@ -1,0 +1,297 @@
+#!/usr/bin/env python
+
+from collections import namedtuple
+from sciface.function import Function
+from sciface import fixups
+
+if __name__ == "__main__":
+
+	import sys
+	from optparse import OptionParser
+	
+	p = OptionParser(
+			usage='Usage: %prog [options] FILE',
+			description='Output function prototypes and/or function ' +
+					'definitions for all functions in the ' +
+					'Scintilla.iface file specified in FILE argument.')
+	
+	p.add_option('-n', dest='ns', metavar='PREFIX', 
+		default='gtk_scintilla',
+		help='namespace to prefix to all function names')
+	
+	opts, args = p.parse_args()
+
+	if len(args) < 1:
+		p.error('missing interface FILE')
+	
+	if len(args) > 1:
+		p.error('too many arguments for FILE')
+
+	props = []
+	all_props = []
+	get_props = []
+	set_props = []
+	for func in Function.iter_functions(args[0], opts.ns):
+		fp = func.params
+		if fp[0] is not None and fp[1] is None or fp[0] is None and fp[1] is not None:
+			#if func.name.startswith("get_"):
+			#	print func.name.replace("get_","")
+			if func.name.startswith("set_"):
+				if func.name.replace("set_","") not in props:
+					props.append(func.name.replace("set_",""))
+				set_props.append(func)
+				if fp[0] is not None:
+					all_props.append("\t%s %s;" % (fixups.replace_type(fp[0][0]), func.name.replace("set_", "")))
+				elif fp[1] is not None:
+					all_props.append("\t%s %s;" % (fixups.replace_type(fp[1][0]), func.name.replace("set_", "")))
+		if fp[0] is None and fp[1] is None:
+			if func.name.startswith("get_"):
+				if func.name.replace("get_","") not in props:
+					props.append(func.name.replace("get_",""))
+				get_props.append(func)
+				all_props.append("\t%s %s;" % (fixups.replace_type(func.return_type), func.name.replace("get_","")))
+
+	# print enum
+	def doenum():
+		sys.stdout.write("enum\n{\n")
+		sys.stdout.flush()
+		for p in props:
+			sys.stdout.write("\tPROP_%s,\n" % p.upper())
+			sys.stdout.flush()
+		sys.stdout.write("};\n")
+		sys.stdout.flush()
+	#doenum()
+	
+	def doprivmembers():
+		for prop in sorted(list(set(all_props))):
+			print prop.replace("const ","")
+	#doprivmembers()
+
+	VALUE_SET_REPLACEMENTS = {
+		"int": "g_value_set_int", 
+		"bool": "g_value_set_boolean", 
+		"position": "g_value_set_int",
+		"colour": "g_value_set_int",
+		"string": "g_value_set_static_string",
+		"stringresult": "g_value_set_string", 
+		"cells": "g_value_set_long",
+		"findtext": "g_value_set_pointer",
+		"formatrange": "g_value_set_pointer",
+		"textrange": "g_value_set_pointer",
+		"keymod": "g_value_set_ulong"
+	}
+	VALUE_GET_REPLACEMENTS = {
+		"int": "g_value_get_int", 
+		"bool": "g_value_get_boolean", 
+		"position": "g_value_get_int",
+		"colour": "g_value_get_int",
+		"string": "g_value_get_static_string",
+		"stringresult": "g_value_get_string", 
+		"cells": "g_value_get_long",
+		"findtext": "g_value_get_pointer",
+		"formatrange": "g_value_get_pointer",
+		"textrange": "g_value_get_pointer",
+		"keymod": "g_value_get_ulong"
+	}
+
+	def doprintgetproperty():
+		
+		print """static void 
+gtk_scintilla_get_property(GObject *object, guint property_id, GValue *value, GParamSpec *pspec)
+{
+	GtkScintilla *self = GTK_SCINTILLA(object);
+
+	switch (property_id)
+	{"""
+		for prop in get_props:
+			valfunc = VALUE_SET_REPLACEMENTS[prop.return_type]
+			n = prop.name.replace("get_", "")
+			print """		case PROP_%s:
+			%s(value, gtk_scintilla_get_%s(self));
+			break;""" % (n.upper(), valfunc, n)
+			
+		print """		default:
+			G_OBJECT_WARN_INVALID_PROPERTY_ID(object, property_id, pspec);
+			break;
+	}
+}"""
+	#doprintgetproperty()
+
+	def doprintsetproperty():
+		
+		print """static void 
+gtk_scintilla_set_property(GObject *object, guint property_id, GValue *value, GParamSpec *pspec)
+{
+	GtkScintilla *self = GTK_SCINTILLA(object);
+
+	switch (property_id)
+	{"""
+		for prop in set_props:
+			valfunc = ''
+			if prop.params[0] is not None:
+				valfunc = VALUE_GET_REPLACEMENTS[prop.params[0][0]]
+			elif prop.params[1] is not None:
+				valfunc = VALUE_GET_REPLACEMENTS[prop.params[1][0]]
+			n = prop.name.replace("set_", "")
+			print """		case PROP_%s:
+			gtk_scintilla_set_%s(self, %s));
+			break;""" % (n.upper(), n, "%s(value)" % valfunc)
+			
+		print """		default:
+			G_OBJECT_WARN_INVALID_PROPERTY_ID(object, property_id, pspec);
+			break;
+	}
+}"""
+	#doprintsetproperty()
+	
+#-------------------------------------------------------------------------------
+
+	PROP_SPEC_NUMBER_TYPES = ["int", "position", "colour", "cells", "keymod"]
+	
+	PROP_SPEC_LIMITS = {
+		"int": ("G_MAXINT", "G_MININT"),
+		"position": ("G_MAXINT", "G_MININT"),
+		"colour": ("G_MAXINT", "G_MININT"),
+		"cells": ("G_MAXLONG", "G_MINLONG"),
+		"keymod": ("G_MAXULONG", "0")
+	}
+	
+	PROP_SPEC_REPLACEMENTS = {
+		"int": "g_param_spec_int", 
+		"bool": "g_param_spec_boolean", 
+		"position": "g_param_spec_int",
+		"colour": "g_param_spec_int",
+		"string": "g_param_spec_static_string",
+		"stringresult": "g_param_spec_string", 
+		"cells": "g_param_spec_long",
+		"findtext": "g_param_spec_pointer",
+		"formatrange": "g_param_spec_pointer",
+		"textrange": "g_param_spec_pointer",
+		"keymod": "g_param_spec_ulong"
+	}
+	
+	def is_read(name):
+		for p in get_props:
+			if p.name == name: 
+				return True
+		else: return False
+			
+	def is_write(name):
+		for p in set_props:
+			if p.name == name: 
+				return True
+		else: return False
+	
+	
+	prop_list = []
+	class Property:
+		
+		def __init__(self, name, type=None, read=False, write=False):
+			self.name = name
+			self.type = type
+			self.read = read
+			self.write = write
+		
+		def __str__(self):
+			return "<property name=%s, type=%s, read=%s, write=%s>" % (
+				self.name, self.type, str(self.read), str(self.write)
+			)
+		
+		def __repr__(self):
+			return self.__str__()
+
+	def dopropdef():
+		
+		for p in get_props + set_props:
+			
+			n = p.name.replace("get_","").replace("set_","")
+			
+			rt=''
+			if p.name.startswith("get_"):
+				rt = p.return_type
+			elif p.name.startswith("set_"):
+				if p.params[0] is not None:
+					rt = p.params[0][0]
+				elif p.params[1] is not None:
+					rt = p.params[1][0]
+			
+			readable = is_read(p.name)
+			writable = is_write(p.name)
+			
+			for prop in prop_list:
+				if prop.name == n:
+					if readable:
+						prop.read = True
+					if writable:
+						prop.write = True
+					break
+			else:
+				prop = Property(n, rt, readable, writable)
+				prop_list.append(prop)
+	
+		for p in prop_list:
+			
+			specfunc = PROP_SPEC_REPLACEMENTS[p.type]
+			
+			flags = ''
+			propdesc = ''
+			if p.read and not p.write:
+				flags = 'G_PARAM_READABLE'
+				propdesc = 'Get the %s property' % p.name.replace("_","-")
+			elif p.write and not p.read:
+				flags = 'G_PARAM_WRITABLE'
+				propdesc = 'Set the %s property' % p.name.replace("_","-")
+			elif p.read and p.write:
+				flags = 'G_PARAM_READWRITE'
+				propdesc = 'Get/set the %s property' % p.name.replace("_","-")
+			
+			if not flags: continue
+			
+			_min = 0
+			_max = 0
+			_default = 0
+			_range_params = ''
+			if p.type in PROP_SPEC_NUMBER_TYPES:
+				_min = PROP_SPEC_LIMITS[p.type][1]
+				_max = PROP_SPEC_LIMITS[p.type][0]
+				_range_params = '%s, %s, %s, ' % (_min, _max, _default)
+			
+			propdashname = p.name.replace("_","-")
+			propnick = p.name.replace("_", " ")
+			propnick = propnick[0].upper() + propnick[1:]
+			
+			if _range_params:
+				pstr = '\tpspec = %s("%s", \n\t\t\t"%s", \n\t\t\t"%s", \n\t\t\t%s \n\t\t\t%s);' % (
+					specfunc, propdashname, propnick, propdesc, _range_params, flags)
+			elif p.type == "bool":
+				pstr = '\tpspec = %s("%s", \n\t\t\t"%s", \n\t\t\t"%s", FALSE, \n\t\t\t%s);' % (
+					specfunc, propdashname, propnick, propdesc, flags)
+			else:
+				pstr = '\tpspec = %s("%s", \n\t\t\t"%s", \n\t\t\t"%s", \n\t\t\t%s);' % (
+					specfunc, propdashname, propnick, propdesc, flags)
+				
+			
+			print pstr
+			print '\tg_object_class_install_property(object_class, PROP_%s, pspec);' % p.name.upper()
+		
+	dopropdef()
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	
+

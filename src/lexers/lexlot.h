@@ -1,0 +1,26 @@
+/* 
+ *
+ * This file is auto-generated, do not edit. 
+ *
+ * lexlot.h - GScintilla LOT Lexer
+ *
+ */
+
+#ifndef GSCI_LEXER_LOT_H
+#define GSCI_LEXER_LOT_H
+
+G_BEGIN_DECLS
+
+/* Lexer states */
+#define GTK_SCINTILLA_LEXER_LOT_STYLE_DEFAULT 0
+#define GTK_SCINTILLA_LEXER_LOT_STYLE_HEADER 1
+#define GTK_SCINTILLA_LEXER_LOT_STYLE_BREAK 2
+#define GTK_SCINTILLA_LEXER_LOT_STYLE_SET 3
+#define GTK_SCINTILLA_LEXER_LOT_STYLE_PASS 4
+#define GTK_SCINTILLA_LEXER_LOT_STYLE_FAIL 5
+#define GTK_SCINTILLA_LEXER_LOT_STYLE_ABORT 6
+
+		
+G_END_DECLS
+
+#endif /* ifndef GSCI_LOT_H */

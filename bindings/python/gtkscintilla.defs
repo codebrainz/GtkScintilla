@@ -1,0 +1,26 @@
+;; -*- scheme -*-
+; object definitions ...
+(define-object Scintilla
+  (in-module "Gtk")
+  (parent "GtkFrame")
+  (c-name "GtkScintilla")
+  (gtype-id "GTK_TYPE_SCINTILLA")
+)
+
+;; Enumerations and flags ...
+
+
+;; From gtkscintilla.h
+
+(define-function gtk_scintilla_get_type
+  (c-name "gtk_scintilla_get_type")
+  (return-type "GType")
+)
+
+(define-function gtk_scintilla_new
+  (c-name "gtk_scintilla_new")
+  (is-constructor-of "GtkScintilla")
+  (return-type "GtkWidget*")
+)
+
+

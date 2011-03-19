@@ -438,9 +438,9 @@ void FoldCamlDoc(
 }
 
 static const char * const camlWordListDesc[] = {
-	"Keywords",		// primary Objective Caml keywords
-	"Keywords2",	// "optional" keywords (typically from Pervasives)
-	"Keywords3",	// "optional" keywords (typically typenames)
+	"Primary Objective Caml keywords",
+	"Optional keywords (typically from Pervasives)",
+	"Optional keywords (typically typenames)",	
 	0
 };
 

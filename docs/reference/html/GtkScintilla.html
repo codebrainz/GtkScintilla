@@ -1,0 +1,1640 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>GtkScintilla</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.75.2">
+<link rel="home" href="index.html" title="gtkscintilla Reference Manual">
+<link rel="up" href="ch01.html" title="[Insert title here]">
+<link rel="prev" href="ch01.html" title="[Insert title here]">
+<link rel="next" href="gtkscintilla-gtkscintillafunctions.html" title="gtkscintillafunctions">
+<meta name="generator" content="GTK-Doc V1.15 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2">
+<tr valign="middle">
+<td><a accesskey="p" href="ch01.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td>
+<td><a accesskey="u" href="ch01.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td>
+<th width="100%" align="center">gtkscintilla Reference Manual</th>
+<td><a accesskey="n" href="gtkscintilla-gtkscintillafunctions.html"><img src="right.png" width="24" height="24" border="0" alt="Next"></a></td>
+</tr>
+<tr><td colspan="5" class="shortcuts">
+<a href="#GtkScintilla.synopsis" class="shortcut">Top</a>
+                   | 
+                  <a href="#GtkScintilla.description" class="shortcut">Description</a>
+                   | 
+                  <a href="#GtkScintilla.object-hierarchy" class="shortcut">Object Hierarchy</a>
+                   | 
+                  <a href="#GtkScintilla.implemented-interfaces" class="shortcut">Implemented Interfaces</a>
+                   | 
+                  <a href="#GtkScintilla.properties" class="shortcut">Properties</a>
+                   | 
+                  <a href="#GtkScintilla.signals" class="shortcut">Signals</a>
+</td></tr>
+</table>
+<div class="refentry" title="GtkScintilla">
+<a name="GtkScintilla"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="GtkScintilla.top_of_page"></a>GtkScintilla</span></h2>
+<p>GtkScintilla — The main editing widget</p>
+</td>
+<td valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsect1" title="Stability Level">
+<a name="GtkScintilla.stability-level"></a><h2>Stability Level</h2>
+Unstable, unless otherwise indicated
+</div>
+<div class="refsynopsisdiv" title="Synopsis">
+<a name="GtkScintilla.synopsis"></a><h2>Synopsis</h2>
+<pre class="synopsis">
+#include &lt;gtkscintilla.h&gt;
+
+#define             <a class="link" href="GtkScintilla.html#PLAT-GTK:CAPS" title="PLAT_GTK">PLAT_GTK</a>
+#define             <a class="link" href="GtkScintilla.html#GTK:CAPS" title="GTK">GTK</a>
+#define             <a class="link" href="GtkScintilla.html#SSM:CAPS" title="SSM()">SSM</a>                                 (s,
+                                                         m,
+                                                         l,
+                                                         w)
+                    <a class="link" href="GtkScintilla.html#GtkScintilla-struct" title="GtkScintilla">GtkScintilla</a>;
+                    <a class="link" href="GtkScintilla.html#GtkScintillaClass" title="GtkScintillaClass">GtkScintillaClass</a>;
+                    <a class="link" href="GtkScintilla.html#GtkScintillaPrivate" title="GtkScintillaPrivate">GtkScintillaPrivate</a>;
+<a href="/usr/share/gtk-doc/html/gtk/GtkWidget.html"><span class="returnvalue">GtkWidget</span></a>*          <a class="link" href="GtkScintilla.html#gtk-scintilla-new" title="gtk_scintilla_new ()">gtk_scintilla_new</a>                   (<em class="parameter"><code><span class="type">void</span></code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="GtkScintilla.html#gtk-scintilla-get-property" title="gtk_scintilla_get_property ()">gtk_scintilla_get_property</a>          (<em class="parameter"><code><a href="/usr/share/gtk-doc/html/gobject/gobject-The-Base-Object-Type.html#GObject"><span class="type">GObject</span></a> *object</code></em>,
+                                                         <em class="parameter"><code><a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#guint"><span class="type">guint</span></a> property_id</code></em>,
+                                                         <em class="parameter"><code><a href="/usr/share/gtk-doc/html/gobject/gobject-Generic-values.html#GValue"><span class="type">GValue</span></a> *value</code></em>,
+                                                         <em class="parameter"><code><a href="/usr/share/gtk-doc/html/gobject/gobject-GParamSpec.html#GParamSpec"><span class="type">GParamSpec</span></a> *pspec</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="GtkScintilla.html#gtk-scintilla-set-property" title="gtk_scintilla_set_property ()">gtk_scintilla_set_property</a>          (<em class="parameter"><code><a href="/usr/share/gtk-doc/html/gobject/gobject-The-Base-Object-Type.html#GObject"><span class="type">GObject</span></a> *object</code></em>,
+                                                         <em class="parameter"><code><a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#guint"><span class="type">guint</span></a> property_id</code></em>,
+                                                         <em class="parameter"><code>const <a href="/usr/share/gtk-doc/html/gobject/gobject-Generic-values.html#GValue"><span class="type">GValue</span></a> *value</code></em>,
+                                                         <em class="parameter"><code><a href="/usr/share/gtk-doc/html/gobject/gobject-GParamSpec.html#GParamSpec"><span class="type">GParamSpec</span></a> *pspec</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="GtkScintilla.html#gtk-scintilla-set-id" title="gtk_scintilla_set_id ()">gtk_scintilla_set_id</a>                (<em class="parameter"><code><a class="link" href="GtkScintilla.html" title="GtkScintilla"><span class="type">GtkScintilla</span></a> *self</code></em>,
+                                                         <em class="parameter"><code><a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gshort"><span class="type">gshort</span></a> id</code></em>);
+<a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#glong"><span class="returnvalue">glong</span></a>               <a class="link" href="GtkScintilla.html#gtk-scintilla-send-message" title="gtk_scintilla_send_message ()">gtk_scintilla_send_message</a>          (<em class="parameter"><code><a class="link" href="GtkScintilla.html" title="GtkScintilla"><span class="type">GtkScintilla</span></a> *self</code></em>,
+                                                         <em class="parameter"><code><a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#guint"><span class="type">guint</span></a> iMessage</code></em>,
+                                                         <em class="parameter"><code><a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gulong"><span class="type">gulong</span></a> wParam</code></em>,
+                                                         <em class="parameter"><code><a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#glong"><span class="type">glong</span></a> lParam</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="GtkScintilla.html#gtk-scintilla-release-resources" title="gtk_scintilla_release_resources ()">gtk_scintilla_release_resources</a>     ();
+<span class="returnvalue">void</span>                <a class="link" href="GtkScintilla.html#gtk-scintilla-update-line-numbers" title="gtk_scintilla_update_line_numbers ()">gtk_scintilla_update_line_numbers</a>   (<em class="parameter"><code><a class="link" href="GtkScintilla.html" title="GtkScintilla"><span class="type">GtkScintilla</span></a> *self</code></em>);
+<a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="GtkScintilla.html#gtk-scintilla-get-line-numbers-visible" title="gtk_scintilla_get_line_numbers_visible ()">gtk_scintilla_get_line_numbers_visible</a>
+                                                        (<em class="parameter"><code><a class="link" href="GtkScintilla.html" title="GtkScintilla"><span class="type">GtkScintilla</span></a> *self</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="GtkScintilla.html#gtk-scintilla-set-line-numbers-visible" title="gtk_scintilla_set_line_numbers_visible ()">gtk_scintilla_set_line_numbers_visible</a>
+                                                        (<em class="parameter"><code><a class="link" href="GtkScintilla.html" title="GtkScintilla"><span class="type">GtkScintilla</span></a> *self</code></em>,
+                                                         <em class="parameter"><code><a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a> visible</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="GtkScintilla.html#gtk-scintilla-set-font" title="gtk_scintilla_set_font ()">gtk_scintilla_set_font</a>              (<em class="parameter"><code><a class="link" href="GtkScintilla.html" title="GtkScintilla"><span class="type">GtkScintilla</span></a> *self</code></em>,
+                                                         <em class="parameter"><code><a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a> style_number</code></em>,
+                                                         <em class="parameter"><code>const <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *font_desc</code></em>);
+<a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *             <a class="link" href="GtkScintilla.html#gtk-scintilla-get-font" title="gtk_scintilla_get_font ()">gtk_scintilla_get_font</a>              (<em class="parameter"><code><a class="link" href="GtkScintilla.html" title="GtkScintilla"><span class="type">GtkScintilla</span></a> *self</code></em>,
+                                                         <em class="parameter"><code><a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a> style_number</code></em>);
+<a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *             <a class="link" href="GtkScintilla.html#gtk-scintilla-get-background-color" title="gtk_scintilla_get_background_color ()">gtk_scintilla_get_background_color</a>  (<em class="parameter"><code><a class="link" href="GtkScintilla.html" title="GtkScintilla"><span class="type">GtkScintilla</span></a> *self</code></em>,
+                                                         <em class="parameter"><code><a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a> style</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="GtkScintilla.html#gtk-scintilla-set-background-color" title="gtk_scintilla_set_background_color ()">gtk_scintilla_set_background_color</a>  (<em class="parameter"><code><a class="link" href="GtkScintilla.html" title="GtkScintilla"><span class="type">GtkScintilla</span></a> *self</code></em>,
+                                                         <em class="parameter"><code><a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a> style</code></em>,
+                                                         <em class="parameter"><code>const <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *color_spec</code></em>);
+<a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *             <a class="link" href="GtkScintilla.html#gtk-scintilla-get-foreground-color" title="gtk_scintilla_get_foreground_color ()">gtk_scintilla_get_foreground_color</a>  (<em class="parameter"><code><a class="link" href="GtkScintilla.html" title="GtkScintilla"><span class="type">GtkScintilla</span></a> *self</code></em>,
+                                                         <em class="parameter"><code><a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a> style</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="GtkScintilla.html#gtk-scintilla-set-foreground-color" title="gtk_scintilla_set_foreground_color ()">gtk_scintilla_set_foreground_color</a>  (<em class="parameter"><code><a class="link" href="GtkScintilla.html" title="GtkScintilla"><span class="type">GtkScintilla</span></a> *self</code></em>,
+                                                         <em class="parameter"><code><a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a> style</code></em>,
+                                                         <em class="parameter"><code>const <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *color_spec</code></em>);
+</pre>
+</div>
+<div class="refsect1" title="Object Hierarchy">
+<a name="GtkScintilla.object-hierarchy"></a><h2>Object Hierarchy</h2>
+<pre class="synopsis">
+  <a href="/usr/share/gtk-doc/html/gobject/gobject-The-Base-Object-Type.html#GObject">GObject</a>
+   +----<a href="/usr/share/gtk-doc/html/gobject/gobject-The-Base-Object-Type.html#GInitiallyUnowned">GInitiallyUnowned</a>
+         +----<a href="/usr/share/gtk-doc/html/gtk/GtkObject.html">GtkObject</a>
+               +----<a href="/usr/share/gtk-doc/html/gtk/GtkWidget.html">GtkWidget</a>
+                     +----<a href="/usr/share/gtk-doc/html/gtk/GtkContainer.html">GtkContainer</a>
+                           +----<a href="/usr/share/gtk-doc/html/gtk/GtkBin.html">GtkBin</a>
+                                 +----<a href="/usr/share/gtk-doc/html/gtk/GtkFrame.html">GtkFrame</a>
+                                       +----GtkScintilla
+</pre>
+</div>
+<div class="refsect1" title="Implemented Interfaces">
+<a name="GtkScintilla.implemented-interfaces"></a><h2>Implemented Interfaces</h2>
+<p>
+GtkScintilla implements
+ AtkImplementorIface and  <a href="/usr/share/gtk-doc/html/gtk/GtkBuildable.html">GtkBuildable</a>.</p>
+</div>
+<div class="refsect1" title="Properties">
+<a name="GtkScintilla.properties"></a><h2>Properties</h2>
+<pre class="synopsis">
+  "<a class="link" href="GtkScintilla.html#GtkScintilla--additional-caret-fore" title='The "additional-caret-fore" property'>additional-caret-fore</a>"    <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write
+  "<a class="link" href="GtkScintilla.html#GtkScintilla--additional-carets-blink" title='The "additional-carets-blink" property'>additional-carets-blink</a>"  <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a>              : Read / Write
+  "<a class="link" href="GtkScintilla.html#GtkScintilla--additional-carets-visible" title='The "additional-carets-visible" property'>additional-carets-visible</a>" <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a>              : Read / Write
+  "<a class="link" href="GtkScintilla.html#GtkScintilla--additional-sel-alpha" title='The "additional-sel-alpha" property'>additional-sel-alpha</a>"     <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write
+  "<a class="link" href="GtkScintilla.html#GtkScintilla--additional-sel-back" title='The "additional-sel-back" property'>additional-sel-back</a>"      <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Write
+  "<a class="link" href="GtkScintilla.html#GtkScintilla--additional-sel-fore" title='The "additional-sel-fore" property'>additional-sel-fore</a>"      <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Write
+  "<a class="link" href="GtkScintilla.html#GtkScintilla--additional-selection-typing" title='The "additional-selection-typing" property'>additional-selection-typing</a>" <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a>              : Read / Write
+  "<a class="link" href="GtkScintilla.html#GtkScintilla--anchor" title='The "anchor" property'>anchor</a>"                   <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write
+  "<a class="link" href="GtkScintilla.html#GtkScintilla--backspace-unindents" title='The "backspace-unindents" property'>backspace-unindents</a>"      <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a>              : Read / Write
+  "<a class="link" href="GtkScintilla.html#GtkScintilla--buffered-draw" title='The "buffered-draw" property'>buffered-draw</a>"            <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a>              : Read / Write
+  "<a class="link" href="GtkScintilla.html#GtkScintilla--caret-fore" title='The "caret-fore" property'>caret-fore</a>"               <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write
+  "<a class="link" href="GtkScintilla.html#GtkScintilla--caret-line-back" title='The "caret-line-back" property'>caret-line-back</a>"          <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write
+  "<a class="link" href="GtkScintilla.html#GtkScintilla--caret-line-back-alpha" title='The "caret-line-back-alpha" property'>caret-line-back-alpha</a>"    <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write
+  "<a class="link" href="GtkScintilla.html#GtkScintilla--caret-line-visible" title='The "caret-line-visible" property'>caret-line-visible</a>"       <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a>              : Read / Write
+  "<a class="link" href="GtkScintilla.html#GtkScintilla--caret-period" title='The "caret-period" property'>caret-period</a>"             <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write
+  "<a class="link" href="GtkScintilla.html#GtkScintilla--caret-sticky" title='The "caret-sticky" property'>caret-sticky</a>"             <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write
+  "<a class="link" href="GtkScintilla.html#GtkScintilla--caret-style" title='The "caret-style" property'>caret-style</a>"              <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write
+  "<a class="link" href="GtkScintilla.html#GtkScintilla--caret-width" title='The "caret-width" property'>caret-width</a>"              <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write
+  "<a class="link" href="GtkScintilla.html#GtkScintilla--character-pointer" title='The "character-pointer" property'>character-pointer</a>"        <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read
+  "<a class="link" href="GtkScintilla.html#GtkScintilla--code-page" title='The "code-page" property'>code-page</a>"                <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write
+  "<a class="link" href="GtkScintilla.html#GtkScintilla--control-char-symbol" title='The "control-char-symbol" property'>control-char-symbol</a>"      <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write
+  "<a class="link" href="GtkScintilla.html#GtkScintilla--current-pos" title='The "current-pos" property'>current-pos</a>"              <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write
+  "<a class="link" href="GtkScintilla.html#GtkScintilla--cursor" title='The "cursor" property'>cursor</a>"                   <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write
+  "<a class="link" href="GtkScintilla.html#GtkScintilla--direct-function" title='The "direct-function" property'>direct-function</a>"          <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read
+  "<a class="link" href="GtkScintilla.html#GtkScintilla--direct-pointer" title='The "direct-pointer" property'>direct-pointer</a>"           <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read
+  "<a class="link" href="GtkScintilla.html#GtkScintilla--doc-pointer" title='The "doc-pointer" property'>doc-pointer</a>"              <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write
+  "<a class="link" href="GtkScintilla.html#GtkScintilla--edge-colour" title='The "edge-colour" property'>edge-colour</a>"              <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write
+  "<a class="link" href="GtkScintilla.html#GtkScintilla--edge-column" title='The "edge-column" property'>edge-column</a>"              <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write
+  "<a class="link" href="GtkScintilla.html#GtkScintilla--edge-mode" title='The "edge-mode" property'>edge-mode</a>"                <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write
+  "<a class="link" href="GtkScintilla.html#GtkScintilla--end-at-last-line" title='The "end-at-last-line" property'>end-at-last-line</a>"         <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a>              : Read / Write
+  "<a class="link" href="GtkScintilla.html#GtkScintilla--end-styled" title='The "end-styled" property'>end-styled</a>"               <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read
+  "<a class="link" href="GtkScintilla.html#GtkScintilla--eol-mode" title='The "eol-mode" property'>eol-mode</a>"                 <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write
+  "<a class="link" href="GtkScintilla.html#GtkScintilla--extra-ascent" title='The "extra-ascent" property'>extra-ascent</a>"             <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write
+  "<a class="link" href="GtkScintilla.html#GtkScintilla--extra-descent" title='The "extra-descent" property'>extra-descent</a>"            <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write
+  "<a class="link" href="GtkScintilla.html#GtkScintilla--first-visible-line" title='The "first-visible-line" property'>first-visible-line</a>"       <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write
+  "<a class="link" href="GtkScintilla.html#GtkScintilla--focus" title='The "focus" property'>focus</a>"                    <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a>              : Read / Write
+  "<a class="link" href="GtkScintilla.html#GtkScintilla--fold-flags" title='The "fold-flags" property'>fold-flags</a>"               <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Write
+  "<a class="link" href="GtkScintilla.html#GtkScintilla--font-quality" title='The "font-quality" property'>font-quality</a>"             <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write
+  "<a class="link" href="GtkScintilla.html#GtkScintilla--h-scroll-bar" title='The "h-scroll-bar" property'>h-scroll-bar</a>"             <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a>              : Read / Write
+  "<a class="link" href="GtkScintilla.html#GtkScintilla--highlight-guide" title='The "highlight-guide" property'>highlight-guide</a>"          <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write
+  "<a class="link" href="GtkScintilla.html#GtkScintilla--hotspot-active-back" title='The "hotspot-active-back" property'>hotspot-active-back</a>"      <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read
+  "<a class="link" href="GtkScintilla.html#GtkScintilla--hotspot-active-fore" title='The "hotspot-active-fore" property'>hotspot-active-fore</a>"      <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read
+  "<a class="link" href="GtkScintilla.html#GtkScintilla--hotspot-active-underline" title='The "hotspot-active-underline" property'>hotspot-active-underline</a>" <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a>              : Read / Write
+  "<a class="link" href="GtkScintilla.html#GtkScintilla--hotspot-single-line" title='The "hotspot-single-line" property'>hotspot-single-line</a>"      <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a>              : Read / Write
+  "<a class="link" href="GtkScintilla.html#GtkScintilla--indent" title='The "indent" property'>indent</a>"                   <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write
+  "<a class="link" href="GtkScintilla.html#GtkScintilla--indentation-guides" title='The "indentation-guides" property'>indentation-guides</a>"       <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write
+  "<a class="link" href="GtkScintilla.html#GtkScintilla--indicator-current" title='The "indicator-current" property'>indicator-current</a>"        <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write
+  "<a class="link" href="GtkScintilla.html#GtkScintilla--indicator-value" title='The "indicator-value" property'>indicator-value</a>"          <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write
+  "<a class="link" href="GtkScintilla.html#GtkScintilla--keys-unicode" title='The "keys-unicode" property'>keys-unicode</a>"             <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a>              : Read / Write
+  "<a class="link" href="GtkScintilla.html#GtkScintilla--layout-cache" title='The "layout-cache" property'>layout-cache</a>"             <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write
+  "<a class="link" href="GtkScintilla.html#GtkScintilla--length" title='The "length" property'>length</a>"                   <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read
+  "<a class="link" href="GtkScintilla.html#GtkScintilla--lexer" title='The "lexer" property'>lexer</a>"                    <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write
+  "<a class="link" href="GtkScintilla.html#GtkScintilla--lexer-language" title='The "lexer-language" property'>lexer-language</a>"           <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a>*                : Read / Write
+  "<a class="link" href="GtkScintilla.html#GtkScintilla--line-count" title='The "line-count" property'>line-count</a>"               <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read
+  "<a class="link" href="GtkScintilla.html#GtkScintilla--line-numbers-visible" title='The "line-numbers-visible" property'>line-numbers-visible</a>"     <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a>              : Read / Write
+  "<a class="link" href="GtkScintilla.html#GtkScintilla--main-selection" title='The "main-selection" property'>main-selection</a>"           <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write
+  "<a class="link" href="GtkScintilla.html#GtkScintilla--margin-left" title='The "margin-left" property'>margin-left</a>"              <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write
+  "<a class="link" href="GtkScintilla.html#GtkScintilla--margin-right" title='The "margin-right" property'>margin-right</a>"             <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write
+  "<a class="link" href="GtkScintilla.html#GtkScintilla--max-line-state" title='The "max-line-state" property'>max-line-state</a>"           <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read
+  "<a class="link" href="GtkScintilla.html#GtkScintilla--mod-event-mask" title='The "mod-event-mask" property'>mod-event-mask</a>"           <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write
+  "<a class="link" href="GtkScintilla.html#GtkScintilla--modify" title='The "modify" property'>modify</a>"                   <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a>              : Read
+  "<a class="link" href="GtkScintilla.html#GtkScintilla--mouse-down-captures" title='The "mouse-down-captures" property'>mouse-down-captures</a>"      <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a>              : Read / Write
+  "<a class="link" href="GtkScintilla.html#GtkScintilla--mouse-dwell-time" title='The "mouse-dwell-time" property'>mouse-dwell-time</a>"         <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write
+  "<a class="link" href="GtkScintilla.html#GtkScintilla--multi-paste" title='The "multi-paste" property'>multi-paste</a>"              <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write
+  "<a class="link" href="GtkScintilla.html#GtkScintilla--multiple-selection" title='The "multiple-selection" property'>multiple-selection</a>"       <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a>              : Read / Write
+  "<a class="link" href="GtkScintilla.html#GtkScintilla--overtype" title='The "overtype" property'>overtype</a>"                 <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a>              : Read / Write
+  "<a class="link" href="GtkScintilla.html#GtkScintilla--paste-convert-endings" title='The "paste-convert-endings" property'>paste-convert-endings</a>"    <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a>              : Read / Write
+  "<a class="link" href="GtkScintilla.html#GtkScintilla--position-cache" title='The "position-cache" property'>position-cache</a>"           <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write
+  "<a class="link" href="GtkScintilla.html#GtkScintilla--print-colour-mode" title='The "print-colour-mode" property'>print-colour-mode</a>"        <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write
+  "<a class="link" href="GtkScintilla.html#GtkScintilla--print-magnification" title='The "print-magnification" property'>print-magnification</a>"      <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write
+  "<a class="link" href="GtkScintilla.html#GtkScintilla--print-wrap-mode" title='The "print-wrap-mode" property'>print-wrap-mode</a>"          <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write
+  "<a class="link" href="GtkScintilla.html#GtkScintilla--read-only" title='The "read-only" property'>read-only</a>"                <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a>              : Read / Write
+  "<a class="link" href="GtkScintilla.html#GtkScintilla--rectangular-selection-anchor" title='The "rectangular-selection-anchor" property'>rectangular-selection-anchor</a>" <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write
+  "<a class="link" href="GtkScintilla.html#GtkScintilla--rectangular-selection-anchor-virtual-space" title='The "rectangular-selection-anchor-virtual-space" property'>rectangular-selection-anchor-virtual-space</a>" <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write
+  "<a class="link" href="GtkScintilla.html#GtkScintilla--rectangular-selection-caret" title='The "rectangular-selection-caret" property'>rectangular-selection-caret</a>" <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write
+  "<a class="link" href="GtkScintilla.html#GtkScintilla--rectangular-selection-caret-virtual-space" title='The "rectangular-selection-caret-virtual-space" property'>rectangular-selection-caret-virtual-space</a>" <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write
+  "<a class="link" href="GtkScintilla.html#GtkScintilla--rectangular-selection-modifier" title='The "rectangular-selection-modifier" property'>rectangular-selection-modifier</a>" <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write
+  "<a class="link" href="GtkScintilla.html#GtkScintilla--scroll-width" title='The "scroll-width" property'>scroll-width</a>"             <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write
+  "<a class="link" href="GtkScintilla.html#GtkScintilla--scroll-width-tracking" title='The "scroll-width-tracking" property'>scroll-width-tracking</a>"    <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a>              : Read / Write
+  "<a class="link" href="GtkScintilla.html#GtkScintilla--search-flags" title='The "search-flags" property'>search-flags</a>"             <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write
+  "<a class="link" href="GtkScintilla.html#GtkScintilla--sel-alpha" title='The "sel-alpha" property'>sel-alpha</a>"                <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write
+  "<a class="link" href="GtkScintilla.html#GtkScintilla--sel-eol-filled" title='The "sel-eol-filled" property'>sel-eol-filled</a>"           <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a>              : Read / Write
+  "<a class="link" href="GtkScintilla.html#GtkScintilla--selection-end" title='The "selection-end" property'>selection-end</a>"            <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write
+  "<a class="link" href="GtkScintilla.html#GtkScintilla--selection-mode" title='The "selection-mode" property'>selection-mode</a>"           <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write
+  "<a class="link" href="GtkScintilla.html#GtkScintilla--selection-start" title='The "selection-start" property'>selection-start</a>"          <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write
+  "<a class="link" href="GtkScintilla.html#GtkScintilla--selections" title='The "selections" property'>selections</a>"               <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read
+  "<a class="link" href="GtkScintilla.html#GtkScintilla--status" title='The "status" property'>status</a>"                   <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write
+  "<a class="link" href="GtkScintilla.html#GtkScintilla--style-bits" title='The "style-bits" property'>style-bits</a>"               <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write
+  "<a class="link" href="GtkScintilla.html#GtkScintilla--style-bits-needed" title='The "style-bits-needed" property'>style-bits-needed</a>"        <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read
+  "<a class="link" href="GtkScintilla.html#GtkScintilla--tab-indents" title='The "tab-indents" property'>tab-indents</a>"              <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a>              : Read / Write
+  "<a class="link" href="GtkScintilla.html#GtkScintilla--tab-width" title='The "tab-width" property'>tab-width</a>"                <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write
+  "<a class="link" href="GtkScintilla.html#GtkScintilla--target-end" title='The "target-end" property'>target-end</a>"               <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write
+  "<a class="link" href="GtkScintilla.html#GtkScintilla--target-start" title='The "target-start" property'>target-start</a>"             <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write
+  "<a class="link" href="GtkScintilla.html#GtkScintilla--text" title='The "text" property'>text</a>"                     <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a>*                : Read / Write
+  "<a class="link" href="GtkScintilla.html#GtkScintilla--text-length" title='The "text-length" property'>text-length</a>"              <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read
+  "<a class="link" href="GtkScintilla.html#GtkScintilla--two-phase-draw" title='The "two-phase-draw" property'>two-phase-draw</a>"           <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a>              : Read / Write
+  "<a class="link" href="GtkScintilla.html#GtkScintilla--undo-collection" title='The "undo-collection" property'>undo-collection</a>"          <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a>              : Read / Write
+  "<a class="link" href="GtkScintilla.html#GtkScintilla--use-palette" title='The "use-palette" property'>use-palette</a>"              <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a>              : Read / Write
+  "<a class="link" href="GtkScintilla.html#GtkScintilla--use-tabs" title='The "use-tabs" property'>use-tabs</a>"                 <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a>              : Read / Write
+  "<a class="link" href="GtkScintilla.html#GtkScintilla--view-eol" title='The "view-eol" property'>view-eol</a>"                 <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a>              : Read / Write
+  "<a class="link" href="GtkScintilla.html#GtkScintilla--view-white-space" title='The "view-white-space" property'>view-white-space</a>"         <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write
+  "<a class="link" href="GtkScintilla.html#GtkScintilla--virtual-space-options" title='The "virtual-space-options" property'>virtual-space-options</a>"    <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write
+  "<a class="link" href="GtkScintilla.html#GtkScintilla--vscrollbar" title='The "vscrollbar" property'>vscrollbar</a>"               <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a>              : Read / Write
+  "<a class="link" href="GtkScintilla.html#GtkScintilla--whitespace-chars" title='The "whitespace-chars" property'>whitespace-chars</a>"         <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a>*                : Write
+  "<a class="link" href="GtkScintilla.html#GtkScintilla--whitespace-size" title='The "whitespace-size" property'>whitespace-size</a>"          <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write
+  "<a class="link" href="GtkScintilla.html#GtkScintilla--word-chars" title='The "word-chars" property'>word-chars</a>"               <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a>*                : Write
+  "<a class="link" href="GtkScintilla.html#GtkScintilla--wrap-indent-mode" title='The "wrap-indent-mode" property'>wrap-indent-mode</a>"         <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write
+  "<a class="link" href="GtkScintilla.html#GtkScintilla--wrap-mode" title='The "wrap-mode" property'>wrap-mode</a>"                <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write
+  "<a class="link" href="GtkScintilla.html#GtkScintilla--wrap-start-indent" title='The "wrap-start-indent" property'>wrap-start-indent</a>"        <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write
+  "<a class="link" href="GtkScintilla.html#GtkScintilla--wrap-visual-flags" title='The "wrap-visual-flags" property'>wrap-visual-flags</a>"        <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write
+  "<a class="link" href="GtkScintilla.html#GtkScintilla--wrap-visual-flags-location" title='The "wrap-visual-flags-location" property'>wrap-visual-flags-location</a>" <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write
+  "<a class="link" href="GtkScintilla.html#GtkScintilla--x-offset" title='The "x-offset" property'>x-offset</a>"                 <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write
+  "<a class="link" href="GtkScintilla.html#GtkScintilla--zoom" title='The "zoom" property'>zoom</a>"                     <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write
+</pre>
+</div>
+<div class="refsect1" title="Signals">
+<a name="GtkScintilla.signals"></a><h2>Signals</h2>
+<pre class="synopsis">
+  "<a class="link" href="GtkScintilla.html#GtkScintilla-auto-completion-cancelled" title='The "auto-completion-cancelled" signal'>auto-completion-cancelled</a>"                      : Run First
+  "<a class="link" href="GtkScintilla.html#GtkScintilla-auto-completion-char-deleted" title='The "auto-completion-char-deleted" signal'>auto-completion-char-deleted</a>"                   : Run First
+  "<a class="link" href="GtkScintilla.html#GtkScintilla-auto-completion-selection" title='The "auto-completion-selection" signal'>auto-completion-selection</a>"                      : Run First
+  "<a class="link" href="GtkScintilla.html#GtkScintilla-call-tip-click" title='The "call-tip-click" signal'>call-tip-click</a>"                                 : Run First
+  "<a class="link" href="GtkScintilla.html#GtkScintilla-char-added" title='The "char-added" signal'>char-added</a>"                                     : Run First
+  "<a class="link" href="GtkScintilla.html#GtkScintilla-double-click" title='The "double-click" signal'>double-click</a>"                                   : Run First
+  "<a class="link" href="GtkScintilla.html#GtkScintilla-dwell-end" title='The "dwell-end" signal'>dwell-end</a>"                                      : Run First
+  "<a class="link" href="GtkScintilla.html#GtkScintilla-dwell-start" title='The "dwell-start" signal'>dwell-start</a>"                                    : Run First
+  "<a class="link" href="GtkScintilla.html#GtkScintilla-hot-spot-click" title='The "hot-spot-click" signal'>hot-spot-click</a>"                                 : Run First
+  "<a class="link" href="GtkScintilla.html#GtkScintilla-hot-spot-double-click" title='The "hot-spot-double-click" signal'>hot-spot-double-click</a>"                          : Run First
+  "<a class="link" href="GtkScintilla.html#GtkScintilla-indicator-click" title='The "indicator-click" signal'>indicator-click</a>"                                : Run First
+  "<a class="link" href="GtkScintilla.html#GtkScintilla-indicator-release" title='The "indicator-release" signal'>indicator-release</a>"                              : Run First
+  "<a class="link" href="GtkScintilla.html#GtkScintilla-key" title='The "key" signal'>key</a>"                                            : Run First
+  "<a class="link" href="GtkScintilla.html#GtkScintilla-macro-record" title='The "macro-record" signal'>macro-record</a>"                                   : Run First
+  "<a class="link" href="GtkScintilla.html#GtkScintilla-margin-click" title='The "margin-click" signal'>margin-click</a>"                                   : Run First
+  "<a class="link" href="GtkScintilla.html#GtkScintilla-modified" title='The "modified" signal'>modified</a>"                                       : Run First
+  "<a class="link" href="GtkScintilla.html#GtkScintilla-modify-attempt-ro" title='The "modify-attempt-ro" signal'>modify-attempt-ro</a>"                              : Run First
+  "<a class="link" href="GtkScintilla.html#GtkScintilla-need-shown" title='The "need-shown" signal'>need-shown</a>"                                     : Run First
+  "<a class="link" href="GtkScintilla.html#GtkScintilla-painted" title='The "painted" signal'>painted</a>"                                        : Run First
+  "<a class="link" href="GtkScintilla.html#GtkScintilla-save-point-left" title='The "save-point-left" signal'>save-point-left</a>"                                : Run First
+  "<a class="link" href="GtkScintilla.html#GtkScintilla-save-point-reached" title='The "save-point-reached" signal'>save-point-reached</a>"                             : Run First
+  "<a class="link" href="GtkScintilla.html#GtkScintilla-style-needed" title='The "style-needed" signal'>style-needed</a>"                                   : Run First
+  "<a class="link" href="GtkScintilla.html#GtkScintilla-update-ui" title='The "update-ui" signal'>update-ui</a>"                                      : Run First
+  "<a class="link" href="GtkScintilla.html#GtkScintilla-uri-dropped" title='The "uri-dropped" signal'>uri-dropped</a>"                                    : Run First
+  "<a class="link" href="GtkScintilla.html#GtkScintilla-user-list-selection" title='The "user-list-selection" signal'>user-list-selection</a>"                            : Run First
+  "<a class="link" href="GtkScintilla.html#GtkScintilla-zoom" title='The "zoom" signal'>zoom</a>"                                           : Run First
+</pre>
+</div>
+<div class="refsect1" title="Description">
+<a name="GtkScintilla.description"></a><h2>Description</h2>
+<p>
+This is the main visible editing compenent/widget that you pack into your
+containers.
+</p>
+</div>
+<div class="refsect1" title="Details">
+<a name="GtkScintilla.details"></a><h2>Details</h2>
+<div class="refsect2" title="PLAT_GTK">
+<a name="PLAT-GTK:CAPS"></a><h3>PLAT_GTK</h3>
+<pre class="programlisting">#define PLAT_GTK 2
+</pre>
+</div>
+<hr>
+<div class="refsect2" title="GTK">
+<a name="GTK:CAPS"></a><h3>GTK</h3>
+<pre class="programlisting">#define GTK
+</pre>
+</div>
+<hr>
+<div class="refsect2" title="SSM()">
+<a name="SSM:CAPS"></a><h3>SSM()</h3>
+<pre class="programlisting">#define SSM(s, m, l, w) scintilla_send_message(s, m, l, w)
+</pre>
+</div>
+<hr>
+<div class="refsect2" title="GtkScintilla">
+<a name="GtkScintilla-struct"></a><h3>GtkScintilla</h3>
+<pre class="programlisting">typedef struct _GtkScintilla GtkScintilla;</pre>
+</div>
+<hr>
+<div class="refsect2" title="GtkScintillaClass">
+<a name="GtkScintillaClass"></a><h3>GtkScintillaClass</h3>
+<pre class="programlisting">typedef struct {
+	GtkFrameClass parent_class;
+} GtkScintillaClass;
+</pre>
+</div>
+<hr>
+<div class="refsect2" title="GtkScintillaPrivate">
+<a name="GtkScintillaPrivate"></a><h3>GtkScintillaPrivate</h3>
+<pre class="programlisting">typedef struct _GtkScintillaPrivate GtkScintillaPrivate;</pre>
+</div>
+<hr>
+<div class="refsect2" title="gtk_scintilla_new ()">
+<a name="gtk-scintilla-new"></a><h3>gtk_scintilla_new ()</h3>
+<pre class="programlisting"><a href="/usr/share/gtk-doc/html/gtk/GtkWidget.html"><span class="returnvalue">GtkWidget</span></a>*          gtk_scintilla_new                   (<em class="parameter"><code><span class="type">void</span></code></em>);</pre>
+</div>
+<hr>
+<div class="refsect2" title="gtk_scintilla_get_property ()">
+<a name="gtk-scintilla-get-property"></a><h3>gtk_scintilla_get_property ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                gtk_scintilla_get_property          (<em class="parameter"><code><a href="/usr/share/gtk-doc/html/gobject/gobject-The-Base-Object-Type.html#GObject"><span class="type">GObject</span></a> *object</code></em>,
+                                                         <em class="parameter"><code><a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#guint"><span class="type">guint</span></a> property_id</code></em>,
+                                                         <em class="parameter"><code><a href="/usr/share/gtk-doc/html/gobject/gobject-Generic-values.html#GValue"><span class="type">GValue</span></a> *value</code></em>,
+                                                         <em class="parameter"><code><a href="/usr/share/gtk-doc/html/gobject/gobject-GParamSpec.html#GParamSpec"><span class="type">GParamSpec</span></a> *pspec</code></em>);</pre>
+</div>
+<hr>
+<div class="refsect2" title="gtk_scintilla_set_property ()">
+<a name="gtk-scintilla-set-property"></a><h3>gtk_scintilla_set_property ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                gtk_scintilla_set_property          (<em class="parameter"><code><a href="/usr/share/gtk-doc/html/gobject/gobject-The-Base-Object-Type.html#GObject"><span class="type">GObject</span></a> *object</code></em>,
+                                                         <em class="parameter"><code><a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#guint"><span class="type">guint</span></a> property_id</code></em>,
+                                                         <em class="parameter"><code>const <a href="/usr/share/gtk-doc/html/gobject/gobject-Generic-values.html#GValue"><span class="type">GValue</span></a> *value</code></em>,
+                                                         <em class="parameter"><code><a href="/usr/share/gtk-doc/html/gobject/gobject-GParamSpec.html#GParamSpec"><span class="type">GParamSpec</span></a> *pspec</code></em>);</pre>
+</div>
+<hr>
+<div class="refsect2" title="gtk_scintilla_set_id ()">
+<a name="gtk-scintilla-set-id"></a><h3>gtk_scintilla_set_id ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                gtk_scintilla_set_id                (<em class="parameter"><code><a class="link" href="GtkScintilla.html" title="GtkScintilla"><span class="type">GtkScintilla</span></a> *self</code></em>,
+                                                         <em class="parameter"><code><a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gshort"><span class="type">gshort</span></a> id</code></em>);</pre>
+</div>
+<hr>
+<div class="refsect2" title="gtk_scintilla_send_message ()">
+<a name="gtk-scintilla-send-message"></a><h3>gtk_scintilla_send_message ()</h3>
+<pre class="programlisting"><a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#glong"><span class="returnvalue">glong</span></a>               gtk_scintilla_send_message          (<em class="parameter"><code><a class="link" href="GtkScintilla.html" title="GtkScintilla"><span class="type">GtkScintilla</span></a> *self</code></em>,
+                                                         <em class="parameter"><code><a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#guint"><span class="type">guint</span></a> iMessage</code></em>,
+                                                         <em class="parameter"><code><a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gulong"><span class="type">gulong</span></a> wParam</code></em>,
+                                                         <em class="parameter"><code><a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#glong"><span class="type">glong</span></a> lParam</code></em>);</pre>
+</div>
+<hr>
+<div class="refsect2" title="gtk_scintilla_release_resources ()">
+<a name="gtk-scintilla-release-resources"></a><h3>gtk_scintilla_release_resources ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                gtk_scintilla_release_resources     ();</pre>
+</div>
+<hr>
+<div class="refsect2" title="gtk_scintilla_update_line_numbers ()">
+<a name="gtk-scintilla-update-line-numbers"></a><h3>gtk_scintilla_update_line_numbers ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                gtk_scintilla_update_line_numbers   (<em class="parameter"><code><a class="link" href="GtkScintilla.html" title="GtkScintilla"><span class="type">GtkScintilla</span></a> *self</code></em>);</pre>
+</div>
+<hr>
+<div class="refsect2" title="gtk_scintilla_get_line_numbers_visible ()">
+<a name="gtk-scintilla-get-line-numbers-visible"></a><h3>gtk_scintilla_get_line_numbers_visible ()</h3>
+<pre class="programlisting"><a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            gtk_scintilla_get_line_numbers_visible
+                                                        (<em class="parameter"><code><a class="link" href="GtkScintilla.html" title="GtkScintilla"><span class="type">GtkScintilla</span></a> *self</code></em>);</pre>
+<p>
+Gets whether the line number margin is visible or not.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>self</code></em> :</span></p></td>
+<td>The <a class="link" href="GtkScintilla.html" title="GtkScintilla"><span class="type">GtkScintilla</span></a> object
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> The visibility of the line number margin for the <a class="link" href="GtkScintilla.html" title="GtkScintilla"><span class="type">GtkScintilla</span></a>.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="gtk_scintilla_set_line_numbers_visible ()">
+<a name="gtk-scintilla-set-line-numbers-visible"></a><h3>gtk_scintilla_set_line_numbers_visible ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                gtk_scintilla_set_line_numbers_visible
+                                                        (<em class="parameter"><code><a class="link" href="GtkScintilla.html" title="GtkScintilla"><span class="type">GtkScintilla</span></a> *self</code></em>,
+                                                         <em class="parameter"><code><a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a> visible</code></em>);</pre>
+<p>
+Sets the line number visibility to <em class="parameter"><code>visibility</code></em> on the <a class="link" href="GtkScintilla.html" title="GtkScintilla"><span class="type">GtkScintilla</span></a>.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>self</code></em> :</span></p></td>
+<td>The <a class="link" href="GtkScintilla.html" title="GtkScintilla"><span class="type">GtkScintilla</span></a> object
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>visible</code></em> :</span></p></td>
+<td>
+<a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#TRUE:CAPS"><span class="type">TRUE</span></a> for visible, <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#FALSE:CAPS"><span class="type">FALSE</span></a> for hidden
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="gtk_scintilla_set_font ()">
+<a name="gtk-scintilla-set-font"></a><h3>gtk_scintilla_set_font ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                gtk_scintilla_set_font              (<em class="parameter"><code><a class="link" href="GtkScintilla.html" title="GtkScintilla"><span class="type">GtkScintilla</span></a> *self</code></em>,
+                                                         <em class="parameter"><code><a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a> style_number</code></em>,
+                                                         <em class="parameter"><code>const <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *font_desc</code></em>);</pre>
+</div>
+<hr>
+<div class="refsect2" title="gtk_scintilla_get_font ()">
+<a name="gtk-scintilla-get-font"></a><h3>gtk_scintilla_get_font ()</h3>
+<pre class="programlisting"><a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *             gtk_scintilla_get_font              (<em class="parameter"><code><a class="link" href="GtkScintilla.html" title="GtkScintilla"><span class="type">GtkScintilla</span></a> *self</code></em>,
+                                                         <em class="parameter"><code><a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a> style_number</code></em>);</pre>
+</div>
+<hr>
+<div class="refsect2" title="gtk_scintilla_get_background_color ()">
+<a name="gtk-scintilla-get-background-color"></a><h3>gtk_scintilla_get_background_color ()</h3>
+<pre class="programlisting"><a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *             gtk_scintilla_get_background_color  (<em class="parameter"><code><a class="link" href="GtkScintilla.html" title="GtkScintilla"><span class="type">GtkScintilla</span></a> *self</code></em>,
+                                                         <em class="parameter"><code><a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a> style</code></em>);</pre>
+</div>
+<hr>
+<div class="refsect2" title="gtk_scintilla_set_background_color ()">
+<a name="gtk-scintilla-set-background-color"></a><h3>gtk_scintilla_set_background_color ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                gtk_scintilla_set_background_color  (<em class="parameter"><code><a class="link" href="GtkScintilla.html" title="GtkScintilla"><span class="type">GtkScintilla</span></a> *self</code></em>,
+                                                         <em class="parameter"><code><a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a> style</code></em>,
+                                                         <em class="parameter"><code>const <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *color_spec</code></em>);</pre>
+</div>
+<hr>
+<div class="refsect2" title="gtk_scintilla_get_foreground_color ()">
+<a name="gtk-scintilla-get-foreground-color"></a><h3>gtk_scintilla_get_foreground_color ()</h3>
+<pre class="programlisting"><a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *             gtk_scintilla_get_foreground_color  (<em class="parameter"><code><a class="link" href="GtkScintilla.html" title="GtkScintilla"><span class="type">GtkScintilla</span></a> *self</code></em>,
+                                                         <em class="parameter"><code><a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a> style</code></em>);</pre>
+</div>
+<hr>
+<div class="refsect2" title="gtk_scintilla_set_foreground_color ()">
+<a name="gtk-scintilla-set-foreground-color"></a><h3>gtk_scintilla_set_foreground_color ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                gtk_scintilla_set_foreground_color  (<em class="parameter"><code><a class="link" href="GtkScintilla.html" title="GtkScintilla"><span class="type">GtkScintilla</span></a> *self</code></em>,
+                                                         <em class="parameter"><code><a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a> style</code></em>,
+                                                         <em class="parameter"><code>const <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *color_spec</code></em>);</pre>
+</div>
+</div>
+<div class="refsect1" title="Property Details">
+<a name="GtkScintilla.property-details"></a><h2>Property Details</h2>
+<div class="refsect2" title='The "additional-caret-fore" property'>
+<a name="GtkScintilla--additional-caret-fore"></a><h3>The <code class="literal">"additional-caret-fore"</code> property</h3>
+<pre class="programlisting">  "additional-caret-fore"    <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write</pre>
+<p>Get/set the additional-caret-fore property.</p>
+<p>Default value: 0</p>
+</div>
+<hr>
+<div class="refsect2" title='The "additional-carets-blink" property'>
+<a name="GtkScintilla--additional-carets-blink"></a><h3>The <code class="literal">"additional-carets-blink"</code> property</h3>
+<pre class="programlisting">  "additional-carets-blink"  <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a>              : Read / Write</pre>
+<p>Get/set the additional-carets-blink property.</p>
+<p>Default value: FALSE</p>
+</div>
+<hr>
+<div class="refsect2" title='The "additional-carets-visible" property'>
+<a name="GtkScintilla--additional-carets-visible"></a><h3>The <code class="literal">"additional-carets-visible"</code> property</h3>
+<pre class="programlisting">  "additional-carets-visible" <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a>              : Read / Write</pre>
+<p>Get/set the additional-carets-visible property.</p>
+<p>Default value: FALSE</p>
+</div>
+<hr>
+<div class="refsect2" title='The "additional-sel-alpha" property'>
+<a name="GtkScintilla--additional-sel-alpha"></a><h3>The <code class="literal">"additional-sel-alpha"</code> property</h3>
+<pre class="programlisting">  "additional-sel-alpha"     <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write</pre>
+<p>Get/set the additional-sel-alpha property.</p>
+<p>Default value: 0</p>
+</div>
+<hr>
+<div class="refsect2" title='The "additional-sel-back" property'>
+<a name="GtkScintilla--additional-sel-back"></a><h3>The <code class="literal">"additional-sel-back"</code> property</h3>
+<pre class="programlisting">  "additional-sel-back"      <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Write</pre>
+<p>Set the additional-sel-back property.</p>
+<p>Default value: 0</p>
+</div>
+<hr>
+<div class="refsect2" title='The "additional-sel-fore" property'>
+<a name="GtkScintilla--additional-sel-fore"></a><h3>The <code class="literal">"additional-sel-fore"</code> property</h3>
+<pre class="programlisting">  "additional-sel-fore"      <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Write</pre>
+<p>Set the additional-sel-fore property.</p>
+<p>Default value: 0</p>
+</div>
+<hr>
+<div class="refsect2" title='The "additional-selection-typing" property'>
+<a name="GtkScintilla--additional-selection-typing"></a><h3>The <code class="literal">"additional-selection-typing"</code> property</h3>
+<pre class="programlisting">  "additional-selection-typing" <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a>              : Read / Write</pre>
+<p>Get/set the additional-selection-typing property.</p>
+<p>Default value: FALSE</p>
+</div>
+<hr>
+<div class="refsect2" title='The "anchor" property'>
+<a name="GtkScintilla--anchor"></a><h3>The <code class="literal">"anchor"</code> property</h3>
+<pre class="programlisting">  "anchor"                   <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write</pre>
+<p>Get/set the anchor property.</p>
+<p>Default value: 0</p>
+</div>
+<hr>
+<div class="refsect2" title='The "backspace-unindents" property'>
+<a name="GtkScintilla--backspace-unindents"></a><h3>The <code class="literal">"backspace-unindents"</code> property</h3>
+<pre class="programlisting">  "backspace-unindents"      <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a>              : Read / Write</pre>
+<p>Get/set the backspace-unindents property.</p>
+<p>Default value: FALSE</p>
+</div>
+<hr>
+<div class="refsect2" title='The "buffered-draw" property'>
+<a name="GtkScintilla--buffered-draw"></a><h3>The <code class="literal">"buffered-draw"</code> property</h3>
+<pre class="programlisting">  "buffered-draw"            <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a>              : Read / Write</pre>
+<p>Get/set the buffered-draw property.</p>
+<p>Default value: FALSE</p>
+</div>
+<hr>
+<div class="refsect2" title='The "caret-fore" property'>
+<a name="GtkScintilla--caret-fore"></a><h3>The <code class="literal">"caret-fore"</code> property</h3>
+<pre class="programlisting">  "caret-fore"               <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write</pre>
+<p>Get/set the caret-fore property.</p>
+<p>Default value: 0</p>
+</div>
+<hr>
+<div class="refsect2" title='The "caret-line-back" property'>
+<a name="GtkScintilla--caret-line-back"></a><h3>The <code class="literal">"caret-line-back"</code> property</h3>
+<pre class="programlisting">  "caret-line-back"          <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write</pre>
+<p>Get/set the caret-line-back property.</p>
+<p>Default value: 0</p>
+</div>
+<hr>
+<div class="refsect2" title='The "caret-line-back-alpha" property'>
+<a name="GtkScintilla--caret-line-back-alpha"></a><h3>The <code class="literal">"caret-line-back-alpha"</code> property</h3>
+<pre class="programlisting">  "caret-line-back-alpha"    <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write</pre>
+<p>Get/set the caret-line-back-alpha property.</p>
+<p>Default value: 0</p>
+</div>
+<hr>
+<div class="refsect2" title='The "caret-line-visible" property'>
+<a name="GtkScintilla--caret-line-visible"></a><h3>The <code class="literal">"caret-line-visible"</code> property</h3>
+<pre class="programlisting">  "caret-line-visible"       <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a>              : Read / Write</pre>
+<p>Get/set the caret-line-visible property.</p>
+<p>Default value: FALSE</p>
+</div>
+<hr>
+<div class="refsect2" title='The "caret-period" property'>
+<a name="GtkScintilla--caret-period"></a><h3>The <code class="literal">"caret-period"</code> property</h3>
+<pre class="programlisting">  "caret-period"             <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write</pre>
+<p>Get/set the caret-period property.</p>
+<p>Default value: 0</p>
+</div>
+<hr>
+<div class="refsect2" title='The "caret-sticky" property'>
+<a name="GtkScintilla--caret-sticky"></a><h3>The <code class="literal">"caret-sticky"</code> property</h3>
+<pre class="programlisting">  "caret-sticky"             <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write</pre>
+<p>Get/set the caret-sticky property.</p>
+<p>Default value: 0</p>
+</div>
+<hr>
+<div class="refsect2" title='The "caret-style" property'>
+<a name="GtkScintilla--caret-style"></a><h3>The <code class="literal">"caret-style"</code> property</h3>
+<pre class="programlisting">  "caret-style"              <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write</pre>
+<p>Get/set the caret-style property.</p>
+<p>Default value: 0</p>
+</div>
+<hr>
+<div class="refsect2" title='The "caret-width" property'>
+<a name="GtkScintilla--caret-width"></a><h3>The <code class="literal">"caret-width"</code> property</h3>
+<pre class="programlisting">  "caret-width"              <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write</pre>
+<p>Get/set the caret-width property.</p>
+<p>Default value: 0</p>
+</div>
+<hr>
+<div class="refsect2" title='The "character-pointer" property'>
+<a name="GtkScintilla--character-pointer"></a><h3>The <code class="literal">"character-pointer"</code> property</h3>
+<pre class="programlisting">  "character-pointer"        <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read</pre>
+<p>Get the character-pointer property.</p>
+<p>Default value: 0</p>
+</div>
+<hr>
+<div class="refsect2" title='The "code-page" property'>
+<a name="GtkScintilla--code-page"></a><h3>The <code class="literal">"code-page"</code> property</h3>
+<pre class="programlisting">  "code-page"                <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write</pre>
+<p>Get/set the code-page property.</p>
+<p>Default value: 0</p>
+</div>
+<hr>
+<div class="refsect2" title='The "control-char-symbol" property'>
+<a name="GtkScintilla--control-char-symbol"></a><h3>The <code class="literal">"control-char-symbol"</code> property</h3>
+<pre class="programlisting">  "control-char-symbol"      <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write</pre>
+<p>Get/set the control-char-symbol property.</p>
+<p>Default value: 0</p>
+</div>
+<hr>
+<div class="refsect2" title='The "current-pos" property'>
+<a name="GtkScintilla--current-pos"></a><h3>The <code class="literal">"current-pos"</code> property</h3>
+<pre class="programlisting">  "current-pos"              <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write</pre>
+<p>Get/set the current-pos property.</p>
+<p>Default value: 0</p>
+</div>
+<hr>
+<div class="refsect2" title='The "cursor" property'>
+<a name="GtkScintilla--cursor"></a><h3>The <code class="literal">"cursor"</code> property</h3>
+<pre class="programlisting">  "cursor"                   <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write</pre>
+<p>Get/set the cursor property.</p>
+<p>Default value: 0</p>
+</div>
+<hr>
+<div class="refsect2" title='The "direct-function" property'>
+<a name="GtkScintilla--direct-function"></a><h3>The <code class="literal">"direct-function"</code> property</h3>
+<pre class="programlisting">  "direct-function"          <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read</pre>
+<p>Get the direct-function property.</p>
+<p>Default value: 0</p>
+</div>
+<hr>
+<div class="refsect2" title='The "direct-pointer" property'>
+<a name="GtkScintilla--direct-pointer"></a><h3>The <code class="literal">"direct-pointer"</code> property</h3>
+<pre class="programlisting">  "direct-pointer"           <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read</pre>
+<p>Get the direct-pointer property.</p>
+<p>Default value: 0</p>
+</div>
+<hr>
+<div class="refsect2" title='The "doc-pointer" property'>
+<a name="GtkScintilla--doc-pointer"></a><h3>The <code class="literal">"doc-pointer"</code> property</h3>
+<pre class="programlisting">  "doc-pointer"              <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write</pre>
+<p>Get/set the doc-pointer property.</p>
+<p>Default value: 0</p>
+</div>
+<hr>
+<div class="refsect2" title='The "edge-colour" property'>
+<a name="GtkScintilla--edge-colour"></a><h3>The <code class="literal">"edge-colour"</code> property</h3>
+<pre class="programlisting">  "edge-colour"              <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write</pre>
+<p>Get/set the edge-colour property.</p>
+<p>Default value: 0</p>
+</div>
+<hr>
+<div class="refsect2" title='The "edge-column" property'>
+<a name="GtkScintilla--edge-column"></a><h3>The <code class="literal">"edge-column"</code> property</h3>
+<pre class="programlisting">  "edge-column"              <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write</pre>
+<p>Get/set the edge-column property.</p>
+<p>Default value: 0</p>
+</div>
+<hr>
+<div class="refsect2" title='The "edge-mode" property'>
+<a name="GtkScintilla--edge-mode"></a><h3>The <code class="literal">"edge-mode"</code> property</h3>
+<pre class="programlisting">  "edge-mode"                <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write</pre>
+<p>Get/set the edge-mode property.</p>
+<p>Default value: 0</p>
+</div>
+<hr>
+<div class="refsect2" title='The "end-at-last-line" property'>
+<a name="GtkScintilla--end-at-last-line"></a><h3>The <code class="literal">"end-at-last-line"</code> property</h3>
+<pre class="programlisting">  "end-at-last-line"         <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a>              : Read / Write</pre>
+<p>Get/set the end-at-last-line property.</p>
+<p>Default value: FALSE</p>
+</div>
+<hr>
+<div class="refsect2" title='The "end-styled" property'>
+<a name="GtkScintilla--end-styled"></a><h3>The <code class="literal">"end-styled"</code> property</h3>
+<pre class="programlisting">  "end-styled"               <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read</pre>
+<p>Get the end-styled property.</p>
+<p>Default value: 0</p>
+</div>
+<hr>
+<div class="refsect2" title='The "eol-mode" property'>
+<a name="GtkScintilla--eol-mode"></a><h3>The <code class="literal">"eol-mode"</code> property</h3>
+<pre class="programlisting">  "eol-mode"                 <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write</pre>
+<p>Get/set the eol-mode property.</p>
+<p>Default value: 0</p>
+</div>
+<hr>
+<div class="refsect2" title='The "extra-ascent" property'>
+<a name="GtkScintilla--extra-ascent"></a><h3>The <code class="literal">"extra-ascent"</code> property</h3>
+<pre class="programlisting">  "extra-ascent"             <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write</pre>
+<p>Get/set the extra-ascent property.</p>
+<p>Default value: 0</p>
+</div>
+<hr>
+<div class="refsect2" title='The "extra-descent" property'>
+<a name="GtkScintilla--extra-descent"></a><h3>The <code class="literal">"extra-descent"</code> property</h3>
+<pre class="programlisting">  "extra-descent"            <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write</pre>
+<p>Get/set the extra-descent property.</p>
+<p>Default value: 0</p>
+</div>
+<hr>
+<div class="refsect2" title='The "first-visible-line" property'>
+<a name="GtkScintilla--first-visible-line"></a><h3>The <code class="literal">"first-visible-line"</code> property</h3>
+<pre class="programlisting">  "first-visible-line"       <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write</pre>
+<p>Get/set the first-visible-line property.</p>
+<p>Default value: 0</p>
+</div>
+<hr>
+<div class="refsect2" title='The "focus" property'>
+<a name="GtkScintilla--focus"></a><h3>The <code class="literal">"focus"</code> property</h3>
+<pre class="programlisting">  "focus"                    <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a>              : Read / Write</pre>
+<p>Get/set the focus property.</p>
+<p>Default value: FALSE</p>
+</div>
+<hr>
+<div class="refsect2" title='The "fold-flags" property'>
+<a name="GtkScintilla--fold-flags"></a><h3>The <code class="literal">"fold-flags"</code> property</h3>
+<pre class="programlisting">  "fold-flags"               <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Write</pre>
+<p>Set the fold-flags property.</p>
+<p>Default value: 0</p>
+</div>
+<hr>
+<div class="refsect2" title='The "font-quality" property'>
+<a name="GtkScintilla--font-quality"></a><h3>The <code class="literal">"font-quality"</code> property</h3>
+<pre class="programlisting">  "font-quality"             <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write</pre>
+<p>Get/set the font-quality property.</p>
+<p>Default value: 0</p>
+</div>
+<hr>
+<div class="refsect2" title='The "h-scroll-bar" property'>
+<a name="GtkScintilla--h-scroll-bar"></a><h3>The <code class="literal">"h-scroll-bar"</code> property</h3>
+<pre class="programlisting">  "h-scroll-bar"             <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a>              : Read / Write</pre>
+<p>Get/set the h-scroll-bar property.</p>
+<p>Default value: FALSE</p>
+</div>
+<hr>
+<div class="refsect2" title='The "highlight-guide" property'>
+<a name="GtkScintilla--highlight-guide"></a><h3>The <code class="literal">"highlight-guide"</code> property</h3>
+<pre class="programlisting">  "highlight-guide"          <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write</pre>
+<p>Get/set the highlight-guide property.</p>
+<p>Default value: 0</p>
+</div>
+<hr>
+<div class="refsect2" title='The "hotspot-active-back" property'>
+<a name="GtkScintilla--hotspot-active-back"></a><h3>The <code class="literal">"hotspot-active-back"</code> property</h3>
+<pre class="programlisting">  "hotspot-active-back"      <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read</pre>
+<p>Get the hotspot-active-back property.</p>
+<p>Default value: 0</p>
+</div>
+<hr>
+<div class="refsect2" title='The "hotspot-active-fore" property'>
+<a name="GtkScintilla--hotspot-active-fore"></a><h3>The <code class="literal">"hotspot-active-fore"</code> property</h3>
+<pre class="programlisting">  "hotspot-active-fore"      <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read</pre>
+<p>Get the hotspot-active-fore property.</p>
+<p>Default value: 0</p>
+</div>
+<hr>
+<div class="refsect2" title='The "hotspot-active-underline" property'>
+<a name="GtkScintilla--hotspot-active-underline"></a><h3>The <code class="literal">"hotspot-active-underline"</code> property</h3>
+<pre class="programlisting">  "hotspot-active-underline" <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a>              : Read / Write</pre>
+<p>Get/set the hotspot-active-underline property.</p>
+<p>Default value: FALSE</p>
+</div>
+<hr>
+<div class="refsect2" title='The "hotspot-single-line" property'>
+<a name="GtkScintilla--hotspot-single-line"></a><h3>The <code class="literal">"hotspot-single-line"</code> property</h3>
+<pre class="programlisting">  "hotspot-single-line"      <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a>              : Read / Write</pre>
+<p>Get/set the hotspot-single-line property.</p>
+<p>Default value: FALSE</p>
+</div>
+<hr>
+<div class="refsect2" title='The "indent" property'>
+<a name="GtkScintilla--indent"></a><h3>The <code class="literal">"indent"</code> property</h3>
+<pre class="programlisting">  "indent"                   <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write</pre>
+<p>Get/set the indent property.</p>
+<p>Default value: 0</p>
+</div>
+<hr>
+<div class="refsect2" title='The "indentation-guides" property'>
+<a name="GtkScintilla--indentation-guides"></a><h3>The <code class="literal">"indentation-guides"</code> property</h3>
+<pre class="programlisting">  "indentation-guides"       <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write</pre>
+<p>Get/set the indentation-guides property.</p>
+<p>Default value: 0</p>
+</div>
+<hr>
+<div class="refsect2" title='The "indicator-current" property'>
+<a name="GtkScintilla--indicator-current"></a><h3>The <code class="literal">"indicator-current"</code> property</h3>
+<pre class="programlisting">  "indicator-current"        <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write</pre>
+<p>Get/set the indicator-current property.</p>
+<p>Default value: 0</p>
+</div>
+<hr>
+<div class="refsect2" title='The "indicator-value" property'>
+<a name="GtkScintilla--indicator-value"></a><h3>The <code class="literal">"indicator-value"</code> property</h3>
+<pre class="programlisting">  "indicator-value"          <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write</pre>
+<p>Get/set the indicator-value property.</p>
+<p>Default value: 0</p>
+</div>
+<hr>
+<div class="refsect2" title='The "keys-unicode" property'>
+<a name="GtkScintilla--keys-unicode"></a><h3>The <code class="literal">"keys-unicode"</code> property</h3>
+<pre class="programlisting">  "keys-unicode"             <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a>              : Read / Write</pre>
+<p>Get/set the keys-unicode property.</p>
+<p>Default value: FALSE</p>
+</div>
+<hr>
+<div class="refsect2" title='The "layout-cache" property'>
+<a name="GtkScintilla--layout-cache"></a><h3>The <code class="literal">"layout-cache"</code> property</h3>
+<pre class="programlisting">  "layout-cache"             <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write</pre>
+<p>Get/set the layout-cache property.</p>
+<p>Default value: 0</p>
+</div>
+<hr>
+<div class="refsect2" title='The "length" property'>
+<a name="GtkScintilla--length"></a><h3>The <code class="literal">"length"</code> property</h3>
+<pre class="programlisting">  "length"                   <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read</pre>
+<p>Get the length property.</p>
+<p>Default value: 0</p>
+</div>
+<hr>
+<div class="refsect2" title='The "lexer" property'>
+<a name="GtkScintilla--lexer"></a><h3>The <code class="literal">"lexer"</code> property</h3>
+<pre class="programlisting">  "lexer"                    <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write</pre>
+<p>Get/set the lexer by lexer number (ex. GTK_SCINTILLA_LEXER_CPP).</p>
+<p>Default value: 0</p>
+</div>
+<hr>
+<div class="refsect2" title='The "lexer-language" property'>
+<a name="GtkScintilla--lexer-language"></a><h3>The <code class="literal">"lexer-language"</code> property</h3>
+<pre class="programlisting">  "lexer-language"           <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a>*                : Read / Write</pre>
+<p>Get/set the lexer using it's name (ex. cpp, python).</p>
+<p>Default value: NULL</p>
+</div>
+<hr>
+<div class="refsect2" title='The "line-count" property'>
+<a name="GtkScintilla--line-count"></a><h3>The <code class="literal">"line-count"</code> property</h3>
+<pre class="programlisting">  "line-count"               <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read</pre>
+<p>Get the line-count property.</p>
+<p>Default value: 0</p>
+</div>
+<hr>
+<div class="refsect2" title='The "line-numbers-visible" property'>
+<a name="GtkScintilla--line-numbers-visible"></a><h3>The <code class="literal">"line-numbers-visible"</code> property</h3>
+<pre class="programlisting">  "line-numbers-visible"     <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a>              : Read / Write</pre>
+<p>Get/set whether the line number margin is visible.</p>
+<p>Default value: TRUE</p>
+</div>
+<hr>
+<div class="refsect2" title='The "main-selection" property'>
+<a name="GtkScintilla--main-selection"></a><h3>The <code class="literal">"main-selection"</code> property</h3>
+<pre class="programlisting">  "main-selection"           <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write</pre>
+<p>Get/set the main-selection property.</p>
+<p>Default value: 0</p>
+</div>
+<hr>
+<div class="refsect2" title='The "margin-left" property'>
+<a name="GtkScintilla--margin-left"></a><h3>The <code class="literal">"margin-left"</code> property</h3>
+<pre class="programlisting">  "margin-left"              <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write</pre>
+<p>Get/set the margin-left property.</p>
+<p>Default value: 0</p>
+</div>
+<hr>
+<div class="refsect2" title='The "margin-right" property'>
+<a name="GtkScintilla--margin-right"></a><h3>The <code class="literal">"margin-right"</code> property</h3>
+<pre class="programlisting">  "margin-right"             <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write</pre>
+<p>Get/set the margin-right property.</p>
+<p>Default value: 0</p>
+</div>
+<hr>
+<div class="refsect2" title='The "max-line-state" property'>
+<a name="GtkScintilla--max-line-state"></a><h3>The <code class="literal">"max-line-state"</code> property</h3>
+<pre class="programlisting">  "max-line-state"           <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read</pre>
+<p>Get the max-line-state property.</p>
+<p>Default value: 0</p>
+</div>
+<hr>
+<div class="refsect2" title='The "mod-event-mask" property'>
+<a name="GtkScintilla--mod-event-mask"></a><h3>The <code class="literal">"mod-event-mask"</code> property</h3>
+<pre class="programlisting">  "mod-event-mask"           <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write</pre>
+<p>Get/set the mod-event-mask property.</p>
+<p>Default value: 0</p>
+</div>
+<hr>
+<div class="refsect2" title='The "modify" property'>
+<a name="GtkScintilla--modify"></a><h3>The <code class="literal">"modify"</code> property</h3>
+<pre class="programlisting">  "modify"                   <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a>              : Read</pre>
+<p>Get the modify property.</p>
+<p>Default value: FALSE</p>
+</div>
+<hr>
+<div class="refsect2" title='The "mouse-down-captures" property'>
+<a name="GtkScintilla--mouse-down-captures"></a><h3>The <code class="literal">"mouse-down-captures"</code> property</h3>
+<pre class="programlisting">  "mouse-down-captures"      <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a>              : Read / Write</pre>
+<p>Get/set the mouse-down-captures property.</p>
+<p>Default value: FALSE</p>
+</div>
+<hr>
+<div class="refsect2" title='The "mouse-dwell-time" property'>
+<a name="GtkScintilla--mouse-dwell-time"></a><h3>The <code class="literal">"mouse-dwell-time"</code> property</h3>
+<pre class="programlisting">  "mouse-dwell-time"         <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write</pre>
+<p>Get/set the mouse-dwell-time property.</p>
+<p>Default value: 0</p>
+</div>
+<hr>
+<div class="refsect2" title='The "multi-paste" property'>
+<a name="GtkScintilla--multi-paste"></a><h3>The <code class="literal">"multi-paste"</code> property</h3>
+<pre class="programlisting">  "multi-paste"              <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write</pre>
+<p>Get/set the multi-paste property.</p>
+<p>Default value: 0</p>
+</div>
+<hr>
+<div class="refsect2" title='The "multiple-selection" property'>
+<a name="GtkScintilla--multiple-selection"></a><h3>The <code class="literal">"multiple-selection"</code> property</h3>
+<pre class="programlisting">  "multiple-selection"       <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a>              : Read / Write</pre>
+<p>Get/set the multiple-selection property.</p>
+<p>Default value: FALSE</p>
+</div>
+<hr>
+<div class="refsect2" title='The "overtype" property'>
+<a name="GtkScintilla--overtype"></a><h3>The <code class="literal">"overtype"</code> property</h3>
+<pre class="programlisting">  "overtype"                 <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a>              : Read / Write</pre>
+<p>Get/set the overtype property.</p>
+<p>Default value: FALSE</p>
+</div>
+<hr>
+<div class="refsect2" title='The "paste-convert-endings" property'>
+<a name="GtkScintilla--paste-convert-endings"></a><h3>The <code class="literal">"paste-convert-endings"</code> property</h3>
+<pre class="programlisting">  "paste-convert-endings"    <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a>              : Read / Write</pre>
+<p>Get/set the paste-convert-endings property.</p>
+<p>Default value: FALSE</p>
+</div>
+<hr>
+<div class="refsect2" title='The "position-cache" property'>
+<a name="GtkScintilla--position-cache"></a><h3>The <code class="literal">"position-cache"</code> property</h3>
+<pre class="programlisting">  "position-cache"           <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write</pre>
+<p>Get/set the position-cache property.</p>
+<p>Default value: 0</p>
+</div>
+<hr>
+<div class="refsect2" title='The "print-colour-mode" property'>
+<a name="GtkScintilla--print-colour-mode"></a><h3>The <code class="literal">"print-colour-mode"</code> property</h3>
+<pre class="programlisting">  "print-colour-mode"        <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write</pre>
+<p>Get/set the print-colour-mode property.</p>
+<p>Default value: 0</p>
+</div>
+<hr>
+<div class="refsect2" title='The "print-magnification" property'>
+<a name="GtkScintilla--print-magnification"></a><h3>The <code class="literal">"print-magnification"</code> property</h3>
+<pre class="programlisting">  "print-magnification"      <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write</pre>
+<p>Get/set the print-magnification property.</p>
+<p>Default value: 0</p>
+</div>
+<hr>
+<div class="refsect2" title='The "print-wrap-mode" property'>
+<a name="GtkScintilla--print-wrap-mode"></a><h3>The <code class="literal">"print-wrap-mode"</code> property</h3>
+<pre class="programlisting">  "print-wrap-mode"          <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write</pre>
+<p>Get/set the print-wrap-mode property.</p>
+<p>Default value: 0</p>
+</div>
+<hr>
+<div class="refsect2" title='The "read-only" property'>
+<a name="GtkScintilla--read-only"></a><h3>The <code class="literal">"read-only"</code> property</h3>
+<pre class="programlisting">  "read-only"                <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a>              : Read / Write</pre>
+<p>Get/set the read-only property.</p>
+<p>Default value: FALSE</p>
+</div>
+<hr>
+<div class="refsect2" title='The "rectangular-selection-anchor" property'>
+<a name="GtkScintilla--rectangular-selection-anchor"></a><h3>The <code class="literal">"rectangular-selection-anchor"</code> property</h3>
+<pre class="programlisting">  "rectangular-selection-anchor" <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write</pre>
+<p>Get/set the rectangular-selection-anchor property.</p>
+<p>Default value: 0</p>
+</div>
+<hr>
+<div class="refsect2" title='The "rectangular-selection-anchor-virtual-space" property'>
+<a name="GtkScintilla--rectangular-selection-anchor-virtual-space"></a><h3>The <code class="literal">"rectangular-selection-anchor-virtual-space"</code> property</h3>
+<pre class="programlisting">  "rectangular-selection-anchor-virtual-space" <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write</pre>
+<p>Get/set the rectangular-selection-anchor-virtual-space property.</p>
+<p>Default value: 0</p>
+</div>
+<hr>
+<div class="refsect2" title='The "rectangular-selection-caret" property'>
+<a name="GtkScintilla--rectangular-selection-caret"></a><h3>The <code class="literal">"rectangular-selection-caret"</code> property</h3>
+<pre class="programlisting">  "rectangular-selection-caret" <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write</pre>
+<p>Get/set the rectangular-selection-caret property.</p>
+<p>Default value: 0</p>
+</div>
+<hr>
+<div class="refsect2" title='The "rectangular-selection-caret-virtual-space" property'>
+<a name="GtkScintilla--rectangular-selection-caret-virtual-space"></a><h3>The <code class="literal">"rectangular-selection-caret-virtual-space"</code> property</h3>
+<pre class="programlisting">  "rectangular-selection-caret-virtual-space" <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write</pre>
+<p>Get/set the rectangular-selection-caret-virtual-space property.</p>
+<p>Default value: 0</p>
+</div>
+<hr>
+<div class="refsect2" title='The "rectangular-selection-modifier" property'>
+<a name="GtkScintilla--rectangular-selection-modifier"></a><h3>The <code class="literal">"rectangular-selection-modifier"</code> property</h3>
+<pre class="programlisting">  "rectangular-selection-modifier" <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write</pre>
+<p>Get/set the rectangular-selection-modifier property.</p>
+<p>Default value: 0</p>
+</div>
+<hr>
+<div class="refsect2" title='The "scroll-width" property'>
+<a name="GtkScintilla--scroll-width"></a><h3>The <code class="literal">"scroll-width"</code> property</h3>
+<pre class="programlisting">  "scroll-width"             <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write</pre>
+<p>Get/set the scroll-width property.</p>
+<p>Default value: 0</p>
+</div>
+<hr>
+<div class="refsect2" title='The "scroll-width-tracking" property'>
+<a name="GtkScintilla--scroll-width-tracking"></a><h3>The <code class="literal">"scroll-width-tracking"</code> property</h3>
+<pre class="programlisting">  "scroll-width-tracking"    <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a>              : Read / Write</pre>
+<p>Get/set the scroll-width-tracking property.</p>
+<p>Default value: FALSE</p>
+</div>
+<hr>
+<div class="refsect2" title='The "search-flags" property'>
+<a name="GtkScintilla--search-flags"></a><h3>The <code class="literal">"search-flags"</code> property</h3>
+<pre class="programlisting">  "search-flags"             <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write</pre>
+<p>Get/set the search-flags property.</p>
+<p>Default value: 0</p>
+</div>
+<hr>
+<div class="refsect2" title='The "sel-alpha" property'>
+<a name="GtkScintilla--sel-alpha"></a><h3>The <code class="literal">"sel-alpha"</code> property</h3>
+<pre class="programlisting">  "sel-alpha"                <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write</pre>
+<p>Get/set the sel-alpha property.</p>
+<p>Default value: 0</p>
+</div>
+<hr>
+<div class="refsect2" title='The "sel-eol-filled" property'>
+<a name="GtkScintilla--sel-eol-filled"></a><h3>The <code class="literal">"sel-eol-filled"</code> property</h3>
+<pre class="programlisting">  "sel-eol-filled"           <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a>              : Read / Write</pre>
+<p>Get/set the sel-eol-filled property.</p>
+<p>Default value: FALSE</p>
+</div>
+<hr>
+<div class="refsect2" title='The "selection-end" property'>
+<a name="GtkScintilla--selection-end"></a><h3>The <code class="literal">"selection-end"</code> property</h3>
+<pre class="programlisting">  "selection-end"            <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write</pre>
+<p>Get/set the selection-end property.</p>
+<p>Default value: 0</p>
+</div>
+<hr>
+<div class="refsect2" title='The "selection-mode" property'>
+<a name="GtkScintilla--selection-mode"></a><h3>The <code class="literal">"selection-mode"</code> property</h3>
+<pre class="programlisting">  "selection-mode"           <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write</pre>
+<p>Get/set the selection-mode property.</p>
+<p>Default value: 0</p>
+</div>
+<hr>
+<div class="refsect2" title='The "selection-start" property'>
+<a name="GtkScintilla--selection-start"></a><h3>The <code class="literal">"selection-start"</code> property</h3>
+<pre class="programlisting">  "selection-start"          <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write</pre>
+<p>Get/set the selection-start property.</p>
+<p>Default value: 0</p>
+</div>
+<hr>
+<div class="refsect2" title='The "selections" property'>
+<a name="GtkScintilla--selections"></a><h3>The <code class="literal">"selections"</code> property</h3>
+<pre class="programlisting">  "selections"               <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read</pre>
+<p>Get the selections property.</p>
+<p>Default value: 0</p>
+</div>
+<hr>
+<div class="refsect2" title='The "status" property'>
+<a name="GtkScintilla--status"></a><h3>The <code class="literal">"status"</code> property</h3>
+<pre class="programlisting">  "status"                   <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write</pre>
+<p>Get/set the status property.</p>
+<p>Default value: 0</p>
+</div>
+<hr>
+<div class="refsect2" title='The "style-bits" property'>
+<a name="GtkScintilla--style-bits"></a><h3>The <code class="literal">"style-bits"</code> property</h3>
+<pre class="programlisting">  "style-bits"               <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write</pre>
+<p>Get/set the style-bits property.</p>
+<p>Default value: 0</p>
+</div>
+<hr>
+<div class="refsect2" title='The "style-bits-needed" property'>
+<a name="GtkScintilla--style-bits-needed"></a><h3>The <code class="literal">"style-bits-needed"</code> property</h3>
+<pre class="programlisting">  "style-bits-needed"        <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read</pre>
+<p>Get the style-bits-needed property.</p>
+<p>Default value: 0</p>
+</div>
+<hr>
+<div class="refsect2" title='The "tab-indents" property'>
+<a name="GtkScintilla--tab-indents"></a><h3>The <code class="literal">"tab-indents"</code> property</h3>
+<pre class="programlisting">  "tab-indents"              <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a>              : Read / Write</pre>
+<p>Get/set the tab-indents property.</p>
+<p>Default value: FALSE</p>
+</div>
+<hr>
+<div class="refsect2" title='The "tab-width" property'>
+<a name="GtkScintilla--tab-width"></a><h3>The <code class="literal">"tab-width"</code> property</h3>
+<pre class="programlisting">  "tab-width"                <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write</pre>
+<p>Get/set the tab-width property.</p>
+<p>Default value: 0</p>
+</div>
+<hr>
+<div class="refsect2" title='The "target-end" property'>
+<a name="GtkScintilla--target-end"></a><h3>The <code class="literal">"target-end"</code> property</h3>
+<pre class="programlisting">  "target-end"               <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write</pre>
+<p>Get/set the target-end property.</p>
+<p>Default value: 0</p>
+</div>
+<hr>
+<div class="refsect2" title='The "target-start" property'>
+<a name="GtkScintilla--target-start"></a><h3>The <code class="literal">"target-start"</code> property</h3>
+<pre class="programlisting">  "target-start"             <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write</pre>
+<p>Get/set the target-start property.</p>
+<p>Default value: 0</p>
+</div>
+<hr>
+<div class="refsect2" title='The "text" property'>
+<a name="GtkScintilla--text"></a><h3>The <code class="literal">"text"</code> property</h3>
+<pre class="programlisting">  "text"                     <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a>*                : Read / Write</pre>
+<p>Set the text property.</p>
+<p>Default value: NULL</p>
+</div>
+<hr>
+<div class="refsect2" title='The "text-length" property'>
+<a name="GtkScintilla--text-length"></a><h3>The <code class="literal">"text-length"</code> property</h3>
+<pre class="programlisting">  "text-length"              <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read</pre>
+<p>Get the text-length property.</p>
+<p>Default value: 0</p>
+</div>
+<hr>
+<div class="refsect2" title='The "two-phase-draw" property'>
+<a name="GtkScintilla--two-phase-draw"></a><h3>The <code class="literal">"two-phase-draw"</code> property</h3>
+<pre class="programlisting">  "two-phase-draw"           <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a>              : Read / Write</pre>
+<p>Get/set the two-phase-draw property.</p>
+<p>Default value: FALSE</p>
+</div>
+<hr>
+<div class="refsect2" title='The "undo-collection" property'>
+<a name="GtkScintilla--undo-collection"></a><h3>The <code class="literal">"undo-collection"</code> property</h3>
+<pre class="programlisting">  "undo-collection"          <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a>              : Read / Write</pre>
+<p>Get/set the undo-collection property.</p>
+<p>Default value: FALSE</p>
+</div>
+<hr>
+<div class="refsect2" title='The "use-palette" property'>
+<a name="GtkScintilla--use-palette"></a><h3>The <code class="literal">"use-palette"</code> property</h3>
+<pre class="programlisting">  "use-palette"              <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a>              : Read / Write</pre>
+<p>Get/set the use-palette property.</p>
+<p>Default value: FALSE</p>
+</div>
+<hr>
+<div class="refsect2" title='The "use-tabs" property'>
+<a name="GtkScintilla--use-tabs"></a><h3>The <code class="literal">"use-tabs"</code> property</h3>
+<pre class="programlisting">  "use-tabs"                 <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a>              : Read / Write</pre>
+<p>Get/set the use-tabs property.</p>
+<p>Default value: FALSE</p>
+</div>
+<hr>
+<div class="refsect2" title='The "view-eol" property'>
+<a name="GtkScintilla--view-eol"></a><h3>The <code class="literal">"view-eol"</code> property</h3>
+<pre class="programlisting">  "view-eol"                 <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a>              : Read / Write</pre>
+<p>Get/set the view-eol property.</p>
+<p>Default value: FALSE</p>
+</div>
+<hr>
+<div class="refsect2" title='The "view-white-space" property'>
+<a name="GtkScintilla--view-white-space"></a><h3>The <code class="literal">"view-white-space"</code> property</h3>
+<pre class="programlisting">  "view-white-space"         <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write</pre>
+<p>Get/set the view-white-space property.</p>
+<p>Default value: 0</p>
+</div>
+<hr>
+<div class="refsect2" title='The "virtual-space-options" property'>
+<a name="GtkScintilla--virtual-space-options"></a><h3>The <code class="literal">"virtual-space-options"</code> property</h3>
+<pre class="programlisting">  "virtual-space-options"    <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write</pre>
+<p>Get/set the virtual-space-options property.</p>
+<p>Default value: 0</p>
+</div>
+<hr>
+<div class="refsect2" title='The "vscrollbar" property'>
+<a name="GtkScintilla--vscrollbar"></a><h3>The <code class="literal">"vscrollbar"</code> property</h3>
+<pre class="programlisting">  "vscrollbar"               <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a>              : Read / Write</pre>
+<p>Get/set the vscrollbar property.</p>
+<p>Default value: FALSE</p>
+</div>
+<hr>
+<div class="refsect2" title='The "whitespace-chars" property'>
+<a name="GtkScintilla--whitespace-chars"></a><h3>The <code class="literal">"whitespace-chars"</code> property</h3>
+<pre class="programlisting">  "whitespace-chars"         <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a>*                : Write</pre>
+<p>Set the whitespace-chars property.</p>
+<p>Default value: NULL</p>
+</div>
+<hr>
+<div class="refsect2" title='The "whitespace-size" property'>
+<a name="GtkScintilla--whitespace-size"></a><h3>The <code class="literal">"whitespace-size"</code> property</h3>
+<pre class="programlisting">  "whitespace-size"          <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write</pre>
+<p>Get/set the whitespace-size property.</p>
+<p>Default value: 0</p>
+</div>
+<hr>
+<div class="refsect2" title='The "word-chars" property'>
+<a name="GtkScintilla--word-chars"></a><h3>The <code class="literal">"word-chars"</code> property</h3>
+<pre class="programlisting">  "word-chars"               <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a>*                : Write</pre>
+<p>Set the word-chars property.</p>
+<p>Default value: NULL</p>
+</div>
+<hr>
+<div class="refsect2" title='The "wrap-indent-mode" property'>
+<a name="GtkScintilla--wrap-indent-mode"></a><h3>The <code class="literal">"wrap-indent-mode"</code> property</h3>
+<pre class="programlisting">  "wrap-indent-mode"         <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write</pre>
+<p>Get/set the wrap-indent-mode property.</p>
+<p>Default value: 0</p>
+</div>
+<hr>
+<div class="refsect2" title='The "wrap-mode" property'>
+<a name="GtkScintilla--wrap-mode"></a><h3>The <code class="literal">"wrap-mode"</code> property</h3>
+<pre class="programlisting">  "wrap-mode"                <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write</pre>
+<p>Get/set the wrap-mode property.</p>
+<p>Default value: 0</p>
+</div>
+<hr>
+<div class="refsect2" title='The "wrap-start-indent" property'>
+<a name="GtkScintilla--wrap-start-indent"></a><h3>The <code class="literal">"wrap-start-indent"</code> property</h3>
+<pre class="programlisting">  "wrap-start-indent"        <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write</pre>
+<p>Get/set the wrap-start-indent property.</p>
+<p>Default value: 0</p>
+</div>
+<hr>
+<div class="refsect2" title='The "wrap-visual-flags" property'>
+<a name="GtkScintilla--wrap-visual-flags"></a><h3>The <code class="literal">"wrap-visual-flags"</code> property</h3>
+<pre class="programlisting">  "wrap-visual-flags"        <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write</pre>
+<p>Get/set the wrap-visual-flags property.</p>
+<p>Default value: 0</p>
+</div>
+<hr>
+<div class="refsect2" title='The "wrap-visual-flags-location" property'>
+<a name="GtkScintilla--wrap-visual-flags-location"></a><h3>The <code class="literal">"wrap-visual-flags-location"</code> property</h3>
+<pre class="programlisting">  "wrap-visual-flags-location" <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write</pre>
+<p>Get/set the wrap-visual-flags-location property.</p>
+<p>Default value: 0</p>
+</div>
+<hr>
+<div class="refsect2" title='The "x-offset" property'>
+<a name="GtkScintilla--x-offset"></a><h3>The <code class="literal">"x-offset"</code> property</h3>
+<pre class="programlisting">  "x-offset"                 <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write</pre>
+<p>Get/set the x-offset property.</p>
+<p>Default value: 0</p>
+</div>
+<hr>
+<div class="refsect2" title='The "zoom" property'>
+<a name="GtkScintilla--zoom"></a><h3>The <code class="literal">"zoom"</code> property</h3>
+<pre class="programlisting">  "zoom"                     <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>                  : Read / Write</pre>
+<p>Get/set the zoom property.</p>
+<p>Default value: 0</p>
+</div>
+</div>
+<div class="refsect1" title="Signal Details">
+<a name="GtkScintilla.signal-details"></a><h2>Signal Details</h2>
+<div class="refsect2" title='The "auto-completion-cancelled" signal'>
+<a name="GtkScintilla-auto-completion-cancelled"></a><h3>The <code class="literal">"auto-completion-cancelled"</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="GtkScintilla.html" title="GtkScintilla"><span class="type">GtkScintilla</span></a> *scintilla,
+                                                        <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>      user_data)      : Run First</pre>
+</div>
+<hr>
+<div class="refsect2" title='The "auto-completion-char-deleted" signal'>
+<a name="GtkScintilla-auto-completion-char-deleted"></a><h3>The <code class="literal">"auto-completion-char-deleted"</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="GtkScintilla.html" title="GtkScintilla"><span class="type">GtkScintilla</span></a> *scintilla,
+                                                        <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>      user_data)      : Run First</pre>
+</div>
+<hr>
+<div class="refsect2" title='The "auto-completion-selection" signal'>
+<a name="GtkScintilla-auto-completion-selection"></a><h3>The <code class="literal">"auto-completion-selection"</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="GtkScintilla.html" title="GtkScintilla"><span class="type">GtkScintilla</span></a> *scintilla,
+                                                        <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a>        *arg1,
+                                                        <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>      user_data)      : Run First</pre>
+</div>
+<hr>
+<div class="refsect2" title='The "call-tip-click" signal'>
+<a name="GtkScintilla-call-tip-click"></a><h3>The <code class="literal">"call-tip-click"</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="GtkScintilla.html" title="GtkScintilla"><span class="type">GtkScintilla</span></a> *scintilla,
+                                                        <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>          arg1,
+                                                        <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>      user_data)      : Run First</pre>
+</div>
+<hr>
+<div class="refsect2" title='The "char-added" signal'>
+<a name="GtkScintilla-char-added"></a><h3>The <code class="literal">"char-added"</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="GtkScintilla.html" title="GtkScintilla"><span class="type">GtkScintilla</span></a> *widget,
+                                                        <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>          chr,
+                                                        <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>      user_data)      : Run First</pre>
+<p>
+Sent when the user types an ordinary text character (as opposed to a
+command character) that is entered into the text.  The user can decide
+to use this to decide to display a calltip or an auto completion list.
+This signal is emitted before the character has been styled so
+processing that depends on styling should instead be performed in the
+<a class="link" href="GtkScintilla.html#GtkScintilla-update-ui" title='The "update-ui" signal'><span class="type">"update-ui"</span></a> signal handler.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>widget</code></em> :</span></p></td>
+<td>The <a class="link" href="GtkScintilla.html" title="GtkScintilla"><span class="type">GtkScintilla</span></a> object which had a char added.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>chr</code></em> :</span></p></td>
+<td>The character that was added.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>user data set when the signal handler was connected.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title='The "double-click" signal'>
+<a name="GtkScintilla-double-click"></a><h3>The <code class="literal">"double-click"</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="GtkScintilla.html" title="GtkScintilla"><span class="type">GtkScintilla</span></a> *widget,
+                                                        <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>          position,
+                                                        <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>          line,
+                                                        <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>      user_data)      : Run First</pre>
+<p>
+Emitted when the mouse button was doubled in the editor.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>widget</code></em> :</span></p></td>
+<td>The <a class="link" href="GtkScintilla.html" title="GtkScintilla"><span class="type">GtkScintilla</span></a> object that received a double-click.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>position</code></em> :</span></p></td>
+<td>The position of the double click.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>line</code></em> :</span></p></td>
+<td>The line where the double click occurred.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>user data set when the signal handler was connected.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title='The "dwell-end" signal'>
+<a name="GtkScintilla-dwell-end"></a><h3>The <code class="literal">"dwell-end"</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="GtkScintilla.html" title="GtkScintilla"><span class="type">GtkScintilla</span></a> *scintilla,
+                                                        <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>          arg1,
+                                                        <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>      user_data)      : Run First</pre>
+</div>
+<hr>
+<div class="refsect2" title='The "dwell-start" signal'>
+<a name="GtkScintilla-dwell-start"></a><h3>The <code class="literal">"dwell-start"</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="GtkScintilla.html" title="GtkScintilla"><span class="type">GtkScintilla</span></a> *scintilla,
+                                                        <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>          arg1,
+                                                        <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>      user_data)      : Run First</pre>
+</div>
+<hr>
+<div class="refsect2" title='The "hot-spot-click" signal'>
+<a name="GtkScintilla-hot-spot-click"></a><h3>The <code class="literal">"hot-spot-click"</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="GtkScintilla.html" title="GtkScintilla"><span class="type">GtkScintilla</span></a> *scintilla,
+                                                        <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>          arg1,
+                                                        <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>          arg2,
+                                                        <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>      user_data)      : Run First</pre>
+</div>
+<hr>
+<div class="refsect2" title='The "hot-spot-double-click" signal'>
+<a name="GtkScintilla-hot-spot-double-click"></a><h3>The <code class="literal">"hot-spot-double-click"</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="GtkScintilla.html" title="GtkScintilla"><span class="type">GtkScintilla</span></a> *scintilla,
+                                                        <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>          arg1,
+                                                        <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>          arg2,
+                                                        <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>      user_data)      : Run First</pre>
+</div>
+<hr>
+<div class="refsect2" title='The "indicator-click" signal'>
+<a name="GtkScintilla-indicator-click"></a><h3>The <code class="literal">"indicator-click"</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="GtkScintilla.html" title="GtkScintilla"><span class="type">GtkScintilla</span></a> *scintilla,
+                                                        <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>          arg1,
+                                                        <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>          arg2,
+                                                        <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>      user_data)      : Run First</pre>
+</div>
+<hr>
+<div class="refsect2" title='The "indicator-release" signal'>
+<a name="GtkScintilla-indicator-release"></a><h3>The <code class="literal">"indicator-release"</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="GtkScintilla.html" title="GtkScintilla"><span class="type">GtkScintilla</span></a> *scintilla,
+                                                        <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>          arg1,
+                                                        <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>          arg2,
+                                                        <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>      user_data)      : Run First</pre>
+</div>
+<hr>
+<div class="refsect2" title='The "key" signal'>
+<a name="GtkScintilla-key"></a><h3>The <code class="literal">"key"</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="GtkScintilla.html" title="GtkScintilla"><span class="type">GtkScintilla</span></a> *widget,
+                                                        <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>          chr,
+                                                        <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>          modifiers,
+                                                        <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>      user_data)      : Run First</pre>
+<p>
+Reports all keys pressed but not consumed by <a class="link" href="GtkScintilla.html" title="GtkScintilla"><span class="type">GtkScintilla</span></a>.  This signal
+is emitted if the modifiers include <span class="type">GTK_SCINTILLA_KEY_MOD_CTRL</span> or 
+<span class="type">GTK_SCINTILLA_KEY_MOD_ALT</span> and the key code is less than 256.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>widget</code></em> :</span></p></td>
+<td>The <a class="link" href="GtkScintilla.html" title="GtkScintilla"><span class="type">GtkScintilla</span></a> object where the key was pressed.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>chr</code></em> :</span></p></td>
+<td>The key code.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>modifiers</code></em> :</span></p></td>
+<td>The key modifiers.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>user data set when the signal handler was connected.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title='The "macro-record" signal'>
+<a name="GtkScintilla-macro-record"></a><h3>The <code class="literal">"macro-record"</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="GtkScintilla.html" title="GtkScintilla"><span class="type">GtkScintilla</span></a> *scintilla,
+                                                        <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>          arg1,
+                                                        <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>          arg2,
+                                                        <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>          arg3,
+                                                        <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>      user_data)      : Run First</pre>
+</div>
+<hr>
+<div class="refsect2" title='The "margin-click" signal'>
+<a name="GtkScintilla-margin-click"></a><h3>The <code class="literal">"margin-click"</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="GtkScintilla.html" title="GtkScintilla"><span class="type">GtkScintilla</span></a> *scintilla,
+                                                        <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>          arg1,
+                                                        <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>          arg2,
+                                                        <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>          arg3,
+                                                        <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>      user_data)      : Run First</pre>
+</div>
+<hr>
+<div class="refsect2" title='The "modified" signal'>
+<a name="GtkScintilla-modified"></a><h3>The <code class="literal">"modified"</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="GtkScintilla.html" title="GtkScintilla"><span class="type">GtkScintilla</span></a> *scintilla,
+                                                        <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>          arg1,
+                                                        <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>          arg2,
+                                                        <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a>        *arg3,
+                                                        <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>          arg4,
+                                                        <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>          arg5,
+                                                        <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>          arg6,
+                                                        <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>          arg7,
+                                                        <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>          arg8,
+                                                        <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>      user_data)      : Run First</pre>
+</div>
+<hr>
+<div class="refsect2" title='The "modify-attempt-ro" signal'>
+<a name="GtkScintilla-modify-attempt-ro"></a><h3>The <code class="literal">"modify-attempt-ro"</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="GtkScintilla.html" title="GtkScintilla"><span class="type">GtkScintilla</span></a> *widget,
+                                                        <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>      user_data)      : Run First</pre>
+<p>
+When in read-only mode, this signal is emitted if the user tries to
+change the text.  This can be used to check the document out of a
+version control system.  You can set the read-only state of a document
+with <a class="link" href="gtkscintilla-gtkscintillafunctions.html#gtk-scintilla-set-read-only" title="gtk_scintilla_set_read_only ()"><code class="function">gtk_scintilla_set_read_only()</code></a>.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>widget</code></em> :</span></p></td>
+<td>The <a class="link" href="GtkScintilla.html" title="GtkScintilla"><span class="type">GtkScintilla</span></a> object where modifying an R/O document
+				was attempted.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>user data set when the signal handler was connected.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title='The "need-shown" signal'>
+<a name="GtkScintilla-need-shown"></a><h3>The <code class="literal">"need-shown"</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="GtkScintilla.html" title="GtkScintilla"><span class="type">GtkScintilla</span></a> *scintilla,
+                                                        <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>          arg1,
+                                                        <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>          arg2,
+                                                        <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>      user_data)      : Run First</pre>
+</div>
+<hr>
+<div class="refsect2" title='The "painted" signal'>
+<a name="GtkScintilla-painted"></a><h3>The <code class="literal">"painted"</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="GtkScintilla.html" title="GtkScintilla"><span class="type">GtkScintilla</span></a> *scintilla,
+                                                        <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>      user_data)      : Run First</pre>
+</div>
+<hr>
+<div class="refsect2" title='The "save-point-left" signal'>
+<a name="GtkScintilla-save-point-left"></a><h3>The <code class="literal">"save-point-left"</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="GtkScintilla.html" title="GtkScintilla"><span class="type">GtkScintilla</span></a> *widget,
+                                                        <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>      user_data)      : Run First</pre>
+<p>
+Emitted when the save point is left, allowing the user to display a
+"document dirty" indicator and change its menu items.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>widget</code></em> :</span></p></td>
+<td>The <a class="link" href="GtkScintilla.html" title="GtkScintilla"><span class="type">GtkScintilla</span></a> object where the save point was left.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>user data set when the signal handler was connected.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title='The "save-point-reached" signal'>
+<a name="GtkScintilla-save-point-reached"></a><h3>The <code class="literal">"save-point-reached"</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="GtkScintilla.html" title="GtkScintilla"><span class="type">GtkScintilla</span></a> *widget,
+                                                        <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>      user_data)      : Run First</pre>
+<p>
+Emitted when the save point is entered, allowing the user to display
+a "document dirty" indicator and change its menu items.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>widget</code></em> :</span></p></td>
+<td>The <a class="link" href="GtkScintilla.html" title="GtkScintilla"><span class="type">GtkScintilla</span></a> object where the save point was reached.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>user data set when the signal handler was connected.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title='The "style-needed" signal'>
+<a name="GtkScintilla-style-needed"></a><h3>The <code class="literal">"style-needed"</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="GtkScintilla.html" title="GtkScintilla"><span class="type">GtkScintilla</span></a> *widget,
+                                                        <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>          start_pos,
+                                                        <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>          end_pos,
+                                                        <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>      user_data)      : Run First</pre>
+<p>
+If you have set the lexer to <a class="link" href="gtkscintilla-gtkscintillaconstants.html#GTK-SCINTILLA-LEXER-CONTAINER:CAPS"><span class="type">GTK_SCINTILLA_LEXER_CONTAINER</span></a> to control
+the styling yourself, you will receive this signal when <a class="link" href="GtkScintilla.html" title="GtkScintilla"><span class="type">GtkScintilla</span></a>
+is about to display or print text that requires styling.  You are 
+required to style the text from <em class="parameter"><code>start_pos</code></em> to <em class="parameter"><code>end_pos</code></em>.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>widget</code></em> :</span></p></td>
+<td>The <a class="link" href="GtkScintilla.html" title="GtkScintilla"><span class="type">GtkScintilla</span></a> object which requires styling.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>start_pos</code></em> :</span></p></td>
+<td>The position to begin styling.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>end_pos</code></em> :</span></p></td>
+<td>The position to stop styling.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>user data set when the signal handler was connected.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title='The "update-ui" signal'>
+<a name="GtkScintilla-update-ui"></a><h3>The <code class="literal">"update-ui"</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="GtkScintilla.html" title="GtkScintilla"><span class="type">GtkScintilla</span></a> *widget,
+                                                        <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>      user_data)      : Run First</pre>
+<p>
+Emitted when either the text or styling of the document has changed or
+the selection range or scroll position has changed.  In the handler for
+this signal, it would be a good time to update any container UI elements
+that depend on document or view state.  The <em class="parameter"><code>updated</code></em> parameter is any
+combination of <a class="link" href="gtkscintilla-gtkscintillaconstants.html#GtkScintillaUpdateFlag" title="enum GtkScintillaUpdateFlag"><span class="type">GtkScintillaUpdateFlag</span></a> values.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>widget</code></em> :</span></p></td>
+<td>The <a class="link" href="GtkScintilla.html" title="GtkScintilla"><span class="type">GtkScintilla</span></a> object that had a UI change.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>updated</code></em> :</span></p></td>
+<td>The bit field of things changed since the previous signal.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>user data set when the signal handler was connected.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title='The "uri-dropped" signal'>
+<a name="GtkScintilla-uri-dropped"></a><h3>The <code class="literal">"uri-dropped"</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="GtkScintilla.html" title="GtkScintilla"><span class="type">GtkScintilla</span></a> *scintilla,
+                                                        <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a>        *arg1,
+                                                        <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>      user_data)      : Run First</pre>
+</div>
+<hr>
+<div class="refsect2" title='The "user-list-selection" signal'>
+<a name="GtkScintilla-user-list-selection"></a><h3>The <code class="literal">"user-list-selection"</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="GtkScintilla.html" title="GtkScintilla"><span class="type">GtkScintilla</span></a> *scintilla,
+                                                        <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a>          arg1,
+                                                        <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a>        *arg2,
+                                                        <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>      user_data)      : Run First</pre>
+</div>
+<hr>
+<div class="refsect2" title='The "zoom" signal'>
+<a name="GtkScintilla-zoom"></a><h3>The <code class="literal">"zoom"</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="GtkScintilla.html" title="GtkScintilla"><span class="type">GtkScintilla</span></a> *scintilla,
+                                                        <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>      user_data)      : Run First</pre>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>
+          Generated by GTK-Doc V1.15</div>
+</body>
+</html>

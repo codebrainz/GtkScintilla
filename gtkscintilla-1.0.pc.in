@@ -1,0 +1,12 @@
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+libdir=@libdir@
+includedir=@includedir@
+
+Name: GtkScintilla
+Description: A GTK+2 wrapper for the Scintilla editing component
+Version: @VERSION@
+Requires: gtk+-2.0
+Libs: -L${libdir} -lgtkscintilla-1.0
+Cflags: -I${includedir}/gtkscintilla-1.0
+

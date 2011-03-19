@@ -1,0 +1,115 @@
+#!/usr/bin/env python
+
+from ifaceproc.processor import Processor
+from ifaceproc.formatter import *
+
+G_TYPES_MAP = {
+	"gboolean": "G_TYPE_BOOLEAN",
+	"gint": "G_TYPE_INT",
+	"gulong": "G_TYPE_ULONG",
+	"glong": "G_TYPE_LONG",
+	"const gchar*": "G_TYPE_STRING",
+	"gchar*": "G_TYPE_STRING",
+}
+
+#-----------------------------------------------------------------------
+
+events = []
+def on_event(event, *args, **kwargs):
+	global events
+	events.append(event)
+proc = Processor("../data/Scintilla.iface")
+proc.connect("evt", on_event)
+proc.run()
+
+#-- gtkscintilla.template.c --------------------------------------------
+
+signals_array_enum = "static guint signals[LAST_SIGNAL] = { 0 };\n\nenum {\n"
+for e in events:
+	signals_array_enum += "\t%s,\n" % e.name.upper()
+signals_array_enum += "\tLAST_SIGNAL\n};"
+c_text = open("../src/gtkscintilla.template.c","r").read()
+c_text = c_text.replace("%signals_array_enum%", signals_array_enum)
+
+signal_class_defs = ""
+for e in events:
+	signal_class_defs += """\tsignals[%s] = g_signal_new("%s",
+			G_OBJECT_CLASS_TYPE (object_class),
+			G_SIGNAL_RUN_FIRST,
+			G_STRUCT_OFFSET (GtkScintillaWidgetClass, %s),
+			NULL, NULL,
+			g_cclosure_marshal_VOID__VOID,
+			G_TYPE_NONE,""" % (
+							e.name.upper(), e.name.lower().replace('_', '-'), 
+							e.name.lower())
+	if len(e.params) < 1:
+		signal_class_defs += "%d);\n\n" % len(e.params)
+	else:
+		signal_class_defs += "%d,\n" % len(e.params)
+
+		ccode = ""
+		cccode = ""
+		for p in e.params:
+			types = [ i.strip() for i in p.split(" ") if i.strip() ]
+			if len(types) == 3:
+				p = p.replace(types[-1], '').strip()
+			else:
+				p = types[0]
+			cccode += "\t\t\t%s, \n" % G_TYPES_MAP[p]
+		if cccode.rstrip().endswith(","):
+			cccode = cccode.rstrip()[:-1]
+		ccode += "%s);\n\n" % cccode
+		signal_class_defs += ccode
+signal_class_defs = "\t%s" % signal_class_defs.strip()
+c_text = c_text.replace("%signal_class_defs%", signal_class_defs)
+
+fhdr_text = ""
+fsrc_text = ""
+func_count = 0	
+def on_function(func, *args, **kwargs):
+	global func_count, fsrc_text, fhdr_text
+	fsrc_text += "%s" % format_function("gtk_editor", func)
+	fhdr_text += "%s" % format_function_proto("gtk_editor", func)
+	func_count += 1
+proc = Processor("../scintilla/include/Scintilla.iface", "\t")
+proc.connect("fun", on_function)
+proc.connect("get", on_function)
+proc.connect("set", on_function)
+proc.run()
+c_text = c_text.replace("%wrapper_functions%", fsrc_text)
+open("../src/gtkscintilla.c","w").write(c_text)
+	
+#-- gtkscintilla.template.h --------------------------------------------
+
+signal_class_members = ""
+pstr = ""
+for e in events:
+	pstr = ', '.join(e.params)
+	if pstr.endswith(", "):
+		pstr = pstr[-2:].strip()
+	if pstr:
+		pstr = ", %s" % pstr
+	pstr = "GtkWidget *gtk_scintilla" + pstr
+	signal_class_members += "\tvoid (* %s) (%s);\n" % (e.name, pstr)
+
+h_text = open("../src/gtkscintilla.template.h","r").read()
+h_text = h_text.replace("%signal_class_members%", signal_class_members)
+open("../src/gtkscintilla.h","w").write(h_text)
+
+#-----------------------------------------------------------------------
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

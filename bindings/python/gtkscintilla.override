@@ -1,0 +1,13 @@
+%%
+headers
+#include <Python.h>
+#include "pygobject.h"
+#include "gtkscintilla.h"
+%%
+modulename gtkscintilla
+%%
+import gobject.GObject as PyGObject_Type
+%%
+ignore-glob
+	*_get_type
+%%
