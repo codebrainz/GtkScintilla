@@ -1,0 +1,220 @@
+<SIGNAL>
+<NAME>GtkScintilla::auto-completion-cancelled</NAME>
+<RETURNS>void</RETURNS>
+<FLAGS>f</FLAGS>
+GtkScintilla *scintilla
+</SIGNAL>
+
+<SIGNAL>
+<NAME>GtkScintilla::auto-completion-char-deleted</NAME>
+<RETURNS>void</RETURNS>
+<FLAGS>f</FLAGS>
+GtkScintilla *scintilla
+</SIGNAL>
+
+<SIGNAL>
+<NAME>GtkScintilla::auto-completion-selection</NAME>
+<RETURNS>void</RETURNS>
+<FLAGS>f</FLAGS>
+GtkScintilla *scintilla
+gchar *arg1
+</SIGNAL>
+
+<SIGNAL>
+<NAME>GtkScintilla::call-tip-click</NAME>
+<RETURNS>void</RETURNS>
+<FLAGS>f</FLAGS>
+GtkScintilla *scintilla
+gint  arg1
+</SIGNAL>
+
+<SIGNAL>
+<NAME>GtkScintilla::char-added</NAME>
+<RETURNS>void</RETURNS>
+<FLAGS>f</FLAGS>
+GtkScintilla *scintilla
+gint  arg1
+</SIGNAL>
+
+<SIGNAL>
+<NAME>GtkScintilla::double-click</NAME>
+<RETURNS>void</RETURNS>
+<FLAGS>f</FLAGS>
+GtkScintilla *scintilla
+gint  arg1
+gint  arg2
+</SIGNAL>
+
+<SIGNAL>
+<NAME>GtkScintilla::dwell-end</NAME>
+<RETURNS>void</RETURNS>
+<FLAGS>f</FLAGS>
+GtkScintilla *scintilla
+gint  arg1
+</SIGNAL>
+
+<SIGNAL>
+<NAME>GtkScintilla::dwell-start</NAME>
+<RETURNS>void</RETURNS>
+<FLAGS>f</FLAGS>
+GtkScintilla *scintilla
+gint  arg1
+</SIGNAL>
+
+<SIGNAL>
+<NAME>GtkScintilla::hot-spot-click</NAME>
+<RETURNS>void</RETURNS>
+<FLAGS>f</FLAGS>
+GtkScintilla *scintilla
+gint  arg1
+gint  arg2
+</SIGNAL>
+
+<SIGNAL>
+<NAME>GtkScintilla::hot-spot-double-click</NAME>
+<RETURNS>void</RETURNS>
+<FLAGS>f</FLAGS>
+GtkScintilla *scintilla
+gint  arg1
+gint  arg2
+</SIGNAL>
+
+<SIGNAL>
+<NAME>GtkScintilla::indicator-click</NAME>
+<RETURNS>void</RETURNS>
+<FLAGS>f</FLAGS>
+GtkScintilla *scintilla
+gint  arg1
+gint  arg2
+</SIGNAL>
+
+<SIGNAL>
+<NAME>GtkScintilla::indicator-release</NAME>
+<RETURNS>void</RETURNS>
+<FLAGS>f</FLAGS>
+GtkScintilla *scintilla
+gint  arg1
+gint  arg2
+</SIGNAL>
+
+<SIGNAL>
+<NAME>GtkScintilla::key</NAME>
+<RETURNS>void</RETURNS>
+<FLAGS>f</FLAGS>
+GtkScintilla *scintilla
+gint  arg1
+gint  arg2
+</SIGNAL>
+
+<SIGNAL>
+<NAME>GtkScintilla::macro-record</NAME>
+<RETURNS>void</RETURNS>
+<FLAGS>f</FLAGS>
+GtkScintilla *scintilla
+gint  arg1
+gint  arg2
+gint  arg3
+</SIGNAL>
+
+<SIGNAL>
+<NAME>GtkScintilla::margin-click</NAME>
+<RETURNS>void</RETURNS>
+<FLAGS>f</FLAGS>
+GtkScintilla *scintilla
+gint  arg1
+gint  arg2
+gint  arg3
+</SIGNAL>
+
+<SIGNAL>
+<NAME>GtkScintilla::modified</NAME>
+<RETURNS>void</RETURNS>
+<FLAGS>f</FLAGS>
+GtkScintilla *scintilla
+gint  arg1
+gint  arg2
+gchar *arg3
+gint  arg4
+gint  arg5
+gint  arg6
+gint  arg7
+gint  arg8
+</SIGNAL>
+
+<SIGNAL>
+<NAME>GtkScintilla::modify-attempt-ro</NAME>
+<RETURNS>void</RETURNS>
+<FLAGS>f</FLAGS>
+GtkScintilla *scintilla
+</SIGNAL>
+
+<SIGNAL>
+<NAME>GtkScintilla::need-shown</NAME>
+<RETURNS>void</RETURNS>
+<FLAGS>f</FLAGS>
+GtkScintilla *scintilla
+gint  arg1
+gint  arg2
+</SIGNAL>
+
+<SIGNAL>
+<NAME>GtkScintilla::painted</NAME>
+<RETURNS>void</RETURNS>
+<FLAGS>f</FLAGS>
+GtkScintilla *scintilla
+</SIGNAL>
+
+<SIGNAL>
+<NAME>GtkScintilla::save-point-left</NAME>
+<RETURNS>void</RETURNS>
+<FLAGS>f</FLAGS>
+GtkScintilla *scintilla
+</SIGNAL>
+
+<SIGNAL>
+<NAME>GtkScintilla::save-point-reached</NAME>
+<RETURNS>void</RETURNS>
+<FLAGS>f</FLAGS>
+GtkScintilla *scintilla
+</SIGNAL>
+
+<SIGNAL>
+<NAME>GtkScintilla::style-needed</NAME>
+<RETURNS>void</RETURNS>
+<FLAGS>f</FLAGS>
+GtkScintilla *scintilla
+gint  arg1
+gint  arg2
+</SIGNAL>
+
+<SIGNAL>
+<NAME>GtkScintilla::update-ui</NAME>
+<RETURNS>void</RETURNS>
+<FLAGS>f</FLAGS>
+GtkScintilla *scintilla
+</SIGNAL>
+
+<SIGNAL>
+<NAME>GtkScintilla::uri-dropped</NAME>
+<RETURNS>void</RETURNS>
+<FLAGS>f</FLAGS>
+GtkScintilla *scintilla
+gchar *arg1
+</SIGNAL>
+
+<SIGNAL>
+<NAME>GtkScintilla::user-list-selection</NAME>
+<RETURNS>void</RETURNS>
+<FLAGS>f</FLAGS>
+GtkScintilla *scintilla
+gint  arg1
+gchar *arg2
+</SIGNAL>
+
+<SIGNAL>
+<NAME>GtkScintilla::zoom</NAME>
+<RETURNS>void</RETURNS>
+<FLAGS>f</FLAGS>
+GtkScintilla *scintilla
+</SIGNAL>
+

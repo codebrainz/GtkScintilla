@@ -4,7 +4,7 @@ libdir=@libdir@
 includedir=@includedir@
 
 Name: GtkScintilla
-Description: A GTK+2 wrapper for the Scintilla editing component
+Description: A GTK+2 wrapper for the Scintilla editing component.
 Version: @VERSION@
 Requires: gtk+-2.0
 Libs: -L${libdir} -lgtkscintilla-1.0

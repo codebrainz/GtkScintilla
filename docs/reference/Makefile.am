@@ -49,8 +49,8 @@ FIXXREF_OPTIONS=
 # Used for dependencies. The docs will be rebuilt if any of these change.
 # e.g. HFILE_GLOB=$(top_srcdir)/gtk/*.h
 # e.g. CFILE_GLOB=$(top_srcdir)/gtk/*.c
-HFILE_GLOB=../../src/gtkscintilla*.h
-CFILE_GLOB=../../src/gtkscintilla*.c
+HFILE_GLOB=$(top_builddir)/src/*.h
+CFILE_GLOB=$(top_builddir)/src/*.c
 
 # Extra header to include when scanning, which are not under DOC_SOURCE_DIR
 # e.g. EXTRA_HFILES=$(top_srcdir}/contrib/extra.h
@@ -78,15 +78,15 @@ expand_content_files=
 # signals and properties.
 # e.g. GTKDOC_CFLAGS=-I$(top_srcdir) -I$(top_builddir) $(GTK_DEBUG_FLAGS)
 # e.g. GTKDOC_LIBS=$(top_builddir)/gtk/$(gtktargetlib)
-GTKDOC_CFLAGS=@GTK_CFLAGS@ -I$(top_builddir)/src
-GTKDOC_LIBS=@GTK_LIBS@ $(top_builddir)/build/libgtkscintilla-1.0.la
+GTKDOC_CFLAGS=@GTK_CFLAGS@ -I../../src
+GTKDOC_LIBS=@GTK_LIBS@ ../../build/libgtkscintilla-1.0.la
 
 # This includes the standard gtk-doc make rules, copied by gtkdocize.
-include $(top_srcdir)/gtk-doc.make
+include ../../gtk-doc.make
 
 # Other files to distribute
 # e.g. EXTRA_DIST += version.xml.in
-EXTRA_DIST +=
+#EXTRA_DIST +=
 
 # Files not to distribute
 # for --rebuild-types in $(SCAN_OPTIONS), e.g. $(DOC_MODULE).types
@@ -94,9 +94,9 @@ EXTRA_DIST +=
 #DISTCLEANFILES +=
 
 # Comment this out if you want your docs-status tested during 'make check'
-if ENABLE_GTK_DOC
+#if ENABLE_GTK_DOC
 #TESTS_ENVIRONMENT = cd $(srcsrc) &&
 #TESTS = $(GTKDOC_CHECK)
-endif
+#endif
 
--include $(top_srcdir)/git.mk
+#-include $(top_srcdir)/git.mk

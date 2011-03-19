@@ -1,12 +1,8 @@
 <SECTION>
 <FILE>gtkscintilla</FILE>
-<TITLE>GtkScintilla</TITLE>
-PLAT_GTK
-GTK
-SSM
+<TITLE>Core</TITLE>
+<INCLUDE>gtkscintilla.h</INCLUDE>
 GtkScintilla
-GtkScintillaClass
-GtkScintillaPrivate
 gtk_scintilla_new
 gtk_scintilla_get_property
 gtk_scintilla_set_property
@@ -34,6 +30,7 @@ GTK_SCINTILLA_GET_CLASS
 
 <SECTION>
 <FILE>gtkscintillafunctions</FILE>
+<TITLE>Scintilla Wrapper Functions</TITLE>
 gtk_scintilla_add_text
 gtk_scintilla_add_styled_text
 gtk_scintilla_insert_text
@@ -607,6 +604,7 @@ gtk_scintilla_get_lexer_language
 
 <SECTION>
 <FILE>gtkscintillaconstants</FILE>
+<TITLE>Constants</TITLE>
 GTK_SCINTILLA_INVALID_POSITION
 GTK_SCINTILLA_START
 GTK_SCINTILLA_OPTIONAL_START

@@ -6,16 +6,15 @@
 ]>
 <book id="index">
   <bookinfo>
-    <title>gtkscintilla Reference Manual</title>
+    <title>GtkScintilla Reference Manual</title>
     <releaseinfo>
-      for gtkscintilla [VERSION].
-      The latest version of this documentation can be found on-line at
-      <ulink role="online-location" url="http://[SERVER]/gtkscintilla/index.html">http://[SERVER]/gtkscintilla/</ulink>.
+      You will also want to check out the official
+      <ulink role="online-location" url="http://www.scintilla.org/ScintillaDoc.html">Scintilla Documentation</ulink>.
     </releaseinfo>
   </bookinfo>
 
   <chapter>
-    <title>[Insert title here]</title>
+    <title>GtkScintilla</title>
         <xi:include href="xml/gtkscintilla.xml"/>
     <xi:include href="xml/gtkscintillafunctions.xml"/>
     <xi:include href="xml/gtkscintillaconstants.xml"/>

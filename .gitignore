@@ -1,27 +1,69 @@
-.deps
-.libs
+# Compiled source #
+###################
+*.com
+*.class
+*.dll
+*.exe
 *.o
 *.so
-*.a
+*.lo
+*.la
 
+# Packages #
+############
+# it's better to unpack these files and commit the raw source
+# git has its own built in compression methods
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# Logs and databases #
+######################
+*.log
+*.sql
+*.sqlite
+
+# OS generated files #
+######################
+.DS_Store?
+ehthumbs.db
+Icon?
+Thumbs.db
+
+# Autotools #
+#############
 Makefile
 Makefile.in
-configure
-config.h
+aclocal.m4
 config.guess
 config.log
 config.status
 config.sub
-
-aclocal.m4
+configure
 install-sh
 libtool
 ltmain.sh
 missing
 depcomp
 autom4te.cache
+compile
+.deps
+.libs
+*.stamp
+stamp-h1
+/*.pc
 
-*~
 
-data
-*.log
+data/
+config.h
+config.h.in~
+demo/demo
+demo/demo2
+docs/reference/html/
+docs/reference/xml/
+
