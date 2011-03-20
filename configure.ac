@@ -15,6 +15,9 @@ PKG_CHECK_MODULES([GTK], [gtk+-2.0])
 
 GTK_DOC_CHECK([1.14], [--flavour no-tmpl])
 
+GOBJECT_INTROSPECTION_CHECK([0.6.7])
+
+
 AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_FILES([
 					gtkscintilla-1.0.pc 

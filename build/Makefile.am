@@ -242,3 +242,31 @@ lexers_include_HEADERS =  $(top_builddir)/src/lexers/lexerlang.h \
 				#../data/config/perl.conf \
 				#../data/config/python.conf
 
+#-include $(INTROSPECTION_MAKEFILE)
+#INTROSPECTION_GIRS =
+#INTROSPECTION_SCANNER_ARGS = --add-include-path=$(srcdir)
+#INTROSPECTION_COMPILER_ARGS = --includedir=$(srcdir)
+
+#if HAVE_INTROSPECTION
+
+#introspection_sources = $(libgtkscintilla_1_0_la_SOURCES)
+
+#GtkScintilla-1.0.gir: libgtkscintilla-1.0.la
+#GtkScintilla_1_0_gir_INCLUDES = GObject-2.0 Gtk-2.0
+#GtkScintilla_1_0_gir_NAMESPACE = Gtk
+#GtkScintilla_1_0_gir_CFLAGS = $(INCLUDES)
+#GtkScintilla_1_0_gir_LIBS = libgtkscintilla-1.0.la
+#GtkScintilla_1_0_gir_FILES = $(introspection_sources)
+#INTROSPECTION_GIRS += GtkScintilla-1.0.gir
+
+#girdir = $(datadir)/girepository-1.0
+#gir_DATA = $(INTROSPECTION_GIRS)
+
+#typelibdir = $(libdir)/girrepository-1.0
+#typelib_DATA = $(INTROSPECTION_GIRS:.gir=.typelib)
+
+#CLEANFILES = $(gir_DATA) $(typelib_DATA)
+
+#endif
+
+

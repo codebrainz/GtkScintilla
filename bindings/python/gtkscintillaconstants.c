@@ -37,6 +37,8 @@ gtk_scintilla_add_constants(PyObject *module, const gchar *strip_prefix)
 #ifdef VERSION
     PyModule_AddStringConstant(module, "__version__", VERSION);
 #endif
+  pyg_enum_add(module, "ScintillaUpdateFlag", strip_prefix, GTK_TYPE_SCINTILLA_UPDATE_FLAG);
+  pyg_enum_add(module, "ScintillaSearchFlag", strip_prefix, GTK_TYPE_SCINTILLA_SEARCH_FLAG);
   pyg_enum_add(module, "ScintillaWhiteSpace", strip_prefix, GTK_TYPE_SCINTILLA_WHITE_SPACE);
   pyg_enum_add(module, "ScintillaEndOfLine", strip_prefix, GTK_TYPE_SCINTILLA_END_OF_LINE);
   pyg_enum_add(module, "ScintillaMarkerSymbol", strip_prefix, GTK_TYPE_SCINTILLA_MARKER_SYMBOL);
@@ -44,7 +46,7 @@ gtk_scintilla_add_constants(PyObject *module, const gchar *strip_prefix)
   pyg_enum_add(module, "ScintillaMarginType", strip_prefix, GTK_TYPE_SCINTILLA_MARGIN_TYPE);
   pyg_enum_add(module, "ScintillaStylesCommon", strip_prefix, GTK_TYPE_SCINTILLA_STYLES_COMMON);
   pyg_enum_add(module, "ScintillaCharacterSet", strip_prefix, GTK_TYPE_SCINTILLA_CHARACTER_SET);
-  pyg_enum_add(module, "ScintillaCaseVisible", strip_prefix, GTK_TYPE_SCINTILLA_CASE_VISIBLE);
+  pyg_enum_add(module, "ScintillaCase", strip_prefix, GTK_TYPE_SCINTILLA_CASE);
   pyg_enum_add(module, "ScintillaIndicatorStyle", strip_prefix, GTK_TYPE_SCINTILLA_INDICATOR_STYLE);
   pyg_enum_add(module, "ScintillaIndentView", strip_prefix, GTK_TYPE_SCINTILLA_INDENT_VIEW);
   pyg_enum_add(module, "ScintillaPrintOption", strip_prefix, GTK_TYPE_SCINTILLA_PRINT_OPTION);
@@ -70,7 +72,8 @@ gtk_scintilla_add_constants(PyObject *module, const gchar *strip_prefix)
   pyg_enum_add(module, "ScintillaModificationFlags", strip_prefix, GTK_TYPE_SCINTILLA_MODIFICATION_FLAGS);
   pyg_enum_add(module, "ScintillaKeys", strip_prefix, GTK_TYPE_SCINTILLA_KEYS);
   pyg_enum_add(module, "ScintillaKeyMod", strip_prefix, GTK_TYPE_SCINTILLA_KEY_MOD);
-  pyg_enum_add(module, "ScintillaLexer", strip_prefix, GTK_TYPE_SCINTILLA_LEXER);
+  pyg_enum_add(module, "ScintillaLexers", strip_prefix, GTK_TYPE_SCINTILLA_LEXERS);
+  pyg_enum_add(module, "ScintillaMessages", strip_prefix, GTK_TYPE_SCINTILLA_MESSAGES);
 
   if (PyErr_Occurred())
     PyErr_Print();
@@ -96,5 +99,5 @@ gtk_scintilla_register_classes(PyObject *d)
     }
 
 
-#line 100 "gtkscintillaconstants.c"
+#line 103 "gtkscintillaconstants.c"
 }

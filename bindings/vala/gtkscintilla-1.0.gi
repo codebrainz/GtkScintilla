@@ -4,6 +4,18 @@
 		<function name="Scintilla_LinkLexers" symbol="Scintilla_LinkLexers">
 			<return-type type="int"/>
 		</function>
+		<function name="color_spec_to_int" symbol="color_spec_to_int">
+			<return-type type="gint"/>
+			<parameters>
+				<parameter name="color_spec" type="gchar*"/>
+			</parameters>
+		</function>
+		<function name="int_to_color_spec" symbol="int_to_color_spec">
+			<return-type type="gchar*"/>
+			<parameters>
+				<parameter name="int_color" type="gint"/>
+			</parameters>
+		</function>
 		<function name="scintilla_get_type" symbol="scintilla_get_type">
 			<return-type type="GType"/>
 		</function>
@@ -58,15 +70,15 @@
 				<return-type type="void"/>
 				<parameters>
 					<parameter name="sci" type="GtkScintilla*"/>
-					<parameter name="length" type="gint"/>
-					<parameter name="c" type="glong"/>
+					<parameter name="length" type="guint"/>
+					<parameter name="styled_text" type="gchar*"/>
 				</parameters>
 			</method>
 			<method name="add_text" symbol="gtk_scintilla_add_text">
 				<return-type type="void"/>
 				<parameters>
 					<parameter name="sci" type="GtkScintilla*"/>
-					<parameter name="length" type="gint"/>
+					<parameter name="length" type="guint"/>
 					<parameter name="text" type="gchar*"/>
 				</parameters>
 			</method>
@@ -82,7 +94,7 @@
 				<return-type type="void"/>
 				<parameters>
 					<parameter name="sci" type="GtkScintilla*"/>
-					<parameter name="bytes" type="gint"/>
+					<parameter name="bytes" type="guint"/>
 				</parameters>
 			</method>
 			<method name="annotation_clear_all" symbol="gtk_scintilla_annotation_clear_all">
@@ -175,7 +187,7 @@
 				<return-type type="void"/>
 				<parameters>
 					<parameter name="sci" type="GtkScintilla*"/>
-					<parameter name="length" type="gint"/>
+					<parameter name="length" type="guint"/>
 					<parameter name="text" type="gchar*"/>
 				</parameters>
 			</method>
@@ -732,11 +744,11 @@
 				</parameters>
 			</method>
 			<method name="encoded_from_utf8" symbol="gtk_scintilla_encoded_from_utf8">
-				<return-type type="gint"/>
+				<return-type type="gchar*"/>
 				<parameters>
 					<parameter name="sci" type="GtkScintilla*"/>
 					<parameter name="utf8" type="gchar*"/>
-					<parameter name="encoded" type="gchar*"/>
+					<parameter name="bytes" type="gint"/>
 				</parameters>
 			</method>
 			<method name="end_undo_action" symbol="gtk_scintilla_end_undo_action">
@@ -768,11 +780,15 @@
 				</parameters>
 			</method>
 			<method name="find_text" symbol="gtk_scintilla_find_text">
-				<return-type type="gint"/>
+				<return-type type="gboolean"/>
 				<parameters>
 					<parameter name="sci" type="GtkScintilla*"/>
+					<parameter name="pattern" type="gchar*"/>
+					<parameter name="search_start_pos" type="gint"/>
+					<parameter name="search_end_pos" type="gint"/>
+					<parameter name="found_start_pos" type="gint*"/>
+					<parameter name="found_end_pos" type="gint*"/>
 					<parameter name="flags" type="gint"/>
-					<parameter name="ft" type="struct Sci_TextToFind*"/>
 				</parameters>
 			</method>
 			<method name="form_feed" symbol="gtk_scintilla_form_feed">
@@ -823,6 +839,13 @@
 				<return-type type="gint"/>
 				<parameters>
 					<parameter name="sci" type="GtkScintilla*"/>
+				</parameters>
+			</method>
+			<method name="get_background_color" symbol="gtk_scintilla_get_background_color">
+				<return-type type="gchar*"/>
+				<parameters>
+					<parameter name="self" type="GtkScintilla*"/>
+					<parameter name="style" type="gint"/>
 				</parameters>
 			</method>
 			<method name="get_backspace_unindents" symbol="gtk_scintilla_get_backspace_unindents">
@@ -886,10 +909,10 @@
 				</parameters>
 			</method>
 			<method name="get_char_at" symbol="gtk_scintilla_get_char_at">
-				<return-type type="gint"/>
+				<return-type type="gchar"/>
 				<parameters>
 					<parameter name="sci" type="GtkScintilla*"/>
-					<parameter name="pos" type="gint"/>
+					<parameter name="pos" type="guint"/>
 				</parameters>
 			</method>
 			<method name="get_character_pointer" symbol="gtk_scintilla_get_character_pointer">
@@ -1036,10 +1059,24 @@
 					<parameter name="line" type="gint"/>
 				</parameters>
 			</method>
+			<method name="get_font" symbol="gtk_scintilla_get_font">
+				<return-type type="gchar*"/>
+				<parameters>
+					<parameter name="self" type="GtkScintilla*"/>
+					<parameter name="style_number" type="gint"/>
+				</parameters>
+			</method>
 			<method name="get_font_quality" symbol="gtk_scintilla_get_font_quality">
 				<return-type type="gint"/>
 				<parameters>
 					<parameter name="sci" type="GtkScintilla*"/>
+				</parameters>
+			</method>
+			<method name="get_foreground_color" symbol="gtk_scintilla_get_foreground_color">
+				<return-type type="gchar*"/>
+				<parameters>
+					<parameter name="self" type="GtkScintilla*"/>
+					<parameter name="style" type="gint"/>
 				</parameters>
 			</method>
 			<method name="get_h_scroll_bar" symbol="gtk_scintilla_get_h_scroll_bar">
@@ -1135,10 +1172,9 @@
 				</parameters>
 			</method>
 			<method name="get_lexer_language" symbol="gtk_scintilla_get_lexer_language">
-				<return-type type="gint"/>
+				<return-type type="gchar*"/>
 				<parameters>
 					<parameter name="sci" type="GtkScintilla*"/>
-					<parameter name="text" type="gchar*"/>
 				</parameters>
 			</method>
 			<method name="get_lexer_property" symbol="gtk_scintilla_get_lexer_property">
@@ -1165,11 +1201,10 @@
 				</parameters>
 			</method>
 			<method name="get_line" symbol="gtk_scintilla_get_line">
-				<return-type type="gint"/>
+				<return-type type="gchar*"/>
 				<parameters>
 					<parameter name="sci" type="GtkScintilla*"/>
-					<parameter name="line" type="gint"/>
-					<parameter name="text" type="gchar*"/>
+					<parameter name="line" type="guint"/>
 				</parameters>
 			</method>
 			<method name="get_line_count" symbol="gtk_scintilla_get_line_count">
@@ -1197,6 +1232,12 @@
 				<parameters>
 					<parameter name="sci" type="GtkScintilla*"/>
 					<parameter name="line" type="gint"/>
+				</parameters>
+			</method>
+			<method name="get_line_numbers_visible" symbol="gtk_scintilla_get_line_numbers_visible">
+				<return-type type="gboolean"/>
+				<parameters>
+					<parameter name="self" type="GtkScintilla*"/>
 				</parameters>
 			</method>
 			<method name="get_line_sel_end_position" symbol="gtk_scintilla_get_line_sel_end_position">
@@ -1396,6 +1437,12 @@
 					<parameter name="sci" type="GtkScintilla*"/>
 				</parameters>
 			</method>
+			<method name="get_scintilla" symbol="gtk_scintilla_get_scintilla">
+				<return-type type="ScintillaObject*"/>
+				<parameters>
+					<parameter name="self" type="GtkScintilla*"/>
+				</parameters>
+			</method>
 			<method name="get_scroll_width" symbol="gtk_scintilla_get_scroll_width">
 				<return-type type="gint"/>
 				<parameters>
@@ -1506,14 +1553,14 @@
 				</parameters>
 			</method>
 			<method name="get_style_at" symbol="gtk_scintilla_get_style_at">
-				<return-type type="gint"/>
+				<return-type type="gchar"/>
 				<parameters>
 					<parameter name="sci" type="GtkScintilla*"/>
-					<parameter name="pos" type="gint"/>
+					<parameter name="pos" type="guint"/>
 				</parameters>
 			</method>
 			<method name="get_style_bits" symbol="gtk_scintilla_get_style_bits">
-				<return-type type="gint"/>
+				<return-type type="guchar"/>
 				<parameters>
 					<parameter name="sci" type="GtkScintilla*"/>
 				</parameters>
@@ -1524,11 +1571,12 @@
 					<parameter name="sci" type="GtkScintilla*"/>
 				</parameters>
 			</method>
-			<method name="get_styled_text" symbol="gtk_scintilla_get_styled_text">
-				<return-type type="gint"/>
+			<method name="get_styled_text_range" symbol="gtk_scintilla_get_styled_text_range">
+				<return-type type="gchar*"/>
 				<parameters>
 					<parameter name="sci" type="GtkScintilla*"/>
-					<parameter name="tr" type="struct Sci_TextRange*"/>
+					<parameter name="start_pos" type="guint"/>
+					<parameter name="end_pos" type="gint"/>
 				</parameters>
 			</method>
 			<method name="get_tab_indents" symbol="gtk_scintilla_get_tab_indents">
@@ -1544,11 +1592,10 @@
 				</parameters>
 			</method>
 			<method name="get_tag" symbol="gtk_scintilla_get_tag">
-				<return-type type="gint"/>
+				<return-type type="gchar*"/>
 				<parameters>
 					<parameter name="sci" type="GtkScintilla*"/>
-					<parameter name="tagNumber" type="gint"/>
-					<parameter name="tagValue" type="gchar*"/>
+					<parameter name="tag_number" type="gint"/>
 				</parameters>
 			</method>
 			<method name="get_target_end" symbol="gtk_scintilla_get_target_end">
@@ -1564,11 +1611,9 @@
 				</parameters>
 			</method>
 			<method name="get_text" symbol="gtk_scintilla_get_text">
-				<return-type type="gint"/>
+				<return-type type="gchar*"/>
 				<parameters>
 					<parameter name="sci" type="GtkScintilla*"/>
-					<parameter name="length" type="gint"/>
-					<parameter name="text" type="gchar*"/>
 				</parameters>
 			</method>
 			<method name="get_text_length" symbol="gtk_scintilla_get_text_length">
@@ -1578,10 +1623,11 @@
 				</parameters>
 			</method>
 			<method name="get_text_range" symbol="gtk_scintilla_get_text_range">
-				<return-type type="gint"/>
+				<return-type type="gchar*"/>
 				<parameters>
 					<parameter name="sci" type="GtkScintilla*"/>
-					<parameter name="tr" type="struct Sci_TextRange*"/>
+					<parameter name="start_pos" type="guint"/>
+					<parameter name="end_pos" type="gint"/>
 				</parameters>
 			</method>
 			<method name="get_two_phase_draw" symbol="gtk_scintilla_get_two_phase_draw">
@@ -2386,7 +2432,10 @@
 					<parameter name="doc" type="gint"/>
 				</parameters>
 			</method>
-			<method name="replace_sel" symbol="gtk_scintilla_replace_sel">
+			<method name="release_resources" symbol="gtk_scintilla_release_resources">
+				<return-type type="void"/>
+			</method>
+			<method name="replace_selection" symbol="gtk_scintilla_replace_selection">
 				<return-type type="void"/>
 				<parameters>
 					<parameter name="sci" type="GtkScintilla*"/>
@@ -2397,16 +2446,16 @@
 				<return-type type="gint"/>
 				<parameters>
 					<parameter name="sci" type="GtkScintilla*"/>
-					<parameter name="length" type="gint"/>
 					<parameter name="text" type="gchar*"/>
+					<parameter name="length" type="gint"/>
 				</parameters>
 			</method>
 			<method name="replace_target_regex" symbol="gtk_scintilla_replace_target_regex">
 				<return-type type="gint"/>
 				<parameters>
 					<parameter name="sci" type="GtkScintilla*"/>
-					<parameter name="length" type="gint"/>
 					<parameter name="text" type="gchar*"/>
+					<parameter name="length" type="gint"/>
 				</parameters>
 			</method>
 			<method name="rotate_selection" symbol="gtk_scintilla_rotate_selection">
@@ -2431,7 +2480,6 @@
 				<return-type type="gint"/>
 				<parameters>
 					<parameter name="sci" type="GtkScintilla*"/>
-					<parameter name="length" type="gint"/>
 					<parameter name="text" type="gchar*"/>
 				</parameters>
 			</method>
@@ -2439,16 +2487,16 @@
 				<return-type type="gint"/>
 				<parameters>
 					<parameter name="sci" type="GtkScintilla*"/>
-					<parameter name="flags" type="gint"/>
 					<parameter name="text" type="gchar*"/>
+					<parameter name="flags" type="gint"/>
 				</parameters>
 			</method>
-			<method name="search_prev" symbol="gtk_scintilla_search_prev">
+			<method name="search_previous" symbol="gtk_scintilla_search_previous">
 				<return-type type="gint"/>
 				<parameters>
 					<parameter name="sci" type="GtkScintilla*"/>
-					<parameter name="flags" type="gint"/>
 					<parameter name="text" type="gchar*"/>
+					<parameter name="flags" type="gint"/>
 				</parameters>
 			</method>
 			<method name="select_all" symbol="gtk_scintilla_select_all">
@@ -2467,6 +2515,15 @@
 				<return-type type="gboolean"/>
 				<parameters>
 					<parameter name="sci" type="GtkScintilla*"/>
+				</parameters>
+			</method>
+			<method name="send_message" symbol="gtk_scintilla_send_message">
+				<return-type type="glong"/>
+				<parameters>
+					<parameter name="self" type="GtkScintilla*"/>
+					<parameter name="iMessage" type="guint"/>
+					<parameter name="wParam" type="gulong"/>
+					<parameter name="lParam" type="glong"/>
 				</parameters>
 			</method>
 			<method name="set_additional_caret_fore" symbol="gtk_scintilla_set_additional_caret_fore">
@@ -2523,6 +2580,14 @@
 				<parameters>
 					<parameter name="sci" type="GtkScintilla*"/>
 					<parameter name="posAnchor" type="gint"/>
+				</parameters>
+			</method>
+			<method name="set_background_color" symbol="gtk_scintilla_set_background_color">
+				<return-type type="void"/>
+				<parameters>
+					<parameter name="self" type="GtkScintilla*"/>
+					<parameter name="style" type="gint"/>
+					<parameter name="color_spec" type="gchar*"/>
 				</parameters>
 			</method>
 			<method name="set_backspace_unindents" symbol="gtk_scintilla_set_backspace_unindents">
@@ -2738,11 +2803,27 @@
 					<parameter name="fore" type="gint"/>
 				</parameters>
 			</method>
+			<method name="set_font" symbol="gtk_scintilla_set_font">
+				<return-type type="void"/>
+				<parameters>
+					<parameter name="self" type="GtkScintilla*"/>
+					<parameter name="style_number" type="gint"/>
+					<parameter name="font_desc" type="gchar*"/>
+				</parameters>
+			</method>
 			<method name="set_font_quality" symbol="gtk_scintilla_set_font_quality">
 				<return-type type="void"/>
 				<parameters>
 					<parameter name="sci" type="GtkScintilla*"/>
 					<parameter name="fontQuality" type="gint"/>
+				</parameters>
+			</method>
+			<method name="set_foreground_color" symbol="gtk_scintilla_set_foreground_color">
+				<return-type type="void"/>
+				<parameters>
+					<parameter name="self" type="GtkScintilla*"/>
+					<parameter name="style" type="gint"/>
+					<parameter name="color_spec" type="gchar*"/>
 				</parameters>
 			</method>
 			<method name="set_h_scroll_bar" symbol="gtk_scintilla_set_h_scroll_bar">
@@ -2787,6 +2868,13 @@
 				<parameters>
 					<parameter name="sci" type="GtkScintilla*"/>
 					<parameter name="singleLine" type="gboolean"/>
+				</parameters>
+			</method>
+			<method name="set_id" symbol="gtk_scintilla_set_id">
+				<return-type type="void"/>
+				<parameters>
+					<parameter name="self" type="GtkScintilla*"/>
+					<parameter name="id" type="gshort"/>
 				</parameters>
 			</method>
 			<method name="set_indent" symbol="gtk_scintilla_set_indent">
@@ -2839,13 +2927,6 @@
 					<parameter name="mode" type="gint"/>
 				</parameters>
 			</method>
-			<method name="set_length_for_encode" symbol="gtk_scintilla_set_length_for_encode">
-				<return-type type="void"/>
-				<parameters>
-					<parameter name="sci" type="GtkScintilla*"/>
-					<parameter name="bytes" type="gint"/>
-				</parameters>
-			</method>
 			<method name="set_lexer" symbol="gtk_scintilla_set_lexer">
 				<return-type type="void"/>
 				<parameters>
@@ -2874,6 +2955,13 @@
 					<parameter name="sci" type="GtkScintilla*"/>
 					<parameter name="line" type="gint"/>
 					<parameter name="indentSize" type="gint"/>
+				</parameters>
+			</method>
+			<method name="set_line_numbers_visible" symbol="gtk_scintilla_set_line_numbers_visible">
+				<return-type type="void"/>
+				<parameters>
+					<parameter name="self" type="GtkScintilla*"/>
+					<parameter name="visible" type="gboolean"/>
 				</parameters>
 			</method>
 			<method name="set_line_state" symbol="gtk_scintilla_set_line_state">
@@ -3027,7 +3115,7 @@
 				<return-type type="void"/>
 				<parameters>
 					<parameter name="sci" type="GtkScintilla*"/>
-					<parameter name="readOnly" type="gboolean"/>
+					<parameter name="read_only" type="gboolean"/>
 				</parameters>
 			</method>
 			<method name="set_rectangular_selection_anchor" symbol="gtk_scintilla_set_rectangular_selection_anchor">
@@ -3206,11 +3294,21 @@
 					<parameter name="statusCode" type="gint"/>
 				</parameters>
 			</method>
+			<method name="set_style" symbol="gtk_scintilla_set_style">
+				<return-type type="void"/>
+				<parameters>
+					<parameter name="self" type="GtkScintilla*"/>
+					<parameter name="style_number" type="gint"/>
+					<parameter name="font_spec" type="gchar*"/>
+					<parameter name="fg_color" type="gchar*"/>
+					<parameter name="bg_color" type="gchar*"/>
+				</parameters>
+			</method>
 			<method name="set_style_bits" symbol="gtk_scintilla_set_style_bits">
 				<return-type type="void"/>
 				<parameters>
 					<parameter name="sci" type="GtkScintilla*"/>
-					<parameter name="bits" type="gint"/>
+					<parameter name="bits" type="guchar"/>
 				</parameters>
 			</method>
 			<method name="set_styling" symbol="gtk_scintilla_set_styling">
@@ -3488,206 +3586,10 @@
 					<parameter name="sci" type="GtkScintilla*"/>
 				</parameters>
 			</method>
-			<method name="style_get_back" symbol="gtk_scintilla_style_get_back">
-				<return-type type="gint"/>
-				<parameters>
-					<parameter name="sci" type="GtkScintilla*"/>
-					<parameter name="style" type="gint"/>
-				</parameters>
-			</method>
-			<method name="style_get_bold" symbol="gtk_scintilla_style_get_bold">
-				<return-type type="gboolean"/>
-				<parameters>
-					<parameter name="sci" type="GtkScintilla*"/>
-					<parameter name="style" type="gint"/>
-				</parameters>
-			</method>
-			<method name="style_get_case" symbol="gtk_scintilla_style_get_case">
-				<return-type type="gint"/>
-				<parameters>
-					<parameter name="sci" type="GtkScintilla*"/>
-					<parameter name="style" type="gint"/>
-				</parameters>
-			</method>
-			<method name="style_get_changeable" symbol="gtk_scintilla_style_get_changeable">
-				<return-type type="gboolean"/>
-				<parameters>
-					<parameter name="sci" type="GtkScintilla*"/>
-					<parameter name="style" type="gint"/>
-				</parameters>
-			</method>
-			<method name="style_get_character_set" symbol="gtk_scintilla_style_get_character_set">
-				<return-type type="gint"/>
-				<parameters>
-					<parameter name="sci" type="GtkScintilla*"/>
-					<parameter name="style" type="gint"/>
-				</parameters>
-			</method>
-			<method name="style_get_eol_filled" symbol="gtk_scintilla_style_get_eol_filled">
-				<return-type type="gboolean"/>
-				<parameters>
-					<parameter name="sci" type="GtkScintilla*"/>
-					<parameter name="style" type="gint"/>
-				</parameters>
-			</method>
-			<method name="style_get_font" symbol="gtk_scintilla_style_get_font">
-				<return-type type="gint"/>
-				<parameters>
-					<parameter name="sci" type="GtkScintilla*"/>
-					<parameter name="style" type="gint"/>
-					<parameter name="fontName" type="gchar*"/>
-				</parameters>
-			</method>
-			<method name="style_get_fore" symbol="gtk_scintilla_style_get_fore">
-				<return-type type="gint"/>
-				<parameters>
-					<parameter name="sci" type="GtkScintilla*"/>
-					<parameter name="style" type="gint"/>
-				</parameters>
-			</method>
-			<method name="style_get_hot_spot" symbol="gtk_scintilla_style_get_hot_spot">
-				<return-type type="gboolean"/>
-				<parameters>
-					<parameter name="sci" type="GtkScintilla*"/>
-					<parameter name="style" type="gint"/>
-				</parameters>
-			</method>
-			<method name="style_get_italic" symbol="gtk_scintilla_style_get_italic">
-				<return-type type="gboolean"/>
-				<parameters>
-					<parameter name="sci" type="GtkScintilla*"/>
-					<parameter name="style" type="gint"/>
-				</parameters>
-			</method>
-			<method name="style_get_size" symbol="gtk_scintilla_style_get_size">
-				<return-type type="gint"/>
-				<parameters>
-					<parameter name="sci" type="GtkScintilla*"/>
-					<parameter name="style" type="gint"/>
-				</parameters>
-			</method>
-			<method name="style_get_underline" symbol="gtk_scintilla_style_get_underline">
-				<return-type type="gboolean"/>
-				<parameters>
-					<parameter name="sci" type="GtkScintilla*"/>
-					<parameter name="style" type="gint"/>
-				</parameters>
-			</method>
-			<method name="style_get_visible" symbol="gtk_scintilla_style_get_visible">
-				<return-type type="gboolean"/>
-				<parameters>
-					<parameter name="sci" type="GtkScintilla*"/>
-					<parameter name="style" type="gint"/>
-				</parameters>
-			</method>
 			<method name="style_reset_default" symbol="gtk_scintilla_style_reset_default">
 				<return-type type="void"/>
 				<parameters>
 					<parameter name="sci" type="GtkScintilla*"/>
-				</parameters>
-			</method>
-			<method name="style_set_back" symbol="gtk_scintilla_style_set_back">
-				<return-type type="void"/>
-				<parameters>
-					<parameter name="sci" type="GtkScintilla*"/>
-					<parameter name="style" type="gint"/>
-					<parameter name="back" type="gint"/>
-				</parameters>
-			</method>
-			<method name="style_set_bold" symbol="gtk_scintilla_style_set_bold">
-				<return-type type="void"/>
-				<parameters>
-					<parameter name="sci" type="GtkScintilla*"/>
-					<parameter name="style" type="gint"/>
-					<parameter name="bold" type="gboolean"/>
-				</parameters>
-			</method>
-			<method name="style_set_case" symbol="gtk_scintilla_style_set_case">
-				<return-type type="void"/>
-				<parameters>
-					<parameter name="sci" type="GtkScintilla*"/>
-					<parameter name="style" type="gint"/>
-					<parameter name="caseForce" type="gint"/>
-				</parameters>
-			</method>
-			<method name="style_set_changeable" symbol="gtk_scintilla_style_set_changeable">
-				<return-type type="void"/>
-				<parameters>
-					<parameter name="sci" type="GtkScintilla*"/>
-					<parameter name="style" type="gint"/>
-					<parameter name="changeable" type="gboolean"/>
-				</parameters>
-			</method>
-			<method name="style_set_character_set" symbol="gtk_scintilla_style_set_character_set">
-				<return-type type="void"/>
-				<parameters>
-					<parameter name="sci" type="GtkScintilla*"/>
-					<parameter name="style" type="gint"/>
-					<parameter name="characterSet" type="gint"/>
-				</parameters>
-			</method>
-			<method name="style_set_eol_filled" symbol="gtk_scintilla_style_set_eol_filled">
-				<return-type type="void"/>
-				<parameters>
-					<parameter name="sci" type="GtkScintilla*"/>
-					<parameter name="style" type="gint"/>
-					<parameter name="filled" type="gboolean"/>
-				</parameters>
-			</method>
-			<method name="style_set_font" symbol="gtk_scintilla_style_set_font">
-				<return-type type="void"/>
-				<parameters>
-					<parameter name="sci" type="GtkScintilla*"/>
-					<parameter name="style" type="gint"/>
-					<parameter name="fontName" type="gchar*"/>
-				</parameters>
-			</method>
-			<method name="style_set_fore" symbol="gtk_scintilla_style_set_fore">
-				<return-type type="void"/>
-				<parameters>
-					<parameter name="sci" type="GtkScintilla*"/>
-					<parameter name="style" type="gint"/>
-					<parameter name="fore" type="gint"/>
-				</parameters>
-			</method>
-			<method name="style_set_hot_spot" symbol="gtk_scintilla_style_set_hot_spot">
-				<return-type type="void"/>
-				<parameters>
-					<parameter name="sci" type="GtkScintilla*"/>
-					<parameter name="style" type="gint"/>
-					<parameter name="hotspot" type="gboolean"/>
-				</parameters>
-			</method>
-			<method name="style_set_italic" symbol="gtk_scintilla_style_set_italic">
-				<return-type type="void"/>
-				<parameters>
-					<parameter name="sci" type="GtkScintilla*"/>
-					<parameter name="style" type="gint"/>
-					<parameter name="italic" type="gboolean"/>
-				</parameters>
-			</method>
-			<method name="style_set_size" symbol="gtk_scintilla_style_set_size">
-				<return-type type="void"/>
-				<parameters>
-					<parameter name="sci" type="GtkScintilla*"/>
-					<parameter name="style" type="gint"/>
-					<parameter name="sizePoints" type="gint"/>
-				</parameters>
-			</method>
-			<method name="style_set_underline" symbol="gtk_scintilla_style_set_underline">
-				<return-type type="void"/>
-				<parameters>
-					<parameter name="sci" type="GtkScintilla*"/>
-					<parameter name="style" type="gint"/>
-					<parameter name="underline" type="gboolean"/>
-				</parameters>
-			</method>
-			<method name="style_set_visible" symbol="gtk_scintilla_style_set_visible">
-				<return-type type="void"/>
-				<parameters>
-					<parameter name="sci" type="GtkScintilla*"/>
-					<parameter name="style" type="gint"/>
-					<parameter name="visible" type="gboolean"/>
 				</parameters>
 			</method>
 			<method name="swap_main_anchor_caret" symbol="gtk_scintilla_swap_main_anchor_caret">
@@ -3703,10 +3605,9 @@
 				</parameters>
 			</method>
 			<method name="target_as_utf8" symbol="gtk_scintilla_target_as_utf8">
-				<return-type type="gint"/>
+				<return-type type="gchar*"/>
 				<parameters>
 					<parameter name="sci" type="GtkScintilla*"/>
-					<parameter name="s" type="gchar*"/>
 				</parameters>
 			</method>
 			<method name="target_from_selection" symbol="gtk_scintilla_target_from_selection">
@@ -3747,6 +3648,12 @@
 				<return-type type="void"/>
 				<parameters>
 					<parameter name="sci" type="GtkScintilla*"/>
+				</parameters>
+			</method>
+			<method name="update_line_numbers" symbol="gtk_scintilla_update_line_numbers">
+				<return-type type="void"/>
+				<parameters>
+					<parameter name="self" type="GtkScintilla*"/>
 				</parameters>
 			</method>
 			<method name="upper_case" symbol="gtk_scintilla_upper_case">
@@ -3915,7 +3822,8 @@
 				</parameters>
 			</method>
 			<field name="parent" type="GtkFrame"/>
-			<field name="scintilla" type="ScintillaObject*"/>
+			<field name="scintilla" type="GtkWidget*"/>
+			<field name="accel_group" type="GtkAccelGroup*"/>
 			<field name="priv" type="GtkScintillaPrivate*"/>
 		</struct>
 		<struct name="GtkScintillaClass">
@@ -3983,10 +3891,10 @@
 			<member name="GTK_SCINTILLA_CARET_STYLE_LINE" value="1"/>
 			<member name="GTK_SCINTILLA_CARET_STYLE_BLOCK" value="2"/>
 		</enum>
-		<enum name="GtkScintillaCaseVisible">
-			<member name="GTK_SCINTILLA_CASE_VISIBLE_MIXED" value="0"/>
-			<member name="GTK_SCINTILLA_CASE_VISIBLE_UPPER" value="1"/>
-			<member name="GTK_SCINTILLA_CASE_VISIBLE_LOWER" value="2"/>
+		<enum name="GtkScintillaCase">
+			<member name="GTK_SCINTILLA_CASE_MIXED" value="0"/>
+			<member name="GTK_SCINTILLA_CASE_UPPER" value="1"/>
+			<member name="GTK_SCINTILLA_CASE_LOWER" value="2"/>
 		</enum>
 		<enum name="GtkScintillaCharacterSet">
 			<member name="GTK_SCINTILLA_CHARACTER_SET_ANSI" value="0"/>
@@ -4103,7 +4011,7 @@
 			<member name="GTK_SCINTILLA_KEYS_RWIN" value="314"/>
 			<member name="GTK_SCINTILLA_KEYS_MENU" value="315"/>
 		</enum>
-		<enum name="GtkScintillaLexer">
+		<enum name="GtkScintillaLexers">
 			<member name="GTK_SCINTILLA_LEXER_CONTAINER" value="0"/>
 			<member name="GTK_SCINTILLA_LEXER_NULL" value="1"/>
 			<member name="GTK_SCINTILLA_LEXER_PYTHON" value="2"/>
@@ -4259,29 +4167,602 @@
 			<member name="GTK_SCINTILLA_MARKER_SYMBOL_UNDERLINE" value="29"/>
 			<member name="GTK_SCINTILLA_MARKER_SYMBOL_CHARACTER" value="10000"/>
 		</enum>
+		<enum name="GtkScintillaMessages">
+			<member name="GTK_SCINTILLA_MSG_START" value="2000"/>
+			<member name="GTK_SCINTILLA_MSG_OPTIONAL_START" value="3000"/>
+			<member name="GTK_SCINTILLA_MSG_LEXER_START" value="4000"/>
+			<member name="GTK_SCINTILLA_MSG_ADDTEXT" value="2001"/>
+			<member name="GTK_SCINTILLA_MSG_ADDSTYLEDTEXT" value="2002"/>
+			<member name="GTK_SCINTILLA_MSG_INSERTTEXT" value="2003"/>
+			<member name="GTK_SCINTILLA_MSG_CLEARALL" value="2004"/>
+			<member name="GTK_SCINTILLA_MSG_CLEARDOCUMENTSTYLE" value="2005"/>
+			<member name="GTK_SCINTILLA_MSG_GETLENGTH" value="2006"/>
+			<member name="GTK_SCINTILLA_MSG_GETCHARAT" value="2007"/>
+			<member name="GTK_SCINTILLA_MSG_GETCURRENTPOS" value="2008"/>
+			<member name="GTK_SCINTILLA_MSG_GETANCHOR" value="2009"/>
+			<member name="GTK_SCINTILLA_MSG_GETSTYLEAT" value="2010"/>
+			<member name="GTK_SCINTILLA_MSG_REDO" value="2011"/>
+			<member name="GTK_SCINTILLA_MSG_SETUNDOCOLLECTION" value="2012"/>
+			<member name="GTK_SCINTILLA_MSG_SELECTALL" value="2013"/>
+			<member name="GTK_SCINTILLA_MSG_SETSAVEPOINT" value="2014"/>
+			<member name="GTK_SCINTILLA_MSG_GETSTYLEDTEXT" value="2015"/>
+			<member name="GTK_SCINTILLA_MSG_CANREDO" value="2016"/>
+			<member name="GTK_SCINTILLA_MSG_MARKERLINEFROMHANDLE" value="2017"/>
+			<member name="GTK_SCINTILLA_MSG_MARKERDELETEHANDLE" value="2018"/>
+			<member name="GTK_SCINTILLA_MSG_GETUNDOCOLLECTION" value="2019"/>
+			<member name="GTK_SCINTILLA_MSG_GETVIEWWS" value="2020"/>
+			<member name="GTK_SCINTILLA_MSG_SETVIEWWS" value="2021"/>
+			<member name="GTK_SCINTILLA_MSG_POSITIONFROMPOINT" value="2022"/>
+			<member name="GTK_SCINTILLA_MSG_POSITIONFROMPOINTCLOSE" value="2023"/>
+			<member name="GTK_SCINTILLA_MSG_GOTOLINE" value="2024"/>
+			<member name="GTK_SCINTILLA_MSG_GOTOPOS" value="2025"/>
+			<member name="GTK_SCINTILLA_MSG_SETANCHOR" value="2026"/>
+			<member name="GTK_SCINTILLA_MSG_GETCURLINE" value="2027"/>
+			<member name="GTK_SCINTILLA_MSG_GETENDSTYLED" value="2028"/>
+			<member name="GTK_SCINTILLA_MSG_CONVERTEOLS" value="2029"/>
+			<member name="GTK_SCINTILLA_MSG_GETEOLMODE" value="2030"/>
+			<member name="GTK_SCINTILLA_MSG_SETEOLMODE" value="2031"/>
+			<member name="GTK_SCINTILLA_MSG_STARTSTYLING" value="2032"/>
+			<member name="GTK_SCINTILLA_MSG_SETSTYLING" value="2033"/>
+			<member name="GTK_SCINTILLA_MSG_GETBUFFEREDDRAW" value="2034"/>
+			<member name="GTK_SCINTILLA_MSG_SETBUFFEREDDRAW" value="2035"/>
+			<member name="GTK_SCINTILLA_MSG_SETTABWIDTH" value="2036"/>
+			<member name="GTK_SCINTILLA_MSG_GETTABWIDTH" value="2121"/>
+			<member name="GTK_SCINTILLA_MSG_SETCODEPAGE" value="2037"/>
+			<member name="GTK_SCINTILLA_MSG_SETUSEPALETTE" value="2039"/>
+			<member name="GTK_SCINTILLA_MSG_MARKERDEFINE" value="2040"/>
+			<member name="GTK_SCINTILLA_MSG_MARKERSETFORE" value="2041"/>
+			<member name="GTK_SCINTILLA_MSG_MARKERSETBACK" value="2042"/>
+			<member name="GTK_SCINTILLA_MSG_MARKERADD" value="2043"/>
+			<member name="GTK_SCINTILLA_MSG_MARKERDELETE" value="2044"/>
+			<member name="GTK_SCINTILLA_MSG_MARKERDELETEALL" value="2045"/>
+			<member name="GTK_SCINTILLA_MSG_MARKERGET" value="2046"/>
+			<member name="GTK_SCINTILLA_MSG_MARKERNEXT" value="2047"/>
+			<member name="GTK_SCINTILLA_MSG_MARKERPREVIOUS" value="2048"/>
+			<member name="GTK_SCINTILLA_MSG_MARKERDEFINEPIXMAP" value="2049"/>
+			<member name="GTK_SCINTILLA_MSG_MARKERADDSET" value="2466"/>
+			<member name="GTK_SCINTILLA_MSG_MARKERSETALPHA" value="2476"/>
+			<member name="GTK_SCINTILLA_MSG_SETMARGINTYPEN" value="2240"/>
+			<member name="GTK_SCINTILLA_MSG_GETMARGINTYPEN" value="2241"/>
+			<member name="GTK_SCINTILLA_MSG_SETMARGINWIDTHN" value="2242"/>
+			<member name="GTK_SCINTILLA_MSG_GETMARGINWIDTHN" value="2243"/>
+			<member name="GTK_SCINTILLA_MSG_SETMARGINMASKN" value="2244"/>
+			<member name="GTK_SCINTILLA_MSG_GETMARGINMASKN" value="2245"/>
+			<member name="GTK_SCINTILLA_MSG_SETMARGINSENSITIVEN" value="2246"/>
+			<member name="GTK_SCINTILLA_MSG_GETMARGINSENSITIVEN" value="2247"/>
+			<member name="GTK_SCINTILLA_MSG_STYLECLEARALL" value="2050"/>
+			<member name="GTK_SCINTILLA_MSG_STYLESETFORE" value="2051"/>
+			<member name="GTK_SCINTILLA_MSG_STYLESETBACK" value="2052"/>
+			<member name="GTK_SCINTILLA_MSG_STYLESETBOLD" value="2053"/>
+			<member name="GTK_SCINTILLA_MSG_STYLESETITALIC" value="2054"/>
+			<member name="GTK_SCINTILLA_MSG_STYLESETSIZE" value="2055"/>
+			<member name="GTK_SCINTILLA_MSG_STYLESETFONT" value="2056"/>
+			<member name="GTK_SCINTILLA_MSG_STYLESETEOLFILLED" value="2057"/>
+			<member name="GTK_SCINTILLA_MSG_STYLERESETDEFAULT" value="2058"/>
+			<member name="GTK_SCINTILLA_MSG_STYLESETUNDERLINE" value="2059"/>
+			<member name="GTK_SCINTILLA_MSG_STYLEGETFORE" value="2481"/>
+			<member name="GTK_SCINTILLA_MSG_STYLEGETBACK" value="2482"/>
+			<member name="GTK_SCINTILLA_MSG_STYLEGETBOLD" value="2483"/>
+			<member name="GTK_SCINTILLA_MSG_STYLEGETITALIC" value="2484"/>
+			<member name="GTK_SCINTILLA_MSG_STYLEGETSIZE" value="2485"/>
+			<member name="GTK_SCINTILLA_MSG_STYLEGETFONT" value="2486"/>
+			<member name="GTK_SCINTILLA_MSG_STYLEGETEOLFILLED" value="2487"/>
+			<member name="GTK_SCINTILLA_MSG_STYLEGETUNDERLINE" value="2488"/>
+			<member name="GTK_SCINTILLA_MSG_STYLEGETCASE" value="2489"/>
+			<member name="GTK_SCINTILLA_MSG_STYLEGETCHARACTERSET" value="2490"/>
+			<member name="GTK_SCINTILLA_MSG_STYLEGETVISIBLE" value="2491"/>
+			<member name="GTK_SCINTILLA_MSG_STYLEGETCHANGEABLE" value="2492"/>
+			<member name="GTK_SCINTILLA_MSG_STYLEGETHOTSPOT" value="2493"/>
+			<member name="GTK_SCINTILLA_MSG_STYLESETCASE" value="2060"/>
+			<member name="GTK_SCINTILLA_MSG_STYLESETCHARACTERSET" value="2066"/>
+			<member name="GTK_SCINTILLA_MSG_STYLESETHOTSPOT" value="2409"/>
+			<member name="GTK_SCINTILLA_MSG_SETSELFORE" value="2067"/>
+			<member name="GTK_SCINTILLA_MSG_SETSELBACK" value="2068"/>
+			<member name="GTK_SCINTILLA_MSG_GETSELALPHA" value="2477"/>
+			<member name="GTK_SCINTILLA_MSG_SETSELALPHA" value="2478"/>
+			<member name="GTK_SCINTILLA_MSG_GETSELEOLFILLED" value="2479"/>
+			<member name="GTK_SCINTILLA_MSG_SETSELEOLFILLED" value="2480"/>
+			<member name="GTK_SCINTILLA_MSG_SETCARETFORE" value="2069"/>
+			<member name="GTK_SCINTILLA_MSG_ASSIGNCMDKEY" value="2070"/>
+			<member name="GTK_SCINTILLA_MSG_CLEARCMDKEY" value="2071"/>
+			<member name="GTK_SCINTILLA_MSG_CLEARALLCMDKEYS" value="2072"/>
+			<member name="GTK_SCINTILLA_MSG_SETSTYLINGEX" value="2073"/>
+			<member name="GTK_SCINTILLA_MSG_STYLESETVISIBLE" value="2074"/>
+			<member name="GTK_SCINTILLA_MSG_GETCARETPERIOD" value="2075"/>
+			<member name="GTK_SCINTILLA_MSG_SETCARETPERIOD" value="2076"/>
+			<member name="GTK_SCINTILLA_MSG_SETWORDCHARS" value="2077"/>
+			<member name="GTK_SCINTILLA_MSG_BEGINUNDOACTION" value="2078"/>
+			<member name="GTK_SCINTILLA_MSG_ENDUNDOACTION" value="2079"/>
+			<member name="GTK_SCINTILLA_MSG_INDICSETSTYLE" value="2080"/>
+			<member name="GTK_SCINTILLA_MSG_INDICGETSTYLE" value="2081"/>
+			<member name="GTK_SCINTILLA_MSG_INDICSETFORE" value="2082"/>
+			<member name="GTK_SCINTILLA_MSG_INDICGETFORE" value="2083"/>
+			<member name="GTK_SCINTILLA_MSG_INDICSETUNDER" value="2510"/>
+			<member name="GTK_SCINTILLA_MSG_INDICGETUNDER" value="2511"/>
+			<member name="GTK_SCINTILLA_MSG_SETWHITESPACEFORE" value="2084"/>
+			<member name="GTK_SCINTILLA_MSG_SETWHITESPACEBACK" value="2085"/>
+			<member name="GTK_SCINTILLA_MSG_SETWHITESPACESIZE" value="2086"/>
+			<member name="GTK_SCINTILLA_MSG_GETWHITESPACESIZE" value="2087"/>
+			<member name="GTK_SCINTILLA_MSG_SETSTYLEBITS" value="2090"/>
+			<member name="GTK_SCINTILLA_MSG_GETSTYLEBITS" value="2091"/>
+			<member name="GTK_SCINTILLA_MSG_SETLINESTATE" value="2092"/>
+			<member name="GTK_SCINTILLA_MSG_GETLINESTATE" value="2093"/>
+			<member name="GTK_SCINTILLA_MSG_GETMAXLINESTATE" value="2094"/>
+			<member name="GTK_SCINTILLA_MSG_GETCARETLINEVISIBLE" value="2095"/>
+			<member name="GTK_SCINTILLA_MSG_SETCARETLINEVISIBLE" value="2096"/>
+			<member name="GTK_SCINTILLA_MSG_GETCARETLINEBACK" value="2097"/>
+			<member name="GTK_SCINTILLA_MSG_SETCARETLINEBACK" value="2098"/>
+			<member name="GTK_SCINTILLA_MSG_STYLESETCHANGEABLE" value="2099"/>
+			<member name="GTK_SCINTILLA_MSG_AUTOCSHOW" value="2100"/>
+			<member name="GTK_SCINTILLA_MSG_AUTOCCANCEL" value="2101"/>
+			<member name="GTK_SCINTILLA_MSG_AUTOCACTIVE" value="2102"/>
+			<member name="GTK_SCINTILLA_MSG_AUTOCPOSSTART" value="2103"/>
+			<member name="GTK_SCINTILLA_MSG_AUTOCCOMPLETE" value="2104"/>
+			<member name="GTK_SCINTILLA_MSG_AUTOCSTOPS" value="2105"/>
+			<member name="GTK_SCINTILLA_MSG_AUTOCSETSEPARATOR" value="2106"/>
+			<member name="GTK_SCINTILLA_MSG_AUTOCGETSEPARATOR" value="2107"/>
+			<member name="GTK_SCINTILLA_MSG_AUTOCSELECT" value="2108"/>
+			<member name="GTK_SCINTILLA_MSG_AUTOCSETCANCELATSTART" value="2110"/>
+			<member name="GTK_SCINTILLA_MSG_AUTOCGETCANCELATSTART" value="2111"/>
+			<member name="GTK_SCINTILLA_MSG_AUTOCSETFILLUPS" value="2112"/>
+			<member name="GTK_SCINTILLA_MSG_AUTOCSETCHOOSESINGLE" value="2113"/>
+			<member name="GTK_SCINTILLA_MSG_AUTOCGETCHOOSESINGLE" value="2114"/>
+			<member name="GTK_SCINTILLA_MSG_AUTOCSETIGNORECASE" value="2115"/>
+			<member name="GTK_SCINTILLA_MSG_AUTOCGETIGNORECASE" value="2116"/>
+			<member name="GTK_SCINTILLA_MSG_USERLISTSHOW" value="2117"/>
+			<member name="GTK_SCINTILLA_MSG_AUTOCSETAUTOHIDE" value="2118"/>
+			<member name="GTK_SCINTILLA_MSG_AUTOCGETAUTOHIDE" value="2119"/>
+			<member name="GTK_SCINTILLA_MSG_AUTOCSETDROPRESTOFWORD" value="2270"/>
+			<member name="GTK_SCINTILLA_MSG_AUTOCGETDROPRESTOFWORD" value="2271"/>
+			<member name="GTK_SCINTILLA_MSG_REGISTERIMAGE" value="2405"/>
+			<member name="GTK_SCINTILLA_MSG_CLEARREGISTEREDIMAGES" value="2408"/>
+			<member name="GTK_SCINTILLA_MSG_AUTOCGETTYPESEPARATOR" value="2285"/>
+			<member name="GTK_SCINTILLA_MSG_AUTOCSETTYPESEPARATOR" value="2286"/>
+			<member name="GTK_SCINTILLA_MSG_AUTOCSETMAXWIDTH" value="2208"/>
+			<member name="GTK_SCINTILLA_MSG_AUTOCGETMAXWIDTH" value="2209"/>
+			<member name="GTK_SCINTILLA_MSG_AUTOCSETMAXHEIGHT" value="2210"/>
+			<member name="GTK_SCINTILLA_MSG_AUTOCGETMAXHEIGHT" value="2211"/>
+			<member name="GTK_SCINTILLA_MSG_SETINDENT" value="2122"/>
+			<member name="GTK_SCINTILLA_MSG_GETINDENT" value="2123"/>
+			<member name="GTK_SCINTILLA_MSG_SETUSETABS" value="2124"/>
+			<member name="GTK_SCINTILLA_MSG_GETUSETABS" value="2125"/>
+			<member name="GTK_SCINTILLA_MSG_SETLINEINDENTATION" value="2126"/>
+			<member name="GTK_SCINTILLA_MSG_GETLINEINDENTATION" value="2127"/>
+			<member name="GTK_SCINTILLA_MSG_GETLINEINDENTPOSITION" value="2128"/>
+			<member name="GTK_SCINTILLA_MSG_GETCOLUMN" value="2129"/>
+			<member name="GTK_SCINTILLA_MSG_SETHSCROLLBAR" value="2130"/>
+			<member name="GTK_SCINTILLA_MSG_GETHSCROLLBAR" value="2131"/>
+			<member name="GTK_SCINTILLA_MSG_SETINDENTATIONGUIDES" value="2132"/>
+			<member name="GTK_SCINTILLA_MSG_GETINDENTATIONGUIDES" value="2133"/>
+			<member name="GTK_SCINTILLA_MSG_SETHIGHLIGHTGUIDE" value="2134"/>
+			<member name="GTK_SCINTILLA_MSG_GETHIGHLIGHTGUIDE" value="2135"/>
+			<member name="GTK_SCINTILLA_MSG_GETLINEENDPOSITION" value="2136"/>
+			<member name="GTK_SCINTILLA_MSG_GETCODEPAGE" value="2137"/>
+			<member name="GTK_SCINTILLA_MSG_GETCARETFORE" value="2138"/>
+			<member name="GTK_SCINTILLA_MSG_GETUSEPALETTE" value="2139"/>
+			<member name="GTK_SCINTILLA_MSG_GETREADONLY" value="2140"/>
+			<member name="GTK_SCINTILLA_MSG_SETCURRENTPOS" value="2141"/>
+			<member name="GTK_SCINTILLA_MSG_SETSELECTIONSTART" value="2142"/>
+			<member name="GTK_SCINTILLA_MSG_GETSELECTIONSTART" value="2143"/>
+			<member name="GTK_SCINTILLA_MSG_SETSELECTIONEND" value="2144"/>
+			<member name="GTK_SCINTILLA_MSG_GETSELECTIONEND" value="2145"/>
+			<member name="GTK_SCINTILLA_MSG_SETPRINTMAGNIFICATION" value="2146"/>
+			<member name="GTK_SCINTILLA_MSG_GETPRINTMAGNIFICATION" value="2147"/>
+			<member name="GTK_SCINTILLA_MSG_SETPRINTCOLOURMODE" value="2148"/>
+			<member name="GTK_SCINTILLA_MSG_GETPRINTCOLOURMODE" value="2149"/>
+			<member name="GTK_SCINTILLA_MSG_FINDTEXT" value="2150"/>
+			<member name="GTK_SCINTILLA_MSG_FORMATRANGE" value="2151"/>
+			<member name="GTK_SCINTILLA_MSG_GETFIRSTVISIBLELINE" value="2152"/>
+			<member name="GTK_SCINTILLA_MSG_GETLINE" value="2153"/>
+			<member name="GTK_SCINTILLA_MSG_GETLINECOUNT" value="2154"/>
+			<member name="GTK_SCINTILLA_MSG_SETMARGINLEFT" value="2155"/>
+			<member name="GTK_SCINTILLA_MSG_GETMARGINLEFT" value="2156"/>
+			<member name="GTK_SCINTILLA_MSG_SETMARGINRIGHT" value="2157"/>
+			<member name="GTK_SCINTILLA_MSG_GETMARGINRIGHT" value="2158"/>
+			<member name="GTK_SCINTILLA_MSG_GETMODIFY" value="2159"/>
+			<member name="GTK_SCINTILLA_MSG_SETSEL" value="2160"/>
+			<member name="GTK_SCINTILLA_MSG_GETSELTEXT" value="2161"/>
+			<member name="GTK_SCINTILLA_MSG_GETTEXTRANGE" value="2162"/>
+			<member name="GTK_SCINTILLA_MSG_HIDESELECTION" value="2163"/>
+			<member name="GTK_SCINTILLA_MSG_POINTXFROMPOSITION" value="2164"/>
+			<member name="GTK_SCINTILLA_MSG_POINTYFROMPOSITION" value="2165"/>
+			<member name="GTK_SCINTILLA_MSG_LINEFROMPOSITION" value="2166"/>
+			<member name="GTK_SCINTILLA_MSG_POSITIONFROMLINE" value="2167"/>
+			<member name="GTK_SCINTILLA_MSG_LINESCROLL" value="2168"/>
+			<member name="GTK_SCINTILLA_MSG_SCROLLCARET" value="2169"/>
+			<member name="GTK_SCINTILLA_MSG_REPLACESEL" value="2170"/>
+			<member name="GTK_SCINTILLA_MSG_SETREADONLY" value="2171"/>
+			<member name="GTK_SCINTILLA_MSG_NULL" value="2172"/>
+			<member name="GTK_SCINTILLA_MSG_CANPASTE" value="2173"/>
+			<member name="GTK_SCINTILLA_MSG_CANUNDO" value="2174"/>
+			<member name="GTK_SCINTILLA_MSG_EMPTYUNDOBUFFER" value="2175"/>
+			<member name="GTK_SCINTILLA_MSG_UNDO" value="2176"/>
+			<member name="GTK_SCINTILLA_MSG_CUT" value="2177"/>
+			<member name="GTK_SCINTILLA_MSG_COPY" value="2178"/>
+			<member name="GTK_SCINTILLA_MSG_PASTE" value="2179"/>
+			<member name="GTK_SCINTILLA_MSG_CLEAR" value="2180"/>
+			<member name="GTK_SCINTILLA_MSG_SETTEXT" value="2181"/>
+			<member name="GTK_SCINTILLA_MSG_GETTEXT" value="2182"/>
+			<member name="GTK_SCINTILLA_MSG_GETTEXTLENGTH" value="2183"/>
+			<member name="GTK_SCINTILLA_MSG_GETDIRECTFUNCTION" value="2184"/>
+			<member name="GTK_SCINTILLA_MSG_GETDIRECTPOINTER" value="2185"/>
+			<member name="GTK_SCINTILLA_MSG_SETOVERTYPE" value="2186"/>
+			<member name="GTK_SCINTILLA_MSG_GETOVERTYPE" value="2187"/>
+			<member name="GTK_SCINTILLA_MSG_SETCARETWIDTH" value="2188"/>
+			<member name="GTK_SCINTILLA_MSG_GETCARETWIDTH" value="2189"/>
+			<member name="GTK_SCINTILLA_MSG_SETTARGETSTART" value="2190"/>
+			<member name="GTK_SCINTILLA_MSG_GETTARGETSTART" value="2191"/>
+			<member name="GTK_SCINTILLA_MSG_SETTARGETEND" value="2192"/>
+			<member name="GTK_SCINTILLA_MSG_GETTARGETEND" value="2193"/>
+			<member name="GTK_SCINTILLA_MSG_REPLACETARGET" value="2194"/>
+			<member name="GTK_SCINTILLA_MSG_REPLACETARGETRE" value="2195"/>
+			<member name="GTK_SCINTILLA_MSG_SEARCHINTARGET" value="2197"/>
+			<member name="GTK_SCINTILLA_MSG_SETSEARCHFLAGS" value="2198"/>
+			<member name="GTK_SCINTILLA_MSG_GETSEARCHFLAGS" value="2199"/>
+			<member name="GTK_SCINTILLA_MSG_CALLTIPSHOW" value="2200"/>
+			<member name="GTK_SCINTILLA_MSG_CALLTIPCANCEL" value="2201"/>
+			<member name="GTK_SCINTILLA_MSG_CALLTIPACTIVE" value="2202"/>
+			<member name="GTK_SCINTILLA_MSG_CALLTIPPOSSTART" value="2203"/>
+			<member name="GTK_SCINTILLA_MSG_CALLTIPSETHLT" value="2204"/>
+			<member name="GTK_SCINTILLA_MSG_CALLTIPSETBACK" value="2205"/>
+			<member name="GTK_SCINTILLA_MSG_CALLTIPSETFORE" value="2206"/>
+			<member name="GTK_SCINTILLA_MSG_CALLTIPSETFOREHLT" value="2207"/>
+			<member name="GTK_SCINTILLA_MSG_CALLTIPUSESTYLE" value="2212"/>
+			<member name="GTK_SCINTILLA_MSG_VISIBLEFROMDOCLINE" value="2220"/>
+			<member name="GTK_SCINTILLA_MSG_DOCLINEFROMVISIBLE" value="2221"/>
+			<member name="GTK_SCINTILLA_MSG_WRAPCOUNT" value="2235"/>
+			<member name="GTK_SCINTILLA_MSG_SETFOLDLEVEL" value="2222"/>
+			<member name="GTK_SCINTILLA_MSG_GETFOLDLEVEL" value="2223"/>
+			<member name="GTK_SCINTILLA_MSG_GETLASTCHILD" value="2224"/>
+			<member name="GTK_SCINTILLA_MSG_GETFOLDPARENT" value="2225"/>
+			<member name="GTK_SCINTILLA_MSG_SHOWLINES" value="2226"/>
+			<member name="GTK_SCINTILLA_MSG_HIDELINES" value="2227"/>
+			<member name="GTK_SCINTILLA_MSG_GETLINEVISIBLE" value="2228"/>
+			<member name="GTK_SCINTILLA_MSG_SETFOLDEXPANDED" value="2229"/>
+			<member name="GTK_SCINTILLA_MSG_GETFOLDEXPANDED" value="2230"/>
+			<member name="GTK_SCINTILLA_MSG_TOGGLEFOLD" value="2231"/>
+			<member name="GTK_SCINTILLA_MSG_ENSUREVISIBLE" value="2232"/>
+			<member name="GTK_SCINTILLA_MSG_SETFOLDFLAGS" value="2233"/>
+			<member name="GTK_SCINTILLA_MSG_ENSUREVISIBLEENFORCEPOLICY" value="2234"/>
+			<member name="GTK_SCINTILLA_MSG_SETTABINDENTS" value="2260"/>
+			<member name="GTK_SCINTILLA_MSG_GETTABINDENTS" value="2261"/>
+			<member name="GTK_SCINTILLA_MSG_SETBACKSPACEUNINDENTS" value="2262"/>
+			<member name="GTK_SCINTILLA_MSG_GETBACKSPACEUNINDENTS" value="2263"/>
+			<member name="GTK_SCINTILLA_MSG_SETMOUSEDWELLTIME" value="2264"/>
+			<member name="GTK_SCINTILLA_MSG_GETMOUSEDWELLTIME" value="2265"/>
+			<member name="GTK_SCINTILLA_MSG_WORDSTARTPOSITION" value="2266"/>
+			<member name="GTK_SCINTILLA_MSG_WORDENDPOSITION" value="2267"/>
+			<member name="GTK_SCINTILLA_MSG_SETWRAPMODE" value="2268"/>
+			<member name="GTK_SCINTILLA_MSG_GETWRAPMODE" value="2269"/>
+			<member name="GTK_SCINTILLA_MSG_SETWRAPVISUALFLAGS" value="2460"/>
+			<member name="GTK_SCINTILLA_MSG_GETWRAPVISUALFLAGS" value="2461"/>
+			<member name="GTK_SCINTILLA_MSG_SETWRAPVISUALFLAGSLOCATION" value="2462"/>
+			<member name="GTK_SCINTILLA_MSG_GETWRAPVISUALFLAGSLOCATION" value="2463"/>
+			<member name="GTK_SCINTILLA_MSG_SETWRAPSTARTINDENT" value="2464"/>
+			<member name="GTK_SCINTILLA_MSG_GETWRAPSTARTINDENT" value="2465"/>
+			<member name="GTK_SCINTILLA_MSG_SETWRAPINDENTMODE" value="2472"/>
+			<member name="GTK_SCINTILLA_MSG_GETWRAPINDENTMODE" value="2473"/>
+			<member name="GTK_SCINTILLA_MSG_SETLAYOUTCACHE" value="2272"/>
+			<member name="GTK_SCINTILLA_MSG_GETLAYOUTCACHE" value="2273"/>
+			<member name="GTK_SCINTILLA_MSG_SETSCROLLWIDTH" value="2274"/>
+			<member name="GTK_SCINTILLA_MSG_GETSCROLLWIDTH" value="2275"/>
+			<member name="GTK_SCINTILLA_MSG_SETSCROLLWIDTHTRACKING" value="2516"/>
+			<member name="GTK_SCINTILLA_MSG_GETSCROLLWIDTHTRACKING" value="2517"/>
+			<member name="GTK_SCINTILLA_MSG_TEXTWIDTH" value="2276"/>
+			<member name="GTK_SCINTILLA_MSG_SETENDATLASTLINE" value="2277"/>
+			<member name="GTK_SCINTILLA_MSG_GETENDATLASTLINE" value="2278"/>
+			<member name="GTK_SCINTILLA_MSG_TEXTHEIGHT" value="2279"/>
+			<member name="GTK_SCINTILLA_MSG_SETVSCROLLBAR" value="2280"/>
+			<member name="GTK_SCINTILLA_MSG_GETVSCROLLBAR" value="2281"/>
+			<member name="GTK_SCINTILLA_MSG_APPENDTEXT" value="2282"/>
+			<member name="GTK_SCINTILLA_MSG_GETTWOPHASEDRAW" value="2283"/>
+			<member name="GTK_SCINTILLA_MSG_SETTWOPHASEDRAW" value="2284"/>
+			<member name="GTK_SCINTILLA_MSG_SETFONTQUALITY" value="2611"/>
+			<member name="GTK_SCINTILLA_MSG_GETFONTQUALITY" value="2612"/>
+			<member name="GTK_SCINTILLA_MSG_SETFIRSTVISIBLELINE" value="2613"/>
+			<member name="GTK_SCINTILLA_MSG_SETMULTIPASTE" value="2614"/>
+			<member name="GTK_SCINTILLA_MSG_GETMULTIPASTE" value="2615"/>
+			<member name="GTK_SCINTILLA_MSG_GETTAG" value="2616"/>
+			<member name="GTK_SCINTILLA_MSG_TARGETFROMSELECTION" value="2287"/>
+			<member name="GTK_SCINTILLA_MSG_LINESJOIN" value="2288"/>
+			<member name="GTK_SCINTILLA_MSG_LINESSPLIT" value="2289"/>
+			<member name="GTK_SCINTILLA_MSG_SETFOLDMARGINCOLOUR" value="2290"/>
+			<member name="GTK_SCINTILLA_MSG_SETFOLDMARGINHICOLOUR" value="2291"/>
+			<member name="GTK_SCINTILLA_MSG_LINEDOWN" value="2300"/>
+			<member name="GTK_SCINTILLA_MSG_LINEDOWNEXTEND" value="2301"/>
+			<member name="GTK_SCINTILLA_MSG_LINEUP" value="2302"/>
+			<member name="GTK_SCINTILLA_MSG_LINEUPEXTEND" value="2303"/>
+			<member name="GTK_SCINTILLA_MSG_CHARLEFT" value="2304"/>
+			<member name="GTK_SCINTILLA_MSG_CHARLEFTEXTEND" value="2305"/>
+			<member name="GTK_SCINTILLA_MSG_CHARRIGHT" value="2306"/>
+			<member name="GTK_SCINTILLA_MSG_CHARRIGHTEXTEND" value="2307"/>
+			<member name="GTK_SCINTILLA_MSG_WORDLEFT" value="2308"/>
+			<member name="GTK_SCINTILLA_MSG_WORDLEFTEXTEND" value="2309"/>
+			<member name="GTK_SCINTILLA_MSG_WORDRIGHT" value="2310"/>
+			<member name="GTK_SCINTILLA_MSG_WORDRIGHTEXTEND" value="2311"/>
+			<member name="GTK_SCINTILLA_MSG_HOME" value="2312"/>
+			<member name="GTK_SCINTILLA_MSG_HOMEEXTEND" value="2313"/>
+			<member name="GTK_SCINTILLA_MSG_LINEEND" value="2314"/>
+			<member name="GTK_SCINTILLA_MSG_LINEENDEXTEND" value="2315"/>
+			<member name="GTK_SCINTILLA_MSG_DOCUMENTSTART" value="2316"/>
+			<member name="GTK_SCINTILLA_MSG_DOCUMENTSTARTEXTEND" value="2317"/>
+			<member name="GTK_SCINTILLA_MSG_DOCUMENTEND" value="2318"/>
+			<member name="GTK_SCINTILLA_MSG_DOCUMENTENDEXTEND" value="2319"/>
+			<member name="GTK_SCINTILLA_MSG_PAGEUP" value="2320"/>
+			<member name="GTK_SCINTILLA_MSG_PAGEUPEXTEND" value="2321"/>
+			<member name="GTK_SCINTILLA_MSG_PAGEDOWN" value="2322"/>
+			<member name="GTK_SCINTILLA_MSG_PAGEDOWNEXTEND" value="2323"/>
+			<member name="GTK_SCINTILLA_MSG_EDITTOGGLEOVERTYPE" value="2324"/>
+			<member name="GTK_SCINTILLA_MSG_CANCEL" value="2325"/>
+			<member name="GTK_SCINTILLA_MSG_DELETEBACK" value="2326"/>
+			<member name="GTK_SCINTILLA_MSG_TAB" value="2327"/>
+			<member name="GTK_SCINTILLA_MSG_BACKTAB" value="2328"/>
+			<member name="GTK_SCINTILLA_MSG_NEWLINE" value="2329"/>
+			<member name="GTK_SCINTILLA_MSG_FORMFEED" value="2330"/>
+			<member name="GTK_SCINTILLA_MSG_VCHOME" value="2331"/>
+			<member name="GTK_SCINTILLA_MSG_VCHOMEEXTEND" value="2332"/>
+			<member name="GTK_SCINTILLA_MSG_ZOOMIN" value="2333"/>
+			<member name="GTK_SCINTILLA_MSG_ZOOMOUT" value="2334"/>
+			<member name="GTK_SCINTILLA_MSG_DELWORDLEFT" value="2335"/>
+			<member name="GTK_SCINTILLA_MSG_DELWORDRIGHT" value="2336"/>
+			<member name="GTK_SCINTILLA_MSG_DELWORDRIGHTEND" value="2518"/>
+			<member name="GTK_SCINTILLA_MSG_LINECUT" value="2337"/>
+			<member name="GTK_SCINTILLA_MSG_LINEDELETE" value="2338"/>
+			<member name="GTK_SCINTILLA_MSG_LINETRANSPOSE" value="2339"/>
+			<member name="GTK_SCINTILLA_MSG_LINEDUPLICATE" value="2404"/>
+			<member name="GTK_SCINTILLA_MSG_LOWERCASE" value="2340"/>
+			<member name="GTK_SCINTILLA_MSG_UPPERCASE" value="2341"/>
+			<member name="GTK_SCINTILLA_MSG_LINESCROLLDOWN" value="2342"/>
+			<member name="GTK_SCINTILLA_MSG_LINESCROLLUP" value="2343"/>
+			<member name="GTK_SCINTILLA_MSG_DELETEBACKNOTLINE" value="2344"/>
+			<member name="GTK_SCINTILLA_MSG_HOMEDISPLAY" value="2345"/>
+			<member name="GTK_SCINTILLA_MSG_HOMEDISPLAYEXTEND" value="2346"/>
+			<member name="GTK_SCINTILLA_MSG_LINEENDDISPLAY" value="2347"/>
+			<member name="GTK_SCINTILLA_MSG_LINEENDDISPLAYEXTEND" value="2348"/>
+			<member name="GTK_SCINTILLA_MSG_HOMEWRAP" value="2349"/>
+			<member name="GTK_SCINTILLA_MSG_HOMEWRAPEXTEND" value="2450"/>
+			<member name="GTK_SCINTILLA_MSG_LINEENDWRAP" value="2451"/>
+			<member name="GTK_SCINTILLA_MSG_LINEENDWRAPEXTEND" value="2452"/>
+			<member name="GTK_SCINTILLA_MSG_VCHOMEWRAP" value="2453"/>
+			<member name="GTK_SCINTILLA_MSG_VCHOMEWRAPEXTEND" value="2454"/>
+			<member name="GTK_SCINTILLA_MSG_LINECOPY" value="2455"/>
+			<member name="GTK_SCINTILLA_MSG_MOVECARETINSIDEVIEW" value="2401"/>
+			<member name="GTK_SCINTILLA_MSG_LINELENGTH" value="2350"/>
+			<member name="GTK_SCINTILLA_MSG_BRACEHIGHLIGHT" value="2351"/>
+			<member name="GTK_SCINTILLA_MSG_BRACEBADLIGHT" value="2352"/>
+			<member name="GTK_SCINTILLA_MSG_BRACEMATCH" value="2353"/>
+			<member name="GTK_SCINTILLA_MSG_GETVIEWEOL" value="2355"/>
+			<member name="GTK_SCINTILLA_MSG_SETVIEWEOL" value="2356"/>
+			<member name="GTK_SCINTILLA_MSG_GETDOCPOINTER" value="2357"/>
+			<member name="GTK_SCINTILLA_MSG_SETDOCPOINTER" value="2358"/>
+			<member name="GTK_SCINTILLA_MSG_SETMODEVENTMASK" value="2359"/>
+			<member name="GTK_SCINTILLA_MSG_GETEDGECOLUMN" value="2360"/>
+			<member name="GTK_SCINTILLA_MSG_SETEDGECOLUMN" value="2361"/>
+			<member name="GTK_SCINTILLA_MSG_GETEDGEMODE" value="2362"/>
+			<member name="GTK_SCINTILLA_MSG_SETEDGEMODE" value="2363"/>
+			<member name="GTK_SCINTILLA_MSG_GETEDGECOLOUR" value="2364"/>
+			<member name="GTK_SCINTILLA_MSG_SETEDGECOLOUR" value="2365"/>
+			<member name="GTK_SCINTILLA_MSG_SEARCHANCHOR" value="2366"/>
+			<member name="GTK_SCINTILLA_MSG_SEARCHNEXT" value="2367"/>
+			<member name="GTK_SCINTILLA_MSG_SEARCHPREV" value="2368"/>
+			<member name="GTK_SCINTILLA_MSG_LINESONSCREEN" value="2370"/>
+			<member name="GTK_SCINTILLA_MSG_USEPOPUP" value="2371"/>
+			<member name="GTK_SCINTILLA_MSG_SELECTIONISRECTANGLE" value="2372"/>
+			<member name="GTK_SCINTILLA_MSG_SETZOOM" value="2373"/>
+			<member name="GTK_SCINTILLA_MSG_GETZOOM" value="2374"/>
+			<member name="GTK_SCINTILLA_MSG_CREATEDOCUMENT" value="2375"/>
+			<member name="GTK_SCINTILLA_MSG_ADDREFDOCUMENT" value="2376"/>
+			<member name="GTK_SCINTILLA_MSG_RELEASEDOCUMENT" value="2377"/>
+			<member name="GTK_SCINTILLA_MSG_GETMODEVENTMASK" value="2378"/>
+			<member name="GTK_SCINTILLA_MSG_SETFOCUS" value="2380"/>
+			<member name="GTK_SCINTILLA_MSG_GETFOCUS" value="2381"/>
+			<member name="GTK_SCINTILLA_MSG_SETSTATUS" value="2382"/>
+			<member name="GTK_SCINTILLA_MSG_GETSTATUS" value="2383"/>
+			<member name="GTK_SCINTILLA_MSG_SETMOUSEDOWNCAPTURES" value="2384"/>
+			<member name="GTK_SCINTILLA_MSG_GETMOUSEDOWNCAPTURES" value="2385"/>
+			<member name="GTK_SCINTILLA_MSG_SETCURSOR" value="2386"/>
+			<member name="GTK_SCINTILLA_MSG_GETCURSOR" value="2387"/>
+			<member name="GTK_SCINTILLA_MSG_SETCONTROLCHARSYMBOL" value="2388"/>
+			<member name="GTK_SCINTILLA_MSG_GETCONTROLCHARSYMBOL" value="2389"/>
+			<member name="GTK_SCINTILLA_MSG_WORDPARTLEFT" value="2390"/>
+			<member name="GTK_SCINTILLA_MSG_WORDPARTLEFTEXTEND" value="2391"/>
+			<member name="GTK_SCINTILLA_MSG_WORDPARTRIGHT" value="2392"/>
+			<member name="GTK_SCINTILLA_MSG_WORDPARTRIGHTEXTEND" value="2393"/>
+			<member name="GTK_SCINTILLA_MSG_SETVISIBLEPOLICY" value="2394"/>
+			<member name="GTK_SCINTILLA_MSG_DELLINELEFT" value="2395"/>
+			<member name="GTK_SCINTILLA_MSG_DELLINERIGHT" value="2396"/>
+			<member name="GTK_SCINTILLA_MSG_SETXOFFSET" value="2397"/>
+			<member name="GTK_SCINTILLA_MSG_GETXOFFSET" value="2398"/>
+			<member name="GTK_SCINTILLA_MSG_CHOOSECARETX" value="2399"/>
+			<member name="GTK_SCINTILLA_MSG_GRABFOCUS" value="2400"/>
+			<member name="GTK_SCINTILLA_MSG_SETXCARETPOLICY" value="2402"/>
+			<member name="GTK_SCINTILLA_MSG_SETYCARETPOLICY" value="2403"/>
+			<member name="GTK_SCINTILLA_MSG_SETPRINTWRAPMODE" value="2406"/>
+			<member name="GTK_SCINTILLA_MSG_GETPRINTWRAPMODE" value="2407"/>
+			<member name="GTK_SCINTILLA_MSG_SETHOTSPOTACTIVEFORE" value="2410"/>
+			<member name="GTK_SCINTILLA_MSG_GETHOTSPOTACTIVEFORE" value="2494"/>
+			<member name="GTK_SCINTILLA_MSG_SETHOTSPOTACTIVEBACK" value="2411"/>
+			<member name="GTK_SCINTILLA_MSG_GETHOTSPOTACTIVEBACK" value="2495"/>
+			<member name="GTK_SCINTILLA_MSG_SETHOTSPOTACTIVEUNDERLINE" value="2412"/>
+			<member name="GTK_SCINTILLA_MSG_GETHOTSPOTACTIVEUNDERLINE" value="2496"/>
+			<member name="GTK_SCINTILLA_MSG_SETHOTSPOTSINGLELINE" value="2421"/>
+			<member name="GTK_SCINTILLA_MSG_GETHOTSPOTSINGLELINE" value="2497"/>
+			<member name="GTK_SCINTILLA_MSG_PARADOWN" value="2413"/>
+			<member name="GTK_SCINTILLA_MSG_PARADOWNEXTEND" value="2414"/>
+			<member name="GTK_SCINTILLA_MSG_PARAUP" value="2415"/>
+			<member name="GTK_SCINTILLA_MSG_PARAUPEXTEND" value="2416"/>
+			<member name="GTK_SCINTILLA_MSG_POSITIONBEFORE" value="2417"/>
+			<member name="GTK_SCINTILLA_MSG_POSITIONAFTER" value="2418"/>
+			<member name="GTK_SCINTILLA_MSG_COPYRANGE" value="2419"/>
+			<member name="GTK_SCINTILLA_MSG_COPYTEXT" value="2420"/>
+			<member name="GTK_SCINTILLA_MSG_SETSELECTIONMODE" value="2422"/>
+			<member name="GTK_SCINTILLA_MSG_GETSELECTIONMODE" value="2423"/>
+			<member name="GTK_SCINTILLA_MSG_GETLINESELSTARTPOSITION" value="2424"/>
+			<member name="GTK_SCINTILLA_MSG_GETLINESELENDPOSITION" value="2425"/>
+			<member name="GTK_SCINTILLA_MSG_LINEDOWNRECTEXTEND" value="2426"/>
+			<member name="GTK_SCINTILLA_MSG_LINEUPRECTEXTEND" value="2427"/>
+			<member name="GTK_SCINTILLA_MSG_CHARLEFTRECTEXTEND" value="2428"/>
+			<member name="GTK_SCINTILLA_MSG_CHARRIGHTRECTEXTEND" value="2429"/>
+			<member name="GTK_SCINTILLA_MSG_HOMERECTEXTEND" value="2430"/>
+			<member name="GTK_SCINTILLA_MSG_VCHOMERECTEXTEND" value="2431"/>
+			<member name="GTK_SCINTILLA_MSG_LINEENDRECTEXTEND" value="2432"/>
+			<member name="GTK_SCINTILLA_MSG_PAGEUPRECTEXTEND" value="2433"/>
+			<member name="GTK_SCINTILLA_MSG_PAGEDOWNRECTEXTEND" value="2434"/>
+			<member name="GTK_SCINTILLA_MSG_STUTTEREDPAGEUP" value="2435"/>
+			<member name="GTK_SCINTILLA_MSG_STUTTEREDPAGEUPEXTEND" value="2436"/>
+			<member name="GTK_SCINTILLA_MSG_STUTTEREDPAGEDOWN" value="2437"/>
+			<member name="GTK_SCINTILLA_MSG_STUTTEREDPAGEDOWNEXTEND" value="2438"/>
+			<member name="GTK_SCINTILLA_MSG_WORDLEFTEND" value="2439"/>
+			<member name="GTK_SCINTILLA_MSG_WORDLEFTENDEXTEND" value="2440"/>
+			<member name="GTK_SCINTILLA_MSG_WORDRIGHTEND" value="2441"/>
+			<member name="GTK_SCINTILLA_MSG_WORDRIGHTENDEXTEND" value="2442"/>
+			<member name="GTK_SCINTILLA_MSG_SETWHITESPACECHARS" value="2443"/>
+			<member name="GTK_SCINTILLA_MSG_SETCHARSDEFAULT" value="2444"/>
+			<member name="GTK_SCINTILLA_MSG_AUTOCGETCURRENT" value="2445"/>
+			<member name="GTK_SCINTILLA_MSG_AUTOCGETCURRENTTEXT" value="2610"/>
+			<member name="GTK_SCINTILLA_MSG_ALLOCATE" value="2446"/>
+			<member name="GTK_SCINTILLA_MSG_TARGETASUTF8" value="2447"/>
+			<member name="GTK_SCINTILLA_MSG_SETLENGTHFORENCODE" value="2448"/>
+			<member name="GTK_SCINTILLA_MSG_ENCODEDFROMUTF8" value="2449"/>
+			<member name="GTK_SCINTILLA_MSG_FINDCOLUMN" value="2456"/>
+			<member name="GTK_SCINTILLA_MSG_GETCARETSTICKY" value="2457"/>
+			<member name="GTK_SCINTILLA_MSG_SETCARETSTICKY" value="2458"/>
+			<member name="GTK_SCINTILLA_MSG_TOGGLECARETSTICKY" value="2459"/>
+			<member name="GTK_SCINTILLA_MSG_SETPASTECONVERTENDINGS" value="2467"/>
+			<member name="GTK_SCINTILLA_MSG_GETPASTECONVERTENDINGS" value="2468"/>
+			<member name="GTK_SCINTILLA_MSG_SELECTIONDUPLICATE" value="2469"/>
+			<member name="GTK_SCINTILLA_MSG_SETCARETLINEBACKALPHA" value="2470"/>
+			<member name="GTK_SCINTILLA_MSG_GETCARETLINEBACKALPHA" value="2471"/>
+			<member name="GTK_SCINTILLA_MSG_SETCARETSTYLE" value="2512"/>
+			<member name="GTK_SCINTILLA_MSG_GETCARETSTYLE" value="2513"/>
+			<member name="GTK_SCINTILLA_MSG_SETINDICATORCURRENT" value="2500"/>
+			<member name="GTK_SCINTILLA_MSG_GETINDICATORCURRENT" value="2501"/>
+			<member name="GTK_SCINTILLA_MSG_SETINDICATORVALUE" value="2502"/>
+			<member name="GTK_SCINTILLA_MSG_GETINDICATORVALUE" value="2503"/>
+			<member name="GTK_SCINTILLA_MSG_INDICATORFILLRANGE" value="2504"/>
+			<member name="GTK_SCINTILLA_MSG_INDICATORCLEARRANGE" value="2505"/>
+			<member name="GTK_SCINTILLA_MSG_INDICATORALLONFOR" value="2506"/>
+			<member name="GTK_SCINTILLA_MSG_INDICATORVALUEAT" value="2507"/>
+			<member name="GTK_SCINTILLA_MSG_INDICATORSTART" value="2508"/>
+			<member name="GTK_SCINTILLA_MSG_INDICATOREND" value="2509"/>
+			<member name="GTK_SCINTILLA_MSG_SETPOSITIONCACHE" value="2514"/>
+			<member name="GTK_SCINTILLA_MSG_GETPOSITIONCACHE" value="2515"/>
+			<member name="GTK_SCINTILLA_MSG_COPYALLOWLINE" value="2519"/>
+			<member name="GTK_SCINTILLA_MSG_GETCHARACTERPOINTER" value="2520"/>
+			<member name="GTK_SCINTILLA_MSG_SETKEYSUNICODE" value="2521"/>
+			<member name="GTK_SCINTILLA_MSG_GETKEYSUNICODE" value="2522"/>
+			<member name="GTK_SCINTILLA_MSG_INDICSETALPHA" value="2523"/>
+			<member name="GTK_SCINTILLA_MSG_INDICGETALPHA" value="2524"/>
+			<member name="GTK_SCINTILLA_MSG_SETEXTRAASCENT" value="2525"/>
+			<member name="GTK_SCINTILLA_MSG_GETEXTRAASCENT" value="2526"/>
+			<member name="GTK_SCINTILLA_MSG_SETEXTRADESCENT" value="2527"/>
+			<member name="GTK_SCINTILLA_MSG_GETEXTRADESCENT" value="2528"/>
+			<member name="GTK_SCINTILLA_MSG_MARKERSYMBOLDEFINED" value="2529"/>
+			<member name="GTK_SCINTILLA_MSG_MARGINSETTEXT" value="2530"/>
+			<member name="GTK_SCINTILLA_MSG_MARGINGETTEXT" value="2531"/>
+			<member name="GTK_SCINTILLA_MSG_MARGINSETSTYLE" value="2532"/>
+			<member name="GTK_SCINTILLA_MSG_MARGINGETSTYLE" value="2533"/>
+			<member name="GTK_SCINTILLA_MSG_MARGINSETSTYLES" value="2534"/>
+			<member name="GTK_SCINTILLA_MSG_MARGINGETSTYLES" value="2535"/>
+			<member name="GTK_SCINTILLA_MSG_MARGINTEXTCLEARALL" value="2536"/>
+			<member name="GTK_SCINTILLA_MSG_MARGINSETSTYLEOFFSET" value="2537"/>
+			<member name="GTK_SCINTILLA_MSG_MARGINGETSTYLEOFFSET" value="2538"/>
+			<member name="GTK_SCINTILLA_MSG_ANNOTATIONSETTEXT" value="2540"/>
+			<member name="GTK_SCINTILLA_MSG_ANNOTATIONGETTEXT" value="2541"/>
+			<member name="GTK_SCINTILLA_MSG_ANNOTATIONSETSTYLE" value="2542"/>
+			<member name="GTK_SCINTILLA_MSG_ANNOTATIONGETSTYLE" value="2543"/>
+			<member name="GTK_SCINTILLA_MSG_ANNOTATIONSETSTYLES" value="2544"/>
+			<member name="GTK_SCINTILLA_MSG_ANNOTATIONGETSTYLES" value="2545"/>
+			<member name="GTK_SCINTILLA_MSG_ANNOTATIONGETLINES" value="2546"/>
+			<member name="GTK_SCINTILLA_MSG_ANNOTATIONCLEARALL" value="2547"/>
+			<member name="GTK_SCINTILLA_MSG_ANNOTATIONSETVISIBLE" value="2548"/>
+			<member name="GTK_SCINTILLA_MSG_ANNOTATIONGETVISIBLE" value="2549"/>
+			<member name="GTK_SCINTILLA_MSG_ANNOTATIONSETSTYLEOFFSET" value="2550"/>
+			<member name="GTK_SCINTILLA_MSG_ANNOTATIONGETSTYLEOFFSET" value="2551"/>
+			<member name="GTK_SCINTILLA_MSG_ADDUNDOACTION" value="2560"/>
+			<member name="GTK_SCINTILLA_MSG_CHARPOSITIONFROMPOINT" value="2561"/>
+			<member name="GTK_SCINTILLA_MSG_CHARPOSITIONFROMPOINTCLOSE" value="2562"/>
+			<member name="GTK_SCINTILLA_MSG_SETMULTIPLESELECTION" value="2563"/>
+			<member name="GTK_SCINTILLA_MSG_GETMULTIPLESELECTION" value="2564"/>
+			<member name="GTK_SCINTILLA_MSG_SETADDITIONALSELECTIONTYPING" value="2565"/>
+			<member name="GTK_SCINTILLA_MSG_GETADDITIONALSELECTIONTYPING" value="2566"/>
+			<member name="GTK_SCINTILLA_MSG_SETADDITIONALCARETSBLINK" value="2567"/>
+			<member name="GTK_SCINTILLA_MSG_GETADDITIONALCARETSBLINK" value="2568"/>
+			<member name="GTK_SCINTILLA_MSG_SETADDITIONALCARETSVISIBLE" value="2608"/>
+			<member name="GTK_SCINTILLA_MSG_GETADDITIONALCARETSVISIBLE" value="2609"/>
+			<member name="GTK_SCINTILLA_MSG_GETSELECTIONS" value="2570"/>
+			<member name="GTK_SCINTILLA_MSG_CLEARSELECTIONS" value="2571"/>
+			<member name="GTK_SCINTILLA_MSG_SETSELECTION" value="2572"/>
+			<member name="GTK_SCINTILLA_MSG_ADDSELECTION" value="2573"/>
+			<member name="GTK_SCINTILLA_MSG_SETMAINSELECTION" value="2574"/>
+			<member name="GTK_SCINTILLA_MSG_GETMAINSELECTION" value="2575"/>
+			<member name="GTK_SCINTILLA_MSG_SETSELECTIONNCARET" value="2576"/>
+			<member name="GTK_SCINTILLA_MSG_GETSELECTIONNCARET" value="2577"/>
+			<member name="GTK_SCINTILLA_MSG_SETSELECTIONNANCHOR" value="2578"/>
+			<member name="GTK_SCINTILLA_MSG_GETSELECTIONNANCHOR" value="2579"/>
+			<member name="GTK_SCINTILLA_MSG_SETSELECTIONNCARETVIRTUALSPACE" value="2580"/>
+			<member name="GTK_SCINTILLA_MSG_GETSELECTIONNCARETVIRTUALSPACE" value="2581"/>
+			<member name="GTK_SCINTILLA_MSG_SETSELECTIONNANCHORVIRTUALSPACE" value="2582"/>
+			<member name="GTK_SCINTILLA_MSG_GETSELECTIONNANCHORVIRTUALSPACE" value="2583"/>
+			<member name="GTK_SCINTILLA_MSG_SETSELECTIONNSTART" value="2584"/>
+			<member name="GTK_SCINTILLA_MSG_GETSELECTIONNSTART" value="2585"/>
+			<member name="GTK_SCINTILLA_MSG_SETSELECTIONNEND" value="2586"/>
+			<member name="GTK_SCINTILLA_MSG_GETSELECTIONNEND" value="2587"/>
+			<member name="GTK_SCINTILLA_MSG_SETRECTANGULARSELECTIONCARET" value="2588"/>
+			<member name="GTK_SCINTILLA_MSG_GETRECTANGULARSELECTIONCARET" value="2589"/>
+			<member name="GTK_SCINTILLA_MSG_SETRECTANGULARSELECTIONANCHOR" value="2590"/>
+			<member name="GTK_SCINTILLA_MSG_GETRECTANGULARSELECTIONANCHOR" value="2591"/>
+			<member name="GTK_SCINTILLA_MSG_SETRECTANGULARSELECTIONCARETVIRTUALSPACE" value="2592"/>
+			<member name="GTK_SCINTILLA_MSG_GETRECTANGULARSELECTIONCARETVIRTUALSPACE" value="2593"/>
+			<member name="GTK_SCINTILLA_MSG_SETRECTANGULARSELECTIONANCHORVIRTUALSPACE" value="2594"/>
+			<member name="GTK_SCINTILLA_MSG_GETRECTANGULARSELECTIONANCHORVIRTUALSPACE" value="2595"/>
+			<member name="GTK_SCINTILLA_MSG_SETVIRTUALSPACEOPTIONS" value="2596"/>
+			<member name="GTK_SCINTILLA_MSG_GETVIRTUALSPACEOPTIONS" value="2597"/>
+			<member name="GTK_SCINTILLA_MSG_SETRECTANGULARSELECTIONMODIFIER" value="2598"/>
+			<member name="GTK_SCINTILLA_MSG_GETRECTANGULARSELECTIONMODIFIER" value="2599"/>
+			<member name="GTK_SCINTILLA_MSG_SETADDITIONALSELFORE" value="2600"/>
+			<member name="GTK_SCINTILLA_MSG_SETADDITIONALSELBACK" value="2601"/>
+			<member name="GTK_SCINTILLA_MSG_SETADDITIONALSELALPHA" value="2602"/>
+			<member name="GTK_SCINTILLA_MSG_GETADDITIONALSELALPHA" value="2603"/>
+			<member name="GTK_SCINTILLA_MSG_SETADDITIONALCARETFORE" value="2604"/>
+			<member name="GTK_SCINTILLA_MSG_GETADDITIONALCARETFORE" value="2605"/>
+			<member name="GTK_SCINTILLA_MSG_ROTATESELECTION" value="2606"/>
+			<member name="GTK_SCINTILLA_MSG_SWAPMAINANCHORCARET" value="2607"/>
+			<member name="GTK_SCINTILLA_MSG_STARTRECORD" value="3001"/>
+			<member name="GTK_SCINTILLA_MSG_STOPRECORD" value="3002"/>
+			<member name="GTK_SCINTILLA_MSG_SETLEXER" value="4001"/>
+			<member name="GTK_SCINTILLA_MSG_GETLEXER" value="4002"/>
+			<member name="GTK_SCINTILLA_MSG_COLOURISE" value="4003"/>
+			<member name="GTK_SCINTILLA_MSG_SETPROPERTY" value="4004"/>
+			<member name="GTK_SCINTILLA_MSG_SETKEYWORDS" value="4005"/>
+			<member name="GTK_SCINTILLA_MSG_SETLEXERLANGUAGE" value="4006"/>
+			<member name="GTK_SCINTILLA_MSG_LOADLEXERLIBRARY" value="4007"/>
+			<member name="GTK_SCINTILLA_MSG_GETPROPERTY" value="4008"/>
+			<member name="GTK_SCINTILLA_MSG_GETPROPERTYEXPANDED" value="4009"/>
+			<member name="GTK_SCINTILLA_MSG_GETPROPERTYINT" value="4010"/>
+			<member name="GTK_SCINTILLA_MSG_GETSTYLEBITSNEEDED" value="4011"/>
+			<member name="GTK_SCINTILLA_MSG_GETLEXERLANGUAGE" value="4012"/>
+		</enum>
 		<enum name="GtkScintillaModificationFlags">
-			<member name="GTK_SCINTILLA_MODIFICATION_FLAGS_INSERTTEXT" value="1"/>
-			<member name="GTK_SCINTILLA_MODIFICATION_FLAGS_DELETETEXT" value="2"/>
-			<member name="GTK_SCINTILLA_MODIFICATION_FLAGS_CHANGESTYLE" value="4"/>
-			<member name="GTK_SCINTILLA_MODIFICATION_FLAGS_CHANGEFOLD" value="8"/>
+			<member name="GTK_SCINTILLA_MODIFICATION_FLAGS_INSERT_TEXT" value="1"/>
+			<member name="GTK_SCINTILLA_MODIFICATION_FLAGS_DELETE_TEXT" value="2"/>
+			<member name="GTK_SCINTILLA_MODIFICATION_FLAGS_CHANGE_STYLE" value="4"/>
+			<member name="GTK_SCINTILLA_MODIFICATION_FLAGS_CHANGE_FOLD" value="8"/>
 			<member name="GTK_SCINTILLA_MODIFICATION_FLAGS_USER" value="16"/>
 			<member name="GTK_SCINTILLA_MODIFICATION_FLAGS_UNDO" value="32"/>
 			<member name="GTK_SCINTILLA_MODIFICATION_FLAGS_REDO" value="64"/>
-			<member name="GTK_SCINTILLA_MODIFICATION_FLAGS_STEPUNDOREDO" value="128"/>
-			<member name="GTK_SCINTILLA_MODIFICATION_FLAGS_STEPINUNDOREDO" value="256"/>
-			<member name="GTK_SCINTILLA_MODIFICATION_FLAGS_CHANGEMARKER" value="512"/>
-			<member name="GTK_SCINTILLA_MODIFICATION_FLAGS_BEFOREINSERT" value="1024"/>
-			<member name="GTK_SCINTILLA_MODIFICATION_FLAGS_BEFOREDELETE" value="2048"/>
-			<member name="GTK_SCINTILLA_MODIFICATION_FLAGS_LINEUNDOREDO" value="4096"/>
-			<member name="GTK_SCINTILLA_MODIFICATION_FLAGS_ACTION" value="8192"/>
-			<member name="GTK_SCINTILLA_MODIFICATION_FLAGS_CHANGEINDICATOR" value="16384"/>
-			<member name="GTK_SCINTILLA_MODIFICATION_FLAGS_CHANGELINESTATE" value="32768"/>
-			<member name="GTK_SCINTILLA_MODIFICATION_FLAGS_CHANGEMARGIN" value="65536"/>
-			<member name="GTK_SCINTILLA_MODIFICATION_FLAGS_CHANGEANNOTATION" value="131072"/>
+			<member name="GTK_SCINTILLA_MODIFICATION_FLAGS_MULTI_STEP_UNDO_REDO" value="128"/>
+			<member name="GTK_SCINTILLA_MODIFICATION_FLAGS_MULTI_STEP_IN_UNDO_REDO" value="256"/>
+			<member name="GTK_SCINTILLA_MODIFICATION_FLAGS_CHANGE_MARKER" value="512"/>
+			<member name="GTK_SCINTILLA_MODIFICATION_FLAGS_BEFORE_INSERT" value="1024"/>
+			<member name="GTK_SCINTILLA_MODIFICATION_FLAGS_BEFORE_DELETE" value="2048"/>
+			<member name="GTK_SCINTILLA_MODIFICATION_FLAGS_MULTI_LINE_UNDO_REDO" value="4096"/>
+			<member name="GTK_SCINTILLA_MODIFICATION_FLAGS_START_ACTION" value="8192"/>
+			<member name="GTK_SCINTILLA_MODIFICATION_FLAGS_CHANGE_INDICATOR" value="16384"/>
+			<member name="GTK_SCINTILLA_MODIFICATION_FLAGS_CHANGE_LINE_STATE" value="32768"/>
+			<member name="GTK_SCINTILLA_MODIFICATION_FLAGS_CHANGE_MARGIN" value="65536"/>
+			<member name="GTK_SCINTILLA_MODIFICATION_FLAGS_CHANGE_ANNOTATION" value="131072"/>
 			<member name="GTK_SCINTILLA_MODIFICATION_FLAGS_CONTAINER" value="262144"/>
-			<member name="GTK_SCINTILLA_MODIFICATION_FLAGS_CHANGE" value="768"/>
-			<member name="GTK_SCINTILLA_MODIFICATION_FLAGS_SETFOCUS" value="512"/>
-			<member name="GTK_SCINTILLA_MODIFICATION_FLAGS_KILLFOCUS" value="256"/>
 		</enum>
 		<enum name="GtkScintillaMultiPaste">
 			<member name="GTK_SCINTILLA_MULTI_PASTE_ONCE" value="0"/>
@@ -4293,6 +4774,13 @@
 			<member name="GTK_SCINTILLA_PRINT_OPTION_BLACKONWHITE" value="2"/>
 			<member name="GTK_SCINTILLA_PRINT_OPTION_COLOURONWHITE" value="3"/>
 			<member name="GTK_SCINTILLA_PRINT_OPTION_COLOURONWHITEDEFAULTBG" value="4"/>
+		</enum>
+		<enum name="GtkScintillaSearchFlag">
+			<member name="GTK_SCINTILLA_SEARCH_FLAG_WHOLE_WORD" value="2"/>
+			<member name="GTK_SCINTILLA_SEARCH_FLAG_MATCH_CASE" value="4"/>
+			<member name="GTK_SCINTILLA_SEARCH_FLAG_WORD_START" value="1048576"/>
+			<member name="GTK_SCINTILLA_SEARCH_FLAG_REGEXP" value="2097152"/>
+			<member name="GTK_SCINTILLA_SEARCH_FLAG_POSIX" value="4194304"/>
 		</enum>
 		<enum name="GtkScintillaSelectionMode">
 			<member name="GTK_SCINTILLA_SELECTION_MODE_STREAM" value="0"/>
@@ -4315,6 +4803,12 @@
 			<member name="GTK_SCINTILLA_STYLES_COMMON_CALLTIP" value="38"/>
 			<member name="GTK_SCINTILLA_STYLES_COMMON_LASTPREDEFINED" value="39"/>
 			<member name="GTK_SCINTILLA_STYLES_COMMON_MAX" value="255"/>
+		</enum>
+		<enum name="GtkScintillaUpdateFlag">
+			<member name="GTK_SCINTILLA_UPDATE_CONTENT" value="1"/>
+			<member name="GTK_SCINTILLA_UPDATE_SELECTION" value="2"/>
+			<member name="GTK_SCINTILLA_UPDATE_V_SCROLL" value="4"/>
+			<member name="GTK_SCINTILLA_UPDATE_H_SCROLL" value="8"/>
 		</enum>
 		<enum name="GtkScintillaVirtualSpace">
 			<member name="GTK_SCINTILLA_VIRTUAL_SPACE_NONE" value="0"/>

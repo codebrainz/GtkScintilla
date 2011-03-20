@@ -23,4 +23,132 @@
   (return-type "GtkWidget*")
 )
 
+(define-function gtk_scintilla_get_property
+  (c-name "gtk_scintilla_get_property")
+  (return-type "none")
+  (parameters
+    '("GObject*" "object")
+    '("guint" "property_id")
+    '("GValue*" "value")
+    '("GParamSpec*" "pspec")
+  )
+)
+
+(define-function gtk_scintilla_set_property
+  (c-name "gtk_scintilla_set_property")
+  (return-type "none")
+  (parameters
+    '("GObject*" "object")
+    '("guint" "property_id")
+    '("const-GValue*" "value")
+    '("GParamSpec*" "pspec")
+  )
+)
+
+(define-method update_line_numbers
+  (of-object "GtkScintilla")
+  (c-name "gtk_scintilla_update_line_numbers")
+  (return-type "none")
+)
+
+(define-method get_line_numbers_visible
+  (of-object "GtkScintilla")
+  (c-name "gtk_scintilla_get_line_numbers_visible")
+  (return-type "gboolean")
+)
+
+(define-method set_line_numbers_visible
+  (of-object "GtkScintilla")
+  (c-name "gtk_scintilla_set_line_numbers_visible")
+  (return-type "none")
+  (parameters
+    '("gboolean" "visible")
+  )
+)
+
+(define-method set_font
+  (of-object "GtkScintilla")
+  (c-name "gtk_scintilla_set_font")
+  (return-type "none")
+  (parameters
+    '("gint" "style_number")
+    '("const-gchar*" "font_desc")
+  )
+)
+
+(define-method get_font
+  (of-object "GtkScintilla")
+  (c-name "gtk_scintilla_get_font")
+  (return-type "gchar*")
+  (parameters
+    '("gint" "style_number")
+  )
+)
+
+(define-method get_background_color
+  (of-object "GtkScintilla")
+  (c-name "gtk_scintilla_get_background_color")
+  (return-type "gchar*")
+  (parameters
+    '("gint" "style")
+  )
+)
+
+(define-method set_background_color
+  (of-object "GtkScintilla")
+  (c-name "gtk_scintilla_set_background_color")
+  (return-type "none")
+  (parameters
+    '("gint" "style")
+    '("const-gchar*" "color_spec")
+  )
+)
+
+(define-method get_foreground_color
+  (of-object "GtkScintilla")
+  (c-name "gtk_scintilla_get_foreground_color")
+  (return-type "gchar*")
+  (parameters
+    '("gint" "style")
+  )
+)
+
+(define-method set_foreground_color
+  (of-object "GtkScintilla")
+  (c-name "gtk_scintilla_set_foreground_color")
+  (return-type "none")
+  (parameters
+    '("gint" "style")
+    '("const-gchar*" "color_spec")
+  )
+)
+
+(define-function int_to_color_spec
+  (c-name "int_to_color_spec")
+  (return-type "gchar*")
+  (parameters
+    '("gint" "int_color")
+  )
+)
+
+(define-function color_spec_to_int
+  (c-name "color_spec_to_int")
+  (return-type "gint")
+  (parameters
+    '("const-gchar*" "color_spec")
+  )
+)
+
+(define-method set_style
+  (of-object "GtkScintilla")
+  (c-name "gtk_scintilla_set_style")
+  (return-type "none")
+  (parameters
+    '("gint" "style_number")
+    '("const-gchar*" "font_spec")
+    '("const-gchar*" "fg_color")
+    '("const-gchar*" "bg_color")
+  )
+)
+
 

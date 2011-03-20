@@ -22,7 +22,7 @@ DOC_MAIN_SGML_FILE=$(DOC_MODULE)-docs.sgml
 # gtk-doc will search all .c and .h files beneath these paths
 # for inline comments documenting functions and macros.
 # e.g. DOC_SOURCE_DIR=../../../gtk ../../../gdk
-DOC_SOURCE_DIR=../../src
+DOC_SOURCE_DIR=../../src ../../src/lexers
 
 # Extra options to pass to gtkdoc-scangobj. Not normally needed.
 SCANGOBJ_OPTIONS=
@@ -49,7 +49,7 @@ FIXXREF_OPTIONS=
 # Used for dependencies. The docs will be rebuilt if any of these change.
 # e.g. HFILE_GLOB=$(top_srcdir)/gtk/*.h
 # e.g. CFILE_GLOB=$(top_srcdir)/gtk/*.c
-HFILE_GLOB=$(top_builddir)/src/*.h
+HFILE_GLOB=$(top_builddir)/src/*.h $(top_builddir)/src/lexers/*.h
 CFILE_GLOB=$(top_builddir)/src/*.c
 
 # Extra header to include when scanning, which are not under DOC_SOURCE_DIR
@@ -78,7 +78,7 @@ expand_content_files=
 # signals and properties.
 # e.g. GTKDOC_CFLAGS=-I$(top_srcdir) -I$(top_builddir) $(GTK_DEBUG_FLAGS)
 # e.g. GTKDOC_LIBS=$(top_builddir)/gtk/$(gtktargetlib)
-GTKDOC_CFLAGS=@GTK_CFLAGS@ -I../../src
+GTKDOC_CFLAGS=@GTK_CFLAGS@ -I../../src -I../../src/lexers
 GTKDOC_LIBS=@GTK_LIBS@ ../../build/libgtkscintilla-1.0.la
 
 # This includes the standard gtk-doc make rules, copied by gtkdocize.
