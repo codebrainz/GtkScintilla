@@ -6,18 +6,109 @@
 ]>
 <book id="index">
   <bookinfo>
-    <title>GtkScintilla Reference Manual</title>
+    <title>gtkscintilla Reference Manual</title>
     <releaseinfo>
-      You will also want to check out the official
-      <ulink role="online-location" url="http://www.scintilla.org/ScintillaDoc.html">Scintilla Documentation</ulink>.
+      for gtkscintilla [VERSION].
+      The latest version of this documentation can be found on-line at
+      <ulink role="online-location" url="http://[SERVER]/gtkscintilla/index.html">http://[SERVER]/gtkscintilla/</ulink>.
     </releaseinfo>
   </bookinfo>
 
   <chapter>
-    <title>GtkScintilla</title>
+    <title>[Insert title here]</title>
         <xi:include href="xml/gtkscintilla.xml"/>
-    <xi:include href="xml/gtkscintillafunctions.xml"/>
-    <xi:include href="xml/gtkscintillaconstants.xml"/>
+    <xi:include href="xml/properties.xml"/>
+    <xi:include href="xml/signals.xml"/>
+    <xi:include href="xml/constants.xml"/>
+    <xi:include href="xml/style-properties.xml"/>
+    <xi:include href="xml/lexerlang.xml"/>
+    <xi:include href="xml/lexpo.xml"/>
+    <xi:include href="xml/lexlatex.xml"/>
+    <xi:include href="xml/lexmmixal.xml"/>
+    <xi:include href="xml/lexnncrontab.xml"/>
+    <xi:include href="xml/lexmssql.xml"/>
+    <xi:include href="xml/lexscriptol.xml"/>
+    <xi:include href="xml/lexclw.xml"/>
+    <xi:include href="xml/lexflagship.xml"/>
+    <xi:include href="xml/lexlot.xml"/>
+    <xi:include href="xml/lexnimrod.xml"/>
+    <xi:include href="xml/lexhtml.xml"/>
+    <xi:include href="xml/lexasp.xml"/>
+    <xi:include href="xml/lexmetapost.xml"/>
+    <xi:include href="xml/lexlisp.xml"/>
+    <xi:include href="xml/lexverilog.xml"/>
+    <xi:include href="xml/lextcl.xml"/>
+    <xi:include href="xml/lexbaan.xml"/>
+    <xi:include href="xml/lexperl.xml"/>
+    <xi:include href="xml/lexf77.xml"/>
+    <xi:include href="xml/lexmagiksf.xml"/>
+    <xi:include href="xml/lexplm.xml"/>
+    <xi:include href="xml/lexerrorlist.xml"/>
+    <xi:include href="xml/lexcmake.xml"/>
+    <xi:include href="xml/lexspecman.xml"/>
+    <xi:include href="xml/lexdiff.xml"/>
+    <xi:include href="xml/lexlout.xml"/>
+    <xi:include href="xml/lexsorcus.xml"/>
+    <xi:include href="xml/lexr.xml"/>
+    <xi:include href="xml/lexmakefile.xml"/>
+    <xi:include href="xml/lexmysql.xml"/>
+    <xi:include href="xml/lexnsis.xml"/>
+    <xi:include href="xml/lexpython.xml"/>
+    <xi:include href="xml/lexyaml.xml"/>
+    <xi:include href="xml/lexeiffel.xml"/>
+    <xi:include href="xml/lexpov.xml"/>
+    <xi:include href="xml/lexgui4cli.xml"/>
+    <xi:include href="xml/lexps.xml"/>
+    <xi:include href="xml/lexgap.xml"/>
+    <xi:include href="xml/lexinnosetup.xml"/>
+    <xi:include href="xml/lexsml.xml"/>
+    <xi:include href="xml/lexvhdl.xml"/>
+    <xi:include href="xml/lexrebol.xml"/>
+    <xi:include href="xml/lexopal.xml"/>
+    <xi:include href="xml/lexsql.xml"/>
+    <xi:include href="xml/lexasymptote.xml"/>
+    <xi:include href="xml/lexabaqus.xml"/>
+    <xi:include href="xml/lexphp.xml"/>
+    <xi:include href="xml/lexlua.xml"/>
+    <xi:include href="xml/lexvbscript.xml"/>
+    <xi:include href="xml/lexhaskell.xml"/>
+    <xi:include href="xml/lexruby.xml"/>
+    <xi:include href="xml/lexpascal.xml"/>
+    <xi:include href="xml/lextex.xml"/>
+    <xi:include href="xml/lexmarkdown.xml"/>
+    <xi:include href="xml/lexeiffelkw.xml"/>
+    <xi:include href="xml/lexbatch.xml"/>
+    <xi:include href="xml/lexconf.xml"/>
+    <xi:include href="xml/lexcpp.xml"/>
+    <xi:include href="xml/lexbash.xml"/>
+    <xi:include href="xml/lexapdl.xml"/>
+    <xi:include href="xml/lexbullant.xml"/>
+    <xi:include href="xml/lexd.xml"/>
+    <xi:include href="xml/lexmatlab.xml"/>
+    <xi:include href="xml/lexau3.xml"/>
+    <xi:include href="xml/lexsmalltalk.xml"/>
+    <xi:include href="xml/lexcss.xml"/>
+    <xi:include href="xml/lexcsound.xml"/>
+    <xi:include href="xml/lexada.xml"/>
+    <xi:include href="xml/lexescript.xml"/>
+    <xi:include href="xml/lexpowershell.xml"/>
+    <xi:include href="xml/lexprogress.xml"/>
+    <xi:include href="xml/lexxml.xml"/>
+    <xi:include href="xml/lexproperties.xml"/>
+    <xi:include href="xml/lexcaml.xml"/>
+    <xi:include href="xml/lexkix.xml"/>
+    <xi:include href="xml/lexave.xml"/>
+    <xi:include href="xml/lextads3.xml"/>
+    <xi:include href="xml/lexfortran.xml"/>
+    <xi:include href="xml/lexvb.xml"/>
+    <xi:include href="xml/lexforth.xml"/>
+    <xi:include href="xml/lexpowerpro.xml"/>
+    <xi:include href="xml/lexasm.xml"/>
+    <xi:include href="xml/lexasn1.xml"/>
+    <xi:include href="xml/lexpowerbasic.xml"/>
+    <xi:include href="xml/lexspice.xml"/>
+    <xi:include href="xml/lexphp_states.xml"/>
+    <xi:include href="xml/lexxml_states.xml"/>
 
   </chapter>
   <chapter id="object-tree">

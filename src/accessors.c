@@ -1,4 +1,5 @@
 #include "gtkscintilla.h"
+#include "properties.h"
 
 void gtk_scintilla_get_property(GObject *object, guint property_id, GValue *value, GParamSpec *pspec)
 {

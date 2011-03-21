@@ -1,0 +1,14 @@
+#ifndef GTK_SCINTILLA_FUNCTIONS_H
+#define GTK_SCINTILLA_FUNCTIONS_H
+
+#include <gtk/gtk.h>
+
+G_BEGIN_DECLS
+
+
+
+	
+G_END_DECLS
+
+#endif /* ifndef GTK_SCINTILLA_FUNCTIONS_H */
+

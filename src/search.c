@@ -111,7 +111,6 @@
 
 #include <string.h>
 #include "gtkscintilla.h"
-#include "gtkscintillafunctions.h"
 
 /**
  * gtk_scintilla_find_text:

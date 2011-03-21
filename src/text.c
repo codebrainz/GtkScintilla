@@ -35,7 +35,6 @@
  */
 
 #include "gtkscintilla.h"
-#include "gtkscintillafunctions.h"
 
 /* todo:	implement properties for
  * 				- text

@@ -1,6 +1,5 @@
 #include <gtk/gtk.h>
 #include "gtkscintilla.h"
-#include "gtkscintillafunctions.h"
 
 inline gint gtk_scintilla_get_length (GtkScintilla *sci) {
 	return (gint)scintilla_send_message(SCINTILLA(sci->scintilla), 2006, 0, 0);
