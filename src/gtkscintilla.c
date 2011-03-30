@@ -79,6 +79,7 @@ static void gtk_scintilla_init(GtkScintilla *self)
     scintilla_send_message(SCINTILLA(self), SCI_SETVSCROLLBAR, 1, 0);
 }
 
+
 /**
  * gtk_scintilla_new:
  * 
@@ -93,11 +94,13 @@ GtkWidget *gtk_scintilla_new (void)
     return GTK_WIDGET (self);
 }
 
+
 /*
 inline void gtk_scintilla_set_id(GtkScintilla *self, gshort id) {
 	scintilla_set_id(SCINTILLA(self->scintilla), (uptr_t)id);
 }
 */
+
 
 inline glong gtk_scintilla_send_message(GtkScintilla *self,
 										 guint iMessage,
@@ -136,16 +139,19 @@ void gtk_scintilla_update_line_numbers(GtkScintilla *self)
 		SSM(sci, SCI_SETMARGINWIDTHN, 0, 0);
 }
 
+
 gboolean gtk_scintilla_get_line_numbers_visible(GtkScintilla *self)
 {
 	return self->priv->line_numbers_visible;
 }
+
 
 void gtk_scintilla_set_line_numbers_visible(GtkScintilla *self, gboolean visible)
 {
 	self->priv->line_numbers_visible = visible;
 	gtk_scintilla_update_line_numbers(self);
 }
+
 
 /* To re-emit notifications as separate signals */
 static void on_sci_notify(GtkWidget *widget, gint param, gpointer notif, gpointer user_data)
