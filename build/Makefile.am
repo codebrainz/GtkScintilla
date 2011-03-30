@@ -14,10 +14,11 @@ libgtkscintilla_1_0_la_LIBADD	=	@GTK_LIBS@
 library_includedir 				= 	$(includedir)/gtkscintilla-1.0/gtkscintilla
 library_include_HEADERS			= 	$(top_builddir)/src/gtkscintilla.h \
 									$(top_builddir)/src/constants.h \
-									$(top_builddir)/src/properties.h \
-									$(top_builddir)/src/style-properties.h \
-									$(top_builddir)/src/signals.h \
 									$(top_builddir)/src/lexer.h
+# 									internal headers
+#									$(top_builddir)/src/properties.h
+#									$(top_builddir)/src/style-properties.h
+#									$(top_builddir)/src/signals.h
 
 scintilla_includedir			=	$(includedir)/gtkscintilla-1.0/scintilla
 scintilla_include_HEADERS		=	$(top_builddir)/scintilla/include/Scintilla.h \
@@ -152,113 +153,6 @@ libgtkscintilla_1_0_la_SOURCES	=	$(top_builddir)/src/gtkscintilla.c \
 									$(top_builddir)/src/lexer.c \
 									$(scintilla_sources)
 
-
-#lexers_includedir=$(includedir)/gtkscintilla-1.0/lexers
-#lexers_include_HEADERS =  $(top_builddir)/src/lexers/lexerlang.h \
-							#$(top_builddir)/src/lexers/lexpo.h \
-							#$(top_builddir)/src/lexers/lexers.h \
-							#$(top_builddir)/src/lexers/lexlatex.h \
-							#$(top_builddir)/src/lexers/lexmmixal.h \
-							#$(top_builddir)/src/lexers/lexnncrontab.h \
-							#$(top_builddir)/src/lexers/lexmssql.h \
-							#$(top_builddir)/src/lexers/lexscriptol.h \
-							#$(top_builddir)/src/lexers/lexclw.h \
-							#$(top_builddir)/src/lexers/lexflagship.h \
-							#$(top_builddir)/src/lexers/lexlot.h \
-							#$(top_builddir)/src/lexers/lexnimrod.h \
-							#$(top_builddir)/src/lexers/lexhtml.h \
-							#$(top_builddir)/src/lexers/lexasp.h \
-							#$(top_builddir)/src/lexers/lexmetapost.h \
-							#$(top_builddir)/src/lexers/lexlisp.h \
-							#$(top_builddir)/src/lexers/lexverilog.h \
-							#$(top_builddir)/src/lexers/lextcl.h \
-							#$(top_builddir)/src/lexers/lexbaan.h \
-							#$(top_builddir)/src/lexers/lexperl.h \
-							#$(top_builddir)/src/lexers/lexf77.h \
-							#$(top_builddir)/src/lexers/lexmagiksf.h \
-							#$(top_builddir)/src/lexers/lexplm.h \
-							#$(top_builddir)/src/lexers/lexerrorlist.h \
-							#$(top_builddir)/src/lexers/lexoctave.h \
-							#$(top_builddir)/src/lexers/lexcmake.h \
-							#$(top_builddir)/src/lexers/lexspecman.h \
-							#$(top_builddir)/src/lexers/lexdiff.h \
-							#$(top_builddir)/src/lexers/lexlout.h \
-							#$(top_builddir)/src/lexers/lexsorcus.h \
-							#$(top_builddir)/src/lexers/lexr.h \
-							#$(top_builddir)/src/lexers/lexmakefile.h \
-							#$(top_builddir)/src/lexers/lexmysql.h \
-							#$(top_builddir)/src/lexers/lexnsis.h \
-							#$(top_builddir)/src/lexers/lexpython.h \
-							#$(top_builddir)/src/lexers/lexyaml.h \
-							#$(top_builddir)/src/lexers/lexeiffel.h \
-							#$(top_builddir)/src/lexers/lexpov.h \
-							#$(top_builddir)/src/lexers/lexgui4cli.h \
-							#$(top_builddir)/src/lexers/lexps.h \
-							#$(top_builddir)/src/lexers/lexgap.h \
-							#$(top_builddir)/src/lexers/lexinnosetup.h \
-							#$(top_builddir)/src/lexers/lexsml.h \
-							#$(top_builddir)/src/lexers/lexvhdl.h \
-							#$(top_builddir)/src/lexers/lexrebol.h \
-							#$(top_builddir)/src/lexers/lexopal.h \
-							#$(top_builddir)/src/lexers/lexsql.h \
-							#$(top_builddir)/src/lexers/lexasymptote.h \
-							#$(top_builddir)/src/lexers/lexabaqus.h \
-							#$(top_builddir)/src/lexers/lexphp.h \
-							#$(top_builddir)/src/lexers/lexlua.h \
-							#$(top_builddir)/src/lexers/lexvbscript.h \
-							#$(top_builddir)/src/lexers/lexhaskell.h \
-							#$(top_builddir)/src/lexers/lexruby.h \
-							#$(top_builddir)/src/lexers/lexpascal.h \
-							#$(top_builddir)/src/lexers/lextex.h \
-							#$(top_builddir)/src/lexers/lexmarkdown.h \
-							#$(top_builddir)/src/lexers/lexeiffelkw.h \
-							#$(top_builddir)/src/lexers/lexbatch.h \
-							#$(top_builddir)/src/lexers/lexconf.h \
-							#$(top_builddir)/src/lexers/lexcpp.h \
-							#$(top_builddir)/src/lexers/lexbash.h \
-							#$(top_builddir)/src/lexers/lexapdl.h \
-							#$(top_builddir)/src/lexers/lexbullant.h \
-							#$(top_builddir)/src/lexers/lexd.h \
-							#$(top_builddir)/src/lexers/lexmatlab.h \
-							#$(top_builddir)/src/lexers/lexau3.h \
-							#$(top_builddir)/src/lexers/lexsmalltalk.h \
-							#$(top_builddir)/src/lexers/lexcss.h \
-							#$(top_builddir)/src/lexers/lexcsound.h \
-							#$(top_builddir)/src/lexers/lexada.h \
-							#$(top_builddir)/src/lexers/lexescript.h \
-							#$(top_builddir)/src/lexers/lexpowershell.h \
-							#$(top_builddir)/src/lexers/lexprogress.h \
-							#$(top_builddir)/src/lexers/lexxml.h \
-							#$(top_builddir)/src/lexers/lexproperties.h \
-							#$(top_builddir)/src/lexers/lexcaml.h \
-							#$(top_builddir)/src/lexers/lexkix.h \
-							#$(top_builddir)/src/lexers/lexave.h \
-							#$(top_builddir)/src/lexers/lextads3.h \
-							#$(top_builddir)/src/lexers/lexfortran.h \
-							#$(top_builddir)/src/lexers/lexvb.h \
-							#$(top_builddir)/src/lexers/lexforth.h \
-							#$(top_builddir)/src/lexers/lexpowerpro.h \
-							#$(top_builddir)/src/lexers/lexasm.h \
-							#$(top_builddir)/src/lexers/lexasn1.h \
-							#$(top_builddir)/src/lexers/patches/lexphp_states.h \
-							#$(top_builddir)/src/lexers/patches/lexxml_states.h \
-							#$(top_builddir)/src/lexers/lexpowerbasic.h \
-							#$(top_builddir)/src/lexers/lexspice.h
-
-# todo: move this to data dir
-#EXTRA_DIST = ../data/config/c.conf \
-				#../data/config/cpp.conf \
-				#../data/config/java.conf \
-				#../data/config/perl.conf \
-				#../data/config/python.conf
-
-#lexerdir = $(pkgdatadir)/lexers
-
-#lexer_DATA = ../data/config/c.conf \
-				#../data/config/cpp.conf \
-				#../data/config/java.conf \
-				#../data/config/perl.conf \
-				#../data/config/python.conf
 
 #-include $(INTROSPECTION_MAKEFILE)
 #INTROSPECTION_GIRS =
