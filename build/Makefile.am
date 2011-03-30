@@ -16,12 +16,130 @@ library_include_HEADERS			= 	$(top_builddir)/src/gtkscintilla.h \
 									$(top_builddir)/src/constants.h \
 									$(top_builddir)/src/properties.h \
 									$(top_builddir)/src/style-properties.h \
-									$(top_builddir)/src/signals.h
+									$(top_builddir)/src/signals.h \
+									$(top_builddir)/src/lexer.h
 
 scintilla_includedir			=	$(includedir)/gtkscintilla-1.0/scintilla
 scintilla_include_HEADERS		=	$(top_builddir)/scintilla/include/Scintilla.h \
 									$(top_builddir)/scintilla/include/SciLexer.h \
 									$(top_builddir)/scintilla/include/ScintillaWidget.h
+
+scintilla_sources				=	$(top_builddir)/scintilla/src/PositionCache.cxx \
+									$(top_builddir)/scintilla/src/Indicator.cxx \
+									$(top_builddir)/scintilla/src/Style.cxx \
+									$(top_builddir)/scintilla/src/ScintillaBase.cxx \
+									$(top_builddir)/scintilla/src/CharClassify.cxx \
+									$(top_builddir)/scintilla/src/ContractionState.cxx \
+									$(top_builddir)/scintilla/src/Document.cxx \
+									$(top_builddir)/scintilla/src/PerLine.cxx \
+									$(top_builddir)/scintilla/src/AutoComplete.cxx \
+									$(top_builddir)/scintilla/src/ViewStyle.cxx \
+									$(top_builddir)/scintilla/src/ExternalLexer.cxx \
+									$(top_builddir)/scintilla/src/XPM.cxx \
+									$(top_builddir)/scintilla/src/CellBuffer.cxx \
+									$(top_builddir)/scintilla/src/RESearch.cxx \
+									$(top_builddir)/scintilla/src/KeyMap.cxx \
+									$(top_builddir)/scintilla/src/Catalogue.cxx \
+									$(top_builddir)/scintilla/src/RunStyles.cxx \
+									$(top_builddir)/scintilla/src/UniConversion.cxx \
+									$(top_builddir)/scintilla/src/LineMarker.cxx \
+									$(top_builddir)/scintilla/src/Editor.cxx \
+									$(top_builddir)/scintilla/src/CallTip.cxx \
+									$(top_builddir)/scintilla/src/Selection.cxx \
+									$(top_builddir)/scintilla/src/Decoration.cxx \
+									$(top_builddir)/scintilla/gtk/PlatGTK.cxx \
+									$(top_builddir)/scintilla/gtk/scintilla-marshal.c \
+									$(top_builddir)/scintilla/gtk/ScintillaGTK.cxx \
+									$(top_builddir)/scintilla/lexers/LexConf.cxx \
+									$(top_builddir)/scintilla/lexers/LexFortran.cxx \
+									$(top_builddir)/scintilla/lexers/LexPOV.cxx \
+									$(top_builddir)/scintilla/lexers/LexLisp.cxx \
+									$(top_builddir)/scintilla/lexers/LexASY.cxx \
+									$(top_builddir)/scintilla/lexers/LexBullant.cxx \
+									$(top_builddir)/scintilla/lexers/LexVB.cxx \
+									$(top_builddir)/scintilla/lexers/LexBasic.cxx \
+									$(top_builddir)/scintilla/lexers/LexKix.cxx \
+									$(top_builddir)/scintilla/lexers/LexCrontab.cxx \
+									$(top_builddir)/scintilla/lexers/LexCaml.cxx \
+									$(top_builddir)/scintilla/lexers/LexPB.cxx \
+									$(top_builddir)/scintilla/lexers/LexPS.cxx \
+									$(top_builddir)/scintilla/lexers/LexModula.cxx \
+									$(top_builddir)/scintilla/lexers/LexEScript.cxx \
+									$(top_builddir)/scintilla/lexers/LexOpal.cxx \
+									$(top_builddir)/scintilla/lexers/LexHaskell.cxx \
+									$(top_builddir)/scintilla/lexers/LexBash.cxx \
+									$(top_builddir)/scintilla/lexers/LexGui4Cli.cxx \
+									$(top_builddir)/scintilla/lexers/LexTAL.cxx \
+									$(top_builddir)/scintilla/lexers/LexVerilog.cxx \
+									$(top_builddir)/scintilla/lexers/LexVHDL.cxx \
+									$(top_builddir)/scintilla/lexers/LexFlagship.cxx \
+									$(top_builddir)/scintilla/lexers/LexPascal.cxx \
+									$(top_builddir)/scintilla/lexers/LexAVE.cxx \
+									$(top_builddir)/scintilla/lexers/LexSML.cxx \
+									$(top_builddir)/scintilla/lexers/LexPLM.cxx \
+									$(top_builddir)/scintilla/lexers/LexSpice.cxx \
+									$(top_builddir)/scintilla/lexers/LexInno.cxx \
+									$(top_builddir)/scintilla/lexers/LexCOBOL.cxx \
+									$(top_builddir)/scintilla/lexers/LexPowerShell.cxx \
+									$(top_builddir)/scintilla/lexers/LexForth.cxx \
+									$(top_builddir)/scintilla/lexers/LexTACL.cxx \
+									$(top_builddir)/scintilla/lexers/LexR.cxx \
+									$(top_builddir)/scintilla/lexers/LexCLW.cxx \
+									$(top_builddir)/scintilla/lexers/LexMagik.cxx \
+									$(top_builddir)/scintilla/lexers/LexSQL.cxx \
+									$(top_builddir)/scintilla/lexers/LexAsm.cxx \
+									$(top_builddir)/scintilla/lexers/LexAsn1.cxx \
+									$(top_builddir)/scintilla/lexers/LexCSS.cxx \
+									$(top_builddir)/scintilla/lexers/LexLua.cxx \
+									$(top_builddir)/scintilla/lexers/LexCmake.cxx \
+									$(top_builddir)/scintilla/lexers/LexD.cxx \
+									$(top_builddir)/scintilla/lexers/LexA68k.cxx \
+									$(top_builddir)/scintilla/lexers/LexCsound.cxx \
+									$(top_builddir)/scintilla/lexers/LexRuby.cxx \
+									$(top_builddir)/scintilla/lexers/LexHTML.cxx \
+									$(top_builddir)/scintilla/lexers/LexMMIXAL.cxx \
+									$(top_builddir)/scintilla/lexers/LexAPDL.cxx \
+									$(top_builddir)/scintilla/lexers/LexPowerPro.cxx \
+									$(top_builddir)/scintilla/lexers/LexTCL.cxx \
+									$(top_builddir)/scintilla/lexers/LexNimrod.cxx \
+									$(top_builddir)/scintilla/lexers/LexPerl.cxx \
+									$(top_builddir)/scintilla/lexers/LexScriptol.cxx \
+									$(top_builddir)/scintilla/lexers/LexTADS3.cxx \
+									$(top_builddir)/scintilla/lexers/LexGAP.cxx \
+									$(top_builddir)/scintilla/lexers/LexRebol.cxx \
+									$(top_builddir)/scintilla/lexers/LexTeX.cxx \
+									$(top_builddir)/scintilla/lexers/LexOthers.cxx \
+									$(top_builddir)/scintilla/lexers/LexMetapost.cxx \
+									$(top_builddir)/scintilla/lexers/LexBaan.cxx \
+									$(top_builddir)/scintilla/lexers/LexAbaqus.cxx \
+									$(top_builddir)/scintilla/lexers/LexTxt2tags.cxx \
+									$(top_builddir)/scintilla/lexers/LexAda.cxx \
+									$(top_builddir)/scintilla/lexers/LexPython.cxx \
+									$(top_builddir)/scintilla/lexers/LexMySQL.cxx \
+									$(top_builddir)/scintilla/lexers/LexNsis.cxx \
+									$(top_builddir)/scintilla/lexers/LexErlang.cxx \
+									$(top_builddir)/scintilla/lexers/LexMPT.cxx \
+									$(top_builddir)/scintilla/lexers/LexEiffel.cxx \
+									$(top_builddir)/scintilla/lexers/LexProgress.cxx \
+									$(top_builddir)/scintilla/lexers/LexAU3.cxx \
+									$(top_builddir)/scintilla/lexers/LexMarkdown.cxx \
+									$(top_builddir)/scintilla/lexers/LexSmalltalk.cxx \
+									$(top_builddir)/scintilla/lexers/LexLout.cxx \
+									$(top_builddir)/scintilla/lexers/LexSpecman.cxx \
+									$(top_builddir)/scintilla/lexers/LexMSSQL.cxx \
+									$(top_builddir)/scintilla/lexers/LexYAML.cxx \
+									$(top_builddir)/scintilla/lexers/LexMatlab.cxx \
+									$(top_builddir)/scintilla/lexers/LexSorcus.cxx \
+									$(top_builddir)/scintilla/lexers/LexCPP.cxx \
+									$(top_builddir)/scintilla/lexlib/LexerBase.cxx \
+									$(top_builddir)/scintilla/lexlib/Accessor.cxx \
+									$(top_builddir)/scintilla/lexlib/StyleContext.cxx \
+									$(top_builddir)/scintilla/lexlib/LexerModule.cxx \
+									$(top_builddir)/scintilla/lexlib/WordList.cxx \
+									$(top_builddir)/scintilla/lexlib/PropSetSimple.cxx \
+									$(top_builddir)/scintilla/lexlib/LexerSimple.cxx \
+									$(top_builddir)/scintilla/lexlib/CharacterSet.cxx \
+									$(top_builddir)/scintilla/lexlib/LexerNoExceptions.cxx
 
 libgtkscintilla_1_0_la_SOURCES	=	$(top_builddir)/src/gtkscintilla.c \
 									$(top_builddir)/src/text.c \
@@ -31,114 +149,8 @@ libgtkscintilla_1_0_la_SOURCES	=	$(top_builddir)/src/gtkscintilla.c \
 									$(top_builddir)/src/signals.c \
 									$(top_builddir)/src/accessors.c \
 									$(top_builddir)/src/functions.c \
-									$(top_builddir)/scintilla/gtk/PlatGTK.cxx \
-									$(top_builddir)/scintilla/gtk/scintilla-marshal.c \
-									$(top_builddir)/scintilla/gtk/ScintillaGTK.cxx \
-									$(top_builddir)/scintilla/src/AutoComplete.cxx \
-									$(top_builddir)/scintilla/src/CallTip.cxx \
-									$(top_builddir)/scintilla/src/CellBuffer.cxx \
-									$(top_builddir)/scintilla/src/CharClassify.cxx \
-									$(top_builddir)/scintilla/src/ContractionState.cxx \
-									$(top_builddir)/scintilla/src/Decoration.cxx \
-									$(top_builddir)/scintilla/src/Document.cxx \
-									$(top_builddir)/scintilla/src/DocumentAccessor.cxx \
-									$(top_builddir)/scintilla/src/Editor.cxx \
-									$(top_builddir)/scintilla/src/ExternalLexer.cxx \
-									$(top_builddir)/scintilla/src/Indicator.cxx \
-									$(top_builddir)/scintilla/src/KeyMap.cxx \
-									$(top_builddir)/scintilla/src/KeyWords.cxx \
-									$(top_builddir)/scintilla/src/LexAPDL.cxx \
-									$(top_builddir)/scintilla/src/LexASY.cxx \
-									$(top_builddir)/scintilla/src/LexAU3.cxx \
-									$(top_builddir)/scintilla/src/LexAVE.cxx \
-									$(top_builddir)/scintilla/src/LexAbaqus.cxx \
-									$(top_builddir)/scintilla/src/LexAda.cxx \
-									$(top_builddir)/scintilla/src/LexAsm.cxx \
-									$(top_builddir)/scintilla/src/LexAsn1.cxx \
-									$(top_builddir)/scintilla/src/LexBaan.cxx \
-									$(top_builddir)/scintilla/src/LexBash.cxx \
-									$(top_builddir)/scintilla/src/LexBasic.cxx \
-									$(top_builddir)/scintilla/src/LexBullant.cxx \
-									$(top_builddir)/scintilla/src/LexCLW.cxx \
-									$(top_builddir)/scintilla/src/LexCOBOL.cxx \
-									$(top_builddir)/scintilla/src/LexCPP.cxx \
-									$(top_builddir)/scintilla/src/LexCSS.cxx \
-									$(top_builddir)/scintilla/src/LexCaml.cxx \
-									$(top_builddir)/scintilla/src/LexCmake.cxx \
-									$(top_builddir)/scintilla/src/LexConf.cxx \
-									$(top_builddir)/scintilla/src/LexCrontab.cxx \
-									$(top_builddir)/scintilla/src/LexCsound.cxx \
-									$(top_builddir)/scintilla/src/LexD.cxx \
-									$(top_builddir)/scintilla/src/LexEScript.cxx \
-									$(top_builddir)/scintilla/src/LexEiffel.cxx \
-									$(top_builddir)/scintilla/src/LexErlang.cxx \
-									$(top_builddir)/scintilla/src/LexFlagship.cxx \
-									$(top_builddir)/scintilla/src/LexForth.cxx \
-									$(top_builddir)/scintilla/src/LexFortran.cxx \
-									$(top_builddir)/scintilla/src/LexGAP.cxx \
-									$(top_builddir)/scintilla/src/LexGui4Cli.cxx \
-									$(top_builddir)/scintilla/src/LexHTML.cxx \
-									$(top_builddir)/scintilla/src/LexHaskell.cxx \
-									$(top_builddir)/scintilla/src/LexInno.cxx \
-									$(top_builddir)/scintilla/src/LexKix.cxx \
-									$(top_builddir)/scintilla/src/LexLisp.cxx \
-									$(top_builddir)/scintilla/src/LexLout.cxx \
-									$(top_builddir)/scintilla/src/LexLua.cxx \
-									$(top_builddir)/scintilla/src/LexMMIXAL.cxx \
-									$(top_builddir)/scintilla/src/LexMPT.cxx \
-									$(top_builddir)/scintilla/src/LexMSSQL.cxx \
-									$(top_builddir)/scintilla/src/LexMagik.cxx \
-									$(top_builddir)/scintilla/src/LexMarkdown.cxx \
-									$(top_builddir)/scintilla/src/LexMatlab.cxx \
-									$(top_builddir)/scintilla/src/LexMetapost.cxx \
-									$(top_builddir)/scintilla/src/LexMySQL.cxx \
-									$(top_builddir)/scintilla/src/LexNimrod.cxx \
-									$(top_builddir)/scintilla/src/LexNsis.cxx \
-									$(top_builddir)/scintilla/src/LexOpal.cxx \
-									$(top_builddir)/scintilla/src/LexOthers.cxx \
-									$(top_builddir)/scintilla/src/LexPB.cxx \
-									$(top_builddir)/scintilla/src/LexPLM.cxx \
-									$(top_builddir)/scintilla/src/LexPOV.cxx \
-									$(top_builddir)/scintilla/src/LexPS.cxx \
-									$(top_builddir)/scintilla/src/LexPascal.cxx \
-									$(top_builddir)/scintilla/src/LexPerl.cxx \
-									$(top_builddir)/scintilla/src/LexPowerPro.cxx \
-									$(top_builddir)/scintilla/src/LexPowerShell.cxx \
-									$(top_builddir)/scintilla/src/LexProgress.cxx \
-									$(top_builddir)/scintilla/src/LexPython.cxx \
-									$(top_builddir)/scintilla/src/LexR.cxx \
-									$(top_builddir)/scintilla/src/LexRebol.cxx \
-									$(top_builddir)/scintilla/src/LexRuby.cxx \
-									$(top_builddir)/scintilla/src/LexSML.cxx \
-									$(top_builddir)/scintilla/src/LexSQL.cxx \
-									$(top_builddir)/scintilla/src/LexScriptol.cxx \
-									$(top_builddir)/scintilla/src/LexSmalltalk.cxx \
-									$(top_builddir)/scintilla/src/LexSorcus.cxx \
-									$(top_builddir)/scintilla/src/LexSpecman.cxx \
-									$(top_builddir)/scintilla/src/LexSpice.cxx \
-									$(top_builddir)/scintilla/src/LexTACL.cxx \
-									$(top_builddir)/scintilla/src/LexTADS3.cxx \
-									$(top_builddir)/scintilla/src/LexTAL.cxx \
-									$(top_builddir)/scintilla/src/LexTCL.cxx \
-									$(top_builddir)/scintilla/src/LexTeX.cxx \
-									$(top_builddir)/scintilla/src/LexVB.cxx \
-									$(top_builddir)/scintilla/src/LexVHDL.cxx \
-									$(top_builddir)/scintilla/src/LexVerilog.cxx \
-									$(top_builddir)/scintilla/src/LexYAML.cxx \
-									$(top_builddir)/scintilla/src/LineMarker.cxx \
-									$(top_builddir)/scintilla/src/PerLine.cxx \
-									$(top_builddir)/scintilla/src/PositionCache.cxx \
-									$(top_builddir)/scintilla/src/PropSet.cxx \
-									$(top_builddir)/scintilla/src/RESearch.cxx \
-									$(top_builddir)/scintilla/src/RunStyles.cxx \
-									$(top_builddir)/scintilla/src/ScintillaBase.cxx \
-									$(top_builddir)/scintilla/src/Selection.cxx \
-									$(top_builddir)/scintilla/src/Style.cxx \
-									$(top_builddir)/scintilla/src/StyleContext.cxx \
-									$(top_builddir)/scintilla/src/UniConversion.cxx \
-									$(top_builddir)/scintilla/src/ViewStyle.cxx \
-									$(top_builddir)/scintilla/src/WindowAccessor.cxx \
-									$(top_builddir)/scintilla/src/XPM.cxx
+									$(top_builddir)/src/lexer.c \
+									$(scintilla_sources)
 
 
 #lexers_includedir=$(includedir)/gtkscintilla-1.0/lexers

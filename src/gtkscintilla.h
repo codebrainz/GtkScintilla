@@ -49,7 +49,8 @@ typedef struct _GtkScintillaPrivate		GtkScintillaPrivate;
 
 struct _GtkScintilla
 {
-	GtkFrame parent;
+	//GtkFrame parent;
+	ScintillaObject parent;
 	GtkWidget *scintilla;
 	GtkAccelGroup *accel_group;
     /*< private >*/
@@ -58,7 +59,8 @@ struct _GtkScintilla
 
 struct _GtkScintillaClass
 {
-	GtkFrameClass parent_class;
+	//GtkFrameClass parent_class;
+	ScintillaClass parent_class;
 	
 	/*< private >*/
 	void (* style_needed) (GtkWidget *gtk_scintilla, gint start_pos, gint end_pos);

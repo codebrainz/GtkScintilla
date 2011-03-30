@@ -219,6 +219,12 @@ ScintillaCocoa::~ScintillaCocoa()
  */
 void ScintillaCocoa::Initialise() 
 {
+  static bool initedLexers = false;
+  if (!initedLexers)
+  {
+    initedLexers = true;
+    Scintilla_LinkLexers();
+  }
   notifyObj = NULL;
   notifyProc = NULL;
   
@@ -245,6 +251,31 @@ void ScintillaCocoa::Finalise()
 {
   SetTicking(false);
   ScintillaBase::Finalise();
+}
+
+//--------------------------------------------------------------------------------------------------
+
+/**
+ * Case-fold the given string depending on the specified case mapping type.
+ * Note: ScintillaCocoa exclusively works with Unicode. We don't even think about adding support for
+ *       obsolete code page stuff.    
+ */
+std::string ScintillaCocoa::CaseMapString(const std::string &s, int caseMapping)
+{
+  NSString* textToConvert = [NSString stringWithUTF8String: s.c_str()];
+  std::string result;
+  switch (caseMapping)
+  {
+    case cmUpper:
+      result = [[textToConvert uppercaseString] UTF8String];
+      break;
+    case cmLower:
+      result = [[textToConvert lowercaseString] UTF8String];
+      break;
+    default:
+      result = s;
+  }
+  return result;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -495,15 +526,16 @@ void ScintillaCocoa::Paste(bool forceRectangular)
     return;
   
   pdoc->BeginUndoAction();
-  ClearSelection();
+  ClearSelection(false);
+  int length = selectedText.len - 1; // One less to avoid inserting the terminating 0 character.
   if (selectedText.rectangular)
   {
     SelectionPosition selStart = sel.RangeMain().Start();
-    PasteRectangular(selStart, selectedText.s, selectedText.len);
+    PasteRectangular(selStart, selectedText.s, length);
   }
   else 
-    if (pdoc->InsertString(sel.RangeMain().caret.Position(), selectedText.s, selectedText.len))
-      SetEmptySelection(sel.RangeMain().caret.Position() + selectedText.len);
+    if (pdoc->InsertString(sel.RangeMain().caret.Position(), selectedText.s, length))
+      SetEmptySelection(sel.RangeMain().caret.Position() + length);
   
   pdoc->EndUndoAction();
   
@@ -1074,25 +1106,29 @@ void ScintillaCocoa::DoScroll(float position, NSScrollerPart part, bool horizont
   }
   else
   {
-    // VerticalScrolling is by line.
-    int topLine = (int) (position * MaxScrollPos());
-    int page = LinesOnScreen();
+    // VerticalScrolling is by line. If the user is scrolling using the knob we can directly
+    // set the new scroll position. Otherwise we have to compute it first.
+    if (part == NSScrollerKnob)
+      ScrollTo(position * MaxScrollPos(), false);
+    else
+    {
     switch (part)
     {
       case NSScrollerDecrementLine:
-        topLine--;
+          ScrollTo(topLine - 1, true);
         break;
       case NSScrollerDecrementPage:
-        topLine -= page;
+          ScrollTo(topLine - LinesOnScreen(), true);
         break;
       case NSScrollerIncrementLine:
-        topLine++;
+          ScrollTo(topLine + 1, true);
         break;
       case NSScrollerIncrementPage:
-        topLine += page;
+          ScrollTo(topLine + LinesOnScreen(), true);
         break;
     };
-    ScrollTo(topLine, true);
+      
+    }
   }
 }
 
@@ -1201,7 +1237,7 @@ void ScintillaCocoa::IdleTimerFired()
 /**
  * Main entry point for drawing the control.
  *
- * @param rect The area to paint, given in the sender's coordinate.
+ * @param rect The area to paint, given in the sender's coordinate system.
  * @param gc The context we can use to paint.
  */
 void ScintillaCocoa::Draw(NSRect rect, CGContextRef gc)
@@ -1368,34 +1404,32 @@ void ScintillaCocoa::MouseUp(NSEvent* event)
 void ScintillaCocoa::MouseWheel(NSEvent* event)
 {
   bool command = ([event modifierFlags] & NSCommandKeyMask) != 0;
-  bool shift = ([event modifierFlags] & NSShiftKeyMask) != 0;
-  int delta;
-  if (shift)
-    delta = 10 * [event deltaX]; // Arbitrary scale factor.
-  else
-  {
+  int dX = 0;
+  int dY = 0;
+
+  dX = 10 * [event deltaX]; // Arbitrary scale factor.
+
     // In order to make scrolling with larger offset smoother we scroll less lines the larger the 
     // delta value is.
     if ([event deltaY] < 0)
-      delta = -(int) sqrt(-10.0 * [event deltaY]);
+    dY = -(int) sqrt(-10.0 * [event deltaY]);
     else
-      delta = (int) sqrt(10.0 * [event deltaY]);
-  }
+    dY = (int) sqrt(10.0 * [event deltaY]);
   
   if (command)
   {
     // Zoom! We play with the font sizes in the styles.
     // Number of steps/line is ignored, we just care if sizing up or down.
-    if (delta > 0)
+    if (dY > 0.5)
       KeyCommand(SCI_ZOOMIN);
-    else
+    else if (dY < -0.5)
       KeyCommand(SCI_ZOOMOUT);
   }
   else
-    if (shift)
-      HorizontalScrollTo(xOffset - delta);
-    else
-      ScrollTo(topLine - delta, true);
+  {
+    HorizontalScrollTo(xOffset - dX);
+    ScrollTo(topLine - dY, true);
+  }
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1424,7 +1458,7 @@ void ScintillaCocoa::Undo()
 
 void ScintillaCocoa::Redo()
 {
-  Editor::Undo();
+  Editor::Redo();
 }
 
 //--------------------------------------------------------------------------------------------------

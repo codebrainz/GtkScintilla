@@ -43,6 +43,9 @@ extern NSString *SCIUpdateUINotification;
 - (void) removeMarkedText;
 - (void) setCursor: (Scintilla::Window::Cursor) cursor;
 
+- (BOOL) canUndo;
+- (BOOL) canRedo;
+
 @property (retain) ScintillaView* owner;
 @end
 
@@ -52,6 +55,9 @@ extern NSString *SCIUpdateUINotification;
   // The back end is kind of a controller and model in one.
   // It uses the content view for display.
   Scintilla::ScintillaCocoa* mBackend;
+  
+  // The object (eg NSDocument) that controls the ScintillaView.
+  NSObject* mOwner;
   
   // This is the actual content to which the backend renders itself.
   InnerView* mContent;
@@ -73,6 +79,8 @@ extern NSString *SCIUpdateUINotification;
           value: (float) value;
 - (void) setCallback: (id <InfoBarCommunicator>) callback;
 
+- (void) suspendDrawing: (BOOL) suspend;
+
 // Scroller handling
 - (BOOL) setVerticalScrollRange: (int) range page: (int) page;
 - (void) setVerticalScrollPosition: (float) position;
@@ -92,12 +100,19 @@ extern NSString *SCIUpdateUINotification;
 
 - (NSString*) selectedString;
 
+- (void)setFontName: (NSString*) font
+               size: (int) size
+               bold: (BOOL) bold
+             italic: (BOOL) italic;
+
 // Native call through to the backend.
 + (sptr_t) directCall: (ScintillaView*) sender message: (unsigned int) message wParam: (uptr_t) wParam
                lParam: (sptr_t) lParam;
 
 // Back end properties getters and setters.
 - (void) setGeneralProperty: (int) property parameter: (long) parameter value: (long) value;
+- (void) setGeneralProperty: (int) property value: (long) value;
+
 - (long) getGeneralProperty: (int) property;
 - (long) getGeneralProperty: (int) property parameter: (long) parameter;
 - (long) getGeneralProperty: (int) property parameter: (long) parameter extra: (long) extra;
@@ -115,6 +130,12 @@ extern NSString *SCIUpdateUINotification;
 - (void) setInfoBar: (NSView <InfoBarCommunicator>*) aView top: (BOOL) top;
 - (void) setStatusText: (NSString*) text;
 
-@property Scintilla::ScintillaCocoa* backend;
+- (void) findAndHighlightText: (NSString*) searchText
+                    matchCase: (BOOL) matchCase
+                    wholeWord: (BOOL) wholeWord
+                     scrollTo: (BOOL) scrollTo
+                         wrap: (BOOL) wrap;
 
+@property Scintilla::ScintillaCocoa* backend;
+@property (retain) NSObject* owner;
 @end

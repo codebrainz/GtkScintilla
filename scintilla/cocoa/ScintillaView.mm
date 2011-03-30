@@ -179,7 +179,10 @@ NSString *SCIUpdateUINotification = @"SCIUpdateUI";
  */
 - (NSMenu*) menuForEvent: (NSEvent*) theEvent
 {
-  return mOwner.backend->CreateContextMenu(theEvent);
+  if (![mOwner respondsToSelector: @selector(menuForEvent:)])
+    return mOwner.backend->CreateContextMenu(theEvent);
+  else
+    return [mOwner menuForEvent: theEvent];
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -279,34 +282,33 @@ NSString *SCIUpdateUINotification = @"SCIUpdateUI";
   {
     // We have already marked text. Replace that.
     [mOwner setGeneralProperty: SCI_SETSELECTIONSTART
-                     parameter: mMarkedTextRange.location
-                         value: 0];
+                         value: mMarkedTextRange.location];
     [mOwner setGeneralProperty: SCI_SETSELECTIONEND 
-                     parameter: mMarkedTextRange.location + mMarkedTextRange.length
-                         value: 0];
+                         value: mMarkedTextRange.location + mMarkedTextRange.length];
     currentPosition = mMarkedTextRange.location;
   }
 
+  // Note: Scintilla internally works almost always with bytes instead chars, so we need to take
+  //       this into account when determining selection ranges and such.
+  std::string raw_text = [newText UTF8String];
   mOwner.backend->InsertText(newText);
 
   mMarkedTextRange.location = currentPosition;
-  mMarkedTextRange.length = [newText length];
+  mMarkedTextRange.length = raw_text.size();
     
   // Mark the just inserted text. Keep the marked range for later reset.
-  [mOwner setGeneralProperty: SCI_SETINDICATORCURRENT parameter: INPUT_INDICATOR value: 0];
+  [mOwner setGeneralProperty: SCI_SETINDICATORCURRENT value: INPUT_INDICATOR];
   [mOwner setGeneralProperty: SCI_INDICATORFILLRANGE
                    parameter: mMarkedTextRange.location
                        value: mMarkedTextRange.length];
   
-  // Select the part which is indicated in the given range.
+  // Select the part which is indicated in the given range. It does not scroll the caret into view.
   if (range.length > 0)
   {
     [mOwner setGeneralProperty: SCI_SETSELECTIONSTART
-                     parameter: currentPosition + range.location
-                         value: 0];
+                     value: currentPosition + range.location];
     [mOwner setGeneralProperty: SCI_SETSELECTIONEND 
-                     parameter: currentPosition + range.location + range.length
-                         value: 0];
+                     value: currentPosition + range.location + range.length];
   }
 }
 
@@ -316,7 +318,7 @@ NSString *SCIUpdateUINotification = @"SCIUpdateUI";
 {
   if (mMarkedTextRange.length > 0)
   {
-    [mOwner setGeneralProperty: SCI_SETINDICATORCURRENT parameter: INPUT_INDICATOR value: 0];
+    [mOwner setGeneralProperty: SCI_SETINDICATORCURRENT value: INPUT_INDICATOR];
     [mOwner setGeneralProperty: SCI_INDICATORCLEARRANGE
                      parameter: mMarkedTextRange.location
                          value: mMarkedTextRange.length];
@@ -335,11 +337,9 @@ NSString *SCIUpdateUINotification = @"SCIUpdateUI";
   {
     // We have already marked text. Replace that.
     [mOwner setGeneralProperty: SCI_SETSELECTIONSTART
-                     parameter: mMarkedTextRange.location
-                         value: 0];
+                     value: mMarkedTextRange.location];
     [mOwner setGeneralProperty: SCI_SETSELECTIONEND 
-                     parameter: mMarkedTextRange.location + mMarkedTextRange.length
-                         value: 0];
+                     value: mMarkedTextRange.location + mMarkedTextRange.length];
     mOwner.backend->InsertText(@"");
     mMarkedTextRange = NSMakeRange(NSNotFound, 0);
   }
@@ -543,6 +543,22 @@ NSString *SCIUpdateUINotification = @"SCIUpdateUI";
   mOwner.backend->Redo();
 }
 
+- (BOOL) canUndo
+{
+  return mOwner.backend->CanUndo();
+}
+
+- (BOOL) canRedo
+{
+  return mOwner.backend->CanRedo();
+}
+
+
+- (BOOL) isEditable
+{
+  return mOwner.backend->WndProc(SCI_GETREADONLY, 0, 0) == 0;
+}
+
 //--------------------------------------------------------------------------------------------------
 
 - (void) dealloc
@@ -558,6 +574,7 @@ NSString *SCIUpdateUINotification = @"SCIUpdateUI";
 @implementation ScintillaView
 
 @synthesize backend = mBackend;
+@synthesize owner   = mOwner;
 
 /**
  * ScintiallView is a composite control made from an NSView and an embedded NSView that is
@@ -617,7 +634,7 @@ NSString *SCIUpdateUINotification = @"SCIUpdateUI";
       // Compute point increase/decrease based on default font size.
       int fontSize = [self getGeneralProperty: SCI_STYLEGETSIZE parameter: STYLE_DEFAULT];
       int zoom = (int) (fontSize * (value - 1));
-      [self setGeneralProperty: SCI_SETZOOM parameter: zoom value: 0];
+      [self setGeneralProperty: SCI_SETZOOM value: zoom];
       break;
     }
   };
@@ -628,6 +645,20 @@ NSString *SCIUpdateUINotification = @"SCIUpdateUI";
 - (void) setCallback: (id <InfoBarCommunicator>) callback
 {
   // Not used. Only here to satisfy protocol.
+}
+
+//--------------------------------------------------------------------------------------------------
+
+/**
+ * Prevents drawing of the inner view to avoid flickering when doing many visual updates
+ * (like clearing all marks and setting new ones etc.).
+ */
+- (void) suspendDrawing: (BOOL) suspend
+{
+  if (suspend)
+    [[self window] disableFlushWindow];
+  else
+    [[self window] enableFlushWindow];
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -656,7 +687,7 @@ static void notification(intptr_t windowid, unsigned int iMessage, uintptr_t wPa
           {
             // Click on the folder margin. Toggle the current line if possible.
             int line = [editor getGeneralProperty: SCI_LINEFROMPOSITION parameter: scn->position];
-            [editor setGeneralProperty: SCI_TOGGLEFOLD parameter: line value: 0];
+            [editor setGeneralProperty: SCI_TOGGLEFOLD value: line];
           }
           break;
           };
@@ -684,6 +715,7 @@ static void notification(intptr_t windowid, unsigned int iMessage, uintptr_t wPa
           NSPoint caretPosition = editor->mBackend->GetCaretPosition();
           [editor->mInfoBar notify: IBNCaretChanged message: nil location: caretPosition value: 0];
           [editor sendNotification: SCIUpdateUINotification];
+          [editor sendNotification: NSTextViewDidChangeSelectionNotification];
           break;
       }
       }
@@ -980,7 +1012,7 @@ static void notification(intptr_t windowid, unsigned int iMessage, uintptr_t wPa
  */
 - (void) scrollerAction: (id) sender
 {
-  float position = [sender floatValue];
+  float position = [sender doubleValue];
   mBackend->DoScroll(position, [sender hitPart], sender == mHorizontalScroller);
 }
 
@@ -1091,7 +1123,7 @@ static void notification(intptr_t windowid, unsigned int iMessage, uintptr_t wPa
 
 - (BOOL) isEditable
 {
-  return mBackend->WndProc(SCI_GETREADONLY, 0, 0) != 0;
+  return mBackend->WndProc(SCI_GETREADONLY, 0, 0) == 0;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1126,6 +1158,19 @@ static void notification(intptr_t windowid, unsigned int iMessage, uintptr_t wPa
 - (void) setGeneralProperty: (int) property parameter: (long) parameter value: (long) value
 {
   mBackend->WndProc(property, parameter, value);
+}
+
+//--------------------------------------------------------------------------------------------------
+
+/**
+ * A simplified version for setting properties which only require one parameter.
+ *
+ * @param property Main property like SCI_STYLESETFORE for which a value is to be set.
+ * @param value The actual value. It depends on the property what this parameter means.
+ */
+- (void) setGeneralProperty: (int) property value: (long) value
+{
+  mBackend->WndProc(property, value, 0);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1360,17 +1405,93 @@ static void notification(intptr_t windowid, unsigned int iMessage, uintptr_t wPa
     [mInfoBar notify: IBNStatusChanged message: text location: NSZeroPoint value: 0];
 }
 
+//--------------------------------------------------------------------------------------------------
+
 - (NSRange) selectedRange
 {
   return [mContent selectedRange];
 }
+
+//--------------------------------------------------------------------------------------------------
 
 - (void)insertText: (NSString*)text
 {
   [mContent insertText: text];
 }
 
-@end
+//--------------------------------------------------------------------------------------------------
+
+/**
+ * Searches and marks the first occurance of the given text and optionally scrolls it into view.
+ */
+- (void) findAndHighlightText: (NSString*) searchText
+                    matchCase: (BOOL) matchCase
+                    wholeWord: (BOOL) wholeWord
+                     scrollTo: (BOOL) scrollTo
+                         wrap: (BOOL) wrap
+{
+  // The current position is where we start searching. That is either the end of the current
+  // (main) selection or the caret position. That ensures we do proper "search next" too.
+  int currentPosition = [self getGeneralProperty: SCI_GETCURRENTPOS parameter: 0];
+  int length = [self getGeneralProperty: SCI_GETTEXTLENGTH parameter: 0];
+
+  int searchFlags= 0;
+  if (matchCase)
+    searchFlags |= SCFIND_MATCHCASE;
+  if (wholeWord)
+    searchFlags |= SCFIND_WHOLEWORD;
+
+  Sci_TextToFind ttf;
+  ttf.chrg.cpMin = currentPosition;
+  ttf.chrg.cpMax = length;
+  ttf.lpstrText = (char*) [searchText UTF8String];
+  int position = mBackend->WndProc(SCI_FINDTEXT, searchFlags, (sptr_t) &ttf);
+  
+  if (position < 0 && wrap)
+  {
+    ttf.chrg.cpMin = 0;
+    ttf.chrg.cpMax = currentPosition;
+    position = mBackend->WndProc(SCI_FINDTEXT, searchFlags, (sptr_t) &ttf);
+  }
+  
+  if (position >= 0)
+  {
+    // Highlight the found text.
+    [self setGeneralProperty: SCI_SETSELECTIONSTART
+                       value: position];
+    [self setGeneralProperty: SCI_SETSELECTIONEND
+                       value: position + [searchText length]];
+    
+    if (scrollTo)
+      [self setGeneralProperty: SCI_SCROLLCARET value: 0];
+  }
+}
 
 //--------------------------------------------------------------------------------------------------
+
+- (void) setFontName: (NSString*) font
+                size: (int) size
+                bold: (BOOL) bold
+                italic: (BOOL) italic
+{
+  for (int i = 0; i < 32; i++)
+  {
+    [self setGeneralProperty: SCI_STYLESETFONT
+                   parameter: i
+                       value: (sptr_t)[font UTF8String]];
+    [self setGeneralProperty: SCI_STYLESETSIZE
+                   parameter: i
+                       value: size];
+    [self setGeneralProperty: SCI_STYLESETBOLD
+                   parameter: i
+                       value: bold];
+    [self setGeneralProperty: SCI_STYLESETITALIC
+                   parameter: i
+                       value: italic];
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+@end
 

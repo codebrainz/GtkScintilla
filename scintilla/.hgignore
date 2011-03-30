@@ -1,0 +1,26 @@
+syntax: glob
+*.o
+*.a
+*.lib
+*.obj
+*.pyc
+*.dll
+*.exp
+*.lib
+*.pdb
+*.res
+*.bak
+*.sbr
+*.idb
+*.ilk
+*.ncb
+*.opt
+*.plg
+*.pbxbtree
+*.mode1v3
+*.pbxuser
+cocoa/build
+cocoa/ScintillaFramework/build
+cocoa/ScintillaTest/build
+macosx/SciTest/build
+

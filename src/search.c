@@ -144,7 +144,7 @@ gboolean gtk_scintilla_find_text (GtkScintilla *sci,
 	ttf.chrg.cpMax = search_end_pos;
 	ttf.lpstrText = g_strdup(pattern);
 	
-	pos = (gint)scintilla_send_message(SCINTILLA(sci->scintilla), 2150, (uptr_t)flags, (sptr_t)&ttf);
+	pos = (gint)scintilla_send_message(SCINTILLA(sci), 2150, (uptr_t)flags, (sptr_t)&ttf);
 	if (pos == -1) {
 		g_free(ttf.lpstrText);
 		return FALSE;
@@ -176,7 +176,7 @@ gboolean gtk_scintilla_find_text (GtkScintilla *sci,
  * gtk_scintilla_search_next() or gtk_scintill_search_previous().
  */
 inline void gtk_scintilla_search_anchor (GtkScintilla *sci) {
-	scintilla_send_message(SCINTILLA(sci->scintilla), 2366, 0, 0);
+	scintilla_send_message(SCINTILLA(sci), 2366, 0, 0);
 }
 
 /**
@@ -194,7 +194,7 @@ inline void gtk_scintilla_search_anchor (GtkScintilla *sci) {
  * Returns:	The start position of the matching text or -1 if nothing is found.
  */
 inline gint gtk_scintilla_search_next (GtkScintilla *sci, const gchar *text, gint flags) {
-	return (gint)scintilla_send_message(SCINTILLA(sci->scintilla), 2367, (uptr_t)flags, (sptr_t)text);
+	return (gint)scintilla_send_message(SCINTILLA(sci), 2367, (uptr_t)flags, (sptr_t)text);
 }
 
 /**
@@ -214,7 +214,7 @@ inline gint gtk_scintilla_search_next (GtkScintilla *sci, const gchar *text, gin
  * Returns:	The start position of the matching text or -1 if nothing is found.
  */
 inline gint gtk_scintilla_search_previous (GtkScintilla *sci, const gchar *text, gint flags) {
-	return (gint)scintilla_send_message(SCINTILLA(sci->scintilla), 2368, (uptr_t)flags, (sptr_t)text);
+	return (gint)scintilla_send_message(SCINTILLA(sci), 2368, (uptr_t)flags, (sptr_t)text);
 }
 
 /**
@@ -228,7 +228,7 @@ inline gint gtk_scintilla_search_previous (GtkScintilla *sci, const gchar *text,
  * successful gtk_scintilla_search_in_target() call.
  */
 inline void gtk_scintilla_set_target_start (GtkScintilla *sci, gint pos) {
-	scintilla_send_message(SCINTILLA(sci->scintilla), 2190, (uptr_t)pos, 0);
+	scintilla_send_message(SCINTILLA(sci), 2190, (uptr_t)pos, 0);
 }
 
 /**
@@ -241,7 +241,7 @@ inline void gtk_scintilla_set_target_start (GtkScintilla *sci, gint pos) {
  * Returns:	The start position of the target.
  */
 inline gint gtk_scintilla_get_target_start (GtkScintilla *sci) {
-	return (gint)scintilla_send_message(SCINTILLA(sci->scintilla), 2191, 0, 0);
+	return (gint)scintilla_send_message(SCINTILLA(sci), 2191, 0, 0);
 }
 
 /**
@@ -253,7 +253,7 @@ inline gint gtk_scintilla_get_target_start (GtkScintilla *sci) {
  * details.
  */
 inline void gtk_scintilla_set_target_end (GtkScintilla *sci, gint pos) {
-	scintilla_send_message(SCINTILLA(sci->scintilla), 2192, (uptr_t)pos, 0);
+	scintilla_send_message(SCINTILLA(sci), 2192, (uptr_t)pos, 0);
 }
 
 /**
@@ -266,7 +266,7 @@ inline void gtk_scintilla_set_target_end (GtkScintilla *sci, gint pos) {
  * Returns:	The end position of the target.
  */
 inline gint gtk_scintilla_get_target_end (GtkScintilla *sci) {
-	return (gint)scintilla_send_message(SCINTILLA(sci->scintilla), 2193, 0, 0);
+	return (gint)scintilla_send_message(SCINTILLA(sci), 2193, 0, 0);
 }
 
 /**
@@ -276,7 +276,7 @@ inline gint gtk_scintilla_get_target_end (GtkScintilla *sci) {
  * Set the target start and end to the start and end positions of the selection.
  */
 inline void gtk_scintilla_target_from_selection (GtkScintilla *sci) {
-	scintilla_send_message(SCINTILLA(sci->scintilla), 2287, 0, 0);
+	scintilla_send_message(SCINTILLA(sci), 2287, 0, 0);
 }
 
 /**
@@ -288,7 +288,7 @@ inline void gtk_scintilla_target_from_selection (GtkScintilla *sci) {
  * There are several option flags including a simple regular expression search.
  */
 inline void gtk_scintilla_set_search_flags (GtkScintilla *sci, gint flags) {
-	scintilla_send_message(SCINTILLA(sci->scintilla), 2198, (uptr_t)flags, 0);
+	scintilla_send_message(SCINTILLA(sci), 2198, (uptr_t)flags, 0);
 }
 
 /**
@@ -302,7 +302,7 @@ inline void gtk_scintilla_set_search_flags (GtkScintilla *sci, gint flags) {
  * 			gtk_scintilla_search_in_target().
  */
 inline gint gtk_scintilla_get_search_flags (GtkScintilla *sci) {
-	return (gint)scintilla_send_message(SCINTILLA(sci->scintilla), 2199, 0, 0);
+	return (gint)scintilla_send_message(SCINTILLA(sci), 2199, 0, 0);
 }
 
 /**
@@ -330,7 +330,7 @@ gint gtk_scintilla_search_in_target (GtkScintilla *sci, const gchar *text)
 	if (len == 0)
 		return -1;
 	
-	pos = (gint)scintilla_send_message(SCINTILLA(sci->scintilla), 
+	pos = (gint)scintilla_send_message(SCINTILLA(sci), 
 										2197, (uptr_t)len, (sptr_t)text);
 
 	return pos;	
@@ -350,7 +350,7 @@ gint gtk_scintilla_search_in_target (GtkScintilla *sci, const gchar *text)
  * Returns:	The length of the replacement string.
  */
 inline gint gtk_scintilla_replace_target (GtkScintilla *sci, const gchar *text, gint length) {
-	return (gint)scintilla_send_message(SCINTILLA(sci->scintilla), 2194, (uptr_t)length, (sptr_t)text);
+	return (gint)scintilla_send_message(SCINTILLA(sci), 2194, (uptr_t)length, (sptr_t)text);
 }
 
 /**
@@ -369,7 +369,7 @@ inline gint gtk_scintilla_replace_target (GtkScintilla *sci, const gchar *text, 
  * Returns:	The length of the replacement string.
  */
 inline gint gtk_scintilla_replace_target_regex (GtkScintilla *sci, const gchar *text, gint length) {
-	return (gint)scintilla_send_message(SCINTILLA(sci->scintilla), 2195, (uptr_t)length, (sptr_t)text);
+	return (gint)scintilla_send_message(SCINTILLA(sci), 2195, (uptr_t)length, (sptr_t)text);
 }
 
 /**
@@ -389,12 +389,12 @@ gchar *gtk_scintilla_get_tag (GtkScintilla *sci, gint tag_number)
 	gchar *tmp;
 	gint len;
 	
-	len = scintilla_send_message(SCINTILLA(sci->scintilla), 2616, (uptr_t)tag_number, (sptr_t)0);
+	len = scintilla_send_message(SCINTILLA(sci), 2616, (uptr_t)tag_number, (sptr_t)0);
 	if (len < 1)
 		return NULL;
 	
 	tmp = g_malloc0(len+1);
-	len = scintilla_send_message(SCINTILLA(sci->scintilla), 2616, (uptr_t)tag_number, (sptr_t)tmp);
+	len = scintilla_send_message(SCINTILLA(sci), 2616, (uptr_t)tag_number, (sptr_t)tmp);
 	if (len < 1) {
 		g_free(tmp);
 		return NULL;

@@ -356,119 +356,129 @@ void gtk_scintilla_class_install_signals(GtkScintillaClass *klass)
 void gtk_scintilla_forward_signals(GtkScintilla *sci, 
 									struct SCNotification *notification)
 {
-    switch (notification->nmhdr.code) {
-        case SCN_STYLENEEDED:
-        {
+	switch (notification->nmhdr.code) {
+		case SCN_STYLENEEDED:
+		{
 			gint start = gtk_scintilla_get_end_styled(sci);
 			start = gtk_scintilla_line_from_position(sci, start);
 			start = gtk_scintilla_position_from_line(sci, start); 
-            g_signal_emit (sci,
-                           _gtk_scintilla_signals[STYLE_NEEDED], 0,
-                           start,
-                           (gint) notification->position);
-            break;
-        }
-        case SCN_UPDATEUI:
-            g_signal_emit (sci,
-                           _gtk_scintilla_signals[UPDATE_UI], 0);
-            gtk_scintilla_update_line_numbers(sci);
-            break;
-        case SCN_CHARADDED:
-            g_signal_emit (sci,
-                           _gtk_scintilla_signals[CHAR_ADDED], 0,
-                           (gint) notification->ch);
-            break;
-        case SCN_SAVEPOINTREACHED:
-            g_signal_emit (sci,
-                           _gtk_scintilla_signals[SAVE_POINT_REACHED], 0);
-            break;
-        case SCN_SAVEPOINTLEFT:
-            g_signal_emit (sci,
-                           _gtk_scintilla_signals[SAVE_POINT_LEFT], 0);
-            break;
-        case SCN_MODIFYATTEMPTRO:
-            g_signal_emit (sci,
-                           _gtk_scintilla_signals[MODIFY_ATTEMPT_RO], 0);
-            break;
-        case SCN_KEY:
-            pass_throug_key (sci,
-                             (gint) notification->ch,
-                             (gint) notification->modifiers);
-            g_signal_emit (sci,
-                           _gtk_scintilla_signals[KEY], 0,
-                           (gint) notification->ch,
-                           (gint) notification->modifiers);
-            break;
-        case SCN_DOUBLECLICK:
-            g_signal_emit (sci,
-                           _gtk_scintilla_signals[DOUBLE_CLICK], 0,
-                           (gint) notification->position,
-                           (gint) notification->line);
-            break;
-        case SCN_MODIFIED:
-            g_signal_emit (sci,
-                           _gtk_scintilla_signals[MODIFIED], 0,
-                           (gint) notification->position,
-                           (gint) notification->modificationType,
-                           (gchar *)notification->text,
-                           (gint) notification->length,
-                           (gint) notification->linesAdded,
-                           (gint) notification->line,
-                           (gint) notification->foldLevelNow,
-                           (gint) notification->foldLevelPrev);
-            break;
-        case SCN_MACRORECORD:
-            g_signal_emit (sci,
-                           _gtk_scintilla_signals[MACRO_RECORD], 0,
-                           (gint) notification->message,
-                           (gulong) notification->wParam,
-                           (glong) notification->lParam);
-            break;
-        case SCN_MARGINCLICK:
-            g_signal_emit (sci,
-                           _gtk_scintilla_signals[MARGIN_CLICK], 0,
-                           (gint) notification->modifiers,
-                           (gint) notification->position,
-                           (gint) notification->margin);
-            break;
-        case SCN_NEEDSHOWN:
-            g_signal_emit (sci,
-                           _gtk_scintilla_signals[NEED_SHOWN], 0,
-                           (gint) notification->position,
-                           (gint) notification->length);
-            break;
-        case SCN_PAINTED:
-            g_signal_emit (sci,
-                           _gtk_scintilla_signals[PAINTED], 0);
-            break;
-        case SCN_USERLISTSELECTION:
-            g_signal_emit (sci,
-                           _gtk_scintilla_signals[USER_LIST_SELECTION], 0,
-                           (gint) notification->listType,
-                           (gchar *) notification->text);
-            break;
-        case SCN_URIDROPPED:
-            g_signal_emit (sci,
-                           _gtk_scintilla_signals[URI_DROPPED], 0,
-                           (gchar *) notification->text);
-            break;
-        case SCN_DWELLSTART:
-            g_signal_emit (sci,
-                           _gtk_scintilla_signals[DWELL_START], 0,
-                           (gint) notification->position);
-            break;
-        case SCN_DWELLEND:
-            g_signal_emit (sci,
-                           _gtk_scintilla_signals[DWELL_END], 0,
-                           (gint) notification->position);
-            break;
-        case SCN_ZOOM:
-            g_signal_emit (sci,
-                           _gtk_scintilla_signals[ZOOM], 0);
-            break;
-        default:
-            /*g_warning ("GtkScintilla2: Notification code %d not handled!\n",
-                       (gint) notification->nmhdr.code);*/
-            break;
-    }
+			g_signal_emit (sci,
+						   _gtk_scintilla_signals[STYLE_NEEDED], 0,
+						   start,
+						   (gint) notification->position);
+			break;
+		}
+		case SCN_UPDATEUI:
+			g_signal_emit (sci,
+						   _gtk_scintilla_signals[UPDATE_UI], 0);
+			gtk_scintilla_update_line_numbers(sci);
+			break;
+		case SCN_CHARADDED:
+			g_signal_emit (sci,
+						   _gtk_scintilla_signals[CHAR_ADDED], 0,
+						   (gint) notification->ch);
+			break;
+		case SCN_SAVEPOINTREACHED:
+			g_signal_emit (sci,
+						   _gtk_scintilla_signals[SAVE_POINT_REACHED], 0);
+			break;
+		case SCN_SAVEPOINTLEFT:
+			g_signal_emit (sci,
+						   _gtk_scintilla_signals[SAVE_POINT_LEFT], 0);
+			break;
+		case SCN_MODIFYATTEMPTRO:
+			g_signal_emit (sci,
+						   _gtk_scintilla_signals[MODIFY_ATTEMPT_RO], 0);
+			break;
+		case SCN_KEY:
+		{
+			gint gdk_mods = 0;
+			gint sci_mods = (gint)notification->modifiers;
+			gint sci_char = (gint)notification->ch;
+	
+			if (sci_mods & SCMOD_SHIFT)		gdk_mods |= GDK_SHIFT_MASK;
+			if (sci_mods & SCMOD_CTRL)		gdk_mods |= GDK_CONTROL_MASK;
+			if (sci_mods & SCMOD_ALT)		gdk_mods |= GDK_MOD1_MASK;
+
+			if (sci->accel_group)
+			{
+				gtk_accel_groups_activate(G_OBJECT(sci->accel_group), sci_char, 
+					(GdkModifierType)gdk_mods);
+			}
+				
+			g_signal_emit (sci, _gtk_scintilla_signals[KEY], 0, sci_char, sci_mods);
+			break;
+		}
+		case SCN_DOUBLECLICK:
+			g_signal_emit (sci,
+						   _gtk_scintilla_signals[DOUBLE_CLICK], 0,
+						   (gint) notification->position,
+						   (gint) notification->line);
+			break;
+		case SCN_MODIFIED:
+			g_signal_emit (sci,
+						   _gtk_scintilla_signals[MODIFIED], 0,
+						   (gint) notification->position,
+						   (gint) notification->modificationType,
+						   (gchar *)notification->text,
+						   (gint) notification->length,
+						   (gint) notification->linesAdded,
+						   (gint) notification->line,
+						   (gint) notification->foldLevelNow,
+						   (gint) notification->foldLevelPrev);
+			break;
+		case SCN_MACRORECORD:
+			g_signal_emit (sci,
+						   _gtk_scintilla_signals[MACRO_RECORD], 0,
+						   (gint) notification->message,
+						   (gulong) notification->wParam,
+						   (glong) notification->lParam);
+			break;
+		case SCN_MARGINCLICK:
+			g_signal_emit (sci,
+						   _gtk_scintilla_signals[MARGIN_CLICK], 0,
+						   (gint) notification->modifiers,
+						   (gint) notification->position,
+						   (gint) notification->margin);
+			break;
+		case SCN_NEEDSHOWN:
+			g_signal_emit (sci,
+						   _gtk_scintilla_signals[NEED_SHOWN], 0,
+						   (gint) notification->position,
+						   (gint) notification->length);
+			break;
+		case SCN_PAINTED:
+			g_signal_emit (sci,
+						   _gtk_scintilla_signals[PAINTED], 0);
+			break;
+		case SCN_USERLISTSELECTION:
+			g_signal_emit (sci,
+						   _gtk_scintilla_signals[USER_LIST_SELECTION], 0,
+						   (gint) notification->listType,
+						   (gchar *) notification->text);
+			break;
+		case SCN_URIDROPPED:
+			g_signal_emit (sci,
+						   _gtk_scintilla_signals[URI_DROPPED], 0,
+						   (gchar *) notification->text);
+			break;
+		case SCN_DWELLSTART:
+			g_signal_emit (sci,
+						   _gtk_scintilla_signals[DWELL_START], 0,
+						   (gint) notification->position);
+			break;
+		case SCN_DWELLEND:
+			g_signal_emit (sci,
+						   _gtk_scintilla_signals[DWELL_END], 0,
+						   (gint) notification->position);
+			break;
+		case SCN_ZOOM:
+			g_signal_emit (sci,
+						   _gtk_scintilla_signals[ZOOM], 0);
+			break;
+		default:
+			g_debug("GtkScintilla: Unhandled notification (%d).",
+				notification->nmhdr.code);
+			break;
+	}
 }

@@ -1,17 +1,18 @@
 #include <gtk/gtk.h>
+
+#include <Scintilla.h>
+#include <ScintillaWidget.h>
+
 #include "gtkscintilla.h"
 #include "properties.h"
 #include "style-properties.h"
 #include "signals.h"
 
-#define PLAT_GTK 2
-#include <Scintilla.h>
-#include <ScintillaWidget.h>
 
+static void on_sci_notify(GtkWidget *w, gint param, gpointer notif, gpointer data);
+void pass_throug_key(GtkScintilla *sci, gint ch, gint modifiers);
 
-static void on_sci_notify (GtkWidget *w, gint param, gpointer notif, gpointer data);
-void pass_throug_key (GtkScintilla *sci, gint ch, gint modifiers);
-static void gtk_scintilla_finalize			(GObject *object);
+static void gtk_scintilla_finalize(GObject *object);
 static void gtk_scintilla_class_init(GtkScintillaClass *klass);
 static void gtk_scintilla_init(GtkScintilla *self);
 
@@ -23,7 +24,7 @@ struct _GtkScintillaPrivate
 	gchar *font;
 };
 
-G_DEFINE_TYPE(GtkScintilla, gtk_scintilla, GTK_TYPE_FRAME)
+G_DEFINE_TYPE(GtkScintilla, gtk_scintilla, SCINTILLA_TYPE_OBJECT)
 
 
 static void gtk_scintilla_class_init(GtkScintillaClass *klass)
@@ -61,28 +62,21 @@ static void gtk_scintilla_finalize(GObject *object)
 
 static void gtk_scintilla_init(GtkScintilla *self)
 {
-	self->priv = G_TYPE_INSTANCE_GET_PRIVATE(self,
-		GTK_TYPE_SCINTILLA, GtkScintillaPrivate);
+	self->priv = G_TYPE_INSTANCE_GET_PRIVATE(self, GTK_TYPE_SCINTILLA, GtkScintillaPrivate);
 	
 	self->priv->line_numbers_visible = FALSE;
 	self->priv->font = NULL;
-	
-	self->scintilla = GTK_WIDGET(scintilla_new());
-	scintilla_set_id(SCINTILLA(self->scintilla), 1);
 
-	g_signal_connect(G_OBJECT(self->scintilla), "sci-notify",
-					  G_CALLBACK(on_sci_notify), GTK_WIDGET(self));
-	
-	gtk_container_add(GTK_CONTAINER(self), self->scintilla);
-	
-	gtk_widget_set_size_request(self->scintilla, 1, 1);
-	
-	gtk_widget_set (GTK_WIDGET(self->scintilla),
-					"visible", TRUE, NULL);
-	
-	gtk_widget_show (GTK_WIDGET(self->scintilla));
-
-    gtk_widget_show_all (GTK_WIDGET(self));
+	//scintilla_set_id(SCINTILLA(self), 1);
+	g_signal_connect(self, "sci-notify", G_CALLBACK(on_sci_notify), NULL);
+	gtk_widget_set_size_request(GTK_WIDGET(self), 1, 1);
+	gtk_widget_set(GTK_WIDGET(self), "visible", TRUE, NULL);
+    gtk_widget_show_all(GTK_WIDGET(self));
+        
+    scintilla_send_message(SCINTILLA(self), SCI_SETHSCROLLBAR, 0, 0);
+    scintilla_send_message(SCINTILLA(self), SCI_SETVSCROLLBAR, 0, 0);
+    scintilla_send_message(SCINTILLA(self), SCI_SETHSCROLLBAR, 1, 0);
+    scintilla_send_message(SCINTILLA(self), SCI_SETVSCROLLBAR, 1, 0);
 }
 
 /**
@@ -99,30 +93,11 @@ GtkWidget *gtk_scintilla_new (void)
     return GTK_WIDGET (self);
 }
 
-/**
- * gtk_scintilla_new_from_sci:
- * @param sci An existing #ScintillaObject to create this 
- *             GtkScintilla from.
- * 
- * Creates a new GtkScintilla widget from an existing ScintillaObject.
- * 
- * @return A new GtkScintilla as a GtkWidget.
- */
-GtkWidget *gtk_scintilla_new_from_sci(ScintillaObject *sci)
-{
-    GtkScintilla *self;
-    self = (GtkScintilla *) gtk_type_new (gtk_scintilla_get_type ());
-    if (sci != NULL && self->scintilla != NULL)
-    {
-		gtk_widget_destroy(self->scintilla);
-		self->scintilla = GTK_WIDGET(sci);
-	}
-    return GTK_WIDGET (self);
-}
-
+/*
 inline void gtk_scintilla_set_id(GtkScintilla *self, gshort id) {
 	scintilla_set_id(SCINTILLA(self->scintilla), (uptr_t)id);
 }
+*/
 
 inline glong gtk_scintilla_send_message(GtkScintilla *self,
 										 guint iMessage,
@@ -135,10 +110,6 @@ inline glong gtk_scintilla_send_message(GtkScintilla *self,
 											(sptr_t)lParam);
 }
 
-inline void gtk_scintilla_release_resources() {
-	scintilla_release_resources();
-}
-
 /**
  * gtk_scintilla_update_line_numbers:
  * @param self	The #GtkScintilla to operate on.
@@ -148,7 +119,7 @@ inline void gtk_scintilla_release_resources() {
  */
 void gtk_scintilla_update_line_numbers(GtkScintilla *self)
 {
-	ScintillaObject *sci = SCINTILLA(self->scintilla);
+	ScintillaObject *sci = SCINTILLA(self);
 	
 	if (gtk_scintilla_get_line_numbers_visible(self))
 	{
@@ -176,35 +147,10 @@ void gtk_scintilla_set_line_numbers_visible(GtkScintilla *self, gboolean visible
 	gtk_scintilla_update_line_numbers(self);
 }
 
-ScintillaObject *gtk_scintilla_get_scintilla(GtkScintilla *self) {
-	g_return_val_if_fail(self->scintilla != NULL, NULL);
-	return SCINTILLA(self->scintilla);
-}
-
-static void on_sci_notify (GtkWidget *w, 
-							 gint param, 
-							 gpointer notif, 
-							 gpointer data)
+/* To re-emit notifications as separate signals */
+static void on_sci_notify(GtkWidget *widget, gint param, gpointer notif, gpointer user_data)
 {
     struct SCNotification *notification = (struct SCNotification *) notif;
-    GtkScintilla *sci = GTK_SCINTILLA(data);
-	gtk_scintilla_forward_signals(sci, notification);
-}
-
-void
-pass_throug_key (GtkScintilla *sci, gint ch, gint modifiers)
-{
-    gint mods = 0;
-    
-    if (modifiers & SCMOD_SHIFT)
-        mods |= GDK_SHIFT_MASK;
-    if (modifiers & SCMOD_CTRL)
-        mods |= GDK_CONTROL_MASK;
-    if (modifiers & SCMOD_ALT)
-        mods |= GDK_MOD1_MASK;
-    
-    if (sci->accel_group) {
-        gtk_accel_groups_activate (G_OBJECT (sci->accel_group),
-                                   ch, (GdkModifierType) mods);
-    }
+    GtkScintilla *self = GTK_SCINTILLA(widget);
+	gtk_scintilla_forward_signals(self, notification);
 }
