@@ -7,7 +7,8 @@ libgtkscintilla_1_0_la_CPPFLAGS	=	-Ilexers \
 									-I$(top_builddir)/scintilla/src \
 									-I$(top_builddir)/scintilla/lexlib \
 									-I$(top_builddir) \
-									@GTK_CFLAGS@ -DGTK -DSCI_LEXER
+									@GTK_CFLAGS@ -DGTK -DSCI_LEXER \
+									-DGTK_SCINTILLA_DATADIR="\"$(pkgdatadir)\""
 								
 libgtkscintilla_1_0_la_LIBADD	=	@GTK_LIBS@
 

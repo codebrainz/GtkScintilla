@@ -72,11 +72,6 @@ static void gtk_scintilla_init(GtkScintilla *self)
 	gtk_widget_set_size_request(GTK_WIDGET(self), 1, 1);
 	gtk_widget_set(GTK_WIDGET(self), "visible", TRUE, NULL);
     gtk_widget_show_all(GTK_WIDGET(self));
-        
-    scintilla_send_message(SCINTILLA(self), SCI_SETHSCROLLBAR, 0, 0);
-    scintilla_send_message(SCINTILLA(self), SCI_SETVSCROLLBAR, 0, 0);
-    scintilla_send_message(SCINTILLA(self), SCI_SETHSCROLLBAR, 1, 0);
-    scintilla_send_message(SCINTILLA(self), SCI_SETVSCROLLBAR, 1, 0);
 }
 
 

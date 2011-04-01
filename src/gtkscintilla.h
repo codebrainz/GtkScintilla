@@ -22,16 +22,22 @@
 
 G_BEGIN_DECLS
 
+
 #define PLAT_GTK 2
 
 #ifndef GTK
 #define GTK
 #endif
 
+
 #include <Scintilla.h>
 #include <ScintillaWidget.h>
 
 #include "constants.h"
+
+#ifndef GTK_SCINTILLA_DATADIR
+#define GTK_SCINTILLA_DATADIR "/usr/local/share/gtkscintilla-1.0/"
+#endif
 
 #define GTK_TYPE_SCINTILLA				(gtk_scintilla_get_type())
 #define GTK_SCINTILLA(obj)				(G_TYPE_CHECK_INSTANCE_CAST((obj), GTK_TYPE_SCINTILLA, GtkScintilla))
@@ -141,9 +147,6 @@ void 			gtk_scintilla_set_property			(GObject *object,
 													guint property_id, 
 													const GValue *value, 
 													GParamSpec *pspec);
-
-extern void	gtk_scintilla_set_id				(GtkScintilla *self, 
-													gshort id);
 													
 extern glong	gtk_scintilla_send_message			(GtkScintilla *self,
 													guint iMessage,
@@ -151,9 +154,6 @@ extern glong	gtk_scintilla_send_message			(GtkScintilla *self,
 													glong lParam);
 
 extern ScintillaObject *gtk_scintilla_get_scintilla(GtkScintilla *self);
-													
-extern void	gtk_scintilla_release_resources ();
-
 
 void 		gtk_scintilla_update_line_numbers		(GtkScintilla *self);
 
