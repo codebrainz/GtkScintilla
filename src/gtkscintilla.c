@@ -33,14 +33,14 @@ static void gtk_scintilla_class_init(GtkScintillaClass *klass)
 
 	object_class = G_OBJECT_CLASS(klass);
     parent_class = g_type_class_peek_parent (klass);
-	
+
 	object_class->set_property = gtk_scintilla_set_property;
 	object_class->get_property = gtk_scintilla_get_property;
 
 	object_class->finalize = gtk_scintilla_finalize;
 
 	g_type_class_add_private((gpointer)klass, sizeof(GtkScintillaPrivate));
-	
+
 	gtk_scintilla_class_install_properties(klass);
 	gtk_scintilla_class_install_style_properties(klass);
 	gtk_scintilla_class_install_signals(klass);
@@ -63,13 +63,13 @@ static void gtk_scintilla_finalize(GObject *object)
 static void gtk_scintilla_init(GtkScintilla *self)
 {
 	self->priv = G_TYPE_INSTANCE_GET_PRIVATE(self, GTK_TYPE_SCINTILLA, GtkScintillaPrivate);
-	
+
 	self->priv->line_numbers_visible = FALSE;
 	self->priv->font = NULL;
 
 	//scintilla_set_id(SCINTILLA(self), 1);
 	g_signal_connect(self, "sci-notify", G_CALLBACK(on_sci_notify), NULL);
-	gtk_widget_set_size_request(GTK_WIDGET(self), 1, 1);
+	//gtk_widget_set_size_request(GTK_WIDGET(self), 1, 1);
 	gtk_widget_set(GTK_WIDGET(self), "visible", TRUE, NULL);
     gtk_widget_show_all(GTK_WIDGET(self));
 }
@@ -77,9 +77,9 @@ static void gtk_scintilla_init(GtkScintilla *self)
 
 /**
  * gtk_scintilla_new:
- * 
+ *
  * Creates a new GtkScintilla widget.
- * 
+ *
  * @return A new GtkScintilla as a GtkWidget.
  */
 GtkWidget *gtk_scintilla_new (void)
@@ -103,7 +103,7 @@ inline glong gtk_scintilla_send_message(GtkScintilla *self,
 										 glong lParam)
 {
 	return (glong)scintilla_send_message(SCINTILLA(self->scintilla),
-											iMessage, 
+											iMessage,
 											(uptr_t)wParam,
 											(sptr_t)lParam);
 }
@@ -111,14 +111,14 @@ inline glong gtk_scintilla_send_message(GtkScintilla *self,
 /**
  * gtk_scintilla_update_line_numbers:
  * @param self	The #GtkScintilla to operate on.
- * 
+ *
  * Causes the width of the line number margin to be re-calculated and
  * re-adjusted.
  */
 void gtk_scintilla_update_line_numbers(GtkScintilla *self)
 {
 	ScintillaObject *sci = SCINTILLA(self);
-	
+
 	if (gtk_scintilla_get_line_numbers_visible(self))
 	{
 		gchar tmp_str[15];
