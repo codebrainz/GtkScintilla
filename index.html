@@ -49,7 +49,22 @@
       A GTK+ based source code editing Widget.
     </div>
 
-    <p>GtkScintilla is a GTK+ widget which inherits from the excellent Scintilla GTK+ widget.  The API of the Scintilla GTK+ widget is quite unusual (due to its roots as a Windows control), so GtkScintilla brings the usual GTK+ widget to the Scintilla GTK+ widget.</p><h2>Dependencies</h2>
+    <p>GtkScintilla is a GTK+ widget which inherits from the excellent Scintilla GTK+ widget.  The API of the Scintilla GTK+ widget is quite unusual (due to its roots as a Windows control), so GtkScintilla brings the usual GTK+ widget to the Scintilla GTK+ widget.</p>
+<p>Some of the current and future features (beyond those of Scintilla itself) include:
+
+<ul>
+<li>Wrapper functions for all of the Scintilla messages.</li>
+<li>Helper functions for common things such as enabling line numbers and code folding.</li>
+<li>Proper GObject properties to help with introspection for things like Glade and GObject-Introspection.</li>
+<li>Individual signals for each of the Scintilla notifications.</li>
+<li>GTK+ style properties to support control the styles from GTK+ resource files. (future)</li>
+<li>Glade 3 support.</li>
+<li>Language bindings for Python, Vala and others. (future)</li>
+<li>A shared library and pkg-config file for easily linking into applications.</li>
+<li>GTK-DOC documentation for the entire API. (future)</li>
+</ul>
+
+<h2>Dependencies</h2>
 <p>gtk+-2.0</p>
 <h2>Install</h2>
 <p><pre>$ ./autogen.sh
