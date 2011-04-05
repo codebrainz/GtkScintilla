@@ -8,7 +8,6 @@
 #include "style-properties.h"
 #include "signals.h"
 
-
 static void on_sci_notify(GtkWidget *w, gint param, gpointer notif, gpointer data);
 void pass_throug_key(GtkScintilla *sci, gint ch, gint modifiers);
 
@@ -41,9 +40,9 @@ static void gtk_scintilla_class_init(GtkScintillaClass *klass)
 
 	g_type_class_add_private((gpointer)klass, sizeof(GtkScintillaPrivate));
 
-	gtk_scintilla_class_install_properties(klass);
-	gtk_scintilla_class_install_style_properties(klass);
-	gtk_scintilla_class_install_signals(klass);
+	_gtk_scintilla_class_install_properties(klass);
+	_gtk_scintilla_class_install_style_properties(klass);
+	_gtk_scintilla_class_install_signals(klass);
 }
 
 
@@ -90,22 +89,11 @@ GtkWidget *gtk_scintilla_new (void)
 }
 
 
-/*
-inline void gtk_scintilla_set_id(GtkScintilla *self, gshort id) {
-	scintilla_set_id(SCINTILLA(self->scintilla), (uptr_t)id);
-}
-*/
-
-
-inline glong gtk_scintilla_send_message(GtkScintilla *self,
-										 guint iMessage,
-										 gulong wParam,
-										 glong lParam)
+glong gtk_scintilla_send_message(GtkScintilla *self, guint iMessage,
+	gulong wParam, glong lParam)
 {
-	return (glong)scintilla_send_message(SCINTILLA(self->scintilla),
-											iMessage,
-											(uptr_t)wParam,
-											(sptr_t)lParam);
+	return (glong)scintilla_send_message(SCINTILLA(self), iMessage,
+		(uptr_t)wParam,	(sptr_t)lParam);
 }
 
 /**

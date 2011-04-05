@@ -1,20 +1,20 @@
 /*
  * signals.c
- * 
+ *
  * Copyright 2011 Matthew Brush <mbrush@codebrainz.ca>
- * 
+ *
  * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- * 
+ * it under the terms of the GNU Lesser General Public License as
+ * published by the Free Software Foundation; either version 2 of the
+ * License, or (at your option) any later version.
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- * 
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
  * MA 02110-1301, USA.
  */
@@ -25,19 +25,19 @@
 
 guint _gtk_scintilla_signals[LAST_SIGNAL] = { 0 };
 
-void gtk_scintilla_class_install_signals(GtkScintillaClass *klass)
+void _gtk_scintilla_class_install_signals(GtkScintillaClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS(klass);
-	
+
 	/**
 	 * GtkScintilla::style-needed:
 	 * @widget:		The #GtkScintilla object which requires styling.
 	 * @start_pos:	The position to begin styling.
 	 * @end_pos:	The position to stop styling.
-	 * 
+	 *
 	 * If you have set the lexer to #GTK_SCINTILLA_LEXER_CONTAINER to control
 	 * the styling yourself, you will receive this signal when #GtkScintilla
-	 * is about to display or print text that requires styling.  You are 
+	 * is about to display or print text that requires styling.  You are
 	 * required to style the text from @start_pos to @end_pos.
 	 */
 	_gtk_scintilla_signals[STYLE_NEEDED] = g_signal_new("style-needed",
@@ -49,16 +49,16 @@ void gtk_scintilla_class_install_signals(GtkScintillaClass *klass)
 			G_TYPE_NONE,2,
 			G_TYPE_INT,
 			G_TYPE_INT);
-	
+
 	/**
 	 * GtkScintilla::char-added:
 	 * @widget: The #GtkScintilla object which had a char added.
 	 * @chr:	The character that was added.
-	 * 
+	 *
 	 * Sent when the user types an ordinary text character (as opposed to a
 	 * command character) that is entered into the text.  The user can decide
 	 * to use this to decide to display a calltip or an auto completion list.
-	 * This signal is emitted before the character has been styled so 
+	 * This signal is emitted before the character has been styled so
 	 * processing that depends on styling should instead be performed in the
 	 * #GtkScintilla::update-ui signal handler.
 	 */
@@ -74,9 +74,9 @@ void gtk_scintilla_class_install_signals(GtkScintillaClass *klass)
 	/**
 	 * GtkScintilla::save-point-reached:
 	 * @widget:		The #GtkScintilla object where the save point was reached.
-	 * 
+	 *
 	 * Emitted when the save point is entered, allowing the user to display
-	 * a "document dirty" indicator and change its menu items. 
+	 * a "document dirty" indicator and change its menu items.
 	 */
 	_gtk_scintilla_signals[SAVE_POINT_REACHED] = g_signal_new("save-point-reached",
 			G_OBJECT_CLASS_TYPE (object_class),
@@ -89,9 +89,9 @@ void gtk_scintilla_class_install_signals(GtkScintillaClass *klass)
 	/**
 	 * GtkScintilla::save-point-left:
 	 * @widget:		The #GtkScintilla object where the save point was left.
-	 * 
+	 *
 	 * Emitted when the save point is left, allowing the user to display a
-	 * "document dirty" indicator and change its menu items. 
+	 * "document dirty" indicator and change its menu items.
 	 */
 	_gtk_scintilla_signals[SAVE_POINT_LEFT] = g_signal_new("save-point-left",
 			G_OBJECT_CLASS_TYPE (object_class),
@@ -100,12 +100,12 @@ void gtk_scintilla_class_install_signals(GtkScintillaClass *klass)
 			NULL, NULL,
 			g_cclosure_marshal_VOID__VOID,
 			G_TYPE_NONE,0);
-	
+
 	/**
 	 * GtkScintilla::modify-attempt-ro:
 	 * @widget:		The #GtkScintilla object where modifying an R/O document
 	 * 				was attempted.
-	 * 
+	 *
 	 * When in read-only mode, this signal is emitted if the user tries to
 	 * change the text.  This can be used to check the document out of a
 	 * version control system.  You can set the read-only state of a document
@@ -124,9 +124,9 @@ void gtk_scintilla_class_install_signals(GtkScintillaClass *klass)
 	 * @widget:		The #GtkScintilla object where the key was pressed.
 	 * @chr:		The key code.
 	 * @modifiers:	The key modifiers.
-	 * 
+	 *
 	 * Reports all keys pressed but not consumed by #GtkScintilla.  This signal
-	 * is emitted if the modifiers include #GTK_SCINTILLA_KEY_MOD_CTRL or 
+	 * is emitted if the modifiers include #GTK_SCINTILLA_KEY_MOD_CTRL or
 	 * #GTK_SCINTILLA_KEY_MOD_ALT and the key code is less than 256.
 	 */
 	_gtk_scintilla_signals[KEY] = g_signal_new("key",
@@ -136,7 +136,7 @@ void gtk_scintilla_class_install_signals(GtkScintillaClass *klass)
 			NULL, NULL,
 			g_cclosure_marshal_VOID__VOID,
 			G_TYPE_NONE,2,
-			G_TYPE_INT, 
+			G_TYPE_INT,
 			G_TYPE_INT);
 
 	/**
@@ -144,7 +144,7 @@ void gtk_scintilla_class_install_signals(GtkScintillaClass *klass)
 	 * @widget:		The #GtkScintilla object that received a double-click.
 	 * @position:	The position of the double click.
 	 * @line:		The line where the double click occurred.
-	 * 
+	 *
 	 * Emitted when the mouse button was doubled in the editor.
 	 */
 	_gtk_scintilla_signals[DOUBLE_CLICK] = g_signal_new("double-click",
@@ -161,7 +161,7 @@ void gtk_scintilla_class_install_signals(GtkScintillaClass *klass)
 	 * GtkScintilla::update-ui:
 	 * @widget:		The #GtkScintilla object that had a UI change.
 	 * @updated:	The bit field of things changed since the previous signal.
-	 * 
+	 *
 	 * Emitted when either the text or styling of the document has changed or
 	 * the selection range or scroll position has changed.  In the handler for
 	 * this signal, it would be a good time to update any container UI elements
@@ -184,13 +184,13 @@ void gtk_scintilla_class_install_signals(GtkScintillaClass *klass)
 			NULL, NULL,
 			g_cclosure_marshal_VOID__VOID,
 			G_TYPE_NONE,8,
-			G_TYPE_INT, 
-			G_TYPE_INT, 
-			G_TYPE_STRING, 
-			G_TYPE_INT, 
-			G_TYPE_INT, 
-			G_TYPE_INT, 
-			G_TYPE_INT, 
+			G_TYPE_INT,
+			G_TYPE_INT,
+			G_TYPE_STRING,
+			G_TYPE_INT,
+			G_TYPE_INT,
+			G_TYPE_INT,
+			G_TYPE_INT,
 			G_TYPE_INT);
 
 	_gtk_scintilla_signals[MACRO_RECORD] = g_signal_new("macro-record",
@@ -200,8 +200,8 @@ void gtk_scintilla_class_install_signals(GtkScintillaClass *klass)
 			NULL, NULL,
 			g_cclosure_marshal_VOID__VOID,
 			G_TYPE_NONE,3,
-			G_TYPE_INT, 
-			G_TYPE_INT, 
+			G_TYPE_INT,
+			G_TYPE_INT,
 			G_TYPE_INT);
 
 	_gtk_scintilla_signals[MARGIN_CLICK] = g_signal_new("margin-click",
@@ -211,8 +211,8 @@ void gtk_scintilla_class_install_signals(GtkScintillaClass *klass)
 			NULL, NULL,
 			g_cclosure_marshal_VOID__VOID,
 			G_TYPE_NONE,3,
-			G_TYPE_INT, 
-			G_TYPE_INT, 
+			G_TYPE_INT,
+			G_TYPE_INT,
 			G_TYPE_INT);
 
 	_gtk_scintilla_signals[NEED_SHOWN] = g_signal_new("need-shown",
@@ -222,7 +222,7 @@ void gtk_scintilla_class_install_signals(GtkScintillaClass *klass)
 			NULL, NULL,
 			g_cclosure_marshal_VOID__VOID,
 			G_TYPE_NONE,2,
-			G_TYPE_INT, 
+			G_TYPE_INT,
 			G_TYPE_INT);
 
 	_gtk_scintilla_signals[PAINTED] = g_signal_new("painted",
@@ -240,7 +240,7 @@ void gtk_scintilla_class_install_signals(GtkScintillaClass *klass)
 			NULL, NULL,
 			g_cclosure_marshal_VOID__VOID,
 			G_TYPE_NONE,2,
-			G_TYPE_INT, 
+			G_TYPE_INT,
 			G_TYPE_STRING);
 
 	_gtk_scintilla_signals[URI_DROPPED] = g_signal_new("uri-dropped",
@@ -285,7 +285,7 @@ void gtk_scintilla_class_install_signals(GtkScintillaClass *klass)
 			NULL, NULL,
 			g_cclosure_marshal_VOID__VOID,
 			G_TYPE_NONE,2,
-			G_TYPE_INT, 
+			G_TYPE_INT,
 			G_TYPE_INT);
 
 	_gtk_scintilla_signals[HOT_SPOT_DOUBLE_CLICK] = g_signal_new("hot-spot-double-click",
@@ -295,7 +295,7 @@ void gtk_scintilla_class_install_signals(GtkScintillaClass *klass)
 			NULL, NULL,
 			g_cclosure_marshal_VOID__VOID,
 			G_TYPE_NONE,2,
-			G_TYPE_INT, 
+			G_TYPE_INT,
 			G_TYPE_INT);
 
 	_gtk_scintilla_signals[CALL_TIP_CLICK] = g_signal_new("call-tip-click",
@@ -323,7 +323,7 @@ void gtk_scintilla_class_install_signals(GtkScintillaClass *klass)
 			NULL, NULL,
 			g_cclosure_marshal_VOID__VOID,
 			G_TYPE_NONE,2,
-			G_TYPE_INT, 
+			G_TYPE_INT,
 			G_TYPE_INT);
 
 	_gtk_scintilla_signals[INDICATOR_RELEASE] = g_signal_new("indicator-release",
@@ -333,7 +333,7 @@ void gtk_scintilla_class_install_signals(GtkScintillaClass *klass)
 			NULL, NULL,
 			g_cclosure_marshal_VOID__VOID,
 			G_TYPE_NONE,2,
-			G_TYPE_INT, 
+			G_TYPE_INT,
 			G_TYPE_INT);
 
 	_gtk_scintilla_signals[AUTO_COMPLETION_CANCELLED] = g_signal_new("auto-completion-cancelled",
@@ -353,7 +353,7 @@ void gtk_scintilla_class_install_signals(GtkScintillaClass *klass)
 			G_TYPE_NONE,0);
 }
 
-void gtk_scintilla_forward_signals(GtkScintilla *sci, 
+void gtk_scintilla_forward_signals(GtkScintilla *sci,
 									struct SCNotification *notification)
 {
 	switch (notification->nmhdr.code) {
@@ -361,7 +361,7 @@ void gtk_scintilla_forward_signals(GtkScintilla *sci,
 		{
 			gint start = gtk_scintilla_get_end_styled(sci);
 			start = gtk_scintilla_line_from_position(sci, start);
-			start = gtk_scintilla_position_from_line(sci, start); 
+			start = gtk_scintilla_position_from_line(sci, start);
 			g_signal_emit (sci,
 						   _gtk_scintilla_signals[STYLE_NEEDED], 0,
 						   start,
@@ -395,17 +395,17 @@ void gtk_scintilla_forward_signals(GtkScintilla *sci,
 			gint gdk_mods = 0;
 			gint sci_mods = (gint)notification->modifiers;
 			gint sci_char = (gint)notification->ch;
-	
+
 			if (sci_mods & SCMOD_SHIFT)		gdk_mods |= GDK_SHIFT_MASK;
 			if (sci_mods & SCMOD_CTRL)		gdk_mods |= GDK_CONTROL_MASK;
 			if (sci_mods & SCMOD_ALT)		gdk_mods |= GDK_MOD1_MASK;
 
 			if (sci->accel_group)
 			{
-				gtk_accel_groups_activate(G_OBJECT(sci->accel_group), sci_char, 
+				gtk_accel_groups_activate(G_OBJECT(sci->accel_group), sci_char,
 					(GdkModifierType)gdk_mods);
 			}
-				
+
 			g_signal_emit (sci, _gtk_scintilla_signals[KEY], 0, sci_char, sci_mods);
 			break;
 		}

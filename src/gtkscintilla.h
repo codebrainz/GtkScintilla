@@ -1,3 +1,24 @@
+/*
+ * gtkscintilla.h
+ *
+ * Copyright 2011 Matthew Brush <mbrush@codebrainz.ca>
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License as
+ * published by the Free Software Foundation; either version 2 of the
+ * License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+ * MA 02110-1301, USA.
+ */
+
 /**
  * SECTION: gtkscintilla
  * @short_description: The main editing widget
@@ -55,7 +76,6 @@ typedef struct _GtkScintillaPrivate		GtkScintillaPrivate;
 
 struct _GtkScintilla
 {
-	//GtkFrame parent;
 	ScintillaObject parent;
 	GtkWidget *scintilla;
 	GtkAccelGroup *accel_group;
@@ -65,7 +85,6 @@ struct _GtkScintilla
 
 struct _GtkScintillaClass
 {
-	//GtkFrameClass parent_class;
 	ScintillaClass parent_class;
 
 	/*< private >*/
@@ -98,45 +117,28 @@ struct _GtkScintillaClass
 
 };
 
+#define SSM(s, m, l, w) scintilla_send_message(SCINTILLA(s), m, l, w)
 
 /**
- * SSM:
- * @sci:	The ScintillaObject to send the message to.
- * @msg:	The message code to send.
- * @param1:	The first parameter for the message (wParam).
- * @param2:	The second parameter for the message (lParam).
+ * gtk_scintilla_send_message:
+ * @param self		The GtkScintilla to send the message to.
+ * @param iMessage	The message code to send.
+ * @param wParam	The first parameter for the message.
+ * @param lParam	The second parameter for the message.
  *
- * A shortcut macro to the scintilla_send_message() function which is the
- * raw/native interface for Scintilla.  Rather than methods and properties,
- * Scintilla uses a messaging scheme.  Refer to the Scintilla documentation for
- * more information.  The @sci parameter is the ScintillaObject.  The @msg
- * parameter specifies the function to perform using one of the
- * #GTK_SCINTILLA_MSG_* values.  The @param1 parameter corresponds to
- * Scintilla's <emphasis>uptr_t</emphasis> type, and should be set to zero if
- * this parameter is not used.  The @param2 parameter corresponds to
- * Scintilla's <emphasis>sptr_t</emphasis> type, and should also be set to
- * zero if it's not used.  Most (all?) messages which return a string, that is,
- * those require a gchar* parameter (not const, aka stringresult) will return
- * the size of the string that needs to be allocated if the gchar* parameter
- * is zero (or NULL).  You can use this size to determine how much memory
- * needs to be allocated (+1) to hold the string that will be filled by
- * a call to this function with the gchar* parameter as a pointer to the
- * newly-allocated memory.  All of this is done automatically using the
- * #gtk_scintilla_* wrapper functions.  If #GtkScintilla is doing it's job
- * properly, you should never need to use this function.
+ * If #GtkScintilla is doing its job properly, you shouldn't need to use
+ * this function.
  *
- * Returns:	A #glong which corresponds to Scintilla's
- * 			<emphasis>sptr_t</emphasis> type.  The meaning of the return value
- * 			depends on the message being sent.  Consult the Scintilla
- * 			documentation for more information.
+ * @return	A #glong which corresponds to Scintilla's <emphasis>sptr_t</emphasis>
+ * 			type. The meaning of the return value depends on the message
+ * 			being sent. Consult the Scintilla documentation for more information.
  */
-#define SSM(s, m, l, w) scintilla_send_message(SCINTILLA(s), m, l, w)
+glong gtk_scintilla_send_message(GtkScintilla *self, guint iMessage,
+	gulong wParam, glong lParam);
 
 GType			gtk_scintilla_get_type				(void);
 
-/* Constructors */
 GtkWidget*		gtk_scintilla_new					(void);
-GtkWidget*		gtk_scintilla_new_from_sci			(ScintillaObject *sci);
 
 void 			gtk_scintilla_get_property			(GObject *object,
 													guint property_id,

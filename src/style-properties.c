@@ -1,20 +1,20 @@
 /*
  * style-properties.c
- * 
+ *
  * Copyright 2011 Matthew Brush <mbrush@codebrainz.ca>
- * 
+ *
  * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- * 
+ * it under the terms of the GNU Lesser General Public License as
+ * published by the Free Software Foundation; either version 2 of the
+ * License, or (at your option) any later version.
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- * 
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
  * MA 02110-1301, USA.
  */
@@ -23,18 +23,18 @@
 #include "gtkscintilla.h"
 #include "style-properties.h"
 
-void gtk_scintilla_class_install_style_properties(GtkScintillaClass *klass)
+void _gtk_scintilla_class_install_style_properties(GtkScintillaClass *klass)
 {
 	GParamSpec *pspec;
 	GtkWidgetClass *widget_class = GTK_WIDGET_CLASS(klass);
-	
-	pspec = g_param_spec_boxed("selection-bg-color", 
-				"Selection backgound color", 
-				"Color which will be used for the background of the selection.", 
+
+	pspec = g_param_spec_boxed("selection-bg-color",
+				"Selection backgound color",
+				"Color which will be used for the background of the selection.",
 				GDK_TYPE_COLOR,
 				G_PARAM_READABLE);
 	gtk_widget_class_install_style_property(widget_class, pspec);
-	
+
 	pspec = g_param_spec_uint("selection-bg-alpha",
 				"Selection background alpha",
 				"Translucency of the selection background, where 255 "
@@ -46,7 +46,7 @@ void gtk_scintilla_class_install_style_properties(GtkScintillaClass *klass)
 				0, 256, 256,
 				G_PARAM_READABLE);
 	gtk_widget_class_install_style_property(widget_class, pspec);
-		
+
 	pspec = g_param_spec_boxed("selection-fg-color",
 				"Selection foreground color",
 				"Color which will be used for the text of the selection.  "
@@ -55,7 +55,7 @@ void gtk_scintilla_class_install_style_properties(GtkScintillaClass *klass)
 				GDK_TYPE_COLOR,
 				G_PARAM_READABLE);
 	gtk_widget_class_install_style_property(widget_class, pspec);
-	
+
 	pspec = g_param_spec_boolean("current-line-highlight-enabled",
 				"Enable highlighting of the current line.",
 				"When this is enabled, the background color and the "
@@ -64,16 +64,16 @@ void gtk_scintilla_class_install_style_properties(GtkScintillaClass *klass)
 				TRUE,
 				G_PARAM_READABLE);
 	gtk_widget_class_install_style_property(widget_class, pspec);
-	
-	pspec = g_param_spec_boxed("current-line-bg-color", 
-				"Background color of the current line", 
+
+	pspec = g_param_spec_boxed("current-line-bg-color",
+				"Background color of the current line",
 				"When current-line-highlight-enabled is TRUE, this "
 				"style property sets the background color of the line "
-				"where the cursor is.", 
+				"where the cursor is.",
 				GDK_TYPE_COLOR,
 				G_PARAM_READABLE);
 	gtk_widget_class_install_style_property(widget_class, pspec);
-	
+
 	pspec = g_param_spec_uint("current-line-bg-alpha",
 				"Current line background alpha",
 				"Translucency of the current line's background color, "
@@ -85,7 +85,7 @@ void gtk_scintilla_class_install_style_properties(GtkScintillaClass *klass)
 				0, 256, 256,
 				G_PARAM_READABLE);
 	gtk_widget_class_install_style_property(widget_class, pspec);
-	
+
 	pspec = g_param_spec_boxed("brace-good-bg-color",
 				"Good brace background color",
 				"The color to use for the background of braces which "
@@ -101,7 +101,7 @@ void gtk_scintilla_class_install_style_properties(GtkScintillaClass *klass)
 				GDK_TYPE_COLOR,
 				G_PARAM_READABLE);
 	gtk_widget_class_install_style_property(widget_class, pspec);
-	
+
 	pspec = g_param_spec_string("brace-good-font-desc",
 				"Font description string for good brace",
 				"This the Pango font description string used to set "
@@ -109,15 +109,15 @@ void gtk_scintilla_class_install_style_properties(GtkScintillaClass *klass)
 				NULL,
 				G_PARAM_READABLE);
 	gtk_widget_class_install_style_property(widget_class, pspec);
-	
+
 	pspec = g_param_spec_boxed("brace-bad-bg-color",
 				"Bad brace background color",
 				"The color to use for the background of braces which "
 				"are being highlighted and do not have a proper match.",
 				GDK_TYPE_COLOR,
 				G_PARAM_READABLE);
-	gtk_widget_class_install_style_property(widget_class, pspec);				
-				
+	gtk_widget_class_install_style_property(widget_class, pspec);
+
 	pspec = g_param_spec_boxed("brace-bad-fg-color",
 				"Bad brace foreground color",
 				"The color to use for the foreground/text of braces which "
