@@ -76,8 +76,12 @@
  *
  * Replaces all the text in the document with @text.
  */
-void gtk_scintilla_set_text (GtkScintilla *sci, const gchar *text) {
-	SSM(SCINTILLA(sci), 2181, 0, (sptr_t)text);
+void gtk_scintilla_set_text (GtkScintilla *sci, const gchar *text)
+{
+	g_return_if_fail(sci != NULL);
+	g_return_if_fail(text != NULL);
+
+	SSM(SCINTILLA(sci), SCI_SETTEXT, 0, (sptr_t)text);
 }
 
 /**
@@ -91,13 +95,21 @@ void gtk_scintilla_set_text (GtkScintilla *sci, const gchar *text) {
  */
 gchar *gtk_scintilla_get_text (GtkScintilla *sci)
 {
-	gint len = gtk_scintilla_get_length(sci);
-	gchar *tmp = g_malloc0(len+1); /* NULL ok */
-	len = SSM(SCINTILLA(sci), 2182, (uptr_t)(len+1), (sptr_t)tmp);
-	if (len == 0) {
+	gint len;
+	gchar *tmp;
+
+	g_return_val_if_fail(sci != NULL, NULL);
+
+	len = gtk_scintilla_get_length(sci);
+	tmp = g_malloc0(len+1); /* NULL ok */
+	len = SSM(SCINTILLA(sci), SCI_GETTEXT, (uptr_t)(len+1), (sptr_t)tmp);
+
+	if (len == 0)
+	{
 		g_free(tmp);
 		return NULL;
 	}
+
 	return tmp;
 }
 
@@ -113,8 +125,11 @@ gchar *gtk_scintilla_get_text (GtkScintilla *sci)
  * signals, allowing the user to know if the file should be considered dirty
  * or not.
  */
-inline void gtk_scintilla_set_save_point (GtkScintilla *sci) {
-	SSM(SCINTILLA(sci), 2014, 0, 0);
+void gtk_scintilla_set_save_point (GtkScintilla *sci)
+{
+	g_return_if_fail(sci != NULL);
+
+	SSM(SCINTILLA(sci), SCI_SETSAVEPOINT, 0, 0);
 }
 
 /**
@@ -131,13 +146,22 @@ inline void gtk_scintilla_set_save_point (GtkScintilla *sci) {
  */
 gchar *gtk_scintilla_get_line (GtkScintilla *sci, guint line)
 {
-	guint len = gtk_scintilla_line_length(sci, line);
-	gchar *tmp = g_malloc0(len+1); /* NULL ok */
-	len = SSM(SCINTILLA(sci), 2153, (uptr_t)line, (sptr_t)tmp);
-	if (len == 0) {
+	guint len;
+	gchar *tmp;
+
+	g_return_val_if_fail(sci != NULL, NULL);
+
+	len = gtk_scintilla_line_length(sci, line);
+	tmp = g_malloc0(len+1); /* NULL ok */
+
+	len = SSM(SCINTILLA(sci), SCI_GETLINE, (uptr_t)line, (sptr_t)tmp);
+
+	if (len == 0)
+	{
 		g_free(tmp);
 		return NULL;
 	}
+
 	return tmp;
 }
 
@@ -152,8 +176,11 @@ gchar *gtk_scintilla_get_line (GtkScintilla *sci, guint line)
  * caret is positioned after the inserted text and the caret is scrolled into
  * view.
  */
-inline void gtk_scintilla_replace_selection (GtkScintilla *sci, const gchar *text) {
-	SSM(SCINTILLA(sci), 2170, 0, (sptr_t)text);
+void gtk_scintilla_replace_selection (GtkScintilla *sci, const gchar *text)
+{
+	g_return_if_fail(sci != NULL);
+
+	SSM(SCINTILLA(sci), SCI_REPLACESEL, 0, (sptr_t)text);
 }
 
 /**
@@ -165,8 +192,11 @@ inline void gtk_scintilla_replace_selection (GtkScintilla *sci, const gchar *tex
  * read-only, attempts to modify the text cause the
  * #GtkScintilla::modify-attempt-ro signal to be emitted.
  */
-inline void gtk_scintilla_set_read_only (GtkScintilla *sci, gboolean read_only) {
-	SSM(SCINTILLA(sci), 2171, (uptr_t)read_only, 0);
+void gtk_scintilla_set_read_only (GtkScintilla *sci, gboolean read_only)
+{
+	g_return_if_fail(sci != NULL);
+
+	SSM(SCINTILLA(sci), SCI_SETREADONLY, (uptr_t)read_only, 0);
 }
 
 /**
@@ -177,8 +207,11 @@ inline void gtk_scintilla_set_read_only (GtkScintilla *sci, gboolean read_only) 
  *
  * Returns: TRUE if the document is read-only, FALSE if it is not.
  */
-inline gboolean gtk_scintilla_get_read_only (GtkScintilla *sci) {
-	return (gboolean)SSM(SCINTILLA(sci), 2140, 0, 0);
+gboolean gtk_scintilla_get_read_only (GtkScintilla *sci)
+{
+	g_return_val_if_fail(sci != NULL, FALSE);
+
+	return (gboolean)SSM(SCINTILLA(sci), SCI_GETREADONLY, 0, 0);
 }
 
 /**
@@ -200,6 +233,8 @@ gchar *gtk_scintilla_get_text_range (GtkScintilla *sci, guint start_pos, gint en
 	guint last_pos, num_bytes, num_chars;
 	struct Sci_TextRange tr;
 
+	g_return_val_if_fail(sci != NULL, NULL);
+
 	last_pos = gtk_scintilla_get_length(sci) - 1;
 
 	g_return_val_if_fail(start_pos <= end_pos, NULL);
@@ -220,7 +255,7 @@ gchar *gtk_scintilla_get_text_range (GtkScintilla *sci, guint start_pos, gint en
 
 	tr.lpstrText = g_malloc0(num_bytes+1); /* NULL ok */
 
-	num_chars = SSM(SCINTILLA(sci), 2162, 0, (sptr_t)&tr);
+	num_chars = SSM(SCINTILLA(sci), SCI_GETTEXTRANGE, 0, (sptr_t)&tr);
 	if (num_chars < 1) {
 		g_free(tr.lpstrText); /* should contain just \0 */
 		return NULL;
@@ -251,6 +286,8 @@ gchar *gtk_scintilla_get_styled_text_range (GtkScintilla *sci, guint start_pos, 
 	guint last_pos, num_bytes, num_chars;
 	struct Sci_TextRange tr;
 
+	g_return_val_if_fail(sci != NULL, NULL);
+
 	last_pos = gtk_scintilla_get_length(sci) - 1;
 
 	g_return_val_if_fail(start_pos <= end_pos, NULL);
@@ -272,7 +309,7 @@ gchar *gtk_scintilla_get_styled_text_range (GtkScintilla *sci, guint start_pos, 
 
 	tr.lpstrText = g_malloc0(num_bytes+2); /* terminated with 00, NULL ok */
 
-	num_chars = SSM(SCINTILLA(sci), 2015, 0, (sptr_t)&tr);
+	num_chars = SSM(SCINTILLA(sci), SCI_GETSTYLEDTEXT, 0, (sptr_t)&tr);
 	if (num_chars < 1) {
 		g_free(tr.lpstrText); /* should contain just 00 */
 		return NULL;
@@ -290,8 +327,11 @@ gchar *gtk_scintilla_get_styled_text_range (GtkScintilla *sci, guint start_pos, 
  * Allocates a document buffer large enough to store @bytes number of bytes.
  * The document will not be made smaller than its current contents.
  */
-inline void gtk_scintilla_allocate (GtkScintilla *sci, guint bytes) {
-	SSM(SCINTILLA(sci), 2446, (uptr_t)bytes, 0);
+void gtk_scintilla_allocate (GtkScintilla *sci, guint bytes)
+{
+	g_return_if_fail(sci != NULL);
+
+	SSM(SCINTILLA(sci), SCI_ALLOCATE, (uptr_t)bytes, 0);
 }
 
 /**
@@ -305,8 +345,11 @@ inline void gtk_scintilla_allocate (GtkScintilla *sci, guint bytes) {
  * to stop the insert operation.  The current position is set at the end of
  * the inserted text, but it is not scrolled into view.
  */
-inline void gtk_scintilla_add_text (GtkScintilla *sci, guint length, const gchar *text) {
-	SSM(SCINTILLA(sci), 2001, (uptr_t)length, (sptr_t)text);
+void gtk_scintilla_add_text (GtkScintilla *sci, guint length, const gchar *text)
+{
+	g_return_if_fail(sci != NULL);
+
+	SSM(SCINTILLA(sci), SCI_ADDTEXT, (uptr_t)length, (sptr_t)text);
 }
 
 /**
@@ -322,8 +365,11 @@ inline void gtk_scintilla_add_text (GtkScintilla *sci, guint length, const gchar
  * See also gtk_scintilla_get_styled_text_range() for a description of styled
  * text.
  */
-inline void gtk_scintilla_add_styled_text (GtkScintilla *sci, guint length, const gchar *styled_text) {
-	SSM(SCINTILLA(sci), 2002, (uptr_t)length, (sptr_t)styled_text);
+void gtk_scintilla_add_styled_text (GtkScintilla *sci, guint length, const gchar *styled_text)
+{
+	g_return_if_fail(sci != NULL);
+
+	SSM(SCINTILLA(sci), SCI_ADDSTYLEDTEXT, (uptr_t)length, (sptr_t)styled_text);
 }
 
 /**
@@ -337,8 +383,11 @@ inline void gtk_scintilla_add_styled_text (GtkScintilla *sci, guint length, cons
  * expected to stop the operation.  The current selection is not changed and
  * the new text is not scrolled into view.
  */
-inline void gtk_scintilla_append_text (GtkScintilla *sci, guint length, const gchar *text) {
-	SSM(SCINTILLA(sci), 2282, (uptr_t)length, (sptr_t)text);
+void gtk_scintilla_append_text (GtkScintilla *sci, guint length, const gchar *text)
+{
+	g_return_if_fail(sci != NULL);
+
+	SSM(SCINTILLA(sci), SCI_APPENDTEXT, (uptr_t)length, (sptr_t)text);
 }
 
 /**
@@ -352,8 +401,11 @@ inline void gtk_scintilla_append_text (GtkScintilla *sci, guint length, const gc
  * point then it is moved along with its surrounding text but no scrolling is
  * performed.
  */
-inline void gtk_scintilla_insert_text (GtkScintilla *sci, gint pos, const gchar *text) {
-	SSM(SCINTILLA(sci), 2003, (uptr_t)pos, (sptr_t)text);
+void gtk_scintilla_insert_text (GtkScintilla *sci, gint pos, const gchar *text)
+{
+	g_return_if_fail(sci != NULL);
+
+	SSM(SCINTILLA(sci), SCI_INSERTTEXT, (uptr_t)pos, (sptr_t)text);
 }
 
 /**
@@ -362,8 +414,11 @@ inline void gtk_scintilla_insert_text (GtkScintilla *sci, gint pos, const gchar 
  *
  * Unless the document is read-only, this deletes all the text.
  */
-inline void gtk_scintilla_clear_all (GtkScintilla *sci) {
-	SSM(SCINTILLA(sci), 2004, 0, 0);
+void gtk_scintilla_clear_all (GtkScintilla *sci)
+{
+	g_return_if_fail(sci != NULL);
+
+	SSM(SCINTILLA(sci), SCI_CLEARALL, 0, 0);
 }
 
 /**
@@ -374,8 +429,11 @@ inline void gtk_scintilla_clear_all (GtkScintilla *sci) {
  * a lexer, this can be used to clear all styling information and reset folding
  * state.
  */
-inline void gtk_scintilla_clear_document_style (GtkScintilla *sci) {
-	SSM(SCINTILLA(sci), 2005, 0, 0);
+void gtk_scintilla_clear_document_style (GtkScintilla *sci)
+{
+	g_return_if_fail(sci != NULL);
+
+	SSM(SCINTILLA(sci), SCI_CLEARDOCUMENTSTYLE, 0, 0);
 }
 
 /**
@@ -388,8 +446,11 @@ inline void gtk_scintilla_clear_document_style (GtkScintilla *sci) {
  *
  * Returns: The character at @pos or 0 if @pos is invalid.
  */
-inline gchar gtk_scintilla_get_char_at (GtkScintilla *sci, guint pos) {
-	return (gchar)SSM(SCINTILLA(sci), 2007, (uptr_t)pos, 0);
+gchar gtk_scintilla_get_char_at (GtkScintilla *sci, guint pos)
+{
+	g_return_val_if_fail(sci != NULL, '\0');
+
+	return (gchar)SSM(SCINTILLA(sci), SCI_GETCHARAT, (uptr_t)pos, 0);
 }
 
 /**
@@ -402,8 +463,11 @@ inline gchar gtk_scintilla_get_char_at (GtkScintilla *sci, guint pos) {
  *
  * Returns: The style at @pos or 0 if @pos is invalid.
  */
-inline gchar gtk_scintilla_get_style_at (GtkScintilla *sci, guint pos) {
-	return (gchar)SSM(SCINTILLA(sci), 2010, (uptr_t)pos, 0);
+gchar gtk_scintilla_get_style_at (GtkScintilla *sci, guint pos)
+{
+	g_return_val_if_fail(sci != NULL, '\0');
+
+	return (gchar)SSM(SCINTILLA(sci), SCI_GETSTYLEAT, (uptr_t)pos, 0);
 }
 
 /**
@@ -416,8 +480,12 @@ inline gchar gtk_scintilla_get_style_at (GtkScintilla *sci, guint pos) {
  * setting for @bits is 5.  The number of styling bits needed by the current
  * lexer can be found with gtk_scintilla_get_style_bits_needed().
  */
-inline void gtk_scintilla_set_style_bits (GtkScintilla *sci, guchar bits) {
-	SSM(SCINTILLA(sci), 2090, (uptr_t)bits, 0);
+void gtk_scintilla_set_style_bits (GtkScintilla *sci, guchar bits)
+{
+	g_return_if_fail(sci != NULL);
+	g_return_if_fail(bits > 8);
+
+	SSM(SCINTILLA(sci), SCI_SETSTYLEBITS, (uptr_t)bits, 0);
 }
 
 /**
@@ -429,8 +497,11 @@ inline void gtk_scintilla_set_style_bits (GtkScintilla *sci, guchar bits) {
  *
  * Returns: The number of bits in each cell used for styling.
  */
-inline guchar gtk_scintilla_get_style_bits (GtkScintilla *sci) {
-	return (guchar)SSM(SCINTILLA(sci), 2091, 0, 0);
+guchar gtk_scintilla_get_style_bits (GtkScintilla *sci)
+{
+	g_return_val_if_fail(sci != NULL, '\0');
+
+	return (guchar)SSM(SCINTILLA(sci), SCI_GETSTYLEBITS, 0, 0);
 }
 
 /**
@@ -444,15 +515,22 @@ inline guchar gtk_scintilla_get_style_bits (GtkScintilla *sci) {
  */
 gchar *gtk_scintilla_target_as_utf8 (GtkScintilla *sci)
 {
-	gint len = (gint)SSM(SCINTILLA(sci), 2447, 0, 0);
+	gint len;
 	gchar *tmp;
+
+	g_return_val_if_fail(sci != NULL, NULL);
+
+	len = (gint)SSM(SCINTILLA(sci), SCI_TARGETASUTF8, 0, 0);
 	g_return_val_if_fail(len != 0, NULL);
 	tmp = g_malloc0(len+1);
-	len = SSM(SCINTILLA(sci), 2447, 0, (sptr_t)tmp);
-	if (len == 0) {
+	len = SSM(SCINTILLA(sci), SCI_TARGETASUTF8, 0, (sptr_t)tmp);
+
+	if (len == 0)
+	{
 		g_free(tmp);
 		return NULL;
 	}
+
 	return tmp;
 }
 
@@ -477,18 +555,25 @@ gchar *gtk_scintilla_encoded_from_utf8 (GtkScintilla *sci, const gchar *utf8, gi
 {
 	gchar *tmp;
 	gint len;
+
+	g_return_val_if_fail(sci != NULL, NULL);
 	g_return_val_if_fail(bytes >= -1, NULL);
-	/* SCI_SETLENGTHFORENCODE */
-	SSM(SCINTILLA(sci), 2448, (uptr_t)bytes, 0);
-	len = (gint)SSM(SCINTILLA(sci), 2449, (uptr_t)utf8, 0);
+
+	SSM(SCINTILLA(sci), SCI_SETLENGTHFORENCODE, (uptr_t)bytes, 0);
+	len = (gint)SSM(SCINTILLA(sci), SCI_ENCODEDFROMUTF8, (uptr_t)utf8, 0);
+
 	if(len == 0)
 		return NULL;
+
 	tmp = g_malloc0(len+1); /* NULL ok */
-	len = (gint)SSM(SCINTILLA(sci), 2449, (uptr_t)utf8, (sptr_t)tmp);
-	if (len == 0) {
+	len = (gint)SSM(SCINTILLA(sci), SCI_ENCODEDFROMUTF8, (uptr_t)utf8, (sptr_t)tmp);
+
+	if (len == 0)
+	{
 		g_free(tmp);
 		return NULL;
 	}
+
 	return tmp;
 }
 
