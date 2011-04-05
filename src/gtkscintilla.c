@@ -17,11 +17,13 @@ static void gtk_scintilla_init(GtkScintilla *self);
 
 static gpointer parent_class;
 
+
 struct _GtkScintillaPrivate
 {
 	gboolean line_numbers_visible;
 	gchar *font;
 };
+
 
 G_DEFINE_TYPE(GtkScintilla, gtk_scintilla, SCINTILLA_TYPE_OBJECT)
 
@@ -66,10 +68,10 @@ static void gtk_scintilla_init(GtkScintilla *self)
 	self->priv->line_numbers_visible = FALSE;
 	self->priv->font = NULL;
 
-	//scintilla_set_id(SCINTILLA(self), 1);
 	g_signal_connect(self, "sci-notify", G_CALLBACK(on_sci_notify), NULL);
-	//gtk_widget_set_size_request(GTK_WIDGET(self), 1, 1);
+
 	gtk_widget_set(GTK_WIDGET(self), "visible", TRUE, NULL);
+	gtk_scintilla_set_line_numbers_visible(self, TRUE);
     gtk_widget_show_all(GTK_WIDGET(self));
 }
 
@@ -89,12 +91,27 @@ GtkWidget *gtk_scintilla_new (void)
 }
 
 
+/**
+ * gtk_scintilla_send_message:
+ * @param self		The GtkScintilla to send the message to.
+ * @param iMessage	The message code to send.
+ * @param wParam	The first parameter for the message.
+ * @param lParam	The second parameter for the message.
+ *
+ * If #GtkScintilla is doing its job properly, you shouldn't need to use
+ * this function.
+ *
+ * @return	A #glong which corresponds to Scintilla's <emphasis>sptr_t</emphasis>
+ * 			type. The meaning of the return value depends on the message
+ * 			being sent. Consult the Scintilla documentation for more information.
+ */
 glong gtk_scintilla_send_message(GtkScintilla *self, guint iMessage,
 	gulong wParam, glong lParam)
 {
 	return (glong)scintilla_send_message(SCINTILLA(self), iMessage,
 		(uptr_t)wParam,	(sptr_t)lParam);
 }
+
 
 /**
  * gtk_scintilla_update_line_numbers:
@@ -123,12 +140,27 @@ void gtk_scintilla_update_line_numbers(GtkScintilla *self)
 }
 
 
+/**
+ * gtk_scintilla_get_line_numbers_visible:
+ * @self:	The #GtkScintilla object
+ *
+ * Gets whether the line number margin is visible or not.
+ *
+ * Returns: The visibility of the line number margin for the #GtkScintilla.
+ **/
 gboolean gtk_scintilla_get_line_numbers_visible(GtkScintilla *self)
 {
 	return self->priv->line_numbers_visible;
 }
 
 
+/**
+ * gtk_scintilla_set_line_numbers_visible:
+ * @self:		The #GtkScintilla object
+ * @visible:	#TRUE for visible, #FALSE for hidden
+ *
+ * Sets the line number visibility to @visibility on the #GtkScintilla.
+ **/
 void gtk_scintilla_set_line_numbers_visible(GtkScintilla *self, gboolean visible)
 {
 	self->priv->line_numbers_visible = visible;
