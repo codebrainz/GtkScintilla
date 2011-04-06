@@ -21,6 +21,7 @@ static gpointer parent_class;
 struct _GtkScintillaPrivate
 {
 	gboolean line_numbers_visible;
+	gboolean folding_enabled;
 	gchar *font;
 };
 
@@ -139,7 +140,6 @@ void gtk_scintilla_update_line_numbers(GtkScintilla *self)
 		SSM(sci, SCI_SETMARGINWIDTHN, 0, 0);
 }
 
-
 /**
  * gtk_scintilla_get_line_numbers_visible:
  * @self:	The #GtkScintilla object
@@ -165,6 +165,12 @@ void gtk_scintilla_set_line_numbers_visible(GtkScintilla *self, gboolean visible
 {
 	self->priv->line_numbers_visible = visible;
 	gtk_scintilla_update_line_numbers(self);
+}
+
+
+gboolean gtk_scintilla_get_folding_enabled(GtkScintilla *self)
+{
+	return self->priv->folding_enabled;
 }
 
 

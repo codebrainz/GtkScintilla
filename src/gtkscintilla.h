@@ -132,6 +132,8 @@ ScintillaObject*	gtk_scintilla_get_scintilla				(GtkScintilla *self);
 void 				gtk_scintilla_update_line_numbers		(GtkScintilla *self);
 gboolean 			gtk_scintilla_get_line_numbers_visible	(GtkScintilla *self);
 void 				gtk_scintilla_set_line_numbers_visible	(GtkScintilla *self, gboolean visible);
+gboolean			gtk_scintilla_get_folding_enabled		(GtkScintilla *self);
+void				gtk_scintilla_set_folding_enabled		(GtkScintilla *self, gboolean enabled);
 void 				gtk_scintilla_set_font					(GtkScintilla *self, gint style_number, const gchar *font_desc);
 gchar*				gtk_scintilla_get_font					(GtkScintilla *self, gint style_number);
 gchar*				gtk_scintilla_get_background_color		(GtkScintilla *self, gint style);

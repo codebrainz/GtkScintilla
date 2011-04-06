@@ -683,6 +683,13 @@ void _gtk_scintilla_class_install_properties(GtkScintillaClass *klass)
 			G_PARAM_READWRITE);
 	g_object_class_install_property(object_class, PROP_LINE_NUMBERS_VISIBLE, pspec);
 
+	pspec = g_param_spec_boolean("folding-enabled",
+			"Code folding enabled",
+			"Whether code folding is enabled and the fold margin is visible.",
+			TRUE,
+			G_PARAM_READWRITE);
+	g_object_class_install_property(object_class, PROP_FOLDING_ENABLED, pspec);
+
 	/*
 	pspec = g_param_spec_string("font",
 				"Font description",

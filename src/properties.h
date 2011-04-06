@@ -141,6 +141,8 @@ enum
 	PROP_STYLE_BITS_NEEDED,
 	/* non-scintilla properties */
 	PROP_LINE_NUMBERS_VISIBLE,
+	PROP_FOLDING_ENABLED,
+	PROP_FOLD_STYLE,
 	PROP_FONT,
 	/* default styles */
 	PROP_DEFAULT_STYLE,

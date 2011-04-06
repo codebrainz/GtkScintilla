@@ -30,7 +30,7 @@ G_BEGIN_DECLS
  * @GTK_SCINTILLA_UPDATE_SELECTION:	Selection has been changed.
  * @GTK_SCINTILLA_UPDATE_V_SCROLL:	Scrolled vertically.
  * @GTK_SCINTILLA_UPDATE_H_SCROLL:	Scrolled horizontally.
- * 
+ *
  * When the #GtkScintilla::update-ui signal is emitted, a bit field of these
  * flags is passed as a parameter to indicate which part of the UI has changed.
  */
@@ -49,19 +49,19 @@ typedef enum {
  * @GTK_SCINTILLA_SEARCH_FLAG_MATCH_CASE:	A match only occurs with text that
  * 											matches the case of the search
  * 											string.
- * @GTK_SCINTILLA_SEARCH_FLAG_WORD_START:	A match only occurs if the 
+ * @GTK_SCINTILLA_SEARCH_FLAG_WORD_START:	A match only occurs if the
  * 											character before is not a word
  * 											character.
- * @GTK_SCINTILLA_SEARCH_FLAG_REGEXP:		The search string should be 
+ * @GTK_SCINTILLA_SEARCH_FLAG_REGEXP:		The search string should be
  * 											interpreted as a regular
  * 											expression.
  * @GTK_SCINTILLA_SEARCH_FLAG_POSIX:		Treat regular expression in a more
- * 											POSIX compatible manner by 
+ * 											POSIX compatible manner by
  * 											interpreting bare ( and ) for
- * 											tagged sections rather than 
+ * 											tagged sections rather than
  * 											\( and \).
- * 
- * Several of the search routines use flag options, which include a simple 
+ *
+ * Several of the search routines use flag options, which include a simple
  * regular expression search.  Combine flag options by adding them.
  */
 typedef enum {
@@ -127,6 +127,17 @@ typedef enum {
 	GTK_SCINTILLA_MARKER_OUTLINE_FOLDER=30,
 	GTK_SCINTILLA_MARKER_OUTLINE_FOLDEROPEN=31
 } GtkScintillaMarkerOutline;
+
+/* custom, used for _fold_style() helper functions */
+typedef enum
+{
+	GTK_SCINTILLA_FOLD_STYLE_NONE=0,
+	GTK_SCINTILLA_FOLD_STYLE_ARROW,
+	GTK_SCINTILLA_FOLD_STYLE_BOX,
+	GTK_SCINTILLA_FOLD_STYLE_CIRCLE,
+	GTK_SCINTILLA_FOLD_STYLE_CUSTOM,
+	GTK_SCINTILLA_FOLD_STYLE_PLUS_MINUS
+} GtkScintillaFoldStyle;
 
 typedef enum {
 	GTK_SCINTILLA_MARGIN_TYPE_SYMBOL=0,
@@ -398,16 +409,16 @@ typedef enum {
  * 									be emitted when you need to style a range
  * 									of text.
  * @GTK_SCINTILLA_LEXER_NULL:		Specifies that no lexer should be used.
- * 
+ *
  * Enum values used to specify a lexer to gtk_scintilla_set_lexer().  Generally
  * the lexer's name here will indicate the corresponding programming language,
  * but some of the lexers support numerous programming languages.  For example,
- * the @GTK_SCINTILLA_LEXER_CPP will style C/C++, Java, Vala and similar 
+ * the @GTK_SCINTILLA_LEXER_CPP will style C/C++, Java, Vala and similar
  * languages, while the @GTK_SCINTILLA_LEXER_HTML will style HTML, XML, PHP,
  * and several other similar or embedable languages.
  */
 typedef enum {
-	GTK_SCINTILLA_LEXER_CONTAINER=0, 
+	GTK_SCINTILLA_LEXER_CONTAINER=0,
 	GTK_SCINTILLA_LEXER_NULL=1,
 	GTK_SCINTILLA_LEXER_PYTHON=2,
 	GTK_SCINTILLA_LEXER_CPP=3,
@@ -507,7 +518,7 @@ typedef enum {
 	GTK_SCINTILLA_LEXER_AUTOMATIC=1000
 } GtkScintillaLexers;
 
-typedef enum 
+typedef enum
 {
 	GTK_SCINTILLA_MSG_START=2000,
 	GTK_SCINTILLA_MSG_OPTIONAL_START=3000,
