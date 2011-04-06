@@ -22,6 +22,9 @@ struct _GtkScintillaPrivate
 {
 	gboolean line_numbers_visible;
 	gboolean folding_enabled;
+	GtkScintillaFoldStyle fold_style;
+	gint fold_margin_index;
+	gint fold_margin_width;
 	gchar *font;
 };
 
@@ -66,13 +69,23 @@ static void gtk_scintilla_init(GtkScintilla *self)
 {
 	self->priv = G_TYPE_INSTANCE_GET_PRIVATE(self, GTK_TYPE_SCINTILLA, GtkScintillaPrivate);
 
+	/* set defaults */
 	self->priv->line_numbers_visible = FALSE;
 	self->priv->font = NULL;
+	self->priv->fold_style = GTK_SCINTILLA_FOLD_STYLE_NONE;
+	self->priv->folding_enabled = FALSE;
 
+	self->priv->fold_margin_index = 2;
+	self->priv->fold_margin_width = 16;
+
+	/* connect internal signals */
 	g_signal_connect(self, "sci-notify", G_CALLBACK(on_sci_notify), NULL);
 
-	gtk_widget_set(GTK_WIDGET(self), "visible", TRUE, NULL);
+	/* initialize defaults */
 	gtk_scintilla_set_line_numbers_visible(self, TRUE);
+	gtk_scintilla_set_folding_enabled(self, TRUE);
+	gtk_scintilla_set_fold_style(self, GTK_SCINTILLA_FOLD_STYLE_BOX);
+
     gtk_widget_show_all(GTK_WIDGET(self));
 }
 
@@ -167,10 +180,57 @@ void gtk_scintilla_set_line_numbers_visible(GtkScintilla *self, gboolean visible
 	gtk_scintilla_update_line_numbers(self);
 }
 
+/* helper function to setup the folding markers and hide/show the fold margin */
+static void configure_folding(GtkScintilla *sci)
+{
+	g_return_if_fail(sci != NULL);
+
+	if (sci->priv->folding_enabled)
+	{
+		/* todo: setup all the folding markers and stuff here */
+		gtk_scintilla_set_margin_width_n(sci, sci->priv->fold_margin_index,
+			sci->priv->fold_margin_width);
+	}
+	else
+		gtk_scintilla_set_margin_width_n(sci, sci->priv->fold_margin_index, 0);
+}
+
 
 gboolean gtk_scintilla_get_folding_enabled(GtkScintilla *self)
 {
+	g_return_val_if_fail(self != NULL, FALSE);
+
 	return self->priv->folding_enabled;
+}
+
+
+void gtk_scintilla_set_folding_enabled(GtkScintilla *self, gboolean enabled)
+{
+	g_return_if_fail(self != NULL);
+
+	self->priv->folding_enabled = enabled;
+	configure_folding(self);
+}
+
+
+GtkScintillaFoldStyle gtk_scintilla_get_fold_style(GtkScintilla *self)
+{
+	g_return_val_if_fail(self != NULL, GTK_SCINTILLA_FOLD_STYLE_NONE);
+
+	return self->priv->fold_style;
+}
+
+
+void gtk_scintilla_set_fold_style(GtkScintilla *self, GtkScintillaFoldStyle fold_style)
+{
+	g_return_if_fail(self != NULL);
+
+	self->priv->fold_style = fold_style;
+
+	if (fold_style == GTK_SCINTILLA_FOLD_STYLE_NONE)
+		gtk_scintilla_set_folding_enabled(self, FALSE);
+	else
+		configure_folding(self);
 }
 
 

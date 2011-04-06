@@ -329,12 +329,18 @@ void gtk_scintilla_get_property(GObject *object, guint property_id, GValue *valu
 		case PROP_LINE_NUMBERS_VISIBLE:
 			g_value_set_boolean(value, gtk_scintilla_get_line_numbers_visible(self));
 			break;
+		case PROP_FOLDING_ENABLED:
+			g_value_set_boolean(value, gtk_scintilla_get_folding_enabled(self));
+			break;
+		case PROP_FOLD_STYLE:
+			g_value_set_enum(value, gtk_scintilla_get_fold_style(self));
+			break;
 		/*
 		case PROP_FONT:
 			g_value_set_static_string(value, gtk_scintilla_get_font(self));
 			break;
 		*/
-		
+
 		default:
 			G_OBJECT_WARN_INVALID_PROPERTY_ID(object, property_id, pspec);
 			break;
@@ -647,6 +653,12 @@ void gtk_scintilla_set_property(GObject *object, guint property_id, const GValue
 			/* non-scintilla properties */
 		case PROP_LINE_NUMBERS_VISIBLE:
 			gtk_scintilla_set_line_numbers_visible(self, g_value_get_boolean(value));
+			break;
+		case PROP_FOLDING_ENABLED:
+			gtk_scintilla_set_folding_enabled(self, g_value_get_boolean(value));
+			break;
+		case PROP_FOLD_STYLE:
+			gtk_scintilla_set_fold_style(self, g_value_get_enum(value));
 			break;
 		/*
 		case PROP_FONT:

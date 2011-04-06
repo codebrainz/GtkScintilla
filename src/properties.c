@@ -690,6 +690,14 @@ void _gtk_scintilla_class_install_properties(GtkScintillaClass *klass)
 			G_PARAM_READWRITE);
 	g_object_class_install_property(object_class, PROP_FOLDING_ENABLED, pspec);
 
+	pspec = g_param_spec_enum("fold-style",
+			"Code folding style",
+			"The style of marker (icon) to use in the code folding margin.",
+			GTK_TYPE_SCINTILLA_FOLD_STYLE,
+			GTK_SCINTILLA_FOLD_STYLE_BOX,
+			G_PARAM_READWRITE);
+	g_object_class_install_property(object_class, PROP_FOLD_STYLE, pspec);
+
 	/*
 	pspec = g_param_spec_string("font",
 				"Font description",

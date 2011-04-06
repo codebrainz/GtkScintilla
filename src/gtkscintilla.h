@@ -55,6 +55,7 @@ G_BEGIN_DECLS
 #include <ScintillaWidget.h>
 
 #include "constants.h"
+#include "enums.h"
 
 #ifndef GTK_SCINTILLA_DATADIR
 #define GTK_SCINTILLA_DATADIR "/usr/local/share/gtkscintilla-1.0/"
