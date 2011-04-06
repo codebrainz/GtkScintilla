@@ -1,6 +1,6 @@
 6% symbol docs coverage.
-172 symbols documented.
-562 symbols incomplete.
+173 symbols documented.
+561 symbols incomplete.
 2551 not documented.
 
 
@@ -1847,7 +1847,7 @@ GtkScintillaWrapVisualFlag (<items>)
 GtkScintillaWrapVisualLocation (<items>)
 PLAT_GTK
 SCINTILLA_TYPE_OBJECT
-SSM (w, l, m, s)
+SSM (<parameters>)
 color_spec_to_int (<parameters>)
 gtk_scintilla_add_ref_document (<parameters>)
 gtk_scintilla_add_selection (<parameters>)
@@ -2169,7 +2169,7 @@ gtk_scintilla_marker_set_back (<parameters>)
 gtk_scintilla_marker_set_fore (<parameters>)
 gtk_scintilla_marker_symbol_defined (<parameters>)
 gtk_scintilla_move_caret_inside_view (<parameters>)
-gtk_scintilla_new_from_sci (<parameters>)
+gtk_scintilla_new_from_sci
 gtk_scintilla_new_line (<parameters>)
 gtk_scintilla_null (<parameters>)
 gtk_scintilla_page_down (<parameters>)
@@ -2199,7 +2199,7 @@ gtk_scintilla_scroll_caret (<parameters>)
 gtk_scintilla_select_all (<parameters>)
 gtk_scintilla_selection_duplicate (<parameters>)
 gtk_scintilla_selection_is_rectangle (<parameters>)
-gtk_scintilla_send_message (<parameters>)
+gtk_scintilla_send_message (wParam, iMessage, self, lParam)
 gtk_scintilla_set_additional_caret_fore (<parameters>)
 gtk_scintilla_set_additional_carets_blink (<parameters>)
 gtk_scintilla_set_additional_carets_visible (<parameters>)

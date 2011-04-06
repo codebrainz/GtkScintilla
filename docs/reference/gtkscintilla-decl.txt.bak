@@ -37,7 +37,7 @@ struct _GtkScintillaLexer
 {
 	GObject parent;
 	/* add your public declarations here */
-
+	
 	GtkScintillaLexerPrivate *priv;
 };
 </STRUCT>
@@ -63,348 +63,6 @@ void
 <RETURNS>void </RETURNS>
 GtkScintillaClass *klass 
 </FUNCTION>
-<FUNCTION>
-<NAME>gtk_scintilla_update_flag_get_type</NAME>
-<RETURNS>GType </RETURNS>
-void 
-</FUNCTION>
-<MACRO>
-<NAME>GTK_TYPE_SCINTILLA_UPDATE_FLAG</NAME>
-#define GTK_TYPE_SCINTILLA_UPDATE_FLAG (gtk_scintilla_update_flag_get_type ())
-</MACRO>
-<FUNCTION>
-<NAME>gtk_scintilla_search_flag_get_type</NAME>
-<RETURNS>GType </RETURNS>
-void 
-</FUNCTION>
-<MACRO>
-<NAME>GTK_TYPE_SCINTILLA_SEARCH_FLAG</NAME>
-#define GTK_TYPE_SCINTILLA_SEARCH_FLAG (gtk_scintilla_search_flag_get_type ())
-</MACRO>
-<FUNCTION>
-<NAME>gtk_scintilla_white_space_get_type</NAME>
-<RETURNS>GType </RETURNS>
-void 
-</FUNCTION>
-<MACRO>
-<NAME>GTK_TYPE_SCINTILLA_WHITE_SPACE</NAME>
-#define GTK_TYPE_SCINTILLA_WHITE_SPACE (gtk_scintilla_white_space_get_type ())
-</MACRO>
-<FUNCTION>
-<NAME>gtk_scintilla_end_of_line_get_type</NAME>
-<RETURNS>GType </RETURNS>
-void 
-</FUNCTION>
-<MACRO>
-<NAME>GTK_TYPE_SCINTILLA_END_OF_LINE</NAME>
-#define GTK_TYPE_SCINTILLA_END_OF_LINE (gtk_scintilla_end_of_line_get_type ())
-</MACRO>
-<FUNCTION>
-<NAME>gtk_scintilla_marker_symbol_get_type</NAME>
-<RETURNS>GType </RETURNS>
-void 
-</FUNCTION>
-<MACRO>
-<NAME>GTK_TYPE_SCINTILLA_MARKER_SYMBOL</NAME>
-#define GTK_TYPE_SCINTILLA_MARKER_SYMBOL (gtk_scintilla_marker_symbol_get_type ())
-</MACRO>
-<FUNCTION>
-<NAME>gtk_scintilla_marker_outline_get_type</NAME>
-<RETURNS>GType </RETURNS>
-void 
-</FUNCTION>
-<MACRO>
-<NAME>GTK_TYPE_SCINTILLA_MARKER_OUTLINE</NAME>
-#define GTK_TYPE_SCINTILLA_MARKER_OUTLINE (gtk_scintilla_marker_outline_get_type ())
-</MACRO>
-<FUNCTION>
-<NAME>gtk_scintilla_fold_style_get_type</NAME>
-<RETURNS>GType </RETURNS>
-void 
-</FUNCTION>
-<MACRO>
-<NAME>GTK_TYPE_SCINTILLA_FOLD_STYLE</NAME>
-#define GTK_TYPE_SCINTILLA_FOLD_STYLE (gtk_scintilla_fold_style_get_type ())
-</MACRO>
-<FUNCTION>
-<NAME>gtk_scintilla_margin_type_get_type</NAME>
-<RETURNS>GType </RETURNS>
-void 
-</FUNCTION>
-<MACRO>
-<NAME>GTK_TYPE_SCINTILLA_MARGIN_TYPE</NAME>
-#define GTK_TYPE_SCINTILLA_MARGIN_TYPE (gtk_scintilla_margin_type_get_type ())
-</MACRO>
-<FUNCTION>
-<NAME>gtk_scintilla_styles_common_get_type</NAME>
-<RETURNS>GType </RETURNS>
-void 
-</FUNCTION>
-<MACRO>
-<NAME>GTK_TYPE_SCINTILLA_STYLES_COMMON</NAME>
-#define GTK_TYPE_SCINTILLA_STYLES_COMMON (gtk_scintilla_styles_common_get_type ())
-</MACRO>
-<FUNCTION>
-<NAME>gtk_scintilla_character_set_get_type</NAME>
-<RETURNS>GType </RETURNS>
-void 
-</FUNCTION>
-<MACRO>
-<NAME>GTK_TYPE_SCINTILLA_CHARACTER_SET</NAME>
-#define GTK_TYPE_SCINTILLA_CHARACTER_SET (gtk_scintilla_character_set_get_type ())
-</MACRO>
-<FUNCTION>
-<NAME>gtk_scintilla_case_get_type</NAME>
-<RETURNS>GType </RETURNS>
-void 
-</FUNCTION>
-<MACRO>
-<NAME>GTK_TYPE_SCINTILLA_CASE</NAME>
-#define GTK_TYPE_SCINTILLA_CASE (gtk_scintilla_case_get_type ())
-</MACRO>
-<FUNCTION>
-<NAME>gtk_scintilla_indicator_style_get_type</NAME>
-<RETURNS>GType </RETURNS>
-void 
-</FUNCTION>
-<MACRO>
-<NAME>GTK_TYPE_SCINTILLA_INDICATOR_STYLE</NAME>
-#define GTK_TYPE_SCINTILLA_INDICATOR_STYLE (gtk_scintilla_indicator_style_get_type ())
-</MACRO>
-<FUNCTION>
-<NAME>gtk_scintilla_indent_view_get_type</NAME>
-<RETURNS>GType </RETURNS>
-void 
-</FUNCTION>
-<MACRO>
-<NAME>GTK_TYPE_SCINTILLA_INDENT_VIEW</NAME>
-#define GTK_TYPE_SCINTILLA_INDENT_VIEW (gtk_scintilla_indent_view_get_type ())
-</MACRO>
-<FUNCTION>
-<NAME>gtk_scintilla_print_option_get_type</NAME>
-<RETURNS>GType </RETURNS>
-void 
-</FUNCTION>
-<MACRO>
-<NAME>GTK_TYPE_SCINTILLA_PRINT_OPTION</NAME>
-#define GTK_TYPE_SCINTILLA_PRINT_OPTION (gtk_scintilla_print_option_get_type ())
-</MACRO>
-<FUNCTION>
-<NAME>gtk_scintilla_find_option_get_type</NAME>
-<RETURNS>GType </RETURNS>
-void 
-</FUNCTION>
-<MACRO>
-<NAME>GTK_TYPE_SCINTILLA_FIND_OPTION</NAME>
-#define GTK_TYPE_SCINTILLA_FIND_OPTION (gtk_scintilla_find_option_get_type ())
-</MACRO>
-<FUNCTION>
-<NAME>gtk_scintilla_fold_level_get_type</NAME>
-<RETURNS>GType </RETURNS>
-void 
-</FUNCTION>
-<MACRO>
-<NAME>GTK_TYPE_SCINTILLA_FOLD_LEVEL</NAME>
-#define GTK_TYPE_SCINTILLA_FOLD_LEVEL (gtk_scintilla_fold_level_get_type ())
-</MACRO>
-<FUNCTION>
-<NAME>gtk_scintilla_fold_flag_get_type</NAME>
-<RETURNS>GType </RETURNS>
-void 
-</FUNCTION>
-<MACRO>
-<NAME>GTK_TYPE_SCINTILLA_FOLD_FLAG</NAME>
-#define GTK_TYPE_SCINTILLA_FOLD_FLAG (gtk_scintilla_fold_flag_get_type ())
-</MACRO>
-<FUNCTION>
-<NAME>gtk_scintilla_wrap_get_type</NAME>
-<RETURNS>GType </RETURNS>
-void 
-</FUNCTION>
-<MACRO>
-<NAME>GTK_TYPE_SCINTILLA_WRAP</NAME>
-#define GTK_TYPE_SCINTILLA_WRAP (gtk_scintilla_wrap_get_type ())
-</MACRO>
-<FUNCTION>
-<NAME>gtk_scintilla_wrap_visual_flag_get_type</NAME>
-<RETURNS>GType </RETURNS>
-void 
-</FUNCTION>
-<MACRO>
-<NAME>GTK_TYPE_SCINTILLA_WRAP_VISUAL_FLAG</NAME>
-#define GTK_TYPE_SCINTILLA_WRAP_VISUAL_FLAG (gtk_scintilla_wrap_visual_flag_get_type ())
-</MACRO>
-<FUNCTION>
-<NAME>gtk_scintilla_wrap_visual_location_get_type</NAME>
-<RETURNS>GType </RETURNS>
-void 
-</FUNCTION>
-<MACRO>
-<NAME>GTK_TYPE_SCINTILLA_WRAP_VISUAL_LOCATION</NAME>
-#define GTK_TYPE_SCINTILLA_WRAP_VISUAL_LOCATION (gtk_scintilla_wrap_visual_location_get_type ())
-</MACRO>
-<FUNCTION>
-<NAME>gtk_scintilla_wrap_indent_mode_get_type</NAME>
-<RETURNS>GType </RETURNS>
-void 
-</FUNCTION>
-<MACRO>
-<NAME>GTK_TYPE_SCINTILLA_WRAP_INDENT_MODE</NAME>
-#define GTK_TYPE_SCINTILLA_WRAP_INDENT_MODE (gtk_scintilla_wrap_indent_mode_get_type ())
-</MACRO>
-<FUNCTION>
-<NAME>gtk_scintilla_line_cache_get_type</NAME>
-<RETURNS>GType </RETURNS>
-void 
-</FUNCTION>
-<MACRO>
-<NAME>GTK_TYPE_SCINTILLA_LINE_CACHE</NAME>
-#define GTK_TYPE_SCINTILLA_LINE_CACHE (gtk_scintilla_line_cache_get_type ())
-</MACRO>
-<FUNCTION>
-<NAME>gtk_scintilla_font_quality_get_type</NAME>
-<RETURNS>GType </RETURNS>
-void 
-</FUNCTION>
-<MACRO>
-<NAME>GTK_TYPE_SCINTILLA_FONT_QUALITY</NAME>
-#define GTK_TYPE_SCINTILLA_FONT_QUALITY (gtk_scintilla_font_quality_get_type ())
-</MACRO>
-<FUNCTION>
-<NAME>gtk_scintilla_multi_paste_get_type</NAME>
-<RETURNS>GType </RETURNS>
-void 
-</FUNCTION>
-<MACRO>
-<NAME>GTK_TYPE_SCINTILLA_MULTI_PASTE</NAME>
-#define GTK_TYPE_SCINTILLA_MULTI_PASTE (gtk_scintilla_multi_paste_get_type ())
-</MACRO>
-<FUNCTION>
-<NAME>gtk_scintilla_edge_visual_style_get_type</NAME>
-<RETURNS>GType </RETURNS>
-void 
-</FUNCTION>
-<MACRO>
-<NAME>GTK_TYPE_SCINTILLA_EDGE_VISUAL_STYLE</NAME>
-#define GTK_TYPE_SCINTILLA_EDGE_VISUAL_STYLE (gtk_scintilla_edge_visual_style_get_type ())
-</MACRO>
-<FUNCTION>
-<NAME>gtk_scintilla_status_get_type</NAME>
-<RETURNS>GType </RETURNS>
-void 
-</FUNCTION>
-<MACRO>
-<NAME>GTK_TYPE_SCINTILLA_STATUS</NAME>
-#define GTK_TYPE_SCINTILLA_STATUS (gtk_scintilla_status_get_type ())
-</MACRO>
-<FUNCTION>
-<NAME>gtk_scintilla_cursor_shape_get_type</NAME>
-<RETURNS>GType </RETURNS>
-void 
-</FUNCTION>
-<MACRO>
-<NAME>GTK_TYPE_SCINTILLA_CURSOR_SHAPE</NAME>
-#define GTK_TYPE_SCINTILLA_CURSOR_SHAPE (gtk_scintilla_cursor_shape_get_type ())
-</MACRO>
-<FUNCTION>
-<NAME>gtk_scintilla_caret_policy_get_type</NAME>
-<RETURNS>GType </RETURNS>
-void 
-</FUNCTION>
-<MACRO>
-<NAME>GTK_TYPE_SCINTILLA_CARET_POLICY</NAME>
-#define GTK_TYPE_SCINTILLA_CARET_POLICY (gtk_scintilla_caret_policy_get_type ())
-</MACRO>
-<FUNCTION>
-<NAME>gtk_scintilla_selection_mode_get_type</NAME>
-<RETURNS>GType </RETURNS>
-void 
-</FUNCTION>
-<MACRO>
-<NAME>GTK_TYPE_SCINTILLA_SELECTION_MODE</NAME>
-#define GTK_TYPE_SCINTILLA_SELECTION_MODE (gtk_scintilla_selection_mode_get_type ())
-</MACRO>
-<FUNCTION>
-<NAME>gtk_scintilla_caret_sticky_get_type</NAME>
-<RETURNS>GType </RETURNS>
-void 
-</FUNCTION>
-<MACRO>
-<NAME>GTK_TYPE_SCINTILLA_CARET_STICKY</NAME>
-#define GTK_TYPE_SCINTILLA_CARET_STICKY (gtk_scintilla_caret_sticky_get_type ())
-</MACRO>
-<FUNCTION>
-<NAME>gtk_scintilla_caret_style_get_type</NAME>
-<RETURNS>GType </RETURNS>
-void 
-</FUNCTION>
-<MACRO>
-<NAME>GTK_TYPE_SCINTILLA_CARET_STYLE</NAME>
-#define GTK_TYPE_SCINTILLA_CARET_STYLE (gtk_scintilla_caret_style_get_type ())
-</MACRO>
-<FUNCTION>
-<NAME>gtk_scintilla_annotation_visible_get_type</NAME>
-<RETURNS>GType </RETURNS>
-void 
-</FUNCTION>
-<MACRO>
-<NAME>GTK_TYPE_SCINTILLA_ANNOTATION_VISIBLE</NAME>
-#define GTK_TYPE_SCINTILLA_ANNOTATION_VISIBLE (gtk_scintilla_annotation_visible_get_type ())
-</MACRO>
-<FUNCTION>
-<NAME>gtk_scintilla_virtual_space_get_type</NAME>
-<RETURNS>GType </RETURNS>
-void 
-</FUNCTION>
-<MACRO>
-<NAME>GTK_TYPE_SCINTILLA_VIRTUAL_SPACE</NAME>
-#define GTK_TYPE_SCINTILLA_VIRTUAL_SPACE (gtk_scintilla_virtual_space_get_type ())
-</MACRO>
-<FUNCTION>
-<NAME>gtk_scintilla_modification_flags_get_type</NAME>
-<RETURNS>GType </RETURNS>
-void 
-</FUNCTION>
-<MACRO>
-<NAME>GTK_TYPE_SCINTILLA_MODIFICATION_FLAGS</NAME>
-#define GTK_TYPE_SCINTILLA_MODIFICATION_FLAGS (gtk_scintilla_modification_flags_get_type ())
-</MACRO>
-<FUNCTION>
-<NAME>gtk_scintilla_keys_get_type</NAME>
-<RETURNS>GType </RETURNS>
-void 
-</FUNCTION>
-<MACRO>
-<NAME>GTK_TYPE_SCINTILLA_KEYS</NAME>
-#define GTK_TYPE_SCINTILLA_KEYS (gtk_scintilla_keys_get_type ())
-</MACRO>
-<FUNCTION>
-<NAME>gtk_scintilla_key_mod_get_type</NAME>
-<RETURNS>GType </RETURNS>
-void 
-</FUNCTION>
-<MACRO>
-<NAME>GTK_TYPE_SCINTILLA_KEY_MOD</NAME>
-#define GTK_TYPE_SCINTILLA_KEY_MOD (gtk_scintilla_key_mod_get_type ())
-</MACRO>
-<FUNCTION>
-<NAME>gtk_scintilla_lexers_get_type</NAME>
-<RETURNS>GType </RETURNS>
-void 
-</FUNCTION>
-<MACRO>
-<NAME>GTK_TYPE_SCINTILLA_LEXERS</NAME>
-#define GTK_TYPE_SCINTILLA_LEXERS (gtk_scintilla_lexers_get_type ())
-</MACRO>
-<FUNCTION>
-<NAME>gtk_scintilla_messages_get_type</NAME>
-<RETURNS>GType </RETURNS>
-void 
-</FUNCTION>
-<MACRO>
-<NAME>GTK_TYPE_SCINTILLA_MESSAGES</NAME>
-#define GTK_TYPE_SCINTILLA_MESSAGES (gtk_scintilla_messages_get_type ())
-</MACRO>
 <FUNCTION>
 <NAME>gtk_scintilla_class_install_signals</NAME>
 <RETURNS>void </RETURNS>
@@ -468,6 +126,7 @@ GtkScintilla *sci, struct SCNotification *notif
 <NAME>GtkScintilla</NAME>
 struct _GtkScintilla
 {
+	//GtkFrame parent;
 	ScintillaObject parent;
 	GtkWidget *scintilla;
 	GtkAccelGroup *accel_group;
@@ -479,8 +138,9 @@ struct _GtkScintilla
 <NAME>GtkScintillaClass</NAME>
 struct _GtkScintillaClass
 {
+	//GtkFrameClass parent_class;
 	ScintillaClass parent_class;
-
+	
 	/*< private >*/
 	void (* style_needed) (GtkWidget *gtk_scintilla, gint start_pos, gint end_pos);
 	void (* char_added) (GtkWidget *gtk_scintilla, gint ch);
@@ -508,7 +168,7 @@ struct _GtkScintillaClass
 	void (* indicator_release) (GtkWidget *gtk_scintilla, gint modifiers, gint position);
 	void (* auto_completion_cancelled) (GtkWidget *gtk_scintilla);
 	void (* auto_completion_char_deleted) (GtkWidget *gtk_scintilla);
-
+	
 };
 </STRUCT>
 <MACRO>
@@ -516,13 +176,8 @@ struct _GtkScintillaClass
 #define SSM(s, m, l, w) scintilla_send_message(SCINTILLA(s), m, l, w)
 </MACRO>
 <FUNCTION>
-<NAME>gtk_scintilla_send_message</NAME>
-<RETURNS>glong </RETURNS>
-GtkScintilla *self, guint iMessage, gulong wParam, glong lParam 
-</FUNCTION>
-<FUNCTION>
 <NAME>gtk_scintilla_get_type</NAME>
-<RETURNS>GType				</RETURNS>
+<RETURNS>GType			</RETURNS>
 void 
 </FUNCTION>
 <FUNCTION>
@@ -531,2808 +186,2803 @@ void
 void 
 </FUNCTION>
 <FUNCTION>
+<NAME>gtk_scintilla_new_from_sci</NAME>
+<RETURNS>GtkWidget*</RETURNS>
+ScintillaObject *sci 
+</FUNCTION>
+<FUNCTION>
 <NAME>gtk_scintilla_get_property</NAME>
-<RETURNS>void 				</RETURNS>
+<RETURNS>void 			</RETURNS>
 GObject *object, guint property_id, GValue *value, GParamSpec *pspec 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_property</NAME>
-<RETURNS>void 				</RETURNS>
+<RETURNS>void 			</RETURNS>
 GObject *object, guint property_id, const GValue *value, GParamSpec *pspec 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_send_message</NAME>
-<RETURNS>glong				</RETURNS>
+<RETURNS>glong	</RETURNS>
 GtkScintilla *self, guint iMessage, gulong wParam, glong lParam 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_scintilla</NAME>
-<RETURNS>ScintillaObject*</RETURNS>
+<RETURNS>ScintillaObject *</RETURNS>
 GtkScintilla *self 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_update_line_numbers</NAME>
-<RETURNS>void 				</RETURNS>
+<RETURNS>void 		</RETURNS>
 GtkScintilla *self 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_line_numbers_visible</NAME>
-<RETURNS>gboolean 			</RETURNS>
+<RETURNS>gboolean 	</RETURNS>
 GtkScintilla *self 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_line_numbers_visible</NAME>
-<RETURNS>void 				</RETURNS>
+<RETURNS>void 		</RETURNS>
 GtkScintilla *self, gboolean visible 
 </FUNCTION>
 <FUNCTION>
-<NAME>gtk_scintilla_get_folding_enabled</NAME>
-<RETURNS>gboolean			</RETURNS>
-GtkScintilla *self 
-</FUNCTION>
-<FUNCTION>
-<NAME>gtk_scintilla_set_folding_enabled</NAME>
-<RETURNS>void				</RETURNS>
-GtkScintilla *self, gboolean enabled 
-</FUNCTION>
-<FUNCTION>
 <NAME>gtk_scintilla_set_font</NAME>
-<RETURNS>void 				</RETURNS>
+<RETURNS>void 		</RETURNS>
 GtkScintilla *self, gint style_number, const gchar *font_desc 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_font</NAME>
-<RETURNS>gchar*</RETURNS>
+<RETURNS>gchar 		*</RETURNS>
 GtkScintilla *self, gint style_number 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_background_color</NAME>
-<RETURNS>gchar*</RETURNS>
+<RETURNS>gchar 		*</RETURNS>
 GtkScintilla *self, gint style 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_background_color</NAME>
-<RETURNS>void 				</RETURNS>
+<RETURNS>void 		</RETURNS>
 GtkScintilla *self, gint style, const gchar *color_spec 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_foreground_color</NAME>
-<RETURNS>gchar*</RETURNS>
+<RETURNS>gchar 		*</RETURNS>
 GtkScintilla *self, gint style 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_foreground_color</NAME>
-<RETURNS>void 				</RETURNS>
+<RETURNS>void 		</RETURNS>
 GtkScintilla *self, gint style, const gchar *color_spec 
 </FUNCTION>
 <FUNCTION>
 <NAME>int_to_color_spec</NAME>
-<RETURNS>gchar*</RETURNS>
+<RETURNS>gchar 		*</RETURNS>
 gint int_color 
 </FUNCTION>
 <FUNCTION>
 <NAME>color_spec_to_int</NAME>
-<RETURNS>gint				</RETURNS>
+<RETURNS>gint		</RETURNS>
 const gchar *color_spec 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_style</NAME>
-<RETURNS>void 				</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *self, gint style_number, const gchar *font_spec, const gchar *fg_color, const gchar *bg_color 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_add_text</NAME>
-<RETURNS>void 		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, guint length, const gchar *text 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_add_styled_text</NAME>
-<RETURNS>void 		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, guint length, const gchar *styled_text 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_insert_text</NAME>
-<RETURNS>void 		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint pos, const gchar *text 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_clear_all</NAME>
-<RETURNS>void 		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_clear_document_style</NAME>
-<RETURNS>void 		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_length</NAME>
-<RETURNS>gint 		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_char_at</NAME>
-<RETURNS>gchar 		</RETURNS>
+<RETURNS>gchar </RETURNS>
 GtkScintilla *sci, guint pos 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_current_pos</NAME>
-<RETURNS>gint 		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_anchor</NAME>
-<RETURNS>gint 		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_style_at</NAME>
-<RETURNS>gchar 		</RETURNS>
+<RETURNS>gchar </RETURNS>
 GtkScintilla *sci, guint pos 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_redo</NAME>
-<RETURNS>void 		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_undo_collection</NAME>
-<RETURNS>void 		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gboolean collectUndo 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_select_all</NAME>
-<RETURNS>void 		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_save_point</NAME>
-<RETURNS>void 		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_styled_text_range</NAME>
-<RETURNS>gchar*</RETURNS>
+<RETURNS>gchar *</RETURNS>
 GtkScintilla *sci, guint start_pos, gint end_pos 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_can_redo</NAME>
-<RETURNS>gboolean	</RETURNS>
+<RETURNS>gboolean </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_marker_line_from_handle</NAME>
-<RETURNS>gint 		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci, gint handle 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_marker_delete_handle</NAME>
-<RETURNS>void 		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint handle 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_undo_collection</NAME>
-<RETURNS>gboolean 	</RETURNS>
+<RETURNS>gboolean </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_view_white_space</NAME>
-<RETURNS>gint 		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_view_white_space</NAME>
-<RETURNS>void 		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint viewWS 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_position_from_point</NAME>
-<RETURNS>gint 		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci, gint x, gint y 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_position_from_point_close</NAME>
-<RETURNS>gint 		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci, gint x, gint y 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_goto_line</NAME>
-<RETURNS>void 		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint line 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_goto_pos</NAME>
-<RETURNS>void 		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint pos 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_anchor</NAME>
-<RETURNS>void 		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint posAnchor 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_cur_line</NAME>
-<RETURNS>gint 		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci, gint length, gchar *text 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_end_styled</NAME>
-<RETURNS>gint 		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_convert_eols</NAME>
-<RETURNS>void 		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint eolMode 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_eol_mode</NAME>
-<RETURNS>gint 		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_eol_mode</NAME>
-<RETURNS>void 		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint eolMode 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_start_styling</NAME>
-<RETURNS>void 		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint pos, gint mask 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_styling</NAME>
-<RETURNS>void 		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint length, gint style 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_buffered_draw</NAME>
-<RETURNS>gboolean 	</RETURNS>
+<RETURNS>gboolean </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_buffered_draw</NAME>
-<RETURNS>void 		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gboolean buffered 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_tab_width</NAME>
-<RETURNS>void 		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint tabWidth 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_tab_width</NAME>
-<RETURNS>gint 		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_code_page</NAME>
-<RETURNS>void 		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint codePage 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_use_palette</NAME>
-<RETURNS>void 		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gboolean usePalette 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_marker_define</NAME>
-<RETURNS>void 		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint markerNumber, gint markerSymbol 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_marker_set_fore</NAME>
-<RETURNS>void 		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint markerNumber, gint fore 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_marker_set_back</NAME>
-<RETURNS>void 		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint markerNumber, gint back 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_marker_add</NAME>
-<RETURNS>gint 		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci, gint line, gint markerNumber 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_marker_delete</NAME>
-<RETURNS>void 		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint line, gint markerNumber 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_marker_delete_all</NAME>
-<RETURNS>void 		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint markerNumber 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_marker_get</NAME>
-<RETURNS>gint 		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci, gint line 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_marker_next</NAME>
-<RETURNS>gint 		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci, gint lineStart, gint markerMask 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_marker_previous</NAME>
-<RETURNS>gint 		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci, gint lineStart, gint markerMask 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_marker_define_pixmap</NAME>
-<RETURNS>void 		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint markerNumber, const gchar *pixmap 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_marker_add_set</NAME>
-<RETURNS>void 		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint line, gint set 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_marker_set_alpha</NAME>
-<RETURNS>void 		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint markerNumber, gint alpha 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_margin_type_n</NAME>
-<RETURNS>void 		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint margin, gint marginType 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_margin_type_n</NAME>
-<RETURNS>gint 		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci, gint margin 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_margin_width_n</NAME>
-<RETURNS>void 		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint margin, gint pixelWidth 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_margin_width_n</NAME>
-<RETURNS>gint 		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci, gint margin 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_margin_mask_n</NAME>
-<RETURNS>void 		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint margin, gint mask 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_margin_mask_n</NAME>
-<RETURNS>gint 		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci, gint margin 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_margin_sensitive_n</NAME>
-<RETURNS>void 		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint margin, gboolean sensitive 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_margin_sensitive_n</NAME>
-<RETURNS>gboolean 	</RETURNS>
+<RETURNS>gboolean </RETURNS>
 GtkScintilla *sci, gint margin 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_style_clear_all</NAME>
-<RETURNS>void 		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_style_reset_default</NAME>
-<RETURNS>void 		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_sel_fore</NAME>
-<RETURNS>void 		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gboolean useSetting, gint fore 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_sel_back</NAME>
-<RETURNS>void 		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gboolean useSetting, gint back 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_sel_alpha</NAME>
-<RETURNS>gint 		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_sel_alpha</NAME>
-<RETURNS>void 		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint alpha 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_sel_eol_filled</NAME>
-<RETURNS>gboolean 	</RETURNS>
+<RETURNS>gboolean </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_sel_eol_filled</NAME>
-<RETURNS>void 		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gboolean filled 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_caret_fore</NAME>
-<RETURNS>void 		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint fore 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_assign_cmd_key</NAME>
-<RETURNS>void 		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gulong km, gint msg 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_clear_cmd_key</NAME>
-<RETURNS>void 		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gulong km 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_clear_all_cmd_keys</NAME>
-<RETURNS>void 		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_styling_ex</NAME>
-<RETURNS>void 		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint length, const gchar *styles 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_caret_period</NAME>
-<RETURNS>gint 		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_caret_period</NAME>
-<RETURNS>void 		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint periodMilliseconds 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_word_chars</NAME>
-<RETURNS>void 		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, const gchar *characters 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_begin_undo_action</NAME>
-<RETURNS>void 		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_end_undo_action</NAME>
-<RETURNS>void 		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_indic_set_style</NAME>
-<RETURNS>void 		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint indic, gint style 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_indic_get_style</NAME>
-<RETURNS>gint 		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci, gint indic 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_indic_set_fore</NAME>
-<RETURNS>void 		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint indic, gint fore 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_indic_get_fore</NAME>
-<RETURNS>gint 		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci, gint indic 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_indic_set_under</NAME>
-<RETURNS>void 		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint indic, gboolean under 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_indic_get_under</NAME>
-<RETURNS>gboolean 	</RETURNS>
+<RETURNS>gboolean </RETURNS>
 GtkScintilla *sci, gint indic 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_whitespace_fore</NAME>
-<RETURNS>void 		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gboolean useSetting, gint fore 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_whitespace_back</NAME>
-<RETURNS>void 		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gboolean useSetting, gint back 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_whitespace_size</NAME>
-<RETURNS>void 		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint size 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_whitespace_size</NAME>
-<RETURNS>gint 		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_style_bits</NAME>
-<RETURNS>void 		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, guchar bits 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_style_bits</NAME>
-<RETURNS>guchar 		</RETURNS>
+<RETURNS>guchar </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_line_state</NAME>
-<RETURNS>void 		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint line, gint state 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_line_state</NAME>
-<RETURNS>gint 		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci, gint line 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_max_line_state</NAME>
-<RETURNS>gint 		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_caret_line_visible</NAME>
-<RETURNS>gboolean 	</RETURNS>
+<RETURNS>gboolean </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_caret_line_visible</NAME>
-<RETURNS>void 		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gboolean show 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_caret_line_back</NAME>
-<RETURNS>gint 		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_caret_line_back</NAME>
-<RETURNS>void 		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint back 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_auto_completion_show</NAME>
-<RETURNS>void 		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint lenEntered, const gchar *itemList 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_auto_completion_cancel</NAME>
-<RETURNS>void 		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_auto_completion_active</NAME>
-<RETURNS>gboolean 	</RETURNS>
+<RETURNS>gboolean </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_auto_completion_pos_start</NAME>
-<RETURNS>gint 		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_auto_completion_complete</NAME>
-<RETURNS>void 		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_auto_completion_stops</NAME>
-<RETURNS>void 		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, const gchar *characterSet 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_auto_completion_set_separator</NAME>
-<RETURNS>void 		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint separatorCharacter 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_auto_completion_get_separator</NAME>
-<RETURNS>gint 		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_auto_completion_select</NAME>
-<RETURNS>void 		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, const gchar *text 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_auto_completion_set_cancel_at_start</NAME>
-<RETURNS>void 		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gboolean cancel 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_auto_completion_get_cancel_at_start</NAME>
-<RETURNS>gboolean 	</RETURNS>
+<RETURNS>gboolean </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_auto_completion_set_fill_ups</NAME>
-<RETURNS>void 		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, const gchar *characterSet 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_auto_completion_set_choose_single</NAME>
-<RETURNS>void 		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gboolean chooseSingle 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_auto_completion_get_choose_single</NAME>
-<RETURNS>gboolean 	</RETURNS>
+<RETURNS>gboolean </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_auto_completion_set_ignore_case</NAME>
-<RETURNS>void 		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gboolean ignoreCase 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_auto_completion_get_ignore_case</NAME>
-<RETURNS>gboolean 	</RETURNS>
+<RETURNS>gboolean </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_user_list_show</NAME>
-<RETURNS>void 		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint listType, const gchar *itemList 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_auto_completion_set_auto_hide</NAME>
-<RETURNS>void 		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gboolean autoHide 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_auto_completion_get_auto_hide</NAME>
-<RETURNS>gboolean 	</RETURNS>
+<RETURNS>gboolean </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_auto_completion_set_drop_rest_of_word</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gboolean dropRestOfWord 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_auto_completion_get_drop_rest_of_word</NAME>
-<RETURNS>gboolean 	</RETURNS>
+<RETURNS>gboolean </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_register_image</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint type, const gchar *xpmData 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_clear_registered_images</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_auto_completion_get_type_separator</NAME>
-<RETURNS>gint 		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_auto_completion_set_type_separator</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint separatorCharacter 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_auto_completion_set_max_width</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint characterCount 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_auto_completion_get_max_width</NAME>
-<RETURNS>gint 		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_auto_completion_set_max_height</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint rowCount 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_auto_completion_get_max_height</NAME>
-<RETURNS>gint 		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_indent</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint indentSize 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_indent</NAME>
-<RETURNS>gint 		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_use_tabs</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gboolean useTabs 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_use_tabs</NAME>
-<RETURNS>gboolean 	</RETURNS>
+<RETURNS>gboolean </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_line_indentation</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint line, gint indentSize 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_line_indentation</NAME>
-<RETURNS>gint 		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci, gint line 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_line_indent_position</NAME>
-<RETURNS>gint 		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci, gint line 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_column</NAME>
-<RETURNS>gint 		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci, gint pos 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_h_scroll_bar</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gboolean show 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_h_scroll_bar</NAME>
-<RETURNS>gboolean 	</RETURNS>
+<RETURNS>gboolean </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_indentation_guides</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint indentView 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_indentation_guides</NAME>
-<RETURNS>gint 		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_highlight_guide</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint column 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_highlight_guide</NAME>
-<RETURNS>gint 		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_line_end_position</NAME>
-<RETURNS>gint 		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci, gint line 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_code_page</NAME>
-<RETURNS>gint 		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_caret_fore</NAME>
-<RETURNS>gint 		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_use_palette</NAME>
-<RETURNS>gboolean 	</RETURNS>
+<RETURNS>gboolean </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_read_only</NAME>
-<RETURNS>gboolean 	</RETURNS>
+<RETURNS>gboolean </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_current_pos</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint pos 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_selection_start</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint pos 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_selection_start</NAME>
-<RETURNS>gint 		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_selection_end</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint pos 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_selection_end</NAME>
-<RETURNS>gint 		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_print_magnification</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint magnification 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_print_magnification</NAME>
-<RETURNS>gint 		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_print_colour_mode</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint mode 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_print_colour_mode</NAME>
-<RETURNS>gint 		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_find_text</NAME>
-<RETURNS>gboolean 	</RETURNS>
+<RETURNS>gboolean </RETURNS>
 GtkScintilla *sci, const gchar *pattern, gint search_start_pos, gint search_end_pos, gint *found_start_pos, gint *found_end_pos, gint flags 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_format_range</NAME>
-<RETURNS>gint 		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci, gboolean draw, struct Sci_RangeToFormat *fr 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_first_visible_line</NAME>
-<RETURNS>gint 		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_line</NAME>
-<RETURNS>gchar*</RETURNS>
+<RETURNS>gchar *</RETURNS>
 GtkScintilla *sci, guint line 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_line_count</NAME>
-<RETURNS>gint 		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_margin_left</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint pixelWidth 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_margin_left</NAME>
-<RETURNS>gint 		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_margin_right</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint pixelWidth 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_margin_right</NAME>
-<RETURNS>gint 		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_modify</NAME>
-<RETURNS>gboolean 	</RETURNS>
+<RETURNS>gboolean </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_sel</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint start, gint end 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_sel_text</NAME>
-<RETURNS>gint 		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci, gchar *text 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_text_range</NAME>
-<RETURNS>gchar*</RETURNS>
+<RETURNS>gchar *</RETURNS>
 GtkScintilla *sci, guint start_pos, gint end_pos 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_hide_selection</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gboolean normal 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_point_x_from_position</NAME>
-<RETURNS>gint 		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci, gint pos 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_point_y_from_position</NAME>
-<RETURNS>gint 		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci, gint pos 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_line_from_position</NAME>
-<RETURNS>gint 		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci, gint pos 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_position_from_line</NAME>
-<RETURNS>gint 		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci, gint line 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_line_scroll</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint columns, gint lines 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_scroll_caret</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_replace_selection</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, const gchar *text 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_read_only</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gboolean read_only 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_null</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_can_paste</NAME>
-<RETURNS>gboolean	</RETURNS>
+<RETURNS>gboolean </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_can_undo</NAME>
-<RETURNS>gboolean	</RETURNS>
+<RETURNS>gboolean </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_empty_undo_buffer</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_undo</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_cut</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_copy</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_paste</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_clear</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_text</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, const gchar *text 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_text</NAME>
-<RETURNS>gchar*</RETURNS>
+<RETURNS>gchar *</RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_text_length</NAME>
-<RETURNS>gint		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_direct_function</NAME>
-<RETURNS>gint		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_direct_pointer</NAME>
-<RETURNS>gint		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_overtype</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gboolean overtype 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_overtype</NAME>
-<RETURNS>gboolean	</RETURNS>
+<RETURNS>gboolean </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_caret_width</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint pixelWidth 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_caret_width</NAME>
-<RETURNS>gint		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_target_start</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint pos 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_target_start</NAME>
-<RETURNS>gint		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_target_end</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint pos 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_target_end</NAME>
-<RETURNS>gint		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_replace_target</NAME>
-<RETURNS>gint		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci, const gchar *text, gint length 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_replace_target_regex</NAME>
-<RETURNS>gint		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci, const gchar *text, gint length 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_search_in_target</NAME>
-<RETURNS>gint		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci, const gchar *text 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_search_flags</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint flags 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_search_flags</NAME>
-<RETURNS>gint		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_call_tip_show</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint pos, const gchar *definition 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_call_tip_cancel</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_call_tip_active</NAME>
-<RETURNS>gboolean	</RETURNS>
+<RETURNS>gboolean </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_call_tip_pos_start</NAME>
-<RETURNS>gint		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_call_tip_set_hlt</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint start, gint end 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_call_tip_set_back</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint back 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_call_tip_set_fore</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint fore 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_call_tip_set_fore_hlt</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint fore 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_call_tip_use_style</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint tabSize 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_visible_from_doc_line</NAME>
-<RETURNS>gint		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci, gint line 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_doc_line_from_visible</NAME>
-<RETURNS>gint		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci, gint lineDisplay 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_wrap_count</NAME>
-<RETURNS>gint		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci, gint line 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_fold_level</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint line, gint level 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_fold_level</NAME>
-<RETURNS>gint		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci, gint line 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_last_child</NAME>
-<RETURNS>gint		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci, gint line, gint level 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_fold_parent</NAME>
-<RETURNS>gint		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci, gint line 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_show_lines</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint lineStart, gint lineEnd 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_hide_lines</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint lineStart, gint lineEnd 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_line_visible</NAME>
-<RETURNS>gboolean	</RETURNS>
+<RETURNS>gboolean </RETURNS>
 GtkScintilla *sci, gint line 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_fold_expanded</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint line, gboolean expanded 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_fold_expanded</NAME>
-<RETURNS>gboolean	</RETURNS>
+<RETURNS>gboolean </RETURNS>
 GtkScintilla *sci, gint line 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_toggle_fold</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint line 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_ensure_visible</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint line 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_fold_flags</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint flags 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_ensure_visible_enforce_policy</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint line 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_tab_indents</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gboolean tabIndents 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_tab_indents</NAME>
-<RETURNS>gboolean	</RETURNS>
+<RETURNS>gboolean </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_backspace_unindents</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gboolean bsUnIndents 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_backspace_unindents</NAME>
-<RETURNS>gboolean	</RETURNS>
+<RETURNS>gboolean </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_mouse_dwell_time</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint periodMilliseconds 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_mouse_dwell_time</NAME>
-<RETURNS>gint		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_word_start_position</NAME>
-<RETURNS>gint		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci, gint pos, gboolean onlyWordCharacters 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_word_end_position</NAME>
-<RETURNS>gint		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci, gint pos, gboolean onlyWordCharacters 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_wrap_mode</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint mode 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_wrap_mode</NAME>
-<RETURNS>gint		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_wrap_visual_flags</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint wrapVisualFlags 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_wrap_visual_flags</NAME>
-<RETURNS>gint		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_wrap_visual_flags_location</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint wrapVisualFlagsLocation 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_wrap_visual_flags_location</NAME>
-<RETURNS>gint		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_wrap_start_indent</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint indent 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_wrap_start_indent</NAME>
-<RETURNS>gint		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_wrap_indent_mode</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint mode 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_wrap_indent_mode</NAME>
-<RETURNS>gint		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_layout_cache</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint mode 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_layout_cache</NAME>
-<RETURNS>gint		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_scroll_width</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint pixelWidth 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_scroll_width</NAME>
-<RETURNS>gint		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_scroll_width_tracking</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gboolean tracking 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_scroll_width_tracking</NAME>
-<RETURNS>gboolean	</RETURNS>
+<RETURNS>gboolean </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_text_width</NAME>
-<RETURNS>gint		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci, gint style, const gchar *text 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_end_at_last_line</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gboolean endAtLastLine 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_end_at_last_line</NAME>
-<RETURNS>gboolean	</RETURNS>
+<RETURNS>gboolean </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_text_height</NAME>
-<RETURNS>gint		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci, gint line 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_vscrollbar</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gboolean show 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_vscrollbar</NAME>
-<RETURNS>gboolean	</RETURNS>
+<RETURNS>gboolean </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_append_text</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, guint length, const gchar *text 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_two_phase_draw</NAME>
-<RETURNS>gboolean	</RETURNS>
+<RETURNS>gboolean </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_two_phase_draw</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gboolean twoPhase 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_font_quality</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint fontQuality 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_font_quality</NAME>
-<RETURNS>gint		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_first_visible_line</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint lineDisplay 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_multi_paste</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint multiPaste 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_multi_paste</NAME>
-<RETURNS>gint		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_tag</NAME>
-<RETURNS>gchar*</RETURNS>
+<RETURNS>gchar *</RETURNS>
 GtkScintilla *sci, gint tag_number 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_target_from_selection</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_lines_join</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_lines_split</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint pixelWidth 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_fold_margin_colour</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gboolean useSetting, gint back 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_fold_margin_hi_colour</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gboolean useSetting, gint fore 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_line_down</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_line_down_extend</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_line_up</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_line_up_extend</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_char_left</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_char_left_extend</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_char_right</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_char_right_extend</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_word_left</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_word_left_extend</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_word_right</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_word_right_extend</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_home</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_home_extend</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_line_end</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_line_end_extend</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_document_start</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_document_start_extend</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_document_end</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_document_end_extend</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_page_up</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_page_up_extend</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_page_down</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_page_down_extend</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_edit_toggle_overtype</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_cancel</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_delete_back</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_tab</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_back_tab</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_new_line</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_form_feed</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_visible_char_home</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_visible_char_home_extend</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_zoom_in</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_zoom_out</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_del_word_left</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_del_word_right</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_del_word_right_end</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_line_cut</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_line_delete</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_line_transpose</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_line_duplicate</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_lower_case</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_upper_case</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_line_scroll_down</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_line_scroll_up</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_delete_back_not_line</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_home_display</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_home_display_extend</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_line_end_display</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_line_end_display_extend</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_home_wrap</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_home_wrap_extend</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_line_end_wrap</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_line_end_wrap_extend</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_visible_char_home_wrap</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_visible_char_home_wrap_extend</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_line_copy</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_move_caret_inside_view</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_line_length</NAME>
-<RETURNS>gint		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci, gint line 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_brace_highlight</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint pos1, gint pos2 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_brace_bad_light</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint pos 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_brace_match</NAME>
-<RETURNS>gint		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci, gint pos 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_view_eol</NAME>
-<RETURNS>gboolean 	</RETURNS>
+<RETURNS>gboolean </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_view_eol</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gboolean visible 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_doc_pointer</NAME>
-<RETURNS>gint		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_doc_pointer</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint pointer 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_mod_event_mask</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint mask 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_edge_column</NAME>
-<RETURNS>gint		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_edge_column</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint column 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_edge_mode</NAME>
-<RETURNS>gint		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_edge_mode</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint mode 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_edge_colour</NAME>
-<RETURNS>gint		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_edge_colour</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint edgeColour 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_search_anchor</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_search_next</NAME>
-<RETURNS>gint		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci, const gchar *text, gint flags 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_search_previous</NAME>
-<RETURNS>gint		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci, const gchar *text, gint flags 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_lines_on_screen</NAME>
-<RETURNS>gint		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_use_pop_up</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gboolean allowPopUp 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_selection_is_rectangle</NAME>
-<RETURNS>gboolean 	</RETURNS>
+<RETURNS>gboolean </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_zoom</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint zoom 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_zoom</NAME>
-<RETURNS>gint		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_create_document</NAME>
-<RETURNS>gint		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_add_ref_document</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint doc 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_release_document</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint doc 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_mod_event_mask</NAME>
-<RETURNS>gint		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_focus</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gboolean focus 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_focus</NAME>
-<RETURNS>gboolean 	</RETURNS>
+<RETURNS>gboolean </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_status</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint statusCode 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_status</NAME>
-<RETURNS>gint		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_mouse_down_captures</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gboolean captures 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_mouse_down_captures</NAME>
-<RETURNS>gboolean 	</RETURNS>
+<RETURNS>gboolean </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_cursor</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint cursorType 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_cursor</NAME>
-<RETURNS>gint		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_control_char_symbol</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint symbol 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_control_char_symbol</NAME>
-<RETURNS>gint		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_word_part_left</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_word_part_left_extend</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_word_part_right</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_word_part_right_extend</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_visible_policy</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint visiblePolicy, gint visibleSlop 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_del_line_left</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_del_line_right</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_x_offset</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint newOffset 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_x_offset</NAME>
-<RETURNS>gint		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_choose_caret_x</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_grab_focus</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_x_caret_policy</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint caretPolicy, gint caretSlop 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_y_caret_policy</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint caretPolicy, gint caretSlop 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_print_wrap_mode</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint mode 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_print_wrap_mode</NAME>
-<RETURNS>gint		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_hotspot_active_fore</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gboolean useSetting, gint fore 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_hotspot_active_fore</NAME>
-<RETURNS>gint		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_hotspot_active_back</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gboolean useSetting, gint back 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_hotspot_active_back</NAME>
-<RETURNS>gint		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_hotspot_active_underline</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gboolean underline 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_hotspot_active_underline</NAME>
-<RETURNS>gboolean 	</RETURNS>
+<RETURNS>gboolean </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_hotspot_single_line</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gboolean singleLine 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_hotspot_single_line</NAME>
-<RETURNS>gboolean 	</RETURNS>
+<RETURNS>gboolean </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_para_down</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_para_down_extend</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_para_up</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_para_up_extend</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_position_before</NAME>
-<RETURNS>gint		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci, gint pos 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_position_after</NAME>
-<RETURNS>gint		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci, gint pos 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_copy_range</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint start, gint end 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_copy_text</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint length, const gchar *text 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_selection_mode</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint mode 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_selection_mode</NAME>
-<RETURNS>gint		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_line_sel_start_position</NAME>
-<RETURNS>gint		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci, gint line 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_line_sel_end_position</NAME>
-<RETURNS>gint		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci, gint line 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_line_down_rect_extend</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_line_up_rect_extend</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_char_left_rect_extend</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_char_right_rect_extend</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_home_rect_extend</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_visible_char_home_rect_extend</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_line_end_rect_extend</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_page_up_rect_extend</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_page_down_rect_extend</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_stuttered_page_up</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_stuttered_page_up_extend</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_stuttered_page_down</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_stuttered_page_down_extend</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_word_left_end</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_word_left_end_extend</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_word_right_end</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_word_right_end_extend</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_whitespace_chars</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, const gchar *characters 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_chars_default</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_auto_completion_get_current</NAME>
-<RETURNS>gint		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_auto_completion_get_current_text</NAME>
-<RETURNS>gint		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci, gchar *s 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_allocate</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, guint bytes 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_target_as_utf8</NAME>
-<RETURNS>gchar*</RETURNS>
+<RETURNS>gchar *</RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_encoded_from_utf8</NAME>
-<RETURNS>gchar*</RETURNS>
+<RETURNS>gchar *</RETURNS>
 GtkScintilla *sci, const gchar *utf8, gint bytes 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_find_column</NAME>
-<RETURNS>gint		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci, gint line, gint column 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_caret_sticky</NAME>
-<RETURNS>gint		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_caret_sticky</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint useCaretStickyBehaviour 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_toggle_caret_sticky</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_paste_convert_endings</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gboolean convert 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_paste_convert_endings</NAME>
-<RETURNS>gboolean 	</RETURNS>
+<RETURNS>gboolean </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_selection_duplicate</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_caret_line_back_alpha</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint alpha 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_caret_line_back_alpha</NAME>
-<RETURNS>gint		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_caret_style</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint caretStyle 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_caret_style</NAME>
-<RETURNS>gint		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_indicator_current</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint indicator 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_indicator_current</NAME>
-<RETURNS>gint		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_indicator_value</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint value 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_indicator_value</NAME>
-<RETURNS>gint		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_indicator_fill_range</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint position, gint fillLength 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_indicator_clear_range</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint position, gint clearLength 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_indicator_all_on_for</NAME>
-<RETURNS>gint		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci, gint position 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_indicator_value_at</NAME>
-<RETURNS>gint		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci, gint indicator, gint position 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_indicator_start</NAME>
-<RETURNS>gint		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci, gint indicator, gint position 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_indicator_end</NAME>
-<RETURNS>gint		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci, gint indicator, gint position 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_position_cache</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint size 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_position_cache</NAME>
-<RETURNS>gint		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_copy_allow_line</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_character_pointer</NAME>
-<RETURNS>gint		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_keys_unicode</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gboolean keysUnicode 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_keys_unicode</NAME>
-<RETURNS>gboolean 	</RETURNS>
+<RETURNS>gboolean </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_indic_set_alpha</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint indicator, gint alpha 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_indic_get_alpha</NAME>
-<RETURNS>gint		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci, gint indicator 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_extra_ascent</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint extraAscent 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_extra_ascent</NAME>
-<RETURNS>gint		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_extra_descent</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint extraDescent 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_extra_descent</NAME>
-<RETURNS>gint		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_marker_symbol_defined</NAME>
-<RETURNS>gint		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci, gint markerNumber 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_margin_set_text</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint line, const gchar *text 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_margin_get_text</NAME>
-<RETURNS>gint		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci, gint line, gchar *text 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_margin_set_style</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint line, gint style 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_margin_get_style</NAME>
-<RETURNS>gint		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci, gint line 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_margin_set_styles</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint line, const gchar *styles 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_margin_get_styles</NAME>
-<RETURNS>gint		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci, gint line, gchar *styles 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_margin_text_clear_all</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_margin_set_style_offset</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint style 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_margin_get_style_offset</NAME>
-<RETURNS>gint		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_annotation_set_text</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint line, const gchar *text 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_annotation_get_text</NAME>
-<RETURNS>gint		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci, gint line, gchar *text 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_annotation_set_style</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint line, gint style 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_annotation_get_style</NAME>
-<RETURNS>gint		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci, gint line 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_annotation_set_styles</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint line, const gchar *styles 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_annotation_get_styles</NAME>
-<RETURNS>gint		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci, gint line, gchar *styles 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_annotation_get_lines</NAME>
-<RETURNS>gint		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci, gint line 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_annotation_clear_all</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_annotation_set_visible</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint visible 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_annotation_get_visible</NAME>
-<RETURNS>gint		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_annotation_set_style_offset</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint style 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_annotation_get_style_offset</NAME>
-<RETURNS>gint		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_add_undo_action</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint token, gint flags 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_char_position_from_point</NAME>
-<RETURNS>gint		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci, gint x, gint y 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_char_position_from_point_close</NAME>
-<RETURNS>gint		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci, gint x, gint y 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_multiple_selection</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gboolean multipleSelection 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_multiple_selection</NAME>
-<RETURNS>gboolean 	</RETURNS>
+<RETURNS>gboolean </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_additional_selection_typing</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gboolean additionalSelectionTyping 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_additional_selection_typing</NAME>
-<RETURNS>gboolean 	</RETURNS>
+<RETURNS>gboolean </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_additional_carets_blink</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gboolean additionalCaretsBlink 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_additional_carets_blink</NAME>
-<RETURNS>gboolean 	</RETURNS>
+<RETURNS>gboolean </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_additional_carets_visible</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gboolean additionalCaretsBlink 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_additional_carets_visible</NAME>
-<RETURNS>gboolean 	</RETURNS>
+<RETURNS>gboolean </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_selections</NAME>
-<RETURNS>gint		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_clear_selections</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_selection</NAME>
-<RETURNS>gint		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci, gint caret, gint anchor 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_add_selection</NAME>
-<RETURNS>gint		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci, gint caret, gint anchor 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_main_selection</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint selection 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_main_selection</NAME>
-<RETURNS>gint		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_selection_n_caret</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint selection, gint pos 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_selection_n_caret</NAME>
-<RETURNS>gint		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci, gint selection 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_selection_n_anchor</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint selection, gint posAnchor 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_selection_n_anchor</NAME>
-<RETURNS>gint		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci, gint selection 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_selection_n_caret_virtual_space</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint selection, gint space 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_selection_n_caret_virtual_space</NAME>
-<RETURNS>gint		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci, gint selection 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_selection_n_anchor_virtual_space</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint selection, gint space 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_selection_n_anchor_virtual_space</NAME>
-<RETURNS>gint		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci, gint selection 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_selection_n_start</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint selection, gint pos 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_selection_n_start</NAME>
-<RETURNS>gint		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci, gint selection 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_selection_n_end</NAME>
-<RETURNS>gint		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci, gint selection 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_rectangular_selection_caret</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint pos 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_rectangular_selection_caret</NAME>
-<RETURNS>gint		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_rectangular_selection_anchor</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint posAnchor 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_rectangular_selection_anchor</NAME>
-<RETURNS>gint		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_rectangular_selection_caret_virtual_space</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint space 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_rectangular_selection_caret_virtual_space</NAME>
-<RETURNS>gint		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_rectangular_selection_anchor_virtual_space</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint space 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_rectangular_selection_anchor_virtual_space</NAME>
-<RETURNS>gint		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_virtual_space_options</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint virtualSpaceOptions 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_virtual_space_options</NAME>
-<RETURNS>gint		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_rectangular_selection_modifier</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint modifier 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_rectangular_selection_modifier</NAME>
-<RETURNS>gint		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_additional_sel_fore</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint fore 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_additional_sel_back</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint back 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_additional_sel_alpha</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint alpha 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_additional_sel_alpha</NAME>
-<RETURNS>gint		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_additional_caret_fore</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint fore 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_additional_caret_fore</NAME>
-<RETURNS>gint		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_rotate_selection</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_swap_main_anchor_caret</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_start_record</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_stop_record</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_lexer</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint lexer 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_lexer</NAME>
-<RETURNS>gint		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_colourise</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint start, gint end 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_lexer_property</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, const gchar *key, const gchar *value 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_keywords</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, gint keywordSet, const gchar *keyWords 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_set_lexer_language</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, const gchar *language 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_load_lexer_library</NAME>
-<RETURNS>void		</RETURNS>
+<RETURNS>void </RETURNS>
 GtkScintilla *sci, const gchar *path 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_lexer_property</NAME>
-<RETURNS>gint		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci, const gchar *key, gchar *buf 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_lexer_property_expanded</NAME>
-<RETURNS>gint		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci, const gchar *key, gchar *buf 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_lexer_property_int</NAME>
-<RETURNS>gint		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci, const gchar *key 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_style_bits_needed</NAME>
-<RETURNS>gint		</RETURNS>
+<RETURNS>gint </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_lexer_language</NAME>
-<RETURNS>gchar*</RETURNS>
+<RETURNS>gchar *</RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <MACRO>
@@ -3485,18 +3135,6 @@ typedef enum {
 	GTK_SCINTILLA_MARKER_OUTLINE_FOLDER=30,
 	GTK_SCINTILLA_MARKER_OUTLINE_FOLDEROPEN=31
 } GtkScintillaMarkerOutline;
-</ENUM>
-<ENUM>
-<NAME>GtkScintillaFoldStyle</NAME>
-typedef enum
-{
-	GTK_SCINTILLA_FOLD_STYLE_NONE=0,
-	GTK_SCINTILLA_FOLD_STYLE_ARROW,
-	GTK_SCINTILLA_FOLD_STYLE_BOX,
-	GTK_SCINTILLA_FOLD_STYLE_CIRCLE,
-	GTK_SCINTILLA_FOLD_STYLE_CUSTOM,
-	GTK_SCINTILLA_FOLD_STYLE_PLUS_MINUS
-} GtkScintillaFoldStyle;
 </ENUM>
 <ENUM>
 <NAME>GtkScintillaMarginType</NAME>
@@ -3821,7 +3459,7 @@ typedef enum {
 <ENUM>
 <NAME>GtkScintillaLexers</NAME>
 typedef enum {
-	GTK_SCINTILLA_LEXER_CONTAINER=0,
+	GTK_SCINTILLA_LEXER_CONTAINER=0, 
 	GTK_SCINTILLA_LEXER_NULL=1,
 	GTK_SCINTILLA_LEXER_PYTHON=2,
 	GTK_SCINTILLA_LEXER_CPP=3,
@@ -3923,7 +3561,7 @@ typedef enum {
 </ENUM>
 <ENUM>
 <NAME>GtkScintillaMessages</NAME>
-typedef enum
+typedef enum 
 {
 	GTK_SCINTILLA_MSG_START=2000,
 	GTK_SCINTILLA_MSG_OPTIONAL_START=3000,

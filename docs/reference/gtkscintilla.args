@@ -369,6 +369,16 @@
 </ARG>
 
 <ARG>
+<NAME>GtkScintilla::folding-enabled</NAME>
+<TYPE>gboolean</TYPE>
+<RANGE></RANGE>
+<FLAGS>rw</FLAGS>
+<NICK>Code folding enabled</NICK>
+<BLURB>Whether code folding is enabled and the fold margin is visible.</BLURB>
+<DEFAULT>TRUE</DEFAULT>
+</ARG>
+
+<ARG>
 <NAME>GtkScintilla::font-quality</NAME>
 <TYPE>gint</TYPE>
 <RANGE></RANGE>

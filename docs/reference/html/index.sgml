@@ -16,7 +16,6 @@
 <ANCHOR id="GtkScintillaPrivate" href="gtkscintilla/GtkScintilla.html#GtkScintillaPrivate">
 <ANCHOR id="SSM:CAPS" href="gtkscintilla/GtkScintilla.html#SSM:CAPS">
 <ANCHOR id="gtk-scintilla-new" href="gtkscintilla/GtkScintilla.html#gtk-scintilla-new">
-<ANCHOR id="gtk-scintilla-new-from-sci" href="gtkscintilla/GtkScintilla.html#gtk-scintilla-new-from-sci">
 <ANCHOR id="gtk-scintilla-get-property" href="gtkscintilla/GtkScintilla.html#gtk-scintilla-get-property">
 <ANCHOR id="gtk-scintilla-set-property" href="gtkscintilla/GtkScintilla.html#gtk-scintilla-set-property">
 <ANCHOR id="gtk-scintilla-send-message" href="gtkscintilla/GtkScintilla.html#gtk-scintilla-send-message">
@@ -614,6 +613,7 @@
 <ANCHOR id="GtkScintilla--first-visible-line" href="gtkscintilla/GtkScintilla.html#GtkScintilla--first-visible-line">
 <ANCHOR id="GtkScintilla--focus" href="gtkscintilla/GtkScintilla.html#GtkScintilla--focus">
 <ANCHOR id="GtkScintilla--fold-flags" href="gtkscintilla/GtkScintilla.html#GtkScintilla--fold-flags">
+<ANCHOR id="GtkScintilla--folding-enabled" href="gtkscintilla/GtkScintilla.html#GtkScintilla--folding-enabled">
 <ANCHOR id="GtkScintilla--font-quality" href="gtkscintilla/GtkScintilla.html#GtkScintilla--font-quality">
 <ANCHOR id="GtkScintilla--h-scroll-bar" href="gtkscintilla/GtkScintilla.html#GtkScintilla--h-scroll-bar">
 <ANCHOR id="GtkScintilla--highlight-guide" href="gtkscintilla/GtkScintilla.html#GtkScintilla--highlight-guide">

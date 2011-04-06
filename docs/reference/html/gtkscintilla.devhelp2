@@ -109,7 +109,6 @@
     <keyword type="struct" name="GtkScintillaPrivate" link="GtkScintilla.html#GtkScintillaPrivate"/>
     <keyword type="macro" name="SSM()" link="GtkScintilla.html#SSM:CAPS"/>
     <keyword type="function" name="gtk_scintilla_new ()" link="GtkScintilla.html#gtk-scintilla-new"/>
-    <keyword type="function" name="gtk_scintilla_new_from_sci ()" link="GtkScintilla.html#gtk-scintilla-new-from-sci"/>
     <keyword type="function" name="gtk_scintilla_get_property ()" link="GtkScintilla.html#gtk-scintilla-get-property"/>
     <keyword type="function" name="gtk_scintilla_set_property ()" link="GtkScintilla.html#gtk-scintilla-set-property"/>
     <keyword type="function" name="gtk_scintilla_send_message ()" link="GtkScintilla.html#gtk-scintilla-send-message"/>
@@ -706,6 +705,7 @@
     <keyword type="property" name="The &quot;first-visible-line&quot; property" link="GtkScintilla.html#GtkScintilla--first-visible-line"/>
     <keyword type="property" name="The &quot;focus&quot; property" link="GtkScintilla.html#GtkScintilla--focus"/>
     <keyword type="property" name="The &quot;fold-flags&quot; property" link="GtkScintilla.html#GtkScintilla--fold-flags"/>
+    <keyword type="property" name="The &quot;folding-enabled&quot; property" link="GtkScintilla.html#GtkScintilla--folding-enabled"/>
     <keyword type="property" name="The &quot;font-quality&quot; property" link="GtkScintilla.html#GtkScintilla--font-quality"/>
     <keyword type="property" name="The &quot;h-scroll-bar&quot; property" link="GtkScintilla.html#GtkScintilla--h-scroll-bar"/>
     <keyword type="property" name="The &quot;highlight-guide&quot; property" link="GtkScintilla.html#GtkScintilla--highlight-guide"/>
