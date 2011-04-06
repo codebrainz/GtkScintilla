@@ -1,4 +1,4 @@
-lib_LTLIBRARIES					=	libgtkscintilla-1.0.la 
+lib_LTLIBRARIES					=	libgtkscintilla-1.0.la
 
 libgtkscintilla_1_0_la_LDFLAGS	=	-version-info 0:0:0
 
@@ -9,7 +9,7 @@ libgtkscintilla_1_0_la_CPPFLAGS	=	-Ilexers \
 									-I$(top_builddir) \
 									@GTK_CFLAGS@ -DGTK -DSCI_LEXER \
 									-DGTK_SCINTILLA_DATADIR="\"$(pkgdatadir)\""
-								
+
 libgtkscintilla_1_0_la_LIBADD	=	@GTK_LIBS@
 
 library_includedir 				= 	$(includedir)/gtkscintilla-1.0/gtkscintilla
@@ -20,6 +20,9 @@ library_include_HEADERS			= 	$(top_builddir)/src/gtkscintilla.h \
 #									$(top_builddir)/src/properties.h
 #									$(top_builddir)/src/style-properties.h
 #									$(top_builddir)/src/signals.h
+
+autogen_sources = $(top_builddir)/src/enums.c
+autogen_headers = $(top_builddir)/src/enums.h
 
 scintilla_includedir			=	$(includedir)/gtkscintilla-1.0/scintilla
 scintilla_include_HEADERS		=	$(top_builddir)/scintilla/include/Scintilla.h \
@@ -152,8 +155,22 @@ libgtkscintilla_1_0_la_SOURCES	=	$(top_builddir)/src/gtkscintilla.c \
 									$(top_builddir)/src/accessors.c \
 									$(top_builddir)/src/functions.c \
 									$(top_builddir)/src/lexer.c \
+									$(autogen_sources) \
 									$(scintilla_sources)
 
+
+# stuff for glib-mkenums
+CLEANFILES      = $(autogen_sources) $(autogen_headers)
+
+EXTRA_DIST      = $(top_builddir)/src/enums.c.tpl \
+                  $(top_builddir)/src/enums.h.tpl
+
+$(top_builddir)/src/enums.c: $(top_builddir)/src/enums.c.tpl $(top_builddir)/src/enums.h $(library_include_HEADERS) Makefile
+	$(AM_V_GEN)$(GLIB_MKENUMS) --template $< \
+		$(library_include_HEADERS:%=$(top_builddir)/src/%) > $@
+$(top_builddir)/src/enums.h: $(top_builddir)/src/enums.h.tpl $(library_include_HEADERS) Makefile
+	$(AM_V_GEN)$(GLIB_MKENUMS) --template $< \
+		$(library_include_HEADERS:%=$(top_builddir)/src/%) > $@
 
 #-include $(INTROSPECTION_MAKEFILE)
 #INTROSPECTION_GIRS =
