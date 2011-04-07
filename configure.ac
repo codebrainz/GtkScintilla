@@ -25,10 +25,10 @@ GOBJECT_INTROSPECTION_CHECK([0.6.7])
 
 
 AC_CONFIG_HEADERS([config.h])
-AC_CONFIG_FILES([
-					gtkscintilla-1.0.pc
+AC_CONFIG_FILES([	gtkscintilla-1.0.pc
 					Makefile
-					build/Makefile
+					scintilla/Makefile
+					src/Makefile
 					demo/Makefile
 					docs/reference/Makefile])
 AC_OUTPUT

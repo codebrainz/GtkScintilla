@@ -4,7 +4,7 @@ DISTCHECK_CONFIGURE_FLAGS=--enable-gtk-doc --enable-introspection
 
 EXTRA_DIST = m4/introspection.m4
 
-SUBDIRS = build demo docs/reference
+SUBDIRS = scintilla src demo docs/reference
 
 pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = gtkscintilla-1.0.pc
