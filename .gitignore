@@ -66,6 +66,19 @@ demo/demo
 demo/demo2
 docs/reference/html/
 docs/reference/xml/
+docs/reference/gtkscintilla-decl-list.txt
+docs/reference/gtkscintilla-decl-list.txt.bak
+docs/reference/gtkscintilla-decl.txt
+docs/reference/gtkscintilla-decl.txt.bak
+docs/reference/gtkscintilla-undeclared.txt
+docs/reference/gtkscintilla-undocumented.txt
+docs/reference/gtkscintilla-unused.txt
+docs/reference/gtkscintilla.args
+docs/reference/gtkscintilla.hierarchy
+docs/reference/gtkscintilla.interfaces
+docs/reference/gtkscintilla.prerequisites
+docs/reference/gtkscintilla.signals
+
 
 m4/libtool.m4
 m4/ltoptions.m4
