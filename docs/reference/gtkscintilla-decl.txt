@@ -428,6 +428,18 @@ GtkScintilla *sci, struct SCNotification *notif
 #define GTK_SCINTILLA_DATADIR "/usr/local/share/gtkscintilla-1.0/"
 </MACRO>
 <MACRO>
+<NAME>GTK_SCINTILLA_FOLD_MARGIN_WIDTH_DEFAULT</NAME>
+#define GTK_SCINTILLA_FOLD_MARGIN_WIDTH_DEFAULT 12
+</MACRO>
+<MACRO>
+<NAME>GTK_SCINTILLA_FOLD_MARGIN_INDEX_DEFAULT</NAME>
+#define GTK_SCINTILLA_FOLD_MARGIN_INDEX_DEFAULT 2
+</MACRO>
+<MACRO>
+<NAME>GTK_SCINTILLA_FOLD_STYLE_DEFAULT</NAME>
+#define GTK_SCINTILLA_FOLD_STYLE_DEFAULT GTK_SCINTILLA_FOLD_STYLE_BOX
+</MACRO>
+<MACRO>
 <NAME>GTK_TYPE_SCINTILLA</NAME>
 #define GTK_TYPE_SCINTILLA				(gtk_scintilla_get_type())
 </MACRO>
@@ -576,14 +588,24 @@ GtkScintilla *self
 GtkScintilla *self, gboolean enabled 
 </FUNCTION>
 <FUNCTION>
+<NAME>gtk_scintilla_get_fold_style</NAME>
+<RETURNS>GtkScintillaFoldStyle </RETURNS>
+GtkScintilla *self 
+</FUNCTION>
+<FUNCTION>
+<NAME>gtk_scintilla_set_fold_style</NAME>
+<RETURNS>void 				</RETURNS>
+GtkScintilla *self, GtkScintillaFoldStyle fold_style 
+</FUNCTION>
+<FUNCTION>
 <NAME>gtk_scintilla_set_font</NAME>
 <RETURNS>void 				</RETURNS>
-GtkScintilla *self, gint style_number, const gchar *font_desc 
+GtkScintilla *self, const gchar *font_desc 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_font</NAME>
-<RETURNS>gchar*</RETURNS>
-GtkScintilla *self, gint style_number 
+<RETURNS>const gchar*</RETURNS>
+GtkScintilla *self 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_background_color</NAME>
@@ -3278,11 +3300,11 @@ GtkScintilla *sci
 <FUNCTION>
 <NAME>gtk_scintilla_set_lexer</NAME>
 <RETURNS>void		</RETURNS>
-GtkScintilla *sci, gint lexer 
+GtkScintilla *sci, GtkScintillaLexers lexer 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_lexer</NAME>
-<RETURNS>gint		</RETURNS>
+<RETURNS>GtkScintillaLexers </RETURNS>
 GtkScintilla *sci 
 </FUNCTION>
 <FUNCTION>
@@ -3312,8 +3334,8 @@ GtkScintilla *sci, const gchar *path
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_lexer_property</NAME>
-<RETURNS>gint		</RETURNS>
-GtkScintilla *sci, const gchar *key, gchar *buf 
+<RETURNS>gchar *</RETURNS>
+GtkScintilla *sci, const gchar *key 
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_scintilla_get_lexer_property_expanded</NAME>

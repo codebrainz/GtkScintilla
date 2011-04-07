@@ -21,6 +21,9 @@ GTK_SCINTILLA_LEXER_GET_CLASS
 PLAT_GTK
 GTK
 GTK_SCINTILLA_DATADIR
+GTK_SCINTILLA_FOLD_MARGIN_WIDTH_DEFAULT
+GTK_SCINTILLA_FOLD_MARGIN_INDEX_DEFAULT
+GTK_SCINTILLA_FOLD_STYLE_DEFAULT
 SCINTILLA_TYPE_OBJECT
 GtkScintilla
 GtkScintillaClass
@@ -36,6 +39,8 @@ gtk_scintilla_get_line_numbers_visible
 gtk_scintilla_set_line_numbers_visible
 gtk_scintilla_get_folding_enabled
 gtk_scintilla_set_folding_enabled
+gtk_scintilla_get_fold_style
+gtk_scintilla_set_fold_style
 gtk_scintilla_set_font
 gtk_scintilla_get_font
 gtk_scintilla_get_background_color

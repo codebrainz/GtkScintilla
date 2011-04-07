@@ -705,7 +705,9 @@
     <function name="The &quot;first-visible-line&quot; property" link="GtkScintilla.html#GtkScintilla--first-visible-line"/>
     <function name="The &quot;focus&quot; property" link="GtkScintilla.html#GtkScintilla--focus"/>
     <function name="The &quot;fold-flags&quot; property" link="GtkScintilla.html#GtkScintilla--fold-flags"/>
+    <function name="The &quot;fold-style&quot; property" link="GtkScintilla.html#GtkScintilla--fold-style"/>
     <function name="The &quot;folding-enabled&quot; property" link="GtkScintilla.html#GtkScintilla--folding-enabled"/>
+    <function name="The &quot;font&quot; property" link="GtkScintilla.html#GtkScintilla--font"/>
     <function name="The &quot;font-quality&quot; property" link="GtkScintilla.html#GtkScintilla--font-quality"/>
     <function name="The &quot;h-scroll-bar&quot; property" link="GtkScintilla.html#GtkScintilla--h-scroll-bar"/>
     <function name="The &quot;highlight-guide&quot; property" link="GtkScintilla.html#GtkScintilla--highlight-guide"/>

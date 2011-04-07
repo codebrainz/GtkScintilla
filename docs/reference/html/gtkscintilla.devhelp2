@@ -705,7 +705,9 @@
     <keyword type="property" name="The &quot;first-visible-line&quot; property" link="GtkScintilla.html#GtkScintilla--first-visible-line"/>
     <keyword type="property" name="The &quot;focus&quot; property" link="GtkScintilla.html#GtkScintilla--focus"/>
     <keyword type="property" name="The &quot;fold-flags&quot; property" link="GtkScintilla.html#GtkScintilla--fold-flags"/>
+    <keyword type="property" name="The &quot;fold-style&quot; property" link="GtkScintilla.html#GtkScintilla--fold-style"/>
     <keyword type="property" name="The &quot;folding-enabled&quot; property" link="GtkScintilla.html#GtkScintilla--folding-enabled"/>
+    <keyword type="property" name="The &quot;font&quot; property" link="GtkScintilla.html#GtkScintilla--font"/>
     <keyword type="property" name="The &quot;font-quality&quot; property" link="GtkScintilla.html#GtkScintilla--font-quality"/>
     <keyword type="property" name="The &quot;h-scroll-bar&quot; property" link="GtkScintilla.html#GtkScintilla--h-scroll-bar"/>
     <keyword type="property" name="The &quot;highlight-guide&quot; property" link="GtkScintilla.html#GtkScintilla--highlight-guide"/>
