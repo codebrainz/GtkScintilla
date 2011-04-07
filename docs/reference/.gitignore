@@ -1,0 +1,19 @@
+
+# GTK-DOC generated files in reference root
+/gtkscintilla-decl-list.txt
+/gtkscintilla-decl-list.txt.bak
+/gtkscintilla-decl.txt
+/gtkscintilla-decl.txt.bak
+/gtkscintilla-undeclared.txt
+/gtkscintilla-undocumented.txt
+/gtkscintilla-unused.txt
+/gtkscintilla.args
+/gtkscintilla.hierarchy
+/gtkscintilla.interfaces
+/gtkscintilla.prerequisites
+/gtkscintilla.signals
+/*.stamp
+
+# Generated documentation
+/html/
+/xml/
