@@ -129,12 +129,12 @@ libscintilla_la_SOURCES			=	src/PositionCache.cxx \
 									lexlib/CharacterSet.cxx \
 									lexlib/LexerNoExceptions.cxx
 
-scintilla_docsdir				=	$(docdir)/gtkscintilla-1.0/scintilla
+scintilla_docsdir				=	$(docdir)/scintilla
 scintilla_docs_DATA				=	License.txt \
 									README \
 									version.txt
 
-scintilla_helpdir				=	$(htmldir)/gtkscintilla-1.0/scintilla
+scintilla_helpdir				=	$(htmldir)/scintilla/html
 scintilla_help_DATA				=	doc/Design.html \
 									doc/Icons.html \
 									doc/Lexer.txt \

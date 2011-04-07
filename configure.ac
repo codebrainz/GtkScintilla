@@ -1,5 +1,5 @@
 AC_PREREQ([2.67])
-AC_INIT([gtkeditor], [1.0], [mbrush@leftclick.ca])
+AC_INIT([gtkscintilla], [1.0], [mbrush@leftclick.ca])
 AC_CONFIG_MACRO_DIR([m4])
 AM_INIT_AUTOMAKE([foreign silent-rules])
 AM_SILENT_RULES([yes])
