@@ -54,6 +54,6 @@ Thumbs.db
 
 # Misc/TODO
 *.log
-/data/
+/misc/
 /bindings/
 git_ignore_orig

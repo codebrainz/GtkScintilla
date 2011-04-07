@@ -1,0 +1,17 @@
+<glade-catalog name="gtkscintilla-1.0" library="libgtkscintilla-1.0.so" depends="gtk+">
+
+	<glade-widget-classes>
+
+		<glade-widget-class name="GtkScintilla" generic-name="scintilla"
+			title="Scintilla" icon-name="widget-gtk-textview"/>
+
+	</glade-widget-classes>
+
+	<glade-widget-group name="scintilla" title="Scintilla">
+
+		<glade-widget-class-ref name="GtkScintilla"/>
+
+	</glade-widget-group>
+
+</glade-catalog>
+
