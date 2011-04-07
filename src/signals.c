@@ -435,12 +435,18 @@ void gtk_scintilla_forward_signals(GtkScintilla *sci,
 						   (glong) notification->lParam);
 			break;
 		case SCN_MARGINCLICK:
+		{
+			gint linenum = gtk_scintilla_line_from_position(sci, notification->position);
+			gtk_scintilla_toggle_fold(sci, linenum);
+			//gtk_scintilla_ensure_visible_enforce_policy(sci, linenum);
+			//gtk_scintilla_goto_line(sci, linenum);
 			g_signal_emit (sci,
 						   _gtk_scintilla_signals[MARGIN_CLICK], 0,
 						   (gint) notification->modifiers,
 						   (gint) notification->position,
 						   (gint) notification->margin);
 			break;
+		}
 		case SCN_NEEDSHOWN:
 			g_signal_emit (sci,
 						   _gtk_scintilla_signals[NEED_SHOWN], 0,

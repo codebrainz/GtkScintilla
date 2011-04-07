@@ -19,6 +19,7 @@
  * MA 02110-1301, USA.
  */
 
+#include "gtkscintilla.h"
 #include "lexer.h"
 
 struct _GtkScintillaLexerPrivate
@@ -68,4 +69,5 @@ GObject *gtk_scintilla_lexer_new(void)
 {
 	return g_object_new(GTK_TYPE_SCINTILLA_LEXER, NULL);
 }
+
 

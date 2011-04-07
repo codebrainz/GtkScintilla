@@ -61,6 +61,9 @@ static void gtk_scintilla_finalize(GObject *object)
 
 	self = GTK_SCINTILLA(object);
 
+	if (self->priv->font != NULL)
+		g_free(self->priv->font);
+
 	G_OBJECT_CLASS(gtk_scintilla_parent_class)->finalize(object);
 }
 
@@ -75,8 +78,8 @@ static void gtk_scintilla_init(GtkScintilla *self)
 	self->priv->fold_style = GTK_SCINTILLA_FOLD_STYLE_NONE;
 	self->priv->folding_enabled = FALSE;
 
-	self->priv->fold_margin_index = 2;
-	self->priv->fold_margin_width = 16;
+	self->priv->fold_margin_index = GTK_SCINTILLA_FOLD_MARGIN_INDEX_DEFAULT;
+	self->priv->fold_margin_width = GTK_SCINTILLA_FOLD_MARGIN_WIDTH_DEFAULT;
 
 	/* connect internal signals */
 	g_signal_connect(self, "sci-notify", G_CALLBACK(on_sci_notify), NULL);
@@ -85,6 +88,7 @@ static void gtk_scintilla_init(GtkScintilla *self)
 	gtk_scintilla_set_line_numbers_visible(self, TRUE);
 	gtk_scintilla_set_folding_enabled(self, TRUE);
 	gtk_scintilla_set_fold_style(self, GTK_SCINTILLA_FOLD_STYLE_BOX);
+	gtk_scintilla_set_font(self, "Monospace 10");
 
     gtk_widget_show_all(GTK_WIDGET(self));
 }
@@ -185,14 +189,69 @@ static void configure_folding(GtkScintilla *sci)
 {
 	g_return_if_fail(sci != NULL);
 
-	if (sci->priv->folding_enabled)
+	gtk_scintilla_set_margin_width_n(sci, sci->priv->fold_margin_index, 0);
+
+	/* leave the fold margin hidden and return */
+	if (!sci->priv->folding_enabled || sci->priv->fold_style == GTK_SCINTILLA_FOLD_STYLE_NONE)
+		return;
+
+	/* set some lexer properties */
+	/* todo: use the new lexer.c classes */
+	gtk_scintilla_set_lexer_property(sci, "fold", "1");
+	gtk_scintilla_set_lexer_property(sci, "fold.compact", "0");
+	gtk_scintilla_set_lexer_property(sci, "fold.comment", "1");
+	gtk_scintilla_set_lexer_property(sci, "fold.preprocessor", "1");
+
+	gtk_scintilla_set_margin_type(sci, sci->priv->fold_margin_index,
+		GTK_SCINTILLA_MARGIN_TYPE_SYMBOL);
+	gtk_scintilla_set_margin_mask(sci, sci->priv->fold_margin_index,
+		GTK_SCINTILLA_MASK_FOLDERS);
+	gtk_scintilla_set_margin_width_n(sci, sci->priv->fold_margin_index,
+		sci->priv->fold_margin_width);
+
+	switch (sci->priv->fold_style)
 	{
-		/* todo: setup all the folding markers and stuff here */
-		gtk_scintilla_set_margin_width_n(sci, sci->priv->fold_margin_index,
-			sci->priv->fold_margin_width);
+		case GTK_SCINTILLA_FOLD_STYLE_BOX:
+			gtk_scintilla_marker_define(sci, GTK_SCINTILLA_MARKER_OUTLINE_FOLDEROPEN,
+				GTK_SCINTILLA_MARKER_SYMBOL_BOXMINUS);
+			gtk_scintilla_marker_define(sci, GTK_SCINTILLA_MARKER_OUTLINE_FOLDER,
+				GTK_SCINTILLA_MARKER_SYMBOL_BOXPLUS);
+			gtk_scintilla_marker_define(sci, GTK_SCINTILLA_MARKER_OUTLINE_FOLDERSUB,
+				GTK_SCINTILLA_MARKER_SYMBOL_VLINE);
+			gtk_scintilla_marker_define(sci, GTK_SCINTILLA_MARKER_OUTLINE_FOLDERTAIL,
+				GTK_SCINTILLA_MARKER_SYMBOL_LCORNER);
+			gtk_scintilla_marker_define(sci, GTK_SCINTILLA_MARKER_OUTLINE_FOLDEREND,
+				GTK_SCINTILLA_MARKER_SYMBOL_BOXPLUSCONNECTED);
+			gtk_scintilla_marker_define(sci, GTK_SCINTILLA_MARKER_OUTLINE_FOLDEROPENMID,
+				GTK_SCINTILLA_MARKER_SYMBOL_BOXMINUSCONNECTED);
+			gtk_scintilla_marker_define(sci, GTK_SCINTILLA_MARKER_OUTLINE_FOLDERMIDTAIL,
+				GTK_SCINTILLA_MARKER_SYMBOL_TCORNER);
+			break;
+		default:
+			g_debug("Fold style %d is not yet implemented.", sci->priv->fold_style);
+			break;
 	}
-	else
-		gtk_scintilla_set_margin_width_n(sci, sci->priv->fold_margin_index, 0);
+
+	/* should be with themes/styles, and better */
+	gint markers[] = {
+		SC_MARKNUM_FOLDEROPEN,
+		SC_MARKNUM_FOLDER,
+		SC_MARKNUM_FOLDERSUB,
+		SC_MARKNUM_FOLDERTAIL,
+		SC_MARKNUM_FOLDEREND,
+		SC_MARKNUM_FOLDEROPENMID,
+		SC_MARKNUM_FOLDERMIDTAIL
+	};
+	guint i;
+
+	for (i = 0; i < 7; i++)
+	{
+		SSM(sci, SCI_MARKERSETFORE, markers[i], 0xffffff);
+		SSM(sci, SCI_MARKERSETBACK, markers[i], 0x000000);
+	}
+
+	gtk_scintilla_set_fold_flags(sci, GTK_SCINTILLA_FOLD_FLAG_LINEAFTER_CONTRACTED);
+	gtk_scintilla_set_margin_sensitive(sci, sci->priv->fold_margin_index, TRUE);
 }
 
 
@@ -231,6 +290,60 @@ void gtk_scintilla_set_fold_style(GtkScintilla *self, GtkScintillaFoldStyle fold
 		gtk_scintilla_set_folding_enabled(self, FALSE);
 	else
 		configure_folding(self);
+}
+
+
+void gtk_scintilla_set_lexer (GtkScintilla *sci, GtkScintillaLexers lexer)
+{
+	scintilla_send_message(SCINTILLA(sci), SCI_SETLEXER, (uptr_t)lexer, 0);
+	configure_folding(sci);
+}
+
+GtkScintillaLexers gtk_scintilla_get_lexer (GtkScintilla *sci) {
+	return (gint)scintilla_send_message(SCINTILLA(sci), SCI_GETLEXER, 0, 0);
+}
+
+void gtk_scintilla_set_font (GtkScintilla *self, const gchar *font_desc)
+{
+	gint style, size;
+	gchar *font_name;
+	PangoFontDescription *pfd;
+
+	g_return_if_fail(self != NULL);
+	g_return_if_fail(font_desc != NULL);
+
+	if (self->priv->font != NULL)
+		g_free(self->priv->font);
+	self->priv->font = g_strdup(font_desc);
+
+	pfd = pango_font_description_from_string(font_desc);
+	size = pango_font_description_get_size(pfd) / PANGO_SCALE;
+	font_name = g_strdup_printf("!%s", pango_font_description_get_family(pfd));
+	pango_font_description_free(pfd);
+
+	for (style = 0; style <= STYLE_MAX; style++)
+	{
+		scintilla_send_message(SCINTILLA(self), SCI_STYLESETFONT, style, (sptr_t)font_name);
+		scintilla_send_message(SCINTILLA(self), SCI_STYLESETSIZE, style, size);
+	}
+
+	/* line number and braces */
+	/*
+	scintilla_send_message(SCINTILLA(self), SCI_STYLESETFONT, STYLE_LINENUMBER, (sptr_t)font_name);
+	scintilla_send_message(SCINTILLA(self), SCI_STYLESETSIZE, STYLE_LINENUMBER, size);
+	scintilla_send_message(SCINTILLA(self), SCI_STYLESETFONT, STYLE_BRACELIGHT, (sptr_t)font_name);
+	scintilla_send_message(SCINTILLA(self), SCI_STYLESETSIZE, STYLE_BRACELIGHT, size);
+	scintilla_send_message(SCINTILLA(self), SCI_STYLESETFONT, STYLE_BRACEBAD, (sptr_t)font_name);
+	scintilla_send_message(SCINTILLA(self), SCI_STYLESETSIZE, STYLE_BRACEBAD, size);
+	*/
+	g_free(font_name);
+	/* zoom to 100% to prevent confusion */
+	scintilla_send_message(SCINTILLA(self), SCI_ZOOMOUT, 0, 0);
+}
+
+const gchar* gtk_scintilla_get_font (GtkScintilla *self)
+{
+	return self->priv->font;
 }
 
 

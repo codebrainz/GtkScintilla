@@ -61,6 +61,11 @@ G_BEGIN_DECLS
 #define GTK_SCINTILLA_DATADIR "/usr/local/share/gtkscintilla-1.0/"
 #endif
 
+/* hard-coded defaults */
+#define GTK_SCINTILLA_FOLD_MARGIN_WIDTH_DEFAULT 12
+#define GTK_SCINTILLA_FOLD_MARGIN_INDEX_DEFAULT 2
+#define GTK_SCINTILLA_FOLD_STYLE_DEFAULT GTK_SCINTILLA_FOLD_STYLE_BOX
+
 #define GTK_TYPE_SCINTILLA				(gtk_scintilla_get_type())
 #define GTK_SCINTILLA(obj)				(G_TYPE_CHECK_INSTANCE_CAST((obj), GTK_TYPE_SCINTILLA, GtkScintilla))
 #define GTK_SCINTILLA_CLASS(klass)		(G_TYPE_CHECK_CLASS_CAST((klass), GTK_TYPE_SCINTILLA, GtkScintillaClass))
@@ -135,8 +140,10 @@ gboolean 			gtk_scintilla_get_line_numbers_visible	(GtkScintilla *self);
 void 				gtk_scintilla_set_line_numbers_visible	(GtkScintilla *self, gboolean visible);
 gboolean			gtk_scintilla_get_folding_enabled		(GtkScintilla *self);
 void				gtk_scintilla_set_folding_enabled		(GtkScintilla *self, gboolean enabled);
-void 				gtk_scintilla_set_font					(GtkScintilla *self, gint style_number, const gchar *font_desc);
-gchar*				gtk_scintilla_get_font					(GtkScintilla *self, gint style_number);
+GtkScintillaFoldStyle gtk_scintilla_get_fold_style			(GtkScintilla *self);
+void 				gtk_scintilla_set_fold_style			(GtkScintilla *self, GtkScintillaFoldStyle fold_style);
+void 				gtk_scintilla_set_font					(GtkScintilla *self, const gchar *font_desc);
+const gchar*		gtk_scintilla_get_font					(GtkScintilla *self);
 gchar*				gtk_scintilla_get_background_color		(GtkScintilla *self, gint style);
 void 				gtk_scintilla_set_background_color		(GtkScintilla *self, gint style, const gchar *color_spec);
 gchar*				gtk_scintilla_get_foreground_color		(GtkScintilla *self, gint style);
@@ -144,7 +151,6 @@ void 				gtk_scintilla_set_foreground_color		(GtkScintilla *self, gint style, co
 gchar*				int_to_color_spec						(gint int_color);
 gint				color_spec_to_int						(const gchar *color_spec);
 void 				gtk_scintilla_set_style   				(GtkScintilla *self, gint style_number, const gchar *font_spec, const gchar *fg_color, const gchar *bg_color);
-
 
 /* Scintilla Wrapper Function Prototypes */
 /* These functions are defined in functions.c */
@@ -680,14 +686,14 @@ void		gtk_scintilla_rotate_selection (GtkScintilla *sci);
 void		gtk_scintilla_swap_main_anchor_caret (GtkScintilla *sci);
 void		gtk_scintilla_start_record (GtkScintilla *sci);
 void		gtk_scintilla_stop_record (GtkScintilla *sci);
-void		gtk_scintilla_set_lexer (GtkScintilla *sci, gint lexer);
-gint		gtk_scintilla_get_lexer (GtkScintilla *sci);
+void		gtk_scintilla_set_lexer (GtkScintilla *sci, GtkScintillaLexers lexer);
+GtkScintillaLexers gtk_scintilla_get_lexer (GtkScintilla *sci);
 void		gtk_scintilla_colourise (GtkScintilla *sci, gint start, gint end);
 void		gtk_scintilla_set_lexer_property (GtkScintilla *sci, const gchar *key, const gchar *value);
 void		gtk_scintilla_set_keywords (GtkScintilla *sci, gint keywordSet, const gchar *keyWords);
 void		gtk_scintilla_set_lexer_language (GtkScintilla *sci, const gchar *language);
 void		gtk_scintilla_load_lexer_library (GtkScintilla *sci, const gchar *path);
-gint		gtk_scintilla_get_lexer_property (GtkScintilla *sci, const gchar *key, gchar *buf);
+gchar *gtk_scintilla_get_lexer_property(GtkScintilla *sci, const gchar *key);
 gint		gtk_scintilla_get_lexer_property_expanded (GtkScintilla *sci, const gchar *key, gchar *buf);
 gint		gtk_scintilla_get_lexer_property_int (GtkScintilla *sci, const gchar *key);
 gint		gtk_scintilla_get_style_bits_needed (GtkScintilla *sci);

@@ -698,12 +698,11 @@ void _gtk_scintilla_class_install_properties(GtkScintillaClass *klass)
 			G_PARAM_READWRITE);
 	g_object_class_install_property(object_class, PROP_FOLD_STYLE, pspec);
 
-	/*
 	pspec = g_param_spec_string("font",
 				"Font description",
 				"Gets/sets the font, as a string compatible with pango_font_description_from_string().",
 				NULL,
 				G_PARAM_READWRITE);
 	g_object_class_install_property(object_class, PROP_FONT, pspec);
-	*/
+
 }

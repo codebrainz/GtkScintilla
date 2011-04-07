@@ -127,8 +127,8 @@ void gtk_scintilla_marker_add_set (GtkScintilla *sci, gint line, gint set) {
 void gtk_scintilla_marker_set_alpha (GtkScintilla *sci, gint markerNumber, gint alpha) {
 	scintilla_send_message(SCINTILLA(sci), 2476, (uptr_t)markerNumber, (sptr_t)alpha);
 }
-void gtk_scintilla_set_margin_type_n (GtkScintilla *sci, gint margin, gint marginType) {
-	scintilla_send_message(SCINTILLA(sci), 2240, (uptr_t)margin, (sptr_t)marginType);
+void gtk_scintilla_set_margin_type(GtkScintilla *sci, gint margin, GtkScintillaMarginType marginType) {
+	scintilla_send_message(SCINTILLA(sci), SCI_SETMARGINTYPEN, (uptr_t)margin, (sptr_t)marginType);
 }
 gint gtk_scintilla_get_margin_type_n (GtkScintilla *sci, gint margin) {
 	return (gint)scintilla_send_message(SCINTILLA(sci), 2241, (uptr_t)margin, 0);
@@ -139,16 +139,16 @@ void gtk_scintilla_set_margin_width_n (GtkScintilla *sci, gint margin, gint pixe
 gint gtk_scintilla_get_margin_width_n (GtkScintilla *sci, gint margin) {
 	return (gint)scintilla_send_message(SCINTILLA(sci), 2243, (uptr_t)margin, 0);
 }
-void gtk_scintilla_set_margin_mask_n (GtkScintilla *sci, gint margin, gint mask) {
+void gtk_scintilla_set_margin_mask(GtkScintilla *sci, gint margin, gint mask) {
 	scintilla_send_message(SCINTILLA(sci), 2244, (uptr_t)margin, (sptr_t)mask);
 }
-gint gtk_scintilla_get_margin_mask_n (GtkScintilla *sci, gint margin) {
+gint gtk_scintilla_get_margin_mask(GtkScintilla *sci, gint margin) {
 	return (gint)scintilla_send_message(SCINTILLA(sci), 2245, (uptr_t)margin, 0);
 }
-void gtk_scintilla_set_margin_sensitive_n (GtkScintilla *sci, gint margin, gboolean sensitive) {
+void gtk_scintilla_set_margin_sensitive (GtkScintilla *sci, gint margin, gboolean sensitive) {
 	scintilla_send_message(SCINTILLA(sci), 2246, (uptr_t)margin, (sptr_t)sensitive);
 }
-gboolean gtk_scintilla_get_margin_sensitive_n (GtkScintilla *sci, gint margin) {
+gboolean gtk_scintilla_get_margin_sensitive (GtkScintilla *sci, gint margin) {
 	return (gboolean)scintilla_send_message(SCINTILLA(sci), 2247, (uptr_t)margin, 0);
 }
 void gtk_scintilla_set_sel_fore (GtkScintilla *sci, gboolean useSetting, gint fore) {
@@ -1478,19 +1478,45 @@ void gtk_scintilla_start_record (GtkScintilla *sci) {
 void gtk_scintilla_stop_record (GtkScintilla *sci) {
 	scintilla_send_message(SCINTILLA(sci), 3002, 0, 0);
 }
-void gtk_scintilla_set_lexer (GtkScintilla *sci, gint lexer) {
-	scintilla_send_message(SCINTILLA(sci), 4001, (uptr_t)lexer, 0);
-}
-gint gtk_scintilla_get_lexer (GtkScintilla *sci) {
-	return (gint)scintilla_send_message(SCINTILLA(sci), 4002, 0, 0);
-}
 void gtk_scintilla_colourise (GtkScintilla *sci, gint start, gint end) {
 	scintilla_send_message(SCINTILLA(sci), 4003, (uptr_t)start, (sptr_t)end);
 }
-void gtk_scintilla_set_lexer_property (GtkScintilla *sci, const gchar *key, const gchar *value) {
-	scintilla_send_message(SCINTILLA(sci), 4004, (uptr_t)key, (sptr_t)value);
+
+void gtk_scintilla_set_lexer_property(GtkScintilla *sci, const gchar *key, const gchar *value)
+{
+	scintilla_send_message(SCINTILLA(sci), SCI_SETPROPERTY, (uptr_t)key, (sptr_t)value);
 }
-void gtk_scintilla_set_keywords (GtkScintilla *sci, gint keywordSet, const gchar *keyWords) {
+
+
+gchar *gtk_scintilla_get_lexer_property(GtkScintilla *sci, const gchar *key)
+{
+	gint len;
+	gchar *tmp;
+
+	len = (gint)scintilla_send_message(SCINTILLA(sci), SCI_GETPROPERTY, (sptr_t)key, 0);
+
+	tmp = g_malloc0(len + 1);
+	if (tmp == NULL)
+	{
+		g_debug("Unable to store value of property '%s'.", key);
+		return NULL;
+	}
+
+	len = (gint)scintilla_send_message(SCINTILLA(sci), SCI_GETPROPERTY, (sptr_t)key, (sptr_t)tmp);
+	if (len == 0 && strcmp(tmp, ""))
+	{
+		g_debug("Unable to find property '%s'.", key);
+		g_free(tmp);
+		return NULL;
+	}
+
+	return tmp;
+}
+
+
+
+void gtk_scintilla_set_keywords (GtkScintilla *sci, gint keywordSet, const gchar *keyWords)
+{
 	scintilla_send_message(SCINTILLA(sci), 4005, (uptr_t)keywordSet, (sptr_t)keyWords);
 }
 void gtk_scintilla_set_lexer_language (GtkScintilla *sci, const gchar *language) {
@@ -1498,9 +1524,6 @@ void gtk_scintilla_set_lexer_language (GtkScintilla *sci, const gchar *language)
 }
 void gtk_scintilla_load_lexer_library (GtkScintilla *sci, const gchar *path) {
 	scintilla_send_message(SCINTILLA(sci), 4007, 0, (sptr_t)path);
-}
-gint gtk_scintilla_get_lexer_property (GtkScintilla *sci, const gchar *key, gchar *buf) {
-	return (gint)scintilla_send_message(SCINTILLA(sci), 4008, (uptr_t)key, (sptr_t)buf);
 }
 gint gtk_scintilla_get_lexer_property_expanded (GtkScintilla *sci, const gchar *key, gchar *buf) {
 	return (gint)scintilla_send_message(SCINTILLA(sci), 4009, (uptr_t)key, (sptr_t)buf);
@@ -1518,5 +1541,3 @@ gchar *gtk_scintilla_get_lexer_language (GtkScintilla *sci) {
 	scintilla_send_message(SCINTILLA(sci), 4012, 0, (sptr_t)tmp);
 	return tmp;
 }
-
-

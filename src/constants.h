@@ -23,6 +23,7 @@ G_BEGIN_DECLS
 #define GTK_SCINTILLA_KEYWORDSET_MAX 8
 #define GTK_SCINTILLA_MODEVENTMASKALL 0x7FFFF
 
+
 /**
  * GtkScintillaUpdateFlag:
  * @GTK_SCINTILLA_UPDATE_CONTENT:	Contents, styling or markers have been

@@ -335,11 +335,9 @@ void gtk_scintilla_get_property(GObject *object, guint property_id, GValue *valu
 		case PROP_FOLD_STYLE:
 			g_value_set_enum(value, gtk_scintilla_get_fold_style(self));
 			break;
-		/*
 		case PROP_FONT:
 			g_value_set_static_string(value, gtk_scintilla_get_font(self));
 			break;
-		*/
 
 		default:
 			G_OBJECT_WARN_INVALID_PROPERTY_ID(object, property_id, pspec);
@@ -660,11 +658,9 @@ void gtk_scintilla_set_property(GObject *object, guint property_id, const GValue
 		case PROP_FOLD_STYLE:
 			gtk_scintilla_set_fold_style(self, g_value_get_enum(value));
 			break;
-		/*
 		case PROP_FONT:
 			gtk_scintilla_set_font(self, g_value_get_string(value));
 			break;
-		*/
 		default:
 			G_OBJECT_WARN_INVALID_PROPERTY_ID(object, property_id, pspec);
 			break;
