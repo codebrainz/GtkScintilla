@@ -1,9 +1,6 @@
 <?xml version="1.0"?>
 <api version="1.0">
 	<namespace name="GtkScintilla">
-		<function name="Scintilla_LinkLexers" symbol="Scintilla_LinkLexers">
-			<return-type type="int"/>
-		</function>
 		<function name="color_spec_to_int" symbol="color_spec_to_int">
 			<return-type type="gint"/>
 			<parameters>
@@ -16,40 +13,6 @@
 				<parameter name="int_color" type="gint"/>
 			</parameters>
 		</function>
-		<function name="scintilla_get_type" symbol="scintilla_get_type">
-			<return-type type="GType"/>
-		</function>
-		<function name="scintilla_new" symbol="scintilla_new">
-			<return-type type="GtkWidget*"/>
-		</function>
-		<function name="scintilla_release_resources" symbol="scintilla_release_resources">
-			<return-type type="void"/>
-		</function>
-		<function name="scintilla_send_message" symbol="scintilla_send_message">
-			<return-type type="sptr_t"/>
-			<parameters>
-				<parameter name="sci" type="ScintillaObject*"/>
-				<parameter name="iMessage" type="unsigned"/>
-				<parameter name="wParam" type="uptr_t"/>
-				<parameter name="lParam" type="sptr_t"/>
-			</parameters>
-		</function>
-		<function name="scintilla_set_id" symbol="scintilla_set_id">
-			<return-type type="void"/>
-			<parameters>
-				<parameter name="sci" type="ScintillaObject*"/>
-				<parameter name="id" type="uptr_t"/>
-			</parameters>
-		</function>
-		<callback name="SciFnDirect">
-			<return-type type="sptr_t"/>
-			<parameters>
-				<parameter name="ptr" type="sptr_t"/>
-				<parameter name="iMessage" type="unsigned"/>
-				<parameter name="wParam" type="uptr_t"/>
-				<parameter name="lParam" type="sptr_t"/>
-			</parameters>
-		</callback>
 		<struct name="GtkScintilla">
 			<method name="add_ref_document" symbol="gtk_scintilla_add_ref_document">
 				<return-type type="void"/>
@@ -182,6 +145,9 @@
 					<parameter name="sci" type="GtkScintilla*"/>
 					<parameter name="visible" type="gint"/>
 				</parameters>
+			</method>
+			<method name="annotation_visible_get_type" symbol="gtk_scintilla_annotation_visible_get_type">
+				<return-type type="GType"/>
 			</method>
 			<method name="append_text" symbol="gtk_scintilla_append_text">
 				<return-type type="void"/>
@@ -502,6 +468,18 @@
 					<parameter name="sci" type="GtkScintilla*"/>
 				</parameters>
 			</method>
+			<method name="caret_policy_get_type" symbol="gtk_scintilla_caret_policy_get_type">
+				<return-type type="GType"/>
+			</method>
+			<method name="caret_sticky_get_type" symbol="gtk_scintilla_caret_sticky_get_type">
+				<return-type type="GType"/>
+			</method>
+			<method name="caret_style_get_type" symbol="gtk_scintilla_caret_style_get_type">
+				<return-type type="GType"/>
+			</method>
+			<method name="case_get_type" symbol="gtk_scintilla_case_get_type">
+				<return-type type="GType"/>
+			</method>
 			<method name="char_left" symbol="gtk_scintilla_char_left">
 				<return-type type="void"/>
 				<parameters>
@@ -553,6 +531,9 @@
 				<parameters>
 					<parameter name="sci" type="GtkScintilla*"/>
 				</parameters>
+			</method>
+			<method name="character_set_get_type" symbol="gtk_scintilla_character_set_get_type">
+				<return-type type="GType"/>
 			</method>
 			<method name="choose_caret_x" symbol="gtk_scintilla_choose_caret_x">
 				<return-type type="void"/>
@@ -652,6 +633,9 @@
 					<parameter name="sci" type="GtkScintilla*"/>
 				</parameters>
 			</method>
+			<method name="cursor_shape_get_type" symbol="gtk_scintilla_cursor_shape_get_type">
+				<return-type type="GType"/>
+			</method>
 			<method name="cut" symbol="gtk_scintilla_cut">
 				<return-type type="void"/>
 				<parameters>
@@ -731,6 +715,9 @@
 					<parameter name="sci" type="GtkScintilla*"/>
 				</parameters>
 			</method>
+			<method name="edge_visual_style_get_type" symbol="gtk_scintilla_edge_visual_style_get_type">
+				<return-type type="GType"/>
+			</method>
 			<method name="edit_toggle_overtype" symbol="gtk_scintilla_edit_toggle_overtype">
 				<return-type type="void"/>
 				<parameters>
@@ -750,6 +737,9 @@
 					<parameter name="utf8" type="gchar*"/>
 					<parameter name="bytes" type="gint"/>
 				</parameters>
+			</method>
+			<method name="end_of_line_get_type" symbol="gtk_scintilla_end_of_line_get_type">
+				<return-type type="GType"/>
 			</method>
 			<method name="end_undo_action" symbol="gtk_scintilla_end_undo_action">
 				<return-type type="void"/>
@@ -779,6 +769,9 @@
 					<parameter name="column" type="gint"/>
 				</parameters>
 			</method>
+			<method name="find_option_get_type" symbol="gtk_scintilla_find_option_get_type">
+				<return-type type="GType"/>
+			</method>
 			<method name="find_text" symbol="gtk_scintilla_find_text">
 				<return-type type="gboolean"/>
 				<parameters>
@@ -790,6 +783,18 @@
 					<parameter name="found_end_pos" type="gint*"/>
 					<parameter name="flags" type="gint"/>
 				</parameters>
+			</method>
+			<method name="fold_flag_get_type" symbol="gtk_scintilla_fold_flag_get_type">
+				<return-type type="GType"/>
+			</method>
+			<method name="fold_level_get_type" symbol="gtk_scintilla_fold_level_get_type">
+				<return-type type="GType"/>
+			</method>
+			<method name="fold_style_get_type" symbol="gtk_scintilla_fold_style_get_type">
+				<return-type type="GType"/>
+			</method>
+			<method name="font_quality_get_type" symbol="gtk_scintilla_font_quality_get_type">
+				<return-type type="GType"/>
 			</method>
 			<method name="form_feed" symbol="gtk_scintilla_form_feed">
 				<return-type type="void"/>
@@ -1059,11 +1064,22 @@
 					<parameter name="line" type="gint"/>
 				</parameters>
 			</method>
+			<method name="get_fold_style" symbol="gtk_scintilla_get_fold_style">
+				<return-type type="GtkScintillaFoldStyle"/>
+				<parameters>
+					<parameter name="self" type="GtkScintilla*"/>
+				</parameters>
+			</method>
+			<method name="get_folding_enabled" symbol="gtk_scintilla_get_folding_enabled">
+				<return-type type="gboolean"/>
+				<parameters>
+					<parameter name="self" type="GtkScintilla*"/>
+				</parameters>
+			</method>
 			<method name="get_font" symbol="gtk_scintilla_get_font">
 				<return-type type="gchar*"/>
 				<parameters>
 					<parameter name="self" type="GtkScintilla*"/>
-					<parameter name="style_number" type="gint"/>
 				</parameters>
 			</method>
 			<method name="get_font_quality" symbol="gtk_scintilla_get_font_quality">
@@ -1166,7 +1182,7 @@
 				</parameters>
 			</method>
 			<method name="get_lexer" symbol="gtk_scintilla_get_lexer">
-				<return-type type="gint"/>
+				<return-type type="GtkScintillaLexers"/>
 				<parameters>
 					<parameter name="sci" type="GtkScintilla*"/>
 				</parameters>
@@ -1178,11 +1194,10 @@
 				</parameters>
 			</method>
 			<method name="get_lexer_property" symbol="gtk_scintilla_get_lexer_property">
-				<return-type type="gint"/>
+				<return-type type="gchar*"/>
 				<parameters>
 					<parameter name="sci" type="GtkScintilla*"/>
 					<parameter name="key" type="gchar*"/>
-					<parameter name="buf" type="gchar*"/>
 				</parameters>
 			</method>
 			<method name="get_lexer_property_expanded" symbol="gtk_scintilla_get_lexer_property_expanded">
@@ -1803,6 +1818,9 @@
 					<parameter name="sci" type="GtkScintilla*"/>
 				</parameters>
 			</method>
+			<method name="indent_view_get_type" symbol="gtk_scintilla_indent_view_get_type">
+				<return-type type="GType"/>
+			</method>
 			<method name="indic_get_alpha" symbol="gtk_scintilla_indic_get_alpha">
 				<return-type type="gint"/>
 				<parameters>
@@ -1902,6 +1920,9 @@
 					<parameter name="position" type="gint"/>
 				</parameters>
 			</method>
+			<method name="indicator_style_get_type" symbol="gtk_scintilla_indicator_style_get_type">
+				<return-type type="GType"/>
+			</method>
 			<method name="indicator_value_at" symbol="gtk_scintilla_indicator_value_at">
 				<return-type type="gint"/>
 				<parameters>
@@ -1917,6 +1938,18 @@
 					<parameter name="pos" type="gint"/>
 					<parameter name="text" type="gchar*"/>
 				</parameters>
+			</method>
+			<method name="key_mod_get_type" symbol="gtk_scintilla_key_mod_get_type">
+				<return-type type="GType"/>
+			</method>
+			<method name="keys_get_type" symbol="gtk_scintilla_keys_get_type">
+				<return-type type="GType"/>
+			</method>
+			<method name="lexers_get_type" symbol="gtk_scintilla_lexers_get_type">
+				<return-type type="GType"/>
+			</method>
+			<method name="line_cache_get_type" symbol="gtk_scintilla_line_cache_get_type">
+				<return-type type="GType"/>
 			</method>
 			<method name="line_copy" symbol="gtk_scintilla_line_copy">
 				<return-type type="void"/>
@@ -2158,6 +2191,9 @@
 					<parameter name="sci" type="GtkScintilla*"/>
 				</parameters>
 			</method>
+			<method name="margin_type_get_type" symbol="gtk_scintilla_margin_type_get_type">
+				<return-type type="GType"/>
+			</method>
 			<method name="marker_add" symbol="gtk_scintilla_marker_add">
 				<return-type type="gint"/>
 				<parameters>
@@ -2234,6 +2270,9 @@
 					<parameter name="markerMask" type="gint"/>
 				</parameters>
 			</method>
+			<method name="marker_outline_get_type" symbol="gtk_scintilla_marker_outline_get_type">
+				<return-type type="GType"/>
+			</method>
 			<method name="marker_previous" symbol="gtk_scintilla_marker_previous">
 				<return-type type="gint"/>
 				<parameters>
@@ -2273,11 +2312,23 @@
 					<parameter name="markerNumber" type="gint"/>
 				</parameters>
 			</method>
+			<method name="marker_symbol_get_type" symbol="gtk_scintilla_marker_symbol_get_type">
+				<return-type type="GType"/>
+			</method>
+			<method name="messages_get_type" symbol="gtk_scintilla_messages_get_type">
+				<return-type type="GType"/>
+			</method>
+			<method name="modification_flags_get_type" symbol="gtk_scintilla_modification_flags_get_type">
+				<return-type type="GType"/>
+			</method>
 			<method name="move_caret_inside_view" symbol="gtk_scintilla_move_caret_inside_view">
 				<return-type type="void"/>
 				<parameters>
 					<parameter name="sci" type="GtkScintilla*"/>
 				</parameters>
+			</method>
+			<method name="multi_paste_get_type" symbol="gtk_scintilla_multi_paste_get_type">
+				<return-type type="GType"/>
 			</method>
 			<method name="new" symbol="gtk_scintilla_new">
 				<return-type type="GtkWidget*"/>
@@ -2411,6 +2462,9 @@
 					<parameter name="y" type="gint"/>
 				</parameters>
 			</method>
+			<method name="print_option_get_type" symbol="gtk_scintilla_print_option_get_type">
+				<return-type type="GType"/>
+			</method>
 			<method name="redo" symbol="gtk_scintilla_redo">
 				<return-type type="void"/>
 				<parameters>
@@ -2431,9 +2485,6 @@
 					<parameter name="sci" type="GtkScintilla*"/>
 					<parameter name="doc" type="gint"/>
 				</parameters>
-			</method>
-			<method name="release_resources" symbol="gtk_scintilla_release_resources">
-				<return-type type="void"/>
 			</method>
 			<method name="replace_selection" symbol="gtk_scintilla_replace_selection">
 				<return-type type="void"/>
@@ -2476,6 +2527,9 @@
 					<parameter name="sci" type="GtkScintilla*"/>
 				</parameters>
 			</method>
+			<method name="search_flag_get_type" symbol="gtk_scintilla_search_flag_get_type">
+				<return-type type="GType"/>
+			</method>
 			<method name="search_in_target" symbol="gtk_scintilla_search_in_target">
 				<return-type type="gint"/>
 				<parameters>
@@ -2516,6 +2570,9 @@
 				<parameters>
 					<parameter name="sci" type="GtkScintilla*"/>
 				</parameters>
+			</method>
+			<method name="selection_mode_get_type" symbol="gtk_scintilla_selection_mode_get_type">
+				<return-type type="GType"/>
 			</method>
 			<method name="send_message" symbol="gtk_scintilla_send_message">
 				<return-type type="glong"/>
@@ -2803,11 +2860,24 @@
 					<parameter name="fore" type="gint"/>
 				</parameters>
 			</method>
+			<method name="set_fold_style" symbol="gtk_scintilla_set_fold_style">
+				<return-type type="void"/>
+				<parameters>
+					<parameter name="self" type="GtkScintilla*"/>
+					<parameter name="fold_style" type="GtkScintillaFoldStyle"/>
+				</parameters>
+			</method>
+			<method name="set_folding_enabled" symbol="gtk_scintilla_set_folding_enabled">
+				<return-type type="void"/>
+				<parameters>
+					<parameter name="self" type="GtkScintilla*"/>
+					<parameter name="enabled" type="gboolean"/>
+				</parameters>
+			</method>
 			<method name="set_font" symbol="gtk_scintilla_set_font">
 				<return-type type="void"/>
 				<parameters>
 					<parameter name="self" type="GtkScintilla*"/>
-					<parameter name="style_number" type="gint"/>
 					<parameter name="font_desc" type="gchar*"/>
 				</parameters>
 			</method>
@@ -2870,13 +2940,6 @@
 					<parameter name="singleLine" type="gboolean"/>
 				</parameters>
 			</method>
-			<method name="set_id" symbol="gtk_scintilla_set_id">
-				<return-type type="void"/>
-				<parameters>
-					<parameter name="self" type="GtkScintilla*"/>
-					<parameter name="id" type="gshort"/>
-				</parameters>
-			</method>
 			<method name="set_indent" symbol="gtk_scintilla_set_indent">
 				<return-type type="void"/>
 				<parameters>
@@ -2931,7 +2994,7 @@
 				<return-type type="void"/>
 				<parameters>
 					<parameter name="sci" type="GtkScintilla*"/>
-					<parameter name="lexer" type="gint"/>
+					<parameter name="lexer" type="GtkScintillaLexers"/>
 				</parameters>
 			</method>
 			<method name="set_lexer_language" symbol="gtk_scintilla_set_lexer_language">
@@ -3550,6 +3613,9 @@
 					<parameter name="mask" type="gint"/>
 				</parameters>
 			</method>
+			<method name="status_get_type" symbol="gtk_scintilla_status_get_type">
+				<return-type type="GType"/>
+			</method>
 			<method name="stop_record" symbol="gtk_scintilla_stop_record">
 				<return-type type="void"/>
 				<parameters>
@@ -3591,6 +3657,9 @@
 				<parameters>
 					<parameter name="sci" type="GtkScintilla*"/>
 				</parameters>
+			</method>
+			<method name="styles_common_get_type" symbol="gtk_scintilla_styles_common_get_type">
+				<return-type type="GType"/>
 			</method>
 			<method name="swap_main_anchor_caret" symbol="gtk_scintilla_swap_main_anchor_caret">
 				<return-type type="void"/>
@@ -3650,6 +3719,9 @@
 					<parameter name="sci" type="GtkScintilla*"/>
 				</parameters>
 			</method>
+			<method name="update_flag_get_type" symbol="gtk_scintilla_update_flag_get_type">
+				<return-type type="GType"/>
+			</method>
 			<method name="update_line_numbers" symbol="gtk_scintilla_update_line_numbers">
 				<return-type type="void"/>
 				<parameters>
@@ -3676,6 +3748,9 @@
 					<parameter name="listType" type="gint"/>
 					<parameter name="itemList" type="gchar*"/>
 				</parameters>
+			</method>
+			<method name="virtual_space_get_type" symbol="gtk_scintilla_virtual_space_get_type">
+				<return-type type="GType"/>
 			</method>
 			<method name="visible_char_home" symbol="gtk_scintilla_visible_char_home">
 				<return-type type="void"/>
@@ -3713,6 +3788,9 @@
 					<parameter name="sci" type="GtkScintilla*"/>
 					<parameter name="line" type="gint"/>
 				</parameters>
+			</method>
+			<method name="white_space_get_type" symbol="gtk_scintilla_white_space_get_type">
+				<return-type type="GType"/>
 			</method>
 			<method name="word_end_position" symbol="gtk_scintilla_word_end_position">
 				<return-type type="gint"/>
@@ -3809,6 +3887,18 @@
 					<parameter name="line" type="gint"/>
 				</parameters>
 			</method>
+			<method name="wrap_get_type" symbol="gtk_scintilla_wrap_get_type">
+				<return-type type="GType"/>
+			</method>
+			<method name="wrap_indent_mode_get_type" symbol="gtk_scintilla_wrap_indent_mode_get_type">
+				<return-type type="GType"/>
+			</method>
+			<method name="wrap_visual_flag_get_type" symbol="gtk_scintilla_wrap_visual_flag_get_type">
+				<return-type type="GType"/>
+			</method>
+			<method name="wrap_visual_location_get_type" symbol="gtk_scintilla_wrap_visual_location_get_type">
+				<return-type type="GType"/>
+			</method>
 			<method name="zoom_in" symbol="gtk_scintilla_zoom_in">
 				<return-type type="void"/>
 				<parameters>
@@ -3821,13 +3911,13 @@
 					<parameter name="sci" type="GtkScintilla*"/>
 				</parameters>
 			</method>
-			<field name="parent" type="GtkFrame"/>
+			<field name="parent" type="ScintillaObject"/>
 			<field name="scintilla" type="GtkWidget*"/>
 			<field name="accel_group" type="GtkAccelGroup*"/>
 			<field name="priv" type="GtkScintillaPrivate*"/>
 		</struct>
 		<struct name="GtkScintillaClass">
-			<field name="parent_class" type="GtkFrameClass"/>
+			<field name="parent_class" type="ScintillaClass"/>
 			<field name="style_needed" type="GCallback"/>
 			<field name="char_added" type="GCallback"/>
 			<field name="save_point_reached" type="GCallback"/>
@@ -3855,20 +3945,15 @@
 			<field name="auto_completion_cancelled" type="GCallback"/>
 			<field name="auto_completion_char_deleted" type="GCallback"/>
 		</struct>
-		<struct name="Sci_SurfaceID">
+		<struct name="GtkScintillaLexer">
+			<method name="new" symbol="gtk_scintilla_lexer_new">
+				<return-type type="GObject*"/>
+			</method>
+			<field name="parent" type="GObject"/>
+			<field name="priv" type="GtkScintillaLexerPrivate*"/>
 		</struct>
-		<struct name="ScintillaClass">
-			<field name="parent_class" type="GtkContainerClass"/>
-			<field name="command" type="GCallback"/>
-			<field name="notify" type="GCallback"/>
-		</struct>
-		<struct name="ScintillaObject">
-			<field name="cont" type="GtkContainer"/>
-			<field name="pscin" type="void*"/>
-		</struct>
-		<struct name="sptr_t">
-		</struct>
-		<struct name="uptr_t">
+		<struct name="GtkScintillaLexerClass">
+			<field name="parent_class" type="GObjectClass"/>
 		</struct>
 		<enum name="GtkScintillaAnnotationVisible">
 			<member name="GTK_SCINTILLA_ANNOTATION_VISIBLE_HIDDEN" value="0"/>
@@ -3952,6 +4037,14 @@
 			<member name="GTK_SCINTILLA_FOLD_LEVEL_WHITEFLAG" value="4096"/>
 			<member name="GTK_SCINTILLA_FOLD_LEVEL_HEADERFLAG" value="8192"/>
 			<member name="GTK_SCINTILLA_FOLD_LEVEL_NUMBERMASK" value="4095"/>
+		</enum>
+		<enum name="GtkScintillaFoldStyle">
+			<member name="GTK_SCINTILLA_FOLD_STYLE_NONE" value="0"/>
+			<member name="GTK_SCINTILLA_FOLD_STYLE_ARROW" value="1"/>
+			<member name="GTK_SCINTILLA_FOLD_STYLE_BOX" value="2"/>
+			<member name="GTK_SCINTILLA_FOLD_STYLE_CIRCLE" value="3"/>
+			<member name="GTK_SCINTILLA_FOLD_STYLE_CUSTOM" value="4"/>
+			<member name="GTK_SCINTILLA_FOLD_STYLE_PLUS_MINUS" value="5"/>
 		</enum>
 		<enum name="GtkScintillaFontQuality">
 			<member name="GTK_SCINTILLA_FONT_QUALITY_QUALITY_MASK" value="15"/>
@@ -4858,18 +4951,15 @@
 		<constant name="GTK_SCINTILLA_ALPHA_TRANSPARENT" type="int" value="0"/>
 		<constant name="GTK_SCINTILLA_CP_DBCS" type="int" value="1"/>
 		<constant name="GTK_SCINTILLA_CP_UTF8" type="int" value="65001"/>
-		<constant name="GTK_SCINTILLA_INVALID_POSITION" type="int" value="-1"/>
-		<constant name="GTK_SCINTILLA_KEYWORDSET_MAX" type="int" value="8"/>
+		<constant name="GTK_SCINTILLA_DATADIR" type="char*" value="/usr/local/share/gtkscintilla-1.0/"/>
+		<constant name="GTK_SCINTILLA_FOLD_MARGIN_INDEX_DEFAULT" type="int" value="2"/>
+		<constant name="GTK_SCINTILLA_FOLD_MARGIN_WIDTH_DEFAULT" type="int" value="12"/>
 		<constant name="GTK_SCINTILLA_LEXER_START" type="int" value="4000"/>
-		<constant name="GTK_SCINTILLA_MARKER_MAX" type="int" value="31"/>
 		<constant name="GTK_SCINTILLA_MASK_FOLDERS" type="int" value="-33554432"/>
 		<constant name="GTK_SCINTILLA_MODEVENTMASKALL" type="int" value="524287"/>
 		<constant name="GTK_SCINTILLA_OPTIONAL_START" type="int" value="3000"/>
 		<constant name="GTK_SCINTILLA_START" type="int" value="2000"/>
 		<constant name="GTK_SCINTILLA_TIME_FOREVER" type="int" value="10000000"/>
-		<constant name="GTK_SCINTILLA_UNDO_MAY_COALESCE" type="int" value="1"/>
-		<constant name="GTK_SCINTILLA_VISIBLE_SLOP" type="int" value="1"/>
-		<constant name="GTK_SCINTILLA_VISIBLE_STRICT" type="int" value="4"/>
 		<constant name="INDIC0_MASK" type="int" value="32"/>
 		<constant name="INDIC1_MASK" type="int" value="64"/>
 		<constant name="INDIC2_MASK" type="int" value="128"/>
@@ -4923,6 +5013,25 @@
 		<constant name="SCE_4GL_STRING_" type="int" value="19"/>
 		<constant name="SCE_4GL_WORD" type="int" value="2"/>
 		<constant name="SCE_4GL_WORD_" type="int" value="18"/>
+		<constant name="SCE_A68K_COMMENT" type="int" value="1"/>
+		<constant name="SCE_A68K_COMMENT_DOXYGEN" type="int" value="18"/>
+		<constant name="SCE_A68K_COMMENT_SPECIAL" type="int" value="17"/>
+		<constant name="SCE_A68K_COMMENT_WORD" type="int" value="16"/>
+		<constant name="SCE_A68K_CPUINSTRUCTION" type="int" value="7"/>
+		<constant name="SCE_A68K_DEFAULT" type="int" value="0"/>
+		<constant name="SCE_A68K_DIRECTIVE" type="int" value="10"/>
+		<constant name="SCE_A68K_EXTINSTRUCTION" type="int" value="8"/>
+		<constant name="SCE_A68K_IDENTIFIER" type="int" value="14"/>
+		<constant name="SCE_A68K_LABEL" type="int" value="12"/>
+		<constant name="SCE_A68K_MACRO_ARG" type="int" value="11"/>
+		<constant name="SCE_A68K_MACRO_DECLARATION" type="int" value="15"/>
+		<constant name="SCE_A68K_NUMBER_BIN" type="int" value="3"/>
+		<constant name="SCE_A68K_NUMBER_DEC" type="int" value="2"/>
+		<constant name="SCE_A68K_NUMBER_HEX" type="int" value="4"/>
+		<constant name="SCE_A68K_OPERATOR" type="int" value="6"/>
+		<constant name="SCE_A68K_REGISTER" type="int" value="9"/>
+		<constant name="SCE_A68K_STRING1" type="int" value="5"/>
+		<constant name="SCE_A68K_STRING2" type="int" value="13"/>
 		<constant name="SCE_ABAQUS_ARGUMENT" type="int" value="11"/>
 		<constant name="SCE_ABAQUS_COMMAND" type="int" value="8"/>
 		<constant name="SCE_ABAQUS_COMMENT" type="int" value="1"/>
@@ -4964,6 +5073,7 @@
 		<constant name="SCE_ASM_CHARACTER" type="int" value="12"/>
 		<constant name="SCE_ASM_COMMENT" type="int" value="1"/>
 		<constant name="SCE_ASM_COMMENTBLOCK" type="int" value="11"/>
+		<constant name="SCE_ASM_COMMENTDIRECTIVE" type="int" value="15"/>
 		<constant name="SCE_ASM_CPUINSTRUCTION" type="int" value="6"/>
 		<constant name="SCE_ASM_DEFAULT" type="int" value="0"/>
 		<constant name="SCE_ASM_DIRECTIVE" type="int" value="9"/>
@@ -5181,6 +5291,8 @@
 		<constant name="SCE_C_REGEX" type="int" value="14"/>
 		<constant name="SCE_C_STRING" type="int" value="6"/>
 		<constant name="SCE_C_STRINGEOL" type="int" value="12"/>
+		<constant name="SCE_C_STRINGRAW" type="int" value="20"/>
+		<constant name="SCE_C_TRIPLEVERBATIM" type="int" value="21"/>
 		<constant name="SCE_C_UUID" type="int" value="8"/>
 		<constant name="SCE_C_VERBATIM" type="int" value="13"/>
 		<constant name="SCE_C_WORD" type="int" value="5"/>
@@ -5653,6 +5765,24 @@
 		<constant name="SCE_MMIXAL_REGISTER" type="int" value="13"/>
 		<constant name="SCE_MMIXAL_STRING" type="int" value="12"/>
 		<constant name="SCE_MMIXAL_SYMBOL" type="int" value="16"/>
+		<constant name="SCE_MODULA_BADSTR" type="int" value="17"/>
+		<constant name="SCE_MODULA_BASENUM" type="int" value="7"/>
+		<constant name="SCE_MODULA_CHAR" type="int" value="11"/>
+		<constant name="SCE_MODULA_CHARSPEC" type="int" value="12"/>
+		<constant name="SCE_MODULA_COMMENT" type="int" value="1"/>
+		<constant name="SCE_MODULA_DEFAULT" type="int" value="0"/>
+		<constant name="SCE_MODULA_DOXYCOMM" type="int" value="2"/>
+		<constant name="SCE_MODULA_DOXYKEY" type="int" value="3"/>
+		<constant name="SCE_MODULA_FLOAT" type="int" value="8"/>
+		<constant name="SCE_MODULA_KEYWORD" type="int" value="4"/>
+		<constant name="SCE_MODULA_NUMBER" type="int" value="6"/>
+		<constant name="SCE_MODULA_OPERATOR" type="int" value="16"/>
+		<constant name="SCE_MODULA_PRAGMA" type="int" value="14"/>
+		<constant name="SCE_MODULA_PRGKEY" type="int" value="15"/>
+		<constant name="SCE_MODULA_PROC" type="int" value="13"/>
+		<constant name="SCE_MODULA_RESERVED" type="int" value="5"/>
+		<constant name="SCE_MODULA_STRING" type="int" value="9"/>
+		<constant name="SCE_MODULA_STRSPEC" type="int" value="10"/>
 		<constant name="SCE_MSSQL_COLUMN_NAME" type="int" value="8"/>
 		<constant name="SCE_MSSQL_COLUMN_NAME_2" type="int" value="16"/>
 		<constant name="SCE_MSSQL_COMMENT" type="int" value="1"/>
@@ -6128,6 +6258,32 @@
 		<constant name="SCE_TEX_SPECIAL" type="int" value="1"/>
 		<constant name="SCE_TEX_SYMBOL" type="int" value="3"/>
 		<constant name="SCE_TEX_TEXT" type="int" value="5"/>
+		<constant name="SCE_TXT2TAGS_BLOCKQUOTE" type="int" value="15"/>
+		<constant name="SCE_TXT2TAGS_CODE" type="int" value="19"/>
+		<constant name="SCE_TXT2TAGS_CODE2" type="int" value="20"/>
+		<constant name="SCE_TXT2TAGS_CODEBK" type="int" value="21"/>
+		<constant name="SCE_TXT2TAGS_COMMENT" type="int" value="22"/>
+		<constant name="SCE_TXT2TAGS_DEFAULT" type="int" value="0"/>
+		<constant name="SCE_TXT2TAGS_EM1" type="int" value="4"/>
+		<constant name="SCE_TXT2TAGS_EM2" type="int" value="5"/>
+		<constant name="SCE_TXT2TAGS_HEADER1" type="int" value="6"/>
+		<constant name="SCE_TXT2TAGS_HEADER2" type="int" value="7"/>
+		<constant name="SCE_TXT2TAGS_HEADER3" type="int" value="8"/>
+		<constant name="SCE_TXT2TAGS_HEADER4" type="int" value="9"/>
+		<constant name="SCE_TXT2TAGS_HEADER5" type="int" value="10"/>
+		<constant name="SCE_TXT2TAGS_HEADER6" type="int" value="11"/>
+		<constant name="SCE_TXT2TAGS_HRULE" type="int" value="17"/>
+		<constant name="SCE_TXT2TAGS_LINE_BEGIN" type="int" value="1"/>
+		<constant name="SCE_TXT2TAGS_LINK" type="int" value="18"/>
+		<constant name="SCE_TXT2TAGS_OLIST_ITEM" type="int" value="14"/>
+		<constant name="SCE_TXT2TAGS_OPTION" type="int" value="23"/>
+		<constant name="SCE_TXT2TAGS_POSTPROC" type="int" value="25"/>
+		<constant name="SCE_TXT2TAGS_PRECHAR" type="int" value="12"/>
+		<constant name="SCE_TXT2TAGS_PREPROC" type="int" value="24"/>
+		<constant name="SCE_TXT2TAGS_STRIKEOUT" type="int" value="16"/>
+		<constant name="SCE_TXT2TAGS_STRONG1" type="int" value="2"/>
+		<constant name="SCE_TXT2TAGS_STRONG2" type="int" value="3"/>
+		<constant name="SCE_TXT2TAGS_ULIST_ITEM" type="int" value="13"/>
 		<constant name="SCE_VHDL_ATTRIBUTE" type="int" value="10"/>
 		<constant name="SCE_VHDL_COMMENT" type="int" value="1"/>
 		<constant name="SCE_VHDL_COMMENTLINEBANG" type="int" value="2"/>
@@ -6239,6 +6395,7 @@
 		<constant name="SCI_CANPASTE" type="int" value="2173"/>
 		<constant name="SCI_CANREDO" type="int" value="2016"/>
 		<constant name="SCI_CANUNDO" type="int" value="2174"/>
+		<constant name="SCI_CHANGELEXERSTATE" type="int" value="2617"/>
 		<constant name="SCI_CHARLEFT" type="int" value="2304"/>
 		<constant name="SCI_CHARLEFTEXTEND" type="int" value="2305"/>
 		<constant name="SCI_CHARLEFTRECTEXTEND" type="int" value="2428"/>
@@ -6256,6 +6413,7 @@
 		<constant name="SCI_CLEARREGISTEREDIMAGES" type="int" value="2408"/>
 		<constant name="SCI_CLEARSELECTIONS" type="int" value="2571"/>
 		<constant name="SCI_COLOURISE" type="int" value="4003"/>
+		<constant name="SCI_CONTRACTEDFOLDNEXT" type="int" value="2618"/>
 		<constant name="SCI_CONVERTEOLS" type="int" value="2029"/>
 		<constant name="SCI_COPY" type="int" value="2178"/>
 		<constant name="SCI_COPYALLOWLINE" type="int" value="2519"/>
@@ -6270,6 +6428,8 @@
 		<constant name="SCI_DELWORDLEFT" type="int" value="2335"/>
 		<constant name="SCI_DELWORDRIGHT" type="int" value="2336"/>
 		<constant name="SCI_DELWORDRIGHTEND" type="int" value="2518"/>
+		<constant name="SCI_DESCRIBEKEYWORDSETS" type="int" value="4017"/>
+		<constant name="SCI_DESCRIBEPROPERTY" type="int" value="4016"/>
 		<constant name="SCI_DOCLINEFROMVISIBLE" type="int" value="2221"/>
 		<constant name="SCI_DOCUMENTEND" type="int" value="2318"/>
 		<constant name="SCI_DOCUMENTENDEXTEND" type="int" value="2319"/>
@@ -6352,6 +6512,7 @@
 		<constant name="SCI_GETLINESTATE" type="int" value="2093"/>
 		<constant name="SCI_GETLINEVISIBLE" type="int" value="2228"/>
 		<constant name="SCI_GETMAINSELECTION" type="int" value="2575"/>
+		<constant name="SCI_GETMARGINCURSORN" type="int" value="2249"/>
 		<constant name="SCI_GETMARGINLEFT" type="int" value="2156"/>
 		<constant name="SCI_GETMARGINMASKN" type="int" value="2245"/>
 		<constant name="SCI_GETMARGINRIGHT" type="int" value="2158"/>
@@ -6527,6 +6688,9 @@
 		<constant name="SCI_POSITIONFROMLINE" type="int" value="2167"/>
 		<constant name="SCI_POSITIONFROMPOINT" type="int" value="2022"/>
 		<constant name="SCI_POSITIONFROMPOINTCLOSE" type="int" value="2023"/>
+		<constant name="SCI_PRIVATELEXERCALL" type="int" value="4013"/>
+		<constant name="SCI_PROPERTYNAMES" type="int" value="4014"/>
+		<constant name="SCI_PROPERTYTYPE" type="int" value="4015"/>
 		<constant name="SCI_REDO" type="int" value="2011"/>
 		<constant name="SCI_REGISTERIMAGE" type="int" value="2405"/>
 		<constant name="SCI_RELEASEDOCUMENT" type="int" value="2377"/>
@@ -6600,6 +6764,7 @@
 		<constant name="SCI_SETLINEINDENTATION" type="int" value="2126"/>
 		<constant name="SCI_SETLINESTATE" type="int" value="2092"/>
 		<constant name="SCI_SETMAINSELECTION" type="int" value="2574"/>
+		<constant name="SCI_SETMARGINCURSORN" type="int" value="2248"/>
 		<constant name="SCI_SETMARGINLEFT" type="int" value="2155"/>
 		<constant name="SCI_SETMARGINMASKN" type="int" value="2244"/>
 		<constant name="SCI_SETMARGINRIGHT" type="int" value="2157"/>
@@ -6729,6 +6894,7 @@
 		<constant name="SCI_VCHOMERECTEXTEND" type="int" value="2431"/>
 		<constant name="SCI_VCHOMEWRAP" type="int" value="2453"/>
 		<constant name="SCI_VCHOMEWRAPEXTEND" type="int" value="2454"/>
+		<constant name="SCI_VERTICALCENTRECARET" type="int" value="2619"/>
 		<constant name="SCI_VISIBLEFROMDOCLINE" type="int" value="2220"/>
 		<constant name="SCI_WORDENDPOSITION" type="int" value="2267"/>
 		<constant name="SCI_WORDLEFT" type="int" value="2308"/>
@@ -6767,6 +6933,7 @@
 		<constant name="SCK_TAB" type="int" value="9"/>
 		<constant name="SCK_UP" type="int" value="301"/>
 		<constant name="SCK_WIN" type="int" value="313"/>
+		<constant name="SCLEX_A68K" type="int" value="100"/>
 		<constant name="SCLEX_ABAQUS" type="int" value="84"/>
 		<constant name="SCLEX_ADA" type="int" value="20"/>
 		<constant name="SCLEX_APDL" type="int" value="61"/>
@@ -6821,6 +6988,7 @@
 		<constant name="SCLEX_MATLAB" type="int" value="32"/>
 		<constant name="SCLEX_METAPOST" type="int" value="50"/>
 		<constant name="SCLEX_MMIXAL" type="int" value="44"/>
+		<constant name="SCLEX_MODULA" type="int" value="101"/>
 		<constant name="SCLEX_MSSQL" type="int" value="55"/>
 		<constant name="SCLEX_MYSQL" type="int" value="89"/>
 		<constant name="SCLEX_NIMROD" type="int" value="96"/>
@@ -6858,6 +7026,7 @@
 		<constant name="SCLEX_TAL" type="int" value="91"/>
 		<constant name="SCLEX_TCL" type="int" value="25"/>
 		<constant name="SCLEX_TEX" type="int" value="49"/>
+		<constant name="SCLEX_TXT2TAGS" type="int" value="99"/>
 		<constant name="SCLEX_VB" type="int" value="8"/>
 		<constant name="SCLEX_VBSCRIPT" type="int" value="28"/>
 		<constant name="SCLEX_VERILOG" type="int" value="56"/>
@@ -6880,6 +7049,7 @@
 		<constant name="SCN_DWELLSTART" type="int" value="2016"/>
 		<constant name="SCN_HOTSPOTCLICK" type="int" value="2019"/>
 		<constant name="SCN_HOTSPOTDOUBLECLICK" type="int" value="2020"/>
+		<constant name="SCN_HOTSPOTRELEASECLICK" type="int" value="2027"/>
 		<constant name="SCN_INDICATORCLICK" type="int" value="2023"/>
 		<constant name="SCN_INDICATORRELEASE" type="int" value="2024"/>
 		<constant name="SCN_KEY" type="int" value="2005"/>
@@ -6938,7 +7108,9 @@
 		<constant name="SC_CHARSET_VIETNAMESE" type="int" value="163"/>
 		<constant name="SC_CP_DBCS" type="int" value="1"/>
 		<constant name="SC_CP_UTF8" type="int" value="65001"/>
+		<constant name="SC_CURSORARROW" type="int" value="2"/>
 		<constant name="SC_CURSORNORMAL" type="int" value="-1"/>
+		<constant name="SC_CURSORREVERSEARROW" type="int" value="7"/>
 		<constant name="SC_CURSORWAIT" type="int" value="4"/>
 		<constant name="SC_EFF_QUALITY_ANTIALIASED" type="int" value="2"/>
 		<constant name="SC_EFF_QUALITY_DEFAULT" type="int" value="0"/>
@@ -7007,7 +7179,7 @@
 		<constant name="SC_MARK_UNDERLINE" type="int" value="29"/>
 		<constant name="SC_MARK_VLINE" type="int" value="9"/>
 		<constant name="SC_MASK_FOLDERS" type="int" value="-33554432"/>
-		<constant name="SC_MODEVENTMASKALL" type="int" value="524287"/>
+		<constant name="SC_MODEVENTMASKALL" type="int" value="1048575"/>
 		<constant name="SC_MOD_BEFOREDELETE" type="int" value="2048"/>
 		<constant name="SC_MOD_BEFOREINSERT" type="int" value="1024"/>
 		<constant name="SC_MOD_CHANGEANNOTATION" type="int" value="131072"/>
@@ -7020,6 +7192,7 @@
 		<constant name="SC_MOD_CONTAINER" type="int" value="262144"/>
 		<constant name="SC_MOD_DELETETEXT" type="int" value="2"/>
 		<constant name="SC_MOD_INSERTTEXT" type="int" value="1"/>
+		<constant name="SC_MOD_LEXERSTATE" type="int" value="524288"/>
 		<constant name="SC_MULTILINEUNDOREDO" type="int" value="4096"/>
 		<constant name="SC_MULTIPASTE_EACH" type="int" value="1"/>
 		<constant name="SC_MULTIPASTE_ONCE" type="int" value="0"/>
@@ -7041,6 +7214,13 @@
 		<constant name="SC_STATUS_FAILURE" type="int" value="1"/>
 		<constant name="SC_STATUS_OK" type="int" value="0"/>
 		<constant name="SC_TIME_FOREVER" type="int" value="10000000"/>
+		<constant name="SC_TYPE_BOOLEAN" type="int" value="0"/>
+		<constant name="SC_TYPE_INTEGER" type="int" value="1"/>
+		<constant name="SC_TYPE_STRING" type="int" value="2"/>
+		<constant name="SC_UPDATE_CONTENT" type="int" value="1"/>
+		<constant name="SC_UPDATE_H_SCROLL" type="int" value="8"/>
+		<constant name="SC_UPDATE_SELECTION" type="int" value="2"/>
+		<constant name="SC_UPDATE_V_SCROLL" type="int" value="4"/>
 		<constant name="SC_WRAPINDENT_FIXED" type="int" value="0"/>
 		<constant name="SC_WRAPINDENT_INDENT" type="int" value="2"/>
 		<constant name="SC_WRAPINDENT_SAME" type="int" value="1"/>

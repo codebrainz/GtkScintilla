@@ -14,7 +14,8 @@ libgtkscintilla_1_0_la_CPPFLAGS	=	-I$(top_srcdir)/src \
 library_includedir 				= 	$(includedir)/gtkscintilla-1.0/gtkscintilla
 library_include_HEADERS			= 	gtkscintilla.h \
 									constants.h \
-									lexer.h
+									lexer.h \
+									enums.h
 
 autogen_sources 				=	enums.c
 autogen_headers					=	enums.h

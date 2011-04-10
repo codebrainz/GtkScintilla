@@ -1,7 +1,2 @@
-include/gtkscintilla-1.0/gtkscintilla.h
-include/gtkscintilla-1.0/gtkscintillafunctions.h
-include/gtkscintilla-1.0/gtkscintillaconstants.h
-include/gtkscintilla-1.0/gtkscintillaproperties.h
-include/gtkscintilla-1.0/Scintilla.h
-include/gtkscintilla-1.0/SciLexer.h
-include/gtkscintilla-1.0/ScintillaWidget.h
+include/gtkscintilla-1.0/gtkscintilla/*.h
+include/gtkscintilla-1.0/scintilla/*.h
