@@ -1,6 +1,8 @@
 AC_PREREQ([2.67])
-AC_INIT([gtkscintilla], [1.0], [mbrush@leftclick.ca])
+AC_INIT([gtkscintilla], [1.0], [mbrush@codebrainz.ca])
 AC_CONFIG_MACRO_DIR([m4])
+AC_CONFIG_AUX_DIR([build-aux])
+AC_CONFIG_HEADERS([src/gtkscintilla-config.h])
 AM_INIT_AUTOMAKE([foreign silent-rules])
 AM_SILENT_RULES([yes])
 LT_INIT
@@ -23,17 +25,16 @@ fi
 
 GTK_DOC_CHECK([1.14], [--flavour no-tmpl])
 
-GOBJECT_INTROSPECTION_CHECK([0.6.7])
+GOBJECT_INTROSPECTION_CHECK([0.10.0])
 
-
-AC_CONFIG_HEADERS([config.h])
-AC_CONFIG_FILES([	gtkscintilla-1.0.pc
-					Makefile
-					scintilla/Makefile
-					src/Makefile
-					demo/Makefile
-					docs/reference/Makefile
-					bindings/Makefile
-					bindings/vala/Makefile
-					data/Makefile])
+AC_CONFIG_FILES([
+	gtkscintilla-1.0.pc
+	Makefile
+	scintilla/Makefile
+	src/Makefile
+	demo/Makefile
+	docs/reference/Makefile
+	bindings/Makefile
+	data/Makefile
+])
 AC_OUTPUT

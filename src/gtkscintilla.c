@@ -107,6 +107,7 @@ GtkWidget *gtk_scintilla_new (void)
 }
 
 
+#if 0
 /**
  * gtk_scintilla_send_message:
  * @param self		The GtkScintilla to send the message to.
@@ -127,6 +128,7 @@ glong gtk_scintilla_send_message(GtkScintilla *self, guint iMessage,
 	return (glong)scintilla_send_message(SCINTILLA(self), iMessage,
 		(uptr_t)wParam,	(sptr_t)lParam);
 }
+#endif
 
 
 /**

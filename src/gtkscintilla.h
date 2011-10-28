@@ -133,7 +133,9 @@ GType				gtk_scintilla_get_type					(void);
 GtkWidget*			gtk_scintilla_new						(void);
 void 				gtk_scintilla_get_property				(GObject *object, guint property_id, GValue *value, GParamSpec *pspec);
 void 				gtk_scintilla_set_property				(GObject *object, guint property_id, const GValue *value, GParamSpec *pspec);
+#if 0
 glong				gtk_scintilla_send_message				(GtkScintilla *self, guint iMessage, gulong wParam, glong lParam);
+#endif
 ScintillaObject*	gtk_scintilla_get_scintilla				(GtkScintilla *self);
 void 				gtk_scintilla_update_line_numbers		(GtkScintilla *self);
 gboolean 			gtk_scintilla_get_line_numbers_visible	(GtkScintilla *self);

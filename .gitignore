@@ -25,6 +25,7 @@
 .libs/
 Makefile.in
 Makefile
+/build-aux/
 
 # Compiled
 *.com
@@ -60,3 +61,5 @@ git_ignore_orig
 
 demo/gtkscintilla-demo
 demo/gtkscintilla-demo2
+gtkscintilla-config.h*
+stamp-h1

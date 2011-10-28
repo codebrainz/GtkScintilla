@@ -1,5 +1,6 @@
 /*** BEGIN file-header ***/
 #include "enums.h"
+#include "constants.h"
 
 /*** END file-header ***/
 

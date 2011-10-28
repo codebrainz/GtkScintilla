@@ -22,6 +22,8 @@
 #ifndef GTK_SCINTILLA_STYLE_H
 #define GTK_SCINTILLA_STYLE_H
 
+#include <gtk/gtk.h>
+
 typedef struct
 {
 	gint id;
