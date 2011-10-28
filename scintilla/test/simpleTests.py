@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 
 from __future__ import with_statement
+from __future__ import unicode_literals
 
-import ctypes, os, unittest
+import ctypes, os, sys, unittest
 
 import XiteWin
 
@@ -361,12 +362,15 @@ class TestSimple(unittest.TestCase):
 
 	def testLinePositions(self):
 		text = b"ab\ncd\nef"
+		nl = b"\n"
+		if sys.version_info[0] == 3:
+			nl = ord(b"\n")
 		self.ed.AddText(len(text), text)
 		self.assertEquals(self.ed.LineFromPosition(-1), 0)
 		line = 0
 		for pos in range(len(text)+1):
 			self.assertEquals(self.ed.LineFromPosition(pos), line)
-			if pos < len(text) and text[pos] == ord("\n"):
+			if pos < len(text) and text[pos] == nl:
 				line += 1
 
 	def testWordPositions(self):
@@ -670,6 +674,7 @@ class TestMarkers(unittest.TestCase):
 		self.ed.MarkerDeleteAll(-1)
 
 	def testMarkerNext(self):
+		self.assertEquals(self.ed.MarkerNext(0, 2), -1)
 		h1 = self.ed.MarkerAdd(0,1)
 		h2 = self.ed.MarkerAdd(2,1)
 		self.assertEquals(self.ed.MarkerNext(0, 2), 0)
@@ -678,6 +683,9 @@ class TestMarkers(unittest.TestCase):
 		self.assertEquals(self.ed.MarkerPrevious(0, 2), 0)
 		self.assertEquals(self.ed.MarkerPrevious(1, 2), 0)
 		self.assertEquals(self.ed.MarkerPrevious(2, 2), 2)
+
+	def testMarkerNegative(self):
+		self.assertEquals(self.ed.MarkerNext(-1, 2), -1)
 
 	def testLineState(self):
 		self.assertEquals(self.ed.MaxLineState, 0)

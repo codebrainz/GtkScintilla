@@ -209,6 +209,7 @@ struct OptionsCPP {
 	bool trackPreprocessor;
 	bool updatePreprocessor;
 	bool triplequotedStrings;
+	bool hashquotedStrings;
 	bool fold;
 	bool foldSyntaxBased;
 	bool foldComment;
@@ -226,6 +227,7 @@ struct OptionsCPP {
 		trackPreprocessor = true;
 		updatePreprocessor = true;
 		triplequotedStrings = false;
+		hashquotedStrings = false;
 		fold = false;
 		foldSyntaxBased = true;
 		foldComment = false;
@@ -267,6 +269,9 @@ struct OptionSetCPP : public OptionSet<OptionsCPP> {
 
 		DefineProperty("lexer.cpp.triplequoted.strings", &OptionsCPP::triplequotedStrings,
 			"Set to 1 to enable highlighting of triple-quoted strings.");
+
+		DefineProperty("lexer.cpp.hashquoted.strings", &OptionsCPP::hashquotedStrings,
+			"Set to 1 to enable highlighting of hash-quoted strings.");
 
 		DefineProperty("fold", &OptionsCPP::fold);
 
@@ -435,7 +440,7 @@ int SCI_METHOD LexerCPP::WordListSet(int n, const char *wl) {
 struct After {
 	int line;
 	After(int line_) : line(line_) {}
-	bool operator() (PPDefinition &p) const {
+	bool operator()(PPDefinition &p) const {
 		return p.line > line;
 	}
 };
@@ -692,6 +697,15 @@ void SCI_METHOD LexerCPP::Lex(unsigned int startPos, int length, int initStyle, 
 					sc.ForwardSetState(SCE_C_DEFAULT|activitySet);
 				}
 				break;
+			case SCE_C_HASHQUOTEDSTRING:
+				if (sc.ch == '\\') {
+					if (sc.chNext == '\"' || sc.chNext == '\'' || sc.chNext == '\\') {
+						sc.Forward();
+					}
+				} else if (sc.ch == '\"') {
+					sc.ForwardSetState(SCE_C_DEFAULT|activitySet);
+				}
+				break;
 			case SCE_C_STRINGRAW:
 				if (sc.Match(rawStringTerminator.c_str())) {
 					for (size_t termPos=rawStringTerminator.size(); termPos; termPos--)
@@ -741,7 +755,7 @@ void SCI_METHOD LexerCPP::Lex(unsigned int startPos, int length, int initStyle, 
 				}
 				break;
 			case SCE_C_TRIPLEVERBATIM:
-				if (sc.Match ("\"\"\"")) {
+				if (sc.Match("\"\"\"")) {
 					while (sc.Match('"')) {
 						sc.Forward();
 					}
@@ -768,6 +782,9 @@ void SCI_METHOD LexerCPP::Lex(unsigned int startPos, int length, int initStyle, 
 			} else if (options.triplequotedStrings && sc.Match("\"\"\"")) {
 				sc.SetState(SCE_C_TRIPLEVERBATIM|activitySet);
 				sc.Forward(2);
+			} else if (options.hashquotedStrings && sc.Match('#', '\"')) {
+				sc.SetState(SCE_C_HASHQUOTEDSTRING|activitySet);
+				sc.Forward();
 			} else if (IsADigit(sc.ch) || (sc.ch == '.' && IsADigit(sc.chNext))) {
 				if (lastWordWasUUID) {
 					sc.SetState(SCE_C_UUID|activitySet);
@@ -803,15 +820,20 @@ void SCI_METHOD LexerCPP::Lex(unsigned int startPos, int length, int initStyle, 
 				sc.SetState(SCE_C_REGEX|activitySet);	// JavaScript's RegEx
 			} else if (sc.ch == '\"') {
 				if (sc.chPrev == 'R') {
-					sc.SetState(SCE_C_STRINGRAW|activitySet);
-					rawStringTerminator = ")";
-					for (int termPos = sc.currentPos + 1;;termPos++) {
-						char chTerminator = styler.SafeGetCharAt(termPos, '(');
-						if (chTerminator == '(')
-							break;
-						rawStringTerminator += chTerminator;
+					styler.Flush();
+					if (MaskActive(styler.StyleAt(sc.currentPos - 1)) == SCE_C_STRINGRAW) {
+						sc.SetState(SCE_C_STRINGRAW|activitySet);
+						rawStringTerminator = ")";
+						for (int termPos = sc.currentPos + 1;; termPos++) {
+							char chTerminator = styler.SafeGetCharAt(termPos, '(');
+							if (chTerminator == '(')
+								break;
+							rawStringTerminator += chTerminator;
+						}
+						rawStringTerminator += '\"';
+					} else {
+						sc.SetState(SCE_C_STRING|activitySet);
 					}
-					rawStringTerminator += '\"';
 				} else {
 					sc.SetState(SCE_C_STRING|activitySet);
 				}

@@ -2,7 +2,7 @@
 /** @file Editor.h
  ** Defines the main editor class.
  **/
-// Copyright 1998-2003 by Neil Hodgson <neilh@scintilla.org>
+// Copyright 1998-2011 by Neil Hodgson <neilh@scintilla.org>
 // The License.txt file describes the conditions under which this software may be distributed.
 
 #ifndef EDITOR_H
@@ -131,13 +131,17 @@ protected:	// ScintillaBase subclass needs access to much of Editor
 	 * When a style attribute is changed, this cache is flushed. */
 	bool stylesValid;
 	ViewStyle vs;
-	Palette palette;
+	int technology;
+	Point sizeRGBAImage;
 
 	int printMagnification;
 	int printColourMode;
 	int printWrapState;
 	int cursorMode;
 	int controlCharSymbol;
+
+	// Highlight current folding block
+	HighlightDelimiter highlightDelimiter;
 
 	bool hasFocus;
 	bool hideSelection;
@@ -160,6 +164,7 @@ protected:	// ScintillaBase subclass needs access to much of Editor
 	bool verticalScrollBarVisible;
 	bool endAtLastLine;
 	int caretSticky;
+	int marginOptions;
 	bool multipleSelection;
 	bool additionalSelectionTyping;
 	int multiPasteMode;
@@ -191,7 +196,7 @@ protected:	// ScintillaBase subclass needs access to much of Editor
 	int dwellDelay;
 	int ticksToDwell;
 	bool dwelling;
-	enum { selChar, selWord, selLine } selectionType;
+	enum { selChar, selWord, selSubLine, selWholeLine } selectionType;
 	Point ptMouseLast;
 	enum { ddNone, ddInitial, ddDragging } inDragDrop;
 	bool dropWentOutside;
@@ -199,7 +204,7 @@ protected:	// ScintillaBase subclass needs access to much of Editor
 	SelectionPosition posDrop;
 	int hotSpotClickPos;
 	int lastXChosen;
-	int lineAnchor;
+	int lineAnchorPos;
 	int originalAnchorPos;
 	int wordSelectAnchorStartPos;
 	int wordSelectAnchorEndPos;
@@ -221,6 +226,7 @@ protected:	// ScintillaBase subclass needs access to much of Editor
 	enum { notPainting, painting, paintAbandoned } paintState;
 	PRectangle rcPaint;
 	bool paintingAllText;
+	bool willRedrawAll;
 	StyleNeeded styleNeeded;
 
 	int modEventMask;
@@ -272,9 +278,9 @@ protected:	// ScintillaBase subclass needs access to much of Editor
 
 	void InvalidateStyleData();
 	void InvalidateStyleRedraw();
-	virtual void RefreshColourPalette(Palette &pal, bool want);
 	void RefreshStyleData();
-	void DropGraphics();
+	void DropGraphics(bool freeObjects);
+	void AllocateGraphics();
 
 	virtual PRectangle GetClientRectangle();
 	PRectangle GetTextRectangle();
@@ -332,6 +338,9 @@ protected:	// ScintillaBase subclass needs access to much of Editor
 	virtual void ScrollText(int linesToMove);
 	void HorizontalScrollTo(int xPos);
 	void VerticalCentreCaret();
+	void MoveSelectedLines(int lineDelta);
+	void MoveSelectedLinesUp();
+	void MoveSelectedLinesDown();
 	void MoveCaretInsideView(bool ensureVisible=true);
 	int DisplayFromPosition(int pos);
 
@@ -359,14 +368,16 @@ protected:	// ScintillaBase subclass needs access to much of Editor
 	LineLayout *RetrieveLineLayout(int lineNumber);
 	void LayoutLine(int line, Surface *surface, ViewStyle &vstyle, LineLayout *ll,
 		int width=LineLayout::wrapWidthInfinite);
-	ColourAllocated SelectionBackground(ViewStyle &vsDraw, bool main);
-	ColourAllocated TextBackground(ViewStyle &vsDraw, bool overrideBackground, ColourAllocated background, int inSelection, bool inHotspot, int styleMain, int i, LineLayout *ll);
+	ColourDesired SelectionBackground(ViewStyle &vsDraw, bool main);
+	ColourDesired TextBackground(ViewStyle &vsDraw, bool overrideBackground, ColourDesired background, int inSelection, bool inHotspot, int styleMain, int i, LineLayout *ll);
 	void DrawIndentGuide(Surface *surface, int lineVisible, int lineHeight, int start, PRectangle rcSegment, bool highlight);
-	void DrawWrapMarker(Surface *surface, PRectangle rcPlace, bool isEndMarker, ColourAllocated wrapColour);
+	void DrawWrapMarker(Surface *surface, PRectangle rcPlace, bool isEndMarker, ColourDesired wrapColour);
 	void DrawEOL(Surface *surface, ViewStyle &vsDraw, PRectangle rcLine, LineLayout *ll,
 		int line, int lineEnd, int xStart, int subLine, int subLineStart,
-		bool overrideBackground, ColourAllocated background,
-		bool drawWrapMark, ColourAllocated wrapColour);
+		bool overrideBackground, ColourDesired background,
+		bool drawWrapMark, ColourDesired wrapColour);
+	void DrawIndicator(int indicNum, int startPos, int endPos, Surface *surface, ViewStyle &vsDraw,
+		int xStart, PRectangle rcLine, LineLayout *ll, int subLine);
 	void DrawIndicators(Surface *surface, ViewStyle &vsDraw, int line, int xStart,
 		PRectangle rcLine, LineLayout *ll, int subLine, int lineEnd, bool under);
 	void DrawAnnotation(Surface *surface, ViewStyle &vsDraw, int line, int xStart,
@@ -374,7 +385,7 @@ protected:	// ScintillaBase subclass needs access to much of Editor
 	void DrawLine(Surface *surface, ViewStyle &vsDraw, int line, int lineVisible, int xStart,
 		PRectangle rcLine, LineLayout *ll, int subLine);
 	void DrawBlockCaret(Surface *surface, ViewStyle &vsDraw, LineLayout *ll, int subLine,
-		int xStart, int offset, int posCaret, PRectangle rcCaret, ColourAllocated caretColour);
+		int xStart, int offset, int posCaret, PRectangle rcCaret, ColourDesired caretColour);
 	void DrawCarets(Surface *surface, ViewStyle &vsDraw, int line, int xStart,
 		PRectangle rcLine, LineLayout *ll, int subLine);
 	void RefreshPixMaps(Surface *surfaceWindow);
@@ -413,6 +424,7 @@ protected:	// ScintillaBase subclass needs access to much of Editor
 
 	virtual void NotifyChange() = 0;
 	virtual void NotifyFocus(bool focus);
+	virtual void SetCtrlID(int identifier);
 	virtual int GetCtrlID() { return ctrlID; }
 	virtual void NotifyParent(SCNotification scn) = 0;
 	virtual void NotifyStyleToNeeded(int endStyleNeeded);
@@ -455,6 +467,7 @@ protected:	// ScintillaBase subclass needs access to much of Editor
 	int StartEndDisplayLine(int pos, bool start);
 	virtual int KeyCommand(unsigned int iMessage);
 	virtual int KeyDefault(int /* key */, int /*modifiers*/);
+	int KeyDownWithModifiers(int key, int modifiers, bool *consumed);
 	int KeyDown(int key, bool shift, bool ctrl, bool alt, bool *consumed=0);
 
 	int GetWhitespaceVisible();
@@ -484,7 +497,7 @@ protected:	// ScintillaBase subclass needs access to much of Editor
 	bool PointInSelection(Point pt);
 	bool PointInSelMargin(Point pt);
 	Window::Cursor GetMarginCursor(Point pt);
-	void LineSelection(int lineCurrent_, int lineAnchor_);
+	void LineSelection(int lineCurrentPos_, int lineAnchorPos_, bool wholeLine);
 	void WordSelection(int pos);
 	void DwellEnd(bool mouseMoved);
 	void MouseLeave();
@@ -562,7 +575,7 @@ private:
 public:
 	AutoSurface(Editor *ed) : surf(0) {
 		if (ed->wMain.GetID()) {
-			surf = Surface::Allocate();
+			surf = Surface::Allocate(ed->technology);
 			if (surf) {
 				surf->Init(ed->wMain.GetID());
 				surf->SetUnicodeMode(SC_CP_UTF8 == ed->CodePage());
@@ -572,7 +585,7 @@ public:
 	}
 	AutoSurface(SurfaceID sid, Editor *ed) : surf(0) {
 		if (ed->wMain.GetID()) {
-			surf = Surface::Allocate();
+			surf = Surface::Allocate(ed->technology);
 			if (surf) {
 				surf->Init(sid, ed->wMain.GetID());
 				surf->SetUnicodeMode(SC_CP_UTF8 == ed->CodePage());

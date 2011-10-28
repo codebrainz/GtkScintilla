@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from __future__ import with_statement
+from __future__ import unicode_literals
 
 import os, sys, unittest
 
@@ -304,8 +305,8 @@ class XiteWin():
 			self.ed.FocusOn()
 			self.ed.GotoPos(self.ed.Length)
 
-		print(self.test)
 		if self.test:
+			print(self.test)
 			for k in self.cmds:
 				if self.cmds[k] == "Test":
 					user32.PostMessageW(self.win, msgs["WM_COMMAND"], k, 0)
@@ -612,7 +613,7 @@ class XiteWin():
 		print("\n".join(sorted(self.ed.used)))
 
 	def Uncalled(self):
-		print()
+		print("")
 		unused = sorted(self.ed.all.difference(self.ed.used))
 		uu = {}
 		for u in unused:

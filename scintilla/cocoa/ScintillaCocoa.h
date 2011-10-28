@@ -20,6 +20,7 @@
 #include <time.h>
 
 #include <vector>
+#include <map>
 
 #include "ILexer.h"
 
@@ -116,14 +117,16 @@ private:
   int scrollSpeed;
   int scrollTicks;
 protected:
-  NSView* ContentView();
   PRectangle GetClientRectangle();
   Point ConvertPoint(NSPoint point);
   
   virtual void Initialise();
   virtual void Finalise();
+  virtual CaseFolder *CaseFolderForEncoding();
   virtual std::string CaseMapString(const std::string &s, int caseMapping);
 public:
+  NSView* ContentView();
+
   ScintillaCocoa(NSView* view);
   virtual ~ScintillaCocoa();
 
@@ -140,6 +143,7 @@ public:
   bool SetIdle(bool on);
   void SetMouseCapture(bool on);
   bool HaveMouseCapture();
+  void ScrollText(int linesToMove);
   void SetVerticalScrollPos();
   void SetHorizontalScrollPos();
   bool ModifyScrollBars(int nMax, int nPage);
@@ -160,6 +164,8 @@ public:
   virtual bool CanPaste();
   virtual void Paste();
   virtual void Paste(bool rectangular);
+  void CTPaint(void* gc, NSRect rc);
+  void CallTipMouseDown(NSPoint pt);
   virtual void CreateCallTipWindow(PRectangle rc);
   virtual void AddToPopUp(const char *label, int cmd = 0, bool enabled = true);
   virtual void ClaimSelection();
@@ -199,10 +205,7 @@ public:
   virtual NSMenu* CreateContextMenu(NSEvent* event);
   void HandleCommand(NSInteger command);
 
-//    virtual OSStatus ActiveStateChanged();
-//
-//    virtual void CallTipClick();
- 
+  virtual void ActiveStateChanged(bool isActive);
 };
 
 
