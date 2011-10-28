@@ -103,9 +103,7 @@ static void gtk_scintilla_init(GtkScintilla *self)
  */
 GtkWidget *gtk_scintilla_new (void)
 {
-    GtkScintilla *self;
-    self = (GtkScintilla *) gtk_type_new (gtk_scintilla_get_type ());
-    return GTK_WIDGET (self);
+    return g_object_new (GTK_TYPE_SCINTILLA, NULL);
 }
 
 
