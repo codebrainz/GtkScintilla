@@ -145,7 +145,7 @@ void _gtk_scintilla_class_install_signals(GtkScintillaClass *klass)
 	 * @position:	The position of the double click.
 	 * @line:		The line where the double click occurred.
 	 *
-	 * Emitted when the mouse button was doubled in the editor.
+	 * Emitted when the mouse button was double clicked in the editor.
 	 */
 	_gtk_scintilla_signals[DOUBLE_CLICK] = g_signal_new("double-click",
 			G_OBJECT_CLASS_TYPE (object_class),

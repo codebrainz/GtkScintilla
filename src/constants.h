@@ -1,5 +1,3 @@
-/* This file is auto-generated, do not edit. */
-
 #ifndef GTK_SCINTILLA_CONSTANTS_H
 #define GTK_SCINTILLA_CONSTANTS_H
 
@@ -416,7 +414,7 @@ typedef enum {
  * but some of the lexers support numerous programming languages.  For example,
  * the @GTK_SCINTILLA_LEXER_CPP will style C/C++, Java, Vala and similar
  * languages, while the @GTK_SCINTILLA_LEXER_HTML will style HTML, XML, PHP,
- * and several other similar or embedable languages.
+ * and several other similar or embeddable languages.
  */
 typedef enum {
 	GTK_SCINTILLA_LEXER_CONTAINER=0,

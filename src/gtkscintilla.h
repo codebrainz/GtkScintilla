@@ -26,7 +26,7 @@
  * @stability: Unstable
  * @include: gtkscintilla.h
  *
- * This is the main visible editing compenent/widget that you pack into your
+ * This is the main visible editing component/widget that you pack into your
  * containers.
  */
 
