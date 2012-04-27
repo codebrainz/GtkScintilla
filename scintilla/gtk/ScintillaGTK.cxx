@@ -719,6 +719,7 @@ void ScintillaGTK::Initialise() {
 #endif
 	gtk_widget_set_events(PWidget(wMain),
 	                      GDK_EXPOSURE_MASK
+	                      | GDK_SCROLL_MASK
 	                      | GDK_STRUCTURE_MASK
 	                      | GDK_KEY_PRESS_MASK
 	                      | GDK_KEY_RELEASE_MASK
@@ -745,7 +746,11 @@ void ScintillaGTK::Initialise() {
 	gtk_widget_set_double_buffered(widtxt, FALSE);
 	gtk_widget_set_size_request(widtxt, 100, 100);
 	adjustmentv = GTK_ADJUSTMENT(gtk_adjustment_new(0.0, 0.0, 201.0, 1.0, 20.0, 20.0));
+#if GTK_CHECK_VERSION(3,0,0)
+	scrollbarv = gtk_scrollbar_new(GTK_ORIENTATION_VERTICAL, GTK_ADJUSTMENT(adjustmentv));
+#else
 	scrollbarv = gtk_vscrollbar_new(GTK_ADJUSTMENT(adjustmentv));
+#endif
 #if GTK_CHECK_VERSION(2,20,0)
 	gtk_widget_set_can_focus(PWidget(scrollbarv), FALSE);
 #else
@@ -757,7 +762,11 @@ void ScintillaGTK::Initialise() {
 	gtk_widget_show(PWidget(scrollbarv));
 
 	adjustmenth = GTK_ADJUSTMENT(gtk_adjustment_new(0.0, 0.0, 101.0, 1.0, 20.0, 20.0));
+#if GTK_CHECK_VERSION(3,0,0)
+	scrollbarh = gtk_scrollbar_new(GTK_ORIENTATION_HORIZONTAL, GTK_ADJUSTMENT(adjustmenth));
+#else
 	scrollbarh = gtk_hscrollbar_new(GTK_ADJUSTMENT(adjustmenth));
+#endif
 #if GTK_CHECK_VERSION(2,20,0)
 	gtk_widget_set_can_focus(PWidget(scrollbarh), FALSE);
 #else
@@ -1104,18 +1113,12 @@ void ScintillaGTK::SyncPaint(PRectangle rc) {
 	if (PWindow(wText)) {
 		Surface *sw = Surface::Allocate(SC_TECHNOLOGY_DEFAULT);
 		if (sw) {
-#if GTK_CHECK_VERSION(3,0,0)
 			cairo_t *cr = gdk_cairo_create(PWindow(wText));
 			sw->Init(cr, PWidget(wText));
-#else
-			sw->Init(PWindow(wText), PWidget(wText));
-#endif
 			Paint(sw, rc);
 			sw->Release();
 			delete sw;
-#if GTK_CHECK_VERSION(3,0,0)
 			cairo_destroy(cr);
-#endif
 		}
 	}
 	if (paintState == paintAbandoned) {
@@ -1131,8 +1134,10 @@ void ScintillaGTK::ScrollText(int linesToMove) {
 	//	rc.left, rc.top, rc.right, rc.bottom);
 	GtkWidget *wi = PWidget(wText);
 
-	gdk_window_scroll(WindowFromWidget(wi), 0, -diff);
-	gdk_window_process_updates(WindowFromWidget(wi), FALSE);
+	if (IS_WIDGET_REALIZED(wi)) {
+		gdk_window_scroll(WindowFromWidget(wi), 0, -diff);
+		gdk_window_process_updates(WindowFromWidget(wi), FALSE);
+	}
 }
 
 void ScintillaGTK::SetVerticalScrollPos() {
@@ -1396,21 +1401,9 @@ std::string ScintillaGTK::CaseMapString(const std::string &s, int caseMapping) {
 }
 
 int ScintillaGTK::KeyDefault(int key, int modifiers) {
-	if (!(modifiers & SCI_CTRL) && !(modifiers & SCI_ALT)) {
-		if (key < 256) {
-			NotifyKey(key, modifiers);
-			return 0;
-		} else {
-			// Pass up to container in case it is an accelerator
-			NotifyKey(key, modifiers);
-			return 0;
-		}
-	} else {
-		// Pass up to container in case it is an accelerator
-		NotifyKey(key, modifiers);
-		return 0;
-	}
-	//Platform::DebugPrintf("SK-key: %d %x %x\n",key, modifiers);
+	// Pass up to container in case it is an accelerator
+	NotifyKey(key, modifiers);
+	return 0;
 }
 
 void ScintillaGTK::CopyToClipboard(const SelectionText &selectedText) {
@@ -2199,8 +2192,7 @@ gboolean ScintillaGTK::KeyThis(GdkEventKey *event) {
 		bool added = KeyDown(key, shift, ctrl, alt, &consumed) != 0;
 #else
 		bool meta = ctrl;
-		ctrl = alt;
-		alt = (event->state & GDK_MOD5_MASK) != 0;
+		ctrl = (event->state & GDK_META_MASK) != 0;
 		bool added = KeyDownWithModifiers(key, (shift ? SCI_SHIFT : 0) |
 		                                       (ctrl ? SCI_CTRL : 0) |
 		                                       (alt ? SCI_ALT : 0) |
@@ -2492,10 +2484,12 @@ gboolean ScintillaGTK::ExposeTextThis(GtkWidget * /*widget*/, GdkEventExpose *os
 		paintingAllText = rcPaint.Contains(rcClient);
 		Surface *surfaceWindow = Surface::Allocate(SC_TECHNOLOGY_DEFAULT);
 		if (surfaceWindow) {
-			surfaceWindow->Init(PWindow(wText), PWidget(wText));
+			cairo_t *cr = gdk_cairo_create(PWindow(wText));
+			surfaceWindow->Init(cr, PWidget(wText));
 			Paint(surfaceWindow, rcPaint);
 			surfaceWindow->Release();
 			delete surfaceWindow;
+			cairo_destroy(cr);
 		}
 		if (paintState == paintAbandoned) {
 			// Painting area was insufficient to cover new styling or brace highlight positions
@@ -2803,12 +2797,14 @@ gboolean ScintillaGTK::ExposeCT(GtkWidget *widget, GdkEventExpose * /*ose*/, Cal
 	try {
 		Surface *surfaceWindow = Surface::Allocate(SC_TECHNOLOGY_DEFAULT);
 		if (surfaceWindow) {
-			surfaceWindow->Init(WindowFromWidget(widget), widget);
+			cairo_t *cr = gdk_cairo_create(WindowFromWidget(widget));
+			surfaceWindow->Init(cr, widget);
 			surfaceWindow->SetUnicodeMode(SC_CP_UTF8 == ctip->codePage);
 			surfaceWindow->SetDBCSMode(ctip->codePage);
 			ctip->PaintCT(surfaceWindow);
 			surfaceWindow->Release();
 			delete surfaceWindow;
+			cairo_destroy(cr);
 		}
 	} catch (...) {
 		// No pointer back to Scintilla to save status

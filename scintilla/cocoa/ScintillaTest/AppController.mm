@@ -120,6 +120,8 @@ const char user_keywords[] = // Definition of own keywords, not used by MySQL.
   // [mEditor setStringProperty: SCI_STYLESETFONT parameter: STYLE_DEFAULT value: @"Monospac821 BT"]; // Very pleasing programmer's font.
   [mEditor setGeneralProperty: SCI_STYLESETSIZE parameter: STYLE_DEFAULT value: 14];
   [mEditor setColorProperty: SCI_STYLESETFORE parameter: STYLE_DEFAULT value: [NSColor blackColor]];
+
+  [mEditor setGeneralProperty: SCI_STYLECLEARALL parameter: 0 value: 0];	
   
   [mEditor setColorProperty: SCI_STYLESETFORE parameter: SCE_MYSQL_DEFAULT value: [NSColor blackColor]];
   [mEditor setColorProperty: SCI_STYLESETFORE parameter: SCE_MYSQL_COMMENT fromHTML: @"#097BF7"];
@@ -260,6 +262,11 @@ static const char * box_xpm[] = {
                       wholeWord: NO
                        scrollTo: YES
                            wrap: YES];
+
+  long matchStart = [mEditor getGeneralProperty: SCI_GETSELECTIONSTART parameter: 0];
+  long matchEnd = [mEditor getGeneralProperty: SCI_GETSELECTIONEND parameter: 0];
+  [mEditor setGeneralProperty: SCI_FINDINDICATORFLASH parameter: matchStart value:matchEnd];
+
   if ([[searchField stringValue] isEqualToString: @"XX"])
     [self showAutocompletion];
 }

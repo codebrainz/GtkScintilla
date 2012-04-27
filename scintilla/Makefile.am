@@ -119,6 +119,10 @@ libscintilla_la_SOURCES			=	src/PositionCache.cxx \
 									lexers/LexMatlab.cxx \
 									lexers/LexSorcus.cxx \
 									lexers/LexCPP.cxx \
+									lexers/LexAVS.cxx \
+									lexers/LexCoffeeScript.cxx \
+									lexers/LexECL.cxx \
+									lexers/LexTCMD.cxx \
 									lexlib/LexerBase.cxx \
 									lexlib/Accessor.cxx \
 									lexlib/StyleContext.cxx \

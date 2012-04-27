@@ -325,6 +325,9 @@ void gtk_scintilla_get_property(GObject *object, guint property_id, GValue *valu
 		case PROP_STYLE_BITS_NEEDED:
 			g_value_set_int(value, gtk_scintilla_get_style_bits_needed(self));
 			break;
+    case PROP_CASE_SENSITIVE_BEHAVIOUR:
+      g_value_set_enum(value, gtk_scintilla_get_case_sensitive_behaviour(self));
+      break;
 		/* non-scintilla properties */
 		case PROP_LINE_NUMBERS_VISIBLE:
 			g_value_set_boolean(value, gtk_scintilla_get_line_numbers_visible(self));
@@ -648,6 +651,9 @@ void gtk_scintilla_set_property(GObject *object, guint property_id, const GValue
 		case PROP_TEXT:
 			gtk_scintilla_set_text(self, g_value_get_string(value));
 			break;
+    case PROP_CASE_SENSITIVE_BEHAVIOUR:
+      gtk_scintilla_set_case_sensitive_behaviour(self, g_value_get_enum(value));
+      break;
 			/* non-scintilla properties */
 		case PROP_LINE_NUMBERS_VISIBLE:
 			gtk_scintilla_set_line_numbers_visible(self, g_value_get_boolean(value));

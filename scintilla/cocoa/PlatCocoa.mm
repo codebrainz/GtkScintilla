@@ -481,6 +481,13 @@ void drawImageRefCallback(CGImageRef pattern, CGContextRef gc)
 
 //--------------------------------------------------------------------------------------------------
 
+void releaseImageRefCallback(CGImageRef pattern)
+{
+  CGImageRelease(pattern);
+}
+
+//--------------------------------------------------------------------------------------------------
+
 void SurfaceImpl::FillRectangle(PRectangle rc, Surface &surfacePattern)
 {
   SurfaceImpl& patternSurface = static_cast<SurfaceImpl &>(surfacePattern);
@@ -493,8 +500,9 @@ void SurfaceImpl::FillRectangle(PRectangle rc, Surface &surfacePattern)
     return;
   }
   
-  const CGPatternCallbacks drawImageCallbacks = { 0, 
-    reinterpret_cast<CGPatternDrawPatternCallback>(drawImageRefCallback), NULL };
+  const CGPatternCallbacks drawImageCallbacks = { 0,
+    reinterpret_cast<CGPatternDrawPatternCallback>(drawImageRefCallback),
+    reinterpret_cast<CGPatternReleaseInfoCallback>(releaseImageRefCallback) };
   
   CGPatternRef pattern = CGPatternCreate(image,
                                          CGRectMake(0, 0, patternSurface.bitmapWidth, patternSurface.bitmapHeight),
@@ -526,8 +534,6 @@ void SurfaceImpl::FillRectangle(PRectangle rc, Surface &surfacePattern)
     colorSpace = NULL;
     CGPatternRelease( pattern );
     pattern = NULL;
-    CGImageRelease( image );
-    image = NULL;
   } /* pattern != NULL */
 }
 
@@ -571,11 +577,13 @@ void SurfaceImpl::RoundedRectangle(PRectangle rc, ColourDesired fore, ColourDesi
   };
   
   // Align the points in the middle of the pixels
-  for( int i = 0; i < 4*3; ++ i )
+  for( int i = 0; i < 4; ++ i )
   {
-    CGPoint* c = (CGPoint*) corners;
-    c[i].x += 0.5;
-    c[i].y += 0.5;
+    for( int j = 0; j < 3; ++ j )
+    {
+      corners[i][j].x += 0.5;
+      corners[i][j].y += 0.5;
+    }
   }
   
   PenColour( fore );
@@ -612,7 +620,7 @@ void Scintilla::SurfaceImpl::AlphaRectangle(PRectangle rc, int /*cornerSize*/, C
   }
 }
 
-static CGImageRef ImageFromRGBA(int width, int height, const unsigned char *pixelsImage, bool invert) {
+static CGImageRef ImageCreateFromRGBA(int width, int height, const unsigned char *pixelsImage, bool invert) {
 	CGImageRef image = 0;
 
 	// Create an RGB color space.
@@ -666,7 +674,7 @@ static CGImageRef ImageFromRGBA(int width, int height, const unsigned char *pixe
 }
 
 void SurfaceImpl::DrawRGBAImage(PRectangle /* rc */, int width, int height, const unsigned char *pixelsImage) {
-	CGImageRef image = ImageFromRGBA(width, height, pixelsImage, true);
+	CGImageRef image = ImageCreateFromRGBA(width, height, pixelsImage, true);
 	if (image) {
 		//CGContextSaveGState(gc);
 		//CGRect dst = PRectangleToCGRect(rc);
@@ -1333,10 +1341,8 @@ static NSImage* ImageFromXPM(XPM* pxpm)
       SurfaceImpl* surfaceIXPM = static_cast<SurfaceImpl*>(surfaceXPM);
       CGContextClearRect(surfaceIXPM->GetContext(), CGRectMake(0, 0, width, height));
       pxpm->Draw(surfaceXPM, rcxpm);
-      img = [NSImage alloc];
-      [img autorelease];
+      img = [[[NSImage alloc] initWithSize:NSZeroSize] autorelease];
       CGImageRef imageRef = surfaceIXPM->GetImage();
-      [img initWithSize:NSZeroSize];
       NSBitmapImageRep *bitmapRep = [[NSBitmapImageRep alloc] initWithCGImage: imageRef];
       [img addRepresentation: bitmapRep];
       [bitmapRep release];
@@ -1453,7 +1459,8 @@ private:
   NSScrollView* scroller;
   NSTableColumn* colIcon;
   NSTableColumn* colText;
-
+  AutoCompletionDataSource* ds;
+	
   LinesData ld;
   CallBackAction doubleClickAction;
   void* doubleClickActionData;
@@ -1570,24 +1577,23 @@ void ListBoxImpl::Create(Window& /*parent*/, int /*ctrlID*/, Scintilla::Point pt
   NSRect scRect = NSMakeRect(0, 0, lbRect.size.width, lbRect.size.height);
   [scroller initWithFrame: scRect];
   [scroller setHasVerticalScroller:YES];
-  table = [NSTableView alloc];
-  [table initWithFrame: scRect];
+  table = [[NSTableView alloc] initWithFrame: scRect];
   [table setHeaderView:nil];
   [scroller setDocumentView: table];
   colIcon = [[NSTableColumn alloc] initWithIdentifier:@"icon"];
   [colIcon setWidth: 20];
   [colIcon setEditable:NO];
   [colIcon setHidden:YES];
-  NSImageCell* imCell = [[NSImageCell alloc] init];
+  NSImageCell* imCell = [[[NSImageCell alloc] init] autorelease];
   [colIcon setDataCell:imCell];
   [table addTableColumn:colIcon];
   colText = [[NSTableColumn alloc] initWithIdentifier:@"name"];
   [colText setResizingMask:NSTableColumnAutoresizingMask];
   [colText setEditable:NO];
   [table addTableColumn:colText];
-  AutoCompletionDataSource* ds = [[AutoCompletionDataSource alloc] init];
+  ds = [[AutoCompletionDataSource alloc] init];
   [ds setBox:this];
-  [table setDataSource: ds];
+  [table setDataSource: ds];	// Weak reference
   [scroller setAutoresizingMask: NSViewWidthSizable | NSViewHeightSizable];
   [[winLB contentView] addSubview: scroller];
 
@@ -1795,11 +1801,9 @@ void ListBoxImpl::RegisterImage(int type, const char* xpm_data)
 }
 
 void ListBoxImpl::RegisterRGBAImage(int type, int width, int height, const unsigned char *pixelsImage) {
-	NSImage *img = [NSImage alloc];
-	[img autorelease];
-	CGImageRef imageRef = ImageFromRGBA(width, height, pixelsImage, false);
+	CGImageRef imageRef = ImageCreateFromRGBA(width, height, pixelsImage, false);
 	NSSize sz = {width, height};
-	[img initWithSize: sz];
+	NSImage *img = [[[NSImage alloc] initWithSize: sz] autorelease];
 	NSBitmapImageRep *bitmapRep = [[NSBitmapImageRep alloc] initWithCGImage: imageRef];
 	[img addRepresentation: bitmapRep];
 	[bitmapRep release];
@@ -1926,8 +1930,7 @@ void Menu::Show(Point, Window &)
 
 ElapsedTime::ElapsedTime() {
   struct timeval curTime;
-  int retVal;
-  retVal = gettimeofday( &curTime, NULL );
+  gettimeofday( &curTime, NULL );
   
   bigBit = curTime.tv_sec;
   littleBit = curTime.tv_usec;
@@ -1935,8 +1938,7 @@ ElapsedTime::ElapsedTime() {
 
 double ElapsedTime::Duration(bool reset) {
   struct timeval curTime;
-  int retVal;
-  retVal = gettimeofday( &curTime, NULL );
+  gettimeofday( &curTime, NULL );
   long endBigBit = curTime.tv_sec;
   long endLittleBit = curTime.tv_usec;
   double result = 1000000.0 * (endBigBit - bigBit);
@@ -2096,7 +2098,7 @@ int Platform::Maximum(int a, int b) {
 
 void Platform::DebugDisplay(const char *s)
 {
-  fprintf( stderr, s );
+  fprintf( stderr, "%s", s );
 }
 
 //--------------------------------------------------------------------------------------------------

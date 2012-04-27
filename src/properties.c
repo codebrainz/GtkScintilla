@@ -705,4 +705,12 @@ void _gtk_scintilla_class_install_properties(GtkScintillaClass *klass)
 				G_PARAM_READWRITE);
 	g_object_class_install_property(object_class, PROP_FONT, pspec);
 
+	pspec = g_param_spec_enum("case-sensitive-behaviour",
+			"Case sensitive behaviour",
+			"Gets/sets whether case is ignored for auto-completion.",
+			GTK_TYPE_SCINTILLA_CASE_SENSITIVE_BEHAVIOUR,
+			GTK_SCINTILLA_CASE_SENSITIVE_BEHAVIOUR_RESPECT_CASE,
+			G_PARAM_READWRITE);
+	g_object_class_install_property(object_class, PROP_CASE_SENSITIVE_BEHAVIOUR, pspec);
+
 }

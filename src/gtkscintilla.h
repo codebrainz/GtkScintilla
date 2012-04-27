@@ -701,6 +701,8 @@ gint		gtk_scintilla_get_lexer_property_expanded (GtkScintilla *sci, const gchar 
 gint		gtk_scintilla_get_lexer_property_int (GtkScintilla *sci, const gchar *key);
 gint		gtk_scintilla_get_style_bits_needed (GtkScintilla *sci);
 gchar*		gtk_scintilla_get_lexer_language (GtkScintilla *sci);
+void		gtk_scintilla_set_case_sensitive_behaviour (GtkScintilla *sci, GtkScintillaCaseSensitiveBehaviour behaviour);
+GtkScintillaCaseSensitiveBehaviour gtk_scintilla_get_case_sensitive_behaviour (GtkScintilla *sci);
 
 G_END_DECLS
 

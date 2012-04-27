@@ -1541,3 +1541,18 @@ gchar *gtk_scintilla_get_lexer_language (GtkScintilla *sci) {
 	scintilla_send_message(SCINTILLA(sci), 4012, 0, (sptr_t)tmp);
 	return tmp;
 }
+
+gint gtk_scintilla_count_characters (GtkScintilla *sci, gint start_pos, gint end_pos)
+{
+  return (gint)scintilla_send_message(SCINTILLA(sci), 2633, (uptr_t)start_pos, (sptr_t)end_pos);
+}
+
+void gtk_scintilla_set_case_sensitive_behaviour (GtkScintilla *sci, GtkScintillaCaseSensitiveBehaviour behaviour)
+{
+  scintilla_send_message(SCINTILLA(sci), 2634, (uptr_t)behaviour, 0);
+}
+
+GtkScintillaCaseSensitiveBehaviour gtk_scintilla_get_case_sensitive_behaviour (GtkScintilla *sci)
+{
+  return (GtkScintillaCaseSensitiveBehaviour) scintilla_send_message(SCINTILLA(sci), 2635, 0, 0);
+}

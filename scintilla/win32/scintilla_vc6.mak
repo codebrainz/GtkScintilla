@@ -93,6 +93,7 @@ LEXOBJS=\
 	$(DIR_O)\LexASY.obj \
 	$(DIR_O)\LexAU3.obj \
 	$(DIR_O)\LexAVE.obj \
+	$(DIR_O)\LexAVS.obj \
 	$(DIR_O)\LexBaan.obj \
 	$(DIR_O)\LexBash.obj \
 	$(DIR_O)\LexBasic.obj \
@@ -101,12 +102,14 @@ LEXOBJS=\
 	$(DIR_O)\LexCLW.obj \
 	$(DIR_O)\LexCmake.obj \
 	$(DIR_O)\LexCOBOL.obj \
+	$(DIR_O)\LexCoffeeScript.obj \
 	$(DIR_O)\LexConf.obj \
 	$(DIR_O)\LexCPP.obj \
 	$(DIR_O)\LexCrontab.obj \
 	$(DIR_O)\LexCsound.obj \
 	$(DIR_O)\LexCSS.obj \
 	$(DIR_O)\LexD.obj \
+	$(DIR_O)\LexECL.obj \
 	$(DIR_O)\LexEiffel.obj \
 	$(DIR_O)\LexErlang.obj \
 	$(DIR_O)\LexEScript.obj \
@@ -159,6 +162,7 @@ LEXOBJS=\
 	$(DIR_O)\LexTADS3.obj \
 	$(DIR_O)\LexTAL.obj \
 	$(DIR_O)\LexTCL.obj \
+	$(DIR_O)\LexTCMD.obj \
 	$(DIR_O)\LexTeX.obj \
 	$(DIR_O)\LexTxt2tags.obj \
 	$(DIR_O)\LexVB.obj \
@@ -296,6 +300,8 @@ $(DIR_O)\LexAU3.obj: ..\lexers\LexAU3.cxx $(LEX_HEADERS)
 
 $(DIR_O)\LexAVE.obj: ..\lexers\LexAVE.cxx $(LEX_HEADERS)
 
+$(DIR_O)\LexAVS.obj: ..\lexers\LexAVS.cxx $(LEX_HEADERS)
+
 $(DIR_O)\LexBaan.obj: ..\lexers\LexBaan.cxx $(LEX_HEADERS)
 
 $(DIR_O)\LexBash.obj: ..\lexers\LexBash.cxx $(LEX_HEADERS)
@@ -312,6 +318,8 @@ $(DIR_O)\LexCmake.obj: ..\lexers\LexCmake.cxx $(LEX_HEADERS)
 
 $(DIR_O)\LexCOBOL.obj: ..\lexers\LexCOBOL.cxx $(LEX_HEADERS)
 
+$(DIR_O)\LexCoffeeScript.obj: ..\lexers\LexCoffeeScript.cxx $(LEX_HEADERS)
+
 $(DIR_O)\LexConf.obj: ..\lexers\LexConf.cxx $(LEX_HEADERS)
 
 $(DIR_O)\LexCPP.obj: ..\lexers\LexCPP.cxx $(LEX_HEADERS)
@@ -323,6 +331,8 @@ $(DIR_O)\LexCsound.obj: ..\lexers\LexCsound.cxx $(LEX_HEADERS)
 $(DIR_O)\LexCSS.obj: ..\lexers\LexCSS.cxx $(LEX_HEADERS)
 
 $(DIR_O)\LexD.obj: ..\lexers\LexD.cxx $(LEX_HEADERS)
+
+$(DIR_O)\LexECL.obj: ..\lexers\LexECL.cxx $(LEX_HEADERS)
 
 $(DIR_O)\LexEiffel.obj: ..\lexers\LexEiffel.cxx $(LEX_HEADERS)
 
@@ -427,6 +437,8 @@ $(DIR_O)\LexTADS3.obj: ..\lexers\LexTADS3.cxx $(LEX_HEADERS)
 $(DIR_O)\LexTAL.obj: ..\lexers\LexTAL.cxx $(LEX_HEADERS)
 
 $(DIR_O)\LexTCL.obj: ..\lexers\LexTCL.cxx $(LEX_HEADERS)
+
+$(DIR_O)\LexTCMD.obj: ..\lexers\LexTCMD.cxx $(LEX_HEADERS)
 
 $(DIR_O)\LexTeX.obj: ..\lexers\LexTeX.cxx $(LEX_HEADERS)
 
