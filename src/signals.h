@@ -71,7 +71,7 @@ enum {
 
 extern guint _gtk_scintilla_signals[];
 
-void gtk_scintilla_class_install_signals(GtkScintillaClass *klass);
+void _gtk_scintilla_class_install_signals(GtkScintillaClass *klass);
 void gtk_scintilla_forward_signals(GtkScintilla *sci,
 									struct SCNotification *notif);
 

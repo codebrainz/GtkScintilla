@@ -154,6 +154,6 @@ enum
 	PROP_CALL_TIP_STYLE
 };
 
-void gtk_scintilla_class_install_properties(GtkScintillaClass *klass);
+void _gtk_scintilla_class_install_properties(GtkScintillaClass *klass);
 
 #endif /* #ifndef GTK_SCINTILLA_PROPERTIES_H */

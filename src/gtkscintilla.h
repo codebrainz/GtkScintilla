@@ -168,7 +168,7 @@ void 		gtk_scintilla_redo (GtkScintilla *sci);
 void 		gtk_scintilla_set_undo_collection (GtkScintilla *sci, gboolean collectUndo);
 void 		gtk_scintilla_select_all (GtkScintilla *sci);
 void 		gtk_scintilla_set_save_point (GtkScintilla *sci);
-gchar*		gtk_scintilla_get_styled_text_range (GtkScintilla *sci, guint start_pos, gint end_pos);
+gchar*		gtk_scintilla_get_styled_text_range (GtkScintilla *sci, guint start_pos, guint end_pos);
 gboolean	gtk_scintilla_can_redo (GtkScintilla *sci);
 gint 		gtk_scintilla_marker_line_from_handle (GtkScintilla *sci, gint handle);
 void 		gtk_scintilla_marker_delete_handle (GtkScintilla *sci, gint handle);
@@ -205,6 +205,9 @@ gint 		gtk_scintilla_marker_previous (GtkScintilla *sci, gint lineStart, gint ma
 void 		gtk_scintilla_marker_define_pixmap (GtkScintilla *sci, gint markerNumber, const gchar *pixmap);
 void 		gtk_scintilla_marker_add_set (GtkScintilla *sci, gint line, gint set);
 void 		gtk_scintilla_marker_set_alpha (GtkScintilla *sci, gint markerNumber, gint alpha);
+void		gtk_scintilla_set_margin_type (GtkScintilla *sci, gint margin, GtkScintillaMarginType marginType);
+void		gtk_scintilla_set_margin_mask (GtkScintilla *sci, gint margin, gint mask);
+void		gtk_scintilla_set_margin_sensitive (GtkScintilla *sci, gint margin, gboolean sensitive);
 void 		gtk_scintilla_set_margin_type_n (GtkScintilla *sci, gint margin, gint marginType);
 gint 		gtk_scintilla_get_margin_type_n (GtkScintilla *sci, gint margin);
 void 		gtk_scintilla_set_margin_width_n (GtkScintilla *sci, gint margin, gint pixelWidth);

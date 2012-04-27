@@ -230,19 +230,19 @@ gboolean gtk_scintilla_get_read_only (GtkScintilla *sci)
 gchar *gtk_scintilla_get_text_range (GtkScintilla *sci, guint start_pos, gint end_pos)
 {
 	gchar *tmp;
-	guint last_pos, num_bytes, num_chars;
+	glong last_pos, start, num_bytes, num_chars;
 	struct Sci_TextRange tr;
 
 	g_return_val_if_fail(sci != NULL, NULL);
 
-	last_pos = gtk_scintilla_get_length(sci) - 1;
+	start = (glong) start_pos;
+	last_pos = (glong) gtk_scintilla_get_length(sci) - 1;
 
-	g_return_val_if_fail(start_pos <= end_pos, NULL);
-	g_return_val_if_fail(start_pos <= last_pos, NULL);
-	g_return_val_if_fail(end_pos <= last_pos, NULL);
-	g_return_val_if_fail(end_pos >= -1, NULL);
+	g_return_val_if_fail(end_pos == -1 || start <= end_pos, NULL);
+	g_return_val_if_fail(start <= last_pos, NULL);
+	g_return_val_if_fail(end_pos == -1 || end_pos <= last_pos, NULL);
 
-	tr.chrg.cpMin = start_pos;
+	tr.chrg.cpMin = start;
 	tr.chrg.cpMax = end_pos;
 
 	if (tr.chrg.cpMax == -1)
@@ -280,7 +280,7 @@ gchar *gtk_scintilla_get_text_range (GtkScintilla *sci, guint start_pos, gint en
  * 			@start_pos and @end_pos or NULL if the text could not be retrieved
  * 			or was empty.  Free with g_free().
  */
-gchar *gtk_scintilla_get_styled_text_range (GtkScintilla *sci, guint start_pos, gint end_pos)
+gchar *gtk_scintilla_get_styled_text_range (GtkScintilla *sci, guint start_pos, guint end_pos)
 {
 	gchar *tmp;
 	guint last_pos, num_bytes, num_chars;
@@ -291,9 +291,7 @@ gchar *gtk_scintilla_get_styled_text_range (GtkScintilla *sci, guint start_pos, 
 	last_pos = gtk_scintilla_get_length(sci) - 1;
 
 	g_return_val_if_fail(start_pos <= end_pos, NULL);
-	g_return_val_if_fail(start_pos <= last_pos, NULL);
 	g_return_val_if_fail(end_pos <= last_pos, NULL);
-	g_return_val_if_fail(end_pos >= -1, NULL);
 
 	tr.chrg.cpMin = start_pos;
 	tr.chrg.cpMax = end_pos;

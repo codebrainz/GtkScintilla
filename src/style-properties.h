@@ -80,6 +80,6 @@ enum
 	STYLE_PROP_ACTIVE_HOTSPOT_SINGLE_LINE
 };
 
-void gtk_scintilla_class_install_style_properties(GtkScintillaClass *klass);
+void _gtk_scintilla_class_install_style_properties(GtkScintillaClass *klass);
 
 #endif /* #ifndef GTK_SCINTILLA_STYLE_PROPERTIES_H */

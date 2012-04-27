@@ -46,12 +46,8 @@ static void gtk_scintilla_lexer_class_init(GtkScintillaLexerClass *klass)
 
 static void gtk_scintilla_lexer_finalize(GObject *object)
 {
-	GtkScintillaLexer *self;
-
 	g_return_if_fail(object != NULL);
 	g_return_if_fail(GTK_IS_SCINTILLA_LEXER(object));
-
-	self = GTK_SCINTILLA_LEXER(object);
 
 	G_OBJECT_CLASS(gtk_scintilla_lexer_parent_class)->finalize(object);
 }
