@@ -33,7 +33,5 @@ AC_CONFIG_FILES([	gtkscintilla-1.0.pc
 					src/Makefile
 					demo/Makefile
 					docs/reference/Makefile
-					bindings/Makefile
-					bindings/vala/Makefile
 					data/Makefile])
 AC_OUTPUT
